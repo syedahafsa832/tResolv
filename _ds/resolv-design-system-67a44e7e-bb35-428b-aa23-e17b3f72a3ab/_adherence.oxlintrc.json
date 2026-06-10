@@ -1,0 +1,157 @@
+{
+  "plugins": [
+    "react",
+    "import"
+  ],
+  "rules": {
+    "react/forbid-elements": [
+      "warn",
+      {
+        "forbid": []
+      }
+    ],
+    "no-restricted-imports": [
+      "warn",
+      {
+        "patterns": [
+          {
+            "group": [
+              "ui_kits/console/**"
+            ],
+            "message": "Import design-system components from 'index.js', not component internals."
+          }
+        ]
+      }
+    ],
+    "no-restricted-syntax": [
+      "warn",
+      {
+        "selector": "Literal[value=/#[0-9a-fA-F]{3,8}\\b/]",
+        "message": "Raw hex color — use a design-system color token via var()."
+      },
+      {
+        "selector": "Literal[value=/\\b\\d+px\\b/]",
+        "message": "Raw px value — use a design-system spacing token via var()."
+      },
+      {
+        "selector": "Literal[value=/font-family\\s*:\\s*(?!['\\\"]?(?:DM Sans|DM Mono))/i]",
+        "message": "Font not provided by the design system. Available: DM Sans, DM Mono."
+      }
+    ]
+  },
+  "overrides": [
+    {
+      "files": [
+        "**/index.js"
+      ],
+      "rules": {
+        "no-restricted-imports": "off"
+      }
+    }
+  ],
+  "x-omelette": {
+    "components": {},
+    "tokens": [
+      "--accent",
+      "--accent-hover",
+      "--accent-light",
+      "--bg-primary",
+      "--bg-secondary",
+      "--bg-tertiary",
+      "--border",
+      "--border-strong",
+      "--brand-mark",
+      "--brand-mark-knockout",
+      "--danger",
+      "--danger-light",
+      "--font-mono",
+      "--font-sans",
+      "--fs-h2",
+      "--fs-h3",
+      "--fs-lg",
+      "--fs-md",
+      "--fs-meta",
+      "--fs-sm",
+      "--fs-stat",
+      "--fs-xs",
+      "--fw-bold",
+      "--fw-medium",
+      "--fw-regular",
+      "--fw-semibold",
+      "--info",
+      "--info-light",
+      "--radius",
+      "--radius-lg",
+      "--radius-md",
+      "--radius-pill",
+      "--radius-sm",
+      "--shadow-card",
+      "--shadow-toast",
+      "--sidebar-width",
+      "--success",
+      "--success-light",
+      "--text-base",
+      "--text-muted",
+      "--text-primary",
+      "--text-secondary",
+      "--topbar-height",
+      "--violet",
+      "--violet-light",
+      "--warning",
+      "--warning-light"
+    ],
+    "tokenKinds": {
+      "--bg-primary": "color",
+      "--bg-secondary": "color",
+      "--bg-tertiary": "color",
+      "--border": "color",
+      "--border-strong": "color",
+      "--text-primary": "font",
+      "--text-secondary": "font",
+      "--text-muted": "font",
+      "--accent": "color",
+      "--accent-hover": "color",
+      "--accent-light": "color",
+      "--success": "color",
+      "--success-light": "color",
+      "--warning": "color",
+      "--warning-light": "color",
+      "--danger": "color",
+      "--danger-light": "color",
+      "--info": "color",
+      "--info-light": "color",
+      "--violet": "color",
+      "--violet-light": "color",
+      "--brand-mark": "color",
+      "--brand-mark-knockout": "color",
+      "--sidebar-width": "spacing",
+      "--topbar-height": "spacing",
+      "--radius-sm": "radius",
+      "--radius": "radius",
+      "--radius-md": "radius",
+      "--radius-lg": "radius",
+      "--radius-pill": "radius",
+      "--shadow-card": "shadow",
+      "--shadow-toast": "shadow",
+      "--font-sans": "font",
+      "--font-mono": "font",
+      "--text-base": "font",
+      "--fs-meta": "spacing",
+      "--fs-xs": "spacing",
+      "--fs-sm": "spacing",
+      "--fs-md": "spacing",
+      "--fs-lg": "spacing",
+      "--fs-h3": "spacing",
+      "--fs-h2": "spacing",
+      "--fs-stat": "spacing",
+      "--fw-regular": "other",
+      "--fw-medium": "other",
+      "--fw-semibold": "other",
+      "--fw-bold": "other"
+    },
+    "fontFamilies": [
+      "DM Mono",
+      "DM Sans"
+    ]
+  }
+}

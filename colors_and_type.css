@@ -1,0 +1,118 @@
+/* ============================================================
+   RESOLV — Design Tokens: Color + Type
+   Source of truth: ai-ops-console/src/index.css (:root)
+   Fonts: DM Sans (UI) + DM Mono (numerics) — Google Fonts.
+   Load in any HTML before this file:
+   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
+   ============================================================ */
+
+:root {
+  /* ---- Surfaces -------------------------------------------------- */
+  --bg-primary:   #FFFFFF;   /* cards, page base */
+  --bg-secondary: #F7F7F8;   /* app canvas, sidebar, zebra rows */
+  --bg-tertiary:  #F0F0F2;   /* chips, skeletons, disabled fills */
+
+  /* ---- Borders --------------------------------------------------- */
+  --border:        #E4E4E7;  /* default hairline */
+  --border-strong: #D1D1D6;  /* inputs, emphasis */
+
+  /* ---- Text ------------------------------------------------------ */
+  --text-primary:   #0A0A0B; /* near-black, headings + body */
+  --text-secondary: #6B6B7B; /* labels, secondary copy */
+  --text-muted:     #9898A6; /* timestamps, hints, meta */
+
+  /* ---- Accent (indigo) — primary interactive -------------------- */
+  --accent:       #5B5BD6;
+  --accent-hover: #4A4AC4;
+  --accent-light: #EDEDFB;
+
+  /* ---- Semantic -------------------------------------------------- */
+  --success:       #18A94B;  --success-light: #EDFAF3;
+  --warning:       #D97706;  --warning-light: #FFFBEB;
+  --danger:        #DC2626;  --danger-light:  #FEF2F2;
+  --info:          #2563EB;  --info-light:    #EFF6FF;  /* exchange / review */
+  --violet:        #7C3AED;  --violet-light:  #F5F3FF;  /* human-managing / discount */
+
+  /* ---- Brand mark ----------------------------------------------- */
+  /* The brand/identity color IS the indigo accent (--accent, #5B5BD6).
+     The original Resolv mark (assets/resolv-mark.svg) is flat indigo + a
+     white check — no gradient. The #863BFF purple gradient that used to
+     live here belonged to the Vite template favicon and is NOT Resolv. */
+  --brand-mark:      var(--accent);  /* #5B5BD6 — mark fill */
+  --brand-mark-knockout: #FFFFFF;    /* check on indigo / mark on dark+accent */
+
+  /* ---- Layout rails (from app shell) ----------------------------- */
+  --sidebar-width: 220px;
+  --topbar-height: 56px;
+
+  /* ---- Radii ----------------------------------------------------- */
+  --radius-sm: 3px;   /* tiny chips, inline tags */
+  --radius:    4px;   /* default: buttons, inputs, badges */
+  --radius-md: 6px;   /* cards, table containers, nav items */
+  --radius-lg: 8px;   /* modals, login card, settings panels */
+  --radius-pill: 9999px;
+
+  /* ---- Elevation / shadow --------------------------------------- */
+  --shadow-card:  0 4px 24px rgba(0,0,0,0.06);  /* login / modal lift */
+  --shadow-toast: 0 4px 12px rgba(0,0,0,0.15);  /* toasts, popovers */
+
+  /* ---- Type scale (px) ------------------------------------------- */
+  --font-sans: 'DM Sans', system-ui, -apple-system, sans-serif;
+  --font-mono: 'DM Mono', ui-monospace, 'SF Mono', monospace;
+
+  --text-base: 14px;       /* app body — everything is sized off this */
+  --fs-meta:   11px;       /* footnotes, version, badges-xs */
+  --fs-xs:     12px;       /* timestamps, hints, table meta */
+  --fs-sm:     13px;       /* secondary copy, buttons, labels */
+  --fs-md:     14px;       /* body, inputs, nav */
+  --fs-lg:     15px;       /* card titles, emphasis */
+  --fs-h3:     16px;       /* section / page headers */
+  --fs-h2:     22px;       /* onboarding / marketing headings */
+  --fs-stat:   28px;       /* StatCard numerals (mono) */
+
+  --fw-regular: 400;
+  --fw-medium:  500;
+  --fw-semibold:600;
+  --fw-bold:    700;
+}
+
+/* ============================================================
+   SEMANTIC TYPE CLASSES
+   Mirror how type is actually used across the Resolv console.
+   ============================================================ */
+
+body {
+  font-family: var(--font-sans);
+  font-size: var(--text-base);
+  color: var(--text-primary);
+  background: var(--bg-primary);
+  -webkit-font-smoothing: antialiased;
+  line-height: 1.5;
+}
+
+/* Page + section headings */
+.ds-page-title  { font-size: var(--fs-h3); font-weight: var(--fw-bold);     color: var(--text-primary); letter-spacing: -0.1px; }
+.ds-section     { font-size: var(--fs-md); font-weight: var(--fw-semibold); color: var(--text-primary); }
+.ds-card-title  { font-size: var(--fs-lg); font-weight: var(--fw-semibold); color: var(--text-primary); }
+
+/* Overline — uppercased card eyebrows (Settings, widgets) */
+.ds-overline {
+  font-size: var(--fs-sm); font-weight: var(--fw-semibold);
+  color: var(--text-secondary);
+  text-transform: uppercase; letter-spacing: 0.5px;
+}
+
+/* Body + secondary */
+.ds-body      { font-size: var(--fs-md); color: var(--text-primary); }
+.ds-secondary { font-size: var(--fs-sm); color: var(--text-secondary); }
+.ds-muted     { font-size: var(--fs-xs); color: var(--text-muted); }
+
+/* Numerics — always DM Mono: stats, IDs, timestamps, money, % */
+.ds-stat   { font-family: var(--font-mono); font-size: var(--fs-stat); font-weight: var(--fw-medium); line-height: 1; color: var(--text-primary); }
+.ds-mono   { font-family: var(--font-mono); font-size: var(--fs-xs);  color: var(--text-muted); }
+
+/* Brand wordmark */
+.ds-wordmark { font-weight: var(--fw-bold); color: var(--accent); letter-spacing: -0.3px; }
+
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; }
