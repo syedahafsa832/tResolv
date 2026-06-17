@@ -20,6 +20,9 @@ export const metadata = {
   title: 'Resolv — AI Support Employee for Shopify Brands',
   description:
     'Resolv reads your inbox, drafts replies, and resolves 86.5% of customer support emails automatically. Every financial action requires your approval.',
+  icons: {
+    icon: '/favicon.svg',
+  },
 };
 
 export default function RootLayout({ children }) {
