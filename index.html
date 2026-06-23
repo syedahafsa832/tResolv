@@ -28,6 +28,7 @@
       --dark-2:       #111117;
       --sans: 'DM Sans', system-ui, -apple-system, sans-serif;
       --mono: 'DM Mono', ui-monospace, 'SF Mono', monospace;
+      --banner-h: 0px;
     }
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; }
@@ -67,15 +68,17 @@
       border: 1px solid rgba(255,255,255,0.14);
     }
     .btn-ghost-dark:hover { color: white; border-color: rgba(255,255,255,0.35); }
+    .btn-ghost-light { background: transparent; color: var(--text-2); border: 1px solid var(--border); }
+    .btn-ghost-light:hover { color: var(--text); border-color: var(--text-2); }
 
     /* ============================================================
        NAV
     ============================================================ */
     #nav {
-      position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+      position: fixed; top: var(--banner-h); left: 0; right: 0; z-index: 200;
       height: 62px; display: flex; align-items: center;
       border-bottom: 1px solid transparent;
-      transition: background 0.28s, border-color 0.28s;
+      transition: background 0.28s, border-color 0.28s, top 0.25s ease;
     }
     #nav.scrolled {
       background: rgba(255,255,255,0.95);
@@ -110,16 +113,51 @@
     }
 
     /* ============================================================
+       FOUNDING 20 BANNER
+    ============================================================ */
+    .founding-banner {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 300;
+      background: #F59E0B; color: #1A1207;
+    }
+    .founding-banner-inner {
+      max-width: 1320px; margin: 0 auto; padding: 10px 64px 10px 48px;
+      display: flex; align-items: center; justify-content: center;
+      gap: 18px; flex-wrap: wrap; text-align: center;
+    }
+    .fb-text { font-size: 13.5px; font-weight: 600; line-height: 1.4; }
+    .fb-cta {
+      font-weight: 700; font-size: 13.5px; text-decoration: underline;
+      text-decoration-color: rgba(26,18,7,0.4); flex-shrink: 0; transition: opacity 0.15s;
+    }
+    .fb-cta:hover { opacity: 0.65; }
+    .fb-count {
+      font-family: var(--mono); font-size: 11.5px; font-weight: 600;
+      background: rgba(26,18,7,0.12); padding: 3px 10px; border-radius: 99px; flex-shrink: 0;
+    }
+    .fb-close {
+      position: absolute; right: 14px; top: 50%; transform: translateY(-50%);
+      background: transparent; border: none; color: #1A1207; opacity: 0.55;
+      font-size: 20px; line-height: 1; padding: 4px 8px; transition: opacity 0.15s;
+    }
+    .fb-close:hover { opacity: 1; }
+    @media (max-width: 920px) {
+      .founding-banner-inner { padding: 9px 40px 9px 16px; gap: 10px; }
+      .fb-text, .fb-cta { font-size: 12px; }
+      .fb-close { right: 8px; }
+    }
+
+    /* ============================================================
        HERO
     ============================================================ */
     .hero {
       background: var(--dark); min-height: 100vh;
       display: flex; flex-direction: column; justify-content: center;
-      padding: 120px 0 0; overflow: hidden; position: relative;
+      padding: calc(120px + var(--banner-h)) 0 0; overflow: hidden; position: relative;
+      transition: padding-top 0.25s ease;
     }
     .hero-inner {
       max-width: 1320px; margin: 0 auto; padding: 0 48px 0;
-      display: grid; grid-template-columns: 1fr 1fr;
+      display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
       gap: 72px; align-items: center;
     }
     .hero h1 {
@@ -165,57 +203,58 @@
       background: rgba(0,0,0,0.1); border-radius: 4px;
       padding: 2px 18px; font-size: 10.5px; color: #555; font-family: var(--sans);
     }
-    .mc-console { display: flex; height: 328px; background: white; }
-    .mc-sidebar {
-      width: 134px; background: #F7F7F8;
-      border-right: 1px solid #E4E4E7;
-      display: flex; flex-direction: column; flex-shrink: 0; overflow: hidden;
-    }
-    .mc-logo {
-      display: flex; align-items: center; gap: 7px;
-      padding: 11px 10px; border-bottom: 1px solid #E4E4E7;
-    }
-    .mc-logo-text { font-weight: 700; font-size: 12.5px; color: var(--accent); letter-spacing: -0.4px; }
-    .mc-brand { font-size: 10px; color: #9898A6; padding: 7px 10px 4px; font-weight: 500; }
-    .mc-nav { padding: 4px 0; flex: 1; }
-    .mc-ni {
-      display: flex; align-items: center; gap: 5px;
-      padding: 6px 10px; font-size: 11px; color: #6B6B7B; font-weight: 500;
-    }
-    .mc-ni.on { background: #E2F7FA; color: var(--accent); margin: 1px 6px; border-radius: 4px; padding: 6px 4px; }
-    .mc-ct {
-      margin-left: auto; font-family: var(--mono); font-size: 9px;
-      padding: 1px 4px; border-radius: 3px; background: #F0F0F2; color: #9898A6;
-    }
-    .mc-ct.red { background: #FEF2F2; color: #DC2626; }
-    .mc-main { flex: 1; display: flex; flex-direction: column; min-width: 0; }
-    .mc-topbar {
+    .mc-live { display: flex; align-items: center; gap: 5px; font-size: 10px; font-weight: 500; color: #18A94B; }
+    .mc-live-dot { width: 6px; height: 6px; border-radius: 50%; background: #18A94B; animation: livePulse 2s infinite; }
+
+    /* HERO MICRO-DEMO */
+    .hd-console { display: flex; flex-direction: column; height: 328px; background: white; }
+    .hd-topbar {
       height: 36px; border-bottom: 1px solid #E4E4E7;
       display: flex; align-items: center; justify-content: space-between;
       padding: 0 14px; flex-shrink: 0;
     }
-    .mc-topbar-t { font-size: 12px; font-weight: 600; color: #0A0A0B; }
-    .mc-live { display: flex; align-items: center; gap: 5px; font-size: 10px; font-weight: 500; color: #18A94B; }
-    .mc-live-dot { width: 6px; height: 6px; border-radius: 50%; background: #18A94B; animation: livePulse 2s infinite; }
-    .mc-body { padding: 11px 12px; overflow: hidden; }
-    .mc-stats { display: grid; grid-template-columns: repeat(3,1fr); gap: 7px; margin-bottom: 11px; }
-    .mc-stat { border: 1px solid #E4E4E7; border-radius: 5px; padding: 8px 10px; }
-    .mc-stat-l { font-size: 9.5px; color: #6B6B7B; font-weight: 500; margin-bottom: 3px; }
-    .mc-stat-v { font-family: var(--mono); font-size: 19px; font-weight: 500; color: #0A0A0B; line-height: 1; margin-bottom: 2px; }
-    .mc-stat-s { font-size: 9px; color: #9898A6; }
-    .mc-rows-head { font-size: 10.5px; font-weight: 600; color: #0A0A0B; margin-bottom: 5px; }
-    .mc-row {
-      display: flex; align-items: center; justify-content: space-between;
-      padding: 6px 0; border-bottom: 1px solid #F0F0F2;
+    .hd-topbar-t { font-size: 12px; font-weight: 600; color: #0A0A0B; }
+    .hd-body {
+      flex: 1; padding: 18px 18px; display: flex; flex-direction: column;
+      gap: 12px; position: relative; overflow: hidden; transition: opacity 0.5s ease;
     }
-    .mc-row:last-child { border-bottom: none; }
-    .mc-row-info { display: flex; flex-direction: column; gap: 1px; min-width: 0; }
-    .mc-email { font-family: var(--mono); font-size: 9.5px; color: #9898A6; }
-    .mc-subject { font-size: 10.5px; font-weight: 500; color: #0A0A0B; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 178px; }
-    .mc-badge { font-size: 9px; font-weight: 500; padding: 2px 6px; border-radius: 3px; flex-shrink: 0; }
-    .mc-badge.draft  { background: #E2F7FA; color: #0FB6CC; }
-    .mc-badge.ok     { background: #EDFAF3; color: #18A94B; }
-    .mc-badge.warn   { background: #FFFBEB; color: #D97706; }
+    .hd-body.fading { opacity: 0; }
+    .hd-msg {
+      max-width: 80%; padding: 9px 13px; border-radius: 4px 14px 14px 14px;
+      font-size: 12.5px; line-height: 1.5; color: var(--text);
+    }
+    .hd-msg.customer { align-self: flex-end; background: var(--accent); color: #fff; border-radius: 14px 4px 14px 14px; }
+    .hd-msg.luna { align-self: flex-start; background: #F0F0F2; }
+    .hd-msg.is-typing::after {
+      content: ''; display: inline-block; width: 2px; height: 11px;
+      background: currentColor; margin-left: 3px; vertical-align: middle;
+      animation: hdBlink 0.9s steps(1) infinite;
+    }
+    .hd-status {
+      align-self: flex-start; display: flex; align-items: center; gap: 7px;
+      font-size: 11.5px; color: var(--text-2); font-weight: 500;
+    }
+    .hd-status-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--accent); animation: livePulse 1s infinite; }
+    .hd-order-card {
+      align-self: flex-start; width: 100%; max-width: 280px;
+      border: 1px solid var(--border); border-radius: 8px;
+      padding: 10px 12px; background: var(--bg-2);
+    }
+    .hd-order-top { display: flex; align-items: center; justify-content: space-between; margin-bottom: 6px; }
+    .hd-order-id { font-family: var(--mono); font-size: 11px; font-weight: 600; color: var(--text); }
+    .hd-order-badge { font-size: 9.5px; font-weight: 600; padding: 2px 7px; border-radius: 99px; }
+    .hd-order-badge.shipped { background: var(--accent-light); color: var(--accent-hover); }
+    .hd-order-badge.processing { background: #FFFBEB; color: #D97706; }
+    .hd-order-item { font-size: 11.5px; color: var(--text); font-weight: 500; }
+    .hd-order-price { font-size: 11px; color: var(--text-2); margin-top: 2px; }
+    .hd-stamp {
+      align-self: flex-start; display: inline-flex; align-items: center; gap: 6px;
+      font-size: 11.5px; font-weight: 600; color: var(--success);
+      background: var(--success-bg); padding: 5px 11px; border-radius: 99px;
+    }
+    .hd-anim-in { animation: hdSlide 0.4s ease; }
+    @keyframes hdSlide { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+    @keyframes hdBlink { 0%, 50% { opacity: 1; } 51%, 100% { opacity: 0; } }
 
     /* HERO BOTTOM BAND */
     .hero-band {
@@ -231,6 +270,50 @@
     .hb-val { font-family: var(--mono); font-size: 32px; font-weight: 500; color: white; line-height: 1; margin-bottom: 6px; }
     .hb-val em { color: var(--accent); font-style: normal; }
     .hb-label { font-size: 13px; color: rgba(255,255,255,0.4); font-weight: 500; }
+
+    /* ============================================================
+       LIVE FEED ("WATCH LUNA WORK")
+    ============================================================ */
+    .lf-head { display: flex; align-items: flex-end; justify-content: space-between; gap: 24px; flex-wrap: wrap; }
+    .lf-live {
+      display: inline-flex; align-items: center; gap: 7px;
+      font-size: 11.5px; font-weight: 700; letter-spacing: 0.7px;
+      text-transform: uppercase; color: #DC2626;
+    }
+    .lf-live-dot { width: 7px; height: 7px; border-radius: 50%; background: #DC2626; animation: livePulse 1.6s infinite; }
+    .lf-panel {
+      margin-top: 40px; border: 1px solid var(--border); border-radius: 10px;
+      background: white; overflow: hidden;
+    }
+    .lf-rows { display: flex; flex-direction: column; overflow: hidden; }
+    .lf-row {
+      display: flex; align-items: center; justify-content: space-between; gap: 18px;
+      padding: 16px 26px; border-bottom: 1px solid var(--bg-3);
+      animation: lfSlideIn 0.4s ease;
+    }
+    .lf-row:last-child { border-bottom: none; }
+    .lf-row-left { display: flex; flex-direction: column; gap: 3px; min-width: 0; }
+    .lf-row-ref { font-family: var(--mono); font-size: 12.5px; color: var(--text-3); }
+    .lf-row-intent { font-size: 14.5px; font-weight: 600; color: var(--text); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .lf-row-right { display: flex; align-items: center; gap: 8px; font-size: 13px; color: var(--text-2); flex-shrink: 0; }
+    .lf-resolved { display: inline-flex; align-items: center; gap: 5px; color: var(--success); font-weight: 600; }
+    .lf-dot-sep { color: var(--text-3); }
+    .lf-cap {
+      display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap;
+      padding: 13px 26px; background: var(--bg-2); border-top: 1px solid var(--border);
+      font-size: 12.5px; color: var(--text-3);
+    }
+    .lf-cap-badge {
+      font-family: var(--mono); font-size: 11px; font-weight: 600; padding: 2px 8px;
+      border-radius: 4px; background: var(--bg-3); color: var(--text-2);
+    }
+    .lf-cap-badge.is-live { background: var(--accent-light); color: var(--accent-hover); }
+    @keyframes lfSlideIn { from { opacity: 0; transform: translateY(-12px); } to { opacity: 1; transform: translateY(0); } }
+    @media (max-width: 920px) {
+      .lf-row { padding: 13px 18px; }
+      .lf-row-intent { max-width: 180px; }
+      .lf-cap { padding: 12px 18px; }
+    }
 
     /* ============================================================
        HOW IT WORKS
@@ -262,8 +345,8 @@
       border: 1px solid var(--border); border-radius: 8px;
       overflow: hidden; margin-top: 64px;
     }
-    .feat-card { background: white; padding: 36px 40px; transition: background 0.15s; }
-    .feat-card:hover { background: var(--bg-2); }
+    .feat-card { background: white; padding: 36px 40px; transition: background 0.15s, box-shadow 0.25s; }
+    .feat-card:hover { background: var(--bg-2); box-shadow: 0 0 24px rgba(15,182,204,0.10); }
     .feat-icon {
       width: 40px; height: 40px; border-radius: 8px;
       background: var(--accent-light); color: var(--accent);
@@ -279,10 +362,29 @@
     /* ============================================================
        PRICING
     ============================================================ */
+    .price-cards-row { display: grid; grid-template-columns: 280px 1fr; gap: 24px; margin-top: 64px; align-items: stretch; }
     .price-grid {
       display: grid; grid-template-columns: repeat(3,1fr);
       border: 1px solid var(--border); border-radius: 8px;
-      overflow: hidden; margin-top: 64px;
+      overflow: hidden;
+    }
+    .price-card.founding {
+      border: 1.5px dashed #F59E0B; border-radius: 8px;
+      background: linear-gradient(180deg, rgba(245,158,11,0.08), rgba(245,158,11,0.02));
+      box-shadow: 0 0 28px rgba(245,158,11,0.14);
+      display: flex; flex-direction: column; padding: 32px 26px;
+    }
+    .price-card.founding .price-tier { color: #B45309; }
+    .price-card.founding .price-amount { font-size: 32px; }
+    .price-card.founding .price-desc { min-height: 0; }
+    .price-card.founding .price-btn {
+      background: #F59E0B; color: #1A1207; border-color: #F59E0B; font-weight: 700;
+    }
+    .price-card.founding .price-btn:hover { background: #D88A09; border-color: #D88A09; color: #1A1207; }
+    .price-card.founding .price-features { margin-bottom: 18px; }
+    .price-card.founding .fp-count {
+      font-family: var(--mono); font-size: 11.5px; font-weight: 600;
+      color: #B45309; text-align: center;
     }
     .price-card { padding: 40px 36px; background: white; border-right: 1px solid var(--border); position: relative; }
     .price-card:last-child { border-right: none; }
@@ -498,6 +600,8 @@
        ANIMATIONS
     ============================================================ */
     @keyframes livePulse { 0%,100%{opacity:1} 50%{opacity:0.35} }
+    .reveal-item { opacity: 0; transform: translateY(16px); transition: opacity 0.5s ease, transform 0.5s ease; }
+    .reveal-item.is-visible { opacity: 1; transform: translateY(0); }
 
     /* ============================================================
        RESPONSIVE
@@ -509,6 +613,7 @@
       .steps { grid-template-columns: 1fr; gap: 40px; }
       .steps::after { display: none; }
       .feat-grid { grid-template-columns: 1fr; }
+      .price-cards-row { grid-template-columns: 1fr; }
       .price-grid { grid-template-columns: 1fr; }
       .price-card { border-right: none; border-bottom: 1px solid var(--border); }
       .price-card:last-child { border-bottom: none; }
@@ -529,6 +634,29 @@
 <body>
 
 <!-- ============================================================
+     FOUNDING 20 BANNER
+============================================================ -->
+<div class="founding-banner" id="foundingBanner">
+  <div class="founding-banner-inner">
+    <span class="fb-text" id="fbText">🚀 <strong>Founding 20</strong> — Free for 60 days, first 20 Shopify brands only.</span>
+    <a href="https://app.tresolv.online" target="_blank" rel="noopener" class="fb-cta" id="fbCta">Claim your spot →</a>
+    <span class="fb-count" id="fbCount">0/20 claimed</span>
+  </div>
+  <button class="fb-close" id="fbClose" aria-label="Dismiss banner">×</button>
+</div>
+<script>
+  (function () {
+    var banner = document.getElementById('foundingBanner');
+    if (sessionStorage.getItem('fb_dismissed') === '1') {
+      banner.style.display = 'none';
+      document.documentElement.style.setProperty('--banner-h', '0px');
+    } else {
+      document.documentElement.style.setProperty('--banner-h', banner.offsetHeight + 'px');
+    }
+  })();
+</script>
+
+<!-- ============================================================
      NAV
 ============================================================ -->
 <nav id="nav">
@@ -544,7 +672,7 @@
       <a href="#faq" class="nav-link">FAQ</a>
     </div>
     <div class="nav-cta">
-      <a href="https://app.tresolv.online" target="_blank" rel="noopener" class="btn btn-primary" style="font-size: 13px; padding: 9px 18px;">Sign up →</a>
+      <a href="https://app.tresolv.online" target="_blank" rel="noopener" class="btn btn-primary" style="font-size: 13px; padding: 9px 18px;">Claim your free spot →</a>
     </div>
   </div>
 </nav>
@@ -566,7 +694,8 @@
         tResolv reads your inbox, handles live chat on your storefront, and resolves <strong>86.5%</strong> of customer support tickets without you lifting a finger. Every refund and cancellation requires your one-tap approval.
       </p>
       <div class="hero-actions">
-        <a href="https://calendar.app.google/YkSqLTsYr18bUP2Z6" target="_blank" rel="noopener" class="btn btn-primary" style="font-size: 15px; padding: 13px 26px;">Book a demo →</a>
+        <a href="https://app.tresolv.online" target="_blank" rel="noopener" class="btn btn-primary" style="font-size: 15px; padding: 13px 26px;">Claim your free spot →</a>
+        <a href="https://calendar.app.google/YkSqLTsYr18bUP2Z6" target="_blank" rel="noopener" class="btn btn-ghost-dark" style="font-size: 15px; padding: 13px 26px;">Book a demo →</a>
       </div>
       <div class="hero-trust" style="display:flex;gap:24px;flex-wrap:wrap;margin-top:24px;">
         <span class="hero-assurance">
@@ -592,81 +721,26 @@
             </div>
             <div class="mc-url"><span>app.tresolv.online</span></div>
           </div>
-          <div class="mc-console">
-            <div class="mc-sidebar">
-              <div class="mc-logo">
-                <span class="mc-logo-text"><span style="color:#0FB6CC">t</span>Resolv</span>
-              </div>
-              <div class="mc-brand">Luna Apparel</div>
-              <div class="mc-nav">
-                <div class="mc-ni on">
-                  <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="7" height="9" x="3" y="3" rx="1"/><rect width="7" height="5" x="14" y="3" rx="1"/><rect width="7" height="9" x="14" y="12" rx="1"/><rect width="7" height="5" x="3" y="16" rx="1"/></svg>
-                  Dashboard
-                </div>
-                <div class="mc-ni">
-                  <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 16 12 14 15 10 15 8 12 2 12"/><path d="M5.45 5.11 2 12v6a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-6l-3.45-6.89A2 2 0 0 0 16.76 4H7.24a2 2 0 0 0-1.79 1.11z"/></svg>
-                  Inbox <span class="mc-ct">24</span>
-                </div>
-                <div class="mc-ni">
-                  <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/><path d="M12 8v4"/><path d="M12 16h.01"/></svg>
-                  Escalations <span class="mc-ct red">3</span>
-                </div>
-                <div class="mc-ni">
-                  <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/><path d="M9.1 9a3 3 0 0 1 5.82 1c0 2-3 3-3 3"/><path d="M12 17h.01"/></svg>
-                  Quarantine
-                </div>
-                <div class="mc-ni">
-                  <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z"/><circle cx="12" cy="12" r="3"/></svg>
-                  Settings
-                </div>
-              </div>
+          <div class="hd-console">
+            <div class="hd-topbar">
+              <span class="hd-topbar-t"><span style="color:#0FB6CC">t</span>Resolv · Luna Apparel</span>
+              <span class="mc-live"><span class="mc-live-dot"></span>Live</span>
             </div>
-            <div class="mc-main">
-              <div class="mc-topbar">
-                <span class="mc-topbar-t">Dashboard</span>
-                <span class="mc-live"><span class="mc-live-dot"></span>Live</span>
+            <div class="hd-body" id="hdBody">
+              <div class="hd-msg customer" id="hdCustomerMsg"></div>
+              <div class="hd-status" id="hdStatus" style="display:none;">
+                <span class="hd-status-dot"></span>Luna is checking Shopify…
               </div>
-              <div class="mc-body">
-                <div class="mc-stats">
-                  <div class="mc-stat">
-                    <div class="mc-stat-l">AI handled</div>
-                    <div class="mc-stat-v">86%</div>
-                    <div class="mc-stat-s">this week</div>
-                  </div>
-                  <div class="mc-stat">
-                    <div class="mc-stat-l">Active</div>
-                    <div class="mc-stat-v">24</div>
-                    <div class="mc-stat-s">conversations</div>
-                  </div>
-                  <div class="mc-stat">
-                    <div class="mc-stat-l">Escalated</div>
-                    <div class="mc-stat-v">3</div>
-                    <div class="mc-stat-s">need review</div>
-                  </div>
+              <div class="hd-order-card" id="hdOrderCard" style="display:none;">
+                <div class="hd-order-top">
+                  <span class="hd-order-id"></span>
+                  <span class="hd-order-badge"></span>
                 </div>
-                <div class="mc-rows-head">Recent conversations</div>
-                <div class="mc-row">
-                  <div class="mc-row-info">
-                    <span class="mc-email">maria.lopez@gmail.com</span>
-                    <span class="mc-subject">Damaged item, refund request</span>
-                  </div>
-                  <span class="mc-badge draft">Draft ready</span>
-                </div>
-                <div class="mc-row">
-                  <div class="mc-row-info">
-                    <span class="mc-email">james.wu@outlook.com</span>
-                    <span class="mc-subject">Where is my order?</span>
-                  </div>
-                  <span class="mc-badge ok">Auto-resolved</span>
-                </div>
-                <div class="mc-row">
-                  <div class="mc-row-info">
-                    <span class="mc-email">sara.kim@icloud.com</span>
-                    <span class="mc-subject">Cancel my order immediately</span>
-                  </div>
-                  <span class="mc-badge warn">Escalated</span>
-                </div>
+                <div class="hd-order-item"></div>
+                <div class="hd-order-price"></div>
               </div>
+              <div class="hd-msg luna" id="hdLunaMsg" style="display:none;"></div>
+              <div class="hd-stamp" id="hdStamp" style="display:none;"></div>
             </div>
           </div>
         </div>
@@ -678,25 +752,47 @@
   <div class="hero-band" style="background:#111117;">
     <div class="hero-band-inner">
       <div class="hb-item">
-        <div class="hb-val"><em>86.5%</em></div>
+        <div class="hb-val"><em class="hb-cu" data-target="86.5" data-decimals="1" data-suffix="%">0%</em></div>
         <div class="hb-label">of tickets resolved by AI</div>
-        <div style="margin-top:6px;font-size:11px;color:rgba(255,255,255,0.22);font-family:var(--mono);">live production data, not an estimate</div>
+        <div id="hbDateStamp" style="margin-top:6px;font-size:11px;color:rgba(255,255,255,0.22);font-family:var(--mono);"></div>
       </div>
       <div class="hb-item">
-        <div class="hb-val">2 min</div>
+        <div class="hb-val hb-cu" data-target="2" data-suffix=" min">0 min</div>
         <div class="hb-label">average response time</div>
       </div>
       <div class="hb-item">
-        <div class="hb-val">$0</div>
+        <div class="hb-val hb-cu" data-target="0" data-prefix="$">$0</div>
         <div class="hb-label">unauthorized financial actions</div>
       </div>
       <div class="hb-item">
-        <div class="hb-val">10 min</div>
+        <div class="hb-val hb-cu" data-target="10" data-suffix=" min">0 min</div>
         <div class="hb-label">to go live</div>
       </div>
       <div class="hb-item">
         <div class="hb-val">24/7</div>
         <div class="hb-label">chat + email coverage</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     LIVE FEED ("WATCH LUNA WORK")
+============================================================ -->
+<section class="section section-alt" id="live-feed">
+  <div class="wrap">
+    <div class="lf-head">
+      <div>
+        <div class="lf-live"><span class="lf-live-dot"></span>Live</div>
+        <h2 class="section-title" style="margin-top:10px;">Watch Luna work.</h2>
+        <p class="section-sub">Real resolved tickets, streamed straight from production. No mockup, no demo data dressed up as real.</p>
+      </div>
+    </div>
+    <div class="lf-panel">
+      <div class="lf-rows" id="lfRows"></div>
+      <div class="lf-cap">
+        <span id="lfCapText">Connecting to tResolv's live feed…</span>
+        <span class="lf-cap-badge" id="lfCapBadge">connecting</span>
       </div>
     </div>
   </div>
@@ -951,7 +1047,25 @@
     <div class="eyebrow"><span class="eyebrow-dot"></span>Pricing</div>
     <h2 class="section-title">Simple, honest pricing.</h2>
     <p class="section-sub">No setup fees. No per-ticket charges. Email and chat included in every plan.</p>
-    <div class="price-grid">
+    <div class="price-cards-row">
+
+      <div class="price-card founding" id="foundingPriceCard">
+        <div class="price-tier">Founding 20</div>
+        <div style="display:flex;align-items:baseline;gap:3px;margin-bottom:10px;">
+          <span class="price-amount">$0</span><span class="price-per">for 60 days</span>
+        </div>
+        <p class="price-desc">Limited to the first 20 Shopify brands.</p>
+        <a href="https://app.tresolv.online" target="_blank" rel="noopener" class="price-btn" id="fpCta">Claim your spot →</a>
+        <ul class="price-features">
+          <li class="price-feat"><span class="price-check">✓</span>Full Growth features</li>
+          <li class="price-feat"><span class="price-check">✓</span>5 tickets/day</li>
+          <li class="price-feat"><span class="price-check">✓</span>1 brand</li>
+          <li class="price-feat"><span class="price-check">✓</span>Direct line to the founder</li>
+        </ul>
+        <div class="fp-count" id="fpCount" style="margin-top:auto;">0/20 claimed</div>
+      </div>
+
+      <div class="price-grid">
 
       <div class="price-card">
         <div class="price-tier">Starter</div>
@@ -959,7 +1073,7 @@
           <span class="price-amount">$149</span><span class="price-per">/month</span>
         </div>
         <p class="price-desc">For brands getting started with AI support.</p>
-        <a href="https://calendar.app.google/YkSqLTsYr18bUP2Z6" target="_blank" rel="noopener" class="price-btn">Book a demo →</a>
+        <a href="https://app.tresolv.online" target="_blank" rel="noopener" class="price-btn">Claim your free spot →</a>
         <ul class="price-features">
           <li class="price-feat"><span class="price-check">✓</span>1 brand</li>
           <li class="price-feat"><span class="price-check">✓</span>Up to 300 conversations per month</li>
@@ -977,7 +1091,7 @@
           <span class="price-amount">$349</span><span class="price-per">/month</span>
         </div>
         <p class="price-desc">For growing brands that want full autopilot and direct Shopify action execution.</p>
-        <a href="https://calendar.app.google/YkSqLTsYr18bUP2Z6" target="_blank" rel="noopener" class="price-btn">Book a demo →</a>
+        <a href="https://app.tresolv.online" target="_blank" rel="noopener" class="price-btn">Claim your free spot →</a>
         <ul class="price-features">
           <li class="price-feat"><span class="price-check">✓</span>Up to 3 brands</li>
           <li class="price-feat"><span class="price-check">✓</span>Unlimited conversations</li>
@@ -1008,6 +1122,7 @@
         </ul>
       </div>
 
+      </div>
     </div>
   </div>
 </section>
@@ -1020,6 +1135,14 @@
     <div class="eyebrow"><span class="eyebrow-dot"></span>FAQ</div>
     <h2 class="section-title">Honest answers.</h2>
     <div class="faq-wrap">
+
+      <div class="faq-item">
+        <button class="faq-q">
+          Why is tResolv free right now? What's the catch?
+          <svg class="faq-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">We're a new product proving ourselves against companies with hundreds of millions in funding. The fastest way to prove tResolv works is to let it work for real brands, for free, and let the results speak. In exchange, we ask for honest feedback and permission to share your results if they're good. No catch, no credit card required, no surprise charges after 60 days — we'll ask you directly if you want to continue on a paid plan.</div></div>
+      </div>
 
       <div class="faq-item">
         <button class="faq-q">
@@ -1096,7 +1219,10 @@
   <div class="wrap">
     <h2>Your support inbox, finally under control.</h2>
     <p>tResolv handles 86.5% of tickets while you focus on building your brand.</p>
-    <a href="https://calendar.app.google/YkSqLTsYr18bUP2Z6" target="_blank" rel="noopener" class="btn btn-primary" style="font-size: 16px; padding: 14px 32px;">Book a demo →</a>
+    <div style="display:flex; align-items:center; justify-content:center; gap:16px; flex-wrap:wrap;">
+      <a href="https://app.tresolv.online" target="_blank" rel="noopener" class="btn btn-primary" style="font-size: 16px; padding: 14px 32px;">Claim your free spot →</a>
+      <a href="https://calendar.app.google/YkSqLTsYr18bUP2Z6" target="_blank" rel="noopener" class="btn btn-ghost-light" style="font-size: 16px; padding: 14px 32px;">Book a demo →</a>
+    </div>
   </div>
 </section>
 
@@ -1157,6 +1283,357 @@
 </footer>
 
 <script>
+  // Shared Founding 20 claim count — fetched once, consumed by the banner and the pricing card.
+  const FOUNDING_CAP = 20;
+  const foundingCountPromise = fetch('https://hackathonn5.onrender.com/api/public/founding-count')
+    .then(r => (r.ok ? r.json() : Promise.reject()))
+    .then(data => {
+      const claimed = Number(data.claimed ?? data.count ?? data.signups ?? 0);
+      return Number.isNaN(claimed) ? 0 : Math.min(Math.max(0, claimed), FOUNDING_CAP);
+    })
+    .catch(() => 0); // endpoint not live yet, fall back to 0/20
+
+  // Founding 20 banner
+  (function () {
+    const banner = document.getElementById('foundingBanner');
+    const fbText = document.getElementById('fbText');
+    const fbCta = document.getElementById('fbCta');
+    const fbCount = document.getElementById('fbCount');
+    const fbClose = document.getElementById('fbClose');
+
+    function syncBannerHeight() {
+      const h = banner.style.display === 'none' ? 0 : banner.offsetHeight;
+      document.documentElement.style.setProperty('--banner-h', h + 'px');
+    }
+
+    fbClose.addEventListener('click', () => {
+      banner.style.display = 'none';
+      sessionStorage.setItem('fb_dismissed', '1');
+      syncBannerHeight();
+    });
+
+    let resizeTimer;
+    window.addEventListener('resize', () => {
+      clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(syncBannerHeight, 120);
+    }, { passive: true });
+
+    function renderCount(n) {
+      if (n >= FOUNDING_CAP) {
+        fbText.innerHTML = '🚀 <strong>Founding 20 is full</strong> — join the waitlist for the next cohort.';
+        fbCta.textContent = 'Join the waitlist →';
+        fbCount.textContent = `${FOUNDING_CAP}/${FOUNDING_CAP} claimed`;
+      } else {
+        fbCount.textContent = `${n}/${FOUNDING_CAP} claimed`;
+      }
+      syncBannerHeight();
+    }
+
+    renderCount(0);
+    foundingCountPromise.then(renderCount);
+  })();
+
+  // Founding 20 pricing card
+  (function () {
+    const card = document.getElementById('foundingPriceCard');
+    if (!card) return;
+    const countEl = document.getElementById('fpCount');
+    const ctaEl = document.getElementById('fpCta');
+
+    function render(n) {
+      if (n >= FOUNDING_CAP) {
+        countEl.textContent = `${FOUNDING_CAP}/${FOUNDING_CAP} claimed`;
+        ctaEl.textContent = 'Join the waitlist →';
+      } else {
+        countEl.textContent = `${n}/${FOUNDING_CAP} claimed`;
+      }
+    }
+
+    render(0);
+    foundingCountPromise.then(render);
+  })();
+
+  // Watch Luna Work — live ticket feed
+  (function () {
+    const API_BASE = 'https://hackathonn5.onrender.com';
+    const MAX_ROWS = 6;
+    const FALLBACK_TICKETS = [
+      { order_ref: '#4471', intent: 'Where is my order?', confidence: 81, resolved_in_seconds: 47 },
+      { order_ref: '#2290', intent: 'Cancel my order', confidence: 74, resolved_in_seconds: 112 },
+      { order_ref: '#9981', intent: 'Wrong size delivered', confidence: 88, resolved_in_seconds: 72 },
+      { order_ref: '#5512', intent: 'Damaged item, refund request', confidence: 91, resolved_in_seconds: 64 },
+      { order_ref: '#7734', intent: 'Need to change shipping address', confidence: 79, resolved_in_seconds: 95 },
+      { order_ref: '#3309', intent: 'Order never arrived', confidence: 83, resolved_in_seconds: 58 },
+      { order_ref: '#6128', intent: 'Where is my order?', confidence: 85, resolved_in_seconds: 41 },
+      { order_ref: '#1844', intent: 'Want to start a return', confidence: 76, resolved_in_seconds: 103 },
+      { order_ref: '#8856', intent: 'Received the wrong item', confidence: 87, resolved_in_seconds: 67 },
+      { order_ref: '#2207', intent: 'Tracking says delivered but nothing arrived', confidence: 80, resolved_in_seconds: 121 },
+    ];
+
+    const rowsEl = document.getElementById('lfRows');
+    const capText = document.getElementById('lfCapText');
+    const capBadge = document.getElementById('lfCapBadge');
+
+    function formatDuration(sec) {
+      if (sec < 60) return `${sec}s`;
+      const m = Math.floor(sec / 60), s = sec % 60;
+      return s ? `${m}m ${s}s` : `${m}m`;
+    }
+
+    function makeRow(ticket) {
+      const row = document.createElement('div');
+      row.className = 'lf-row';
+
+      const left = document.createElement('div');
+      left.className = 'lf-row-left';
+      const ref = document.createElement('span');
+      ref.className = 'lf-row-ref';
+      ref.textContent = `Order ${ticket.order_ref}`;
+      const intent = document.createElement('span');
+      intent.className = 'lf-row-intent';
+      intent.textContent = `"${ticket.intent}"`;
+      left.append(ref, intent);
+
+      const right = document.createElement('div');
+      right.className = 'lf-row-right';
+      const resolved = document.createElement('span');
+      resolved.className = 'lf-resolved';
+      resolved.textContent = '✓ Resolved';
+      const sep1 = document.createElement('span');
+      sep1.className = 'lf-dot-sep';
+      sep1.textContent = '·';
+      const conf = document.createElement('span');
+      conf.textContent = `${ticket.confidence}% confidence`;
+      const sep2 = sep1.cloneNode(true);
+      const time = document.createElement('span');
+      time.textContent = formatDuration(ticket.resolved_in_seconds);
+      right.append(resolved, sep1, conf, sep2, time);
+
+      row.append(left, right);
+      return row;
+    }
+
+    function pushTicket(ticket) {
+      rowsEl.prepend(makeRow(ticket));
+      while (rowsEl.children.length > MAX_ROWS) rowsEl.removeChild(rowsEl.lastChild);
+    }
+
+    function setCaption(isLive) {
+      if (isLive) {
+        capText.textContent = "Real resolved tickets from tResolv's production system.";
+        capBadge.textContent = 'live';
+        capBadge.classList.add('is-live');
+      } else {
+        capText.textContent = 'Demo feed — example tickets. Connects automatically once the live endpoint is enabled.';
+        capBadge.textContent = 'demo';
+        capBadge.classList.remove('is-live');
+      }
+    }
+
+    async function initLiveFeed() {
+      let tickets = FALLBACK_TICKETS;
+      let isLive = false;
+      try {
+        const res = await fetch(`${API_BASE}/api/public/live-feed`);
+        if (res.ok) {
+          const data = await res.json();
+          if (Array.isArray(data) && data.length) { tickets = data; isLive = true; }
+        }
+      } catch (e) { /* endpoint not live yet, fall back to demo data */ }
+
+      setCaption(isLive);
+      const seed = tickets.slice(0, MAX_ROWS);
+      seed.forEach(t => pushTicket(t));
+      let idx = seed.length % tickets.length;
+      setInterval(() => {
+        pushTicket(tickets[idx % tickets.length]);
+        idx++;
+      }, 4000);
+    }
+
+    initLiveFeed();
+  })();
+
+  // Hero animated micro-demo
+  (function () {
+    const bodyEl = document.getElementById('hdBody');
+    if (!bodyEl) return;
+    const customerEl = document.getElementById('hdCustomerMsg');
+    const statusEl = document.getElementById('hdStatus');
+    const orderCardEl = document.getElementById('hdOrderCard');
+    const lunaEl = document.getElementById('hdLunaMsg');
+    const stampEl = document.getElementById('hdStamp');
+
+    const SCENARIOS = [
+      {
+        customer: 'Where is my order #1007?',
+        order: { id: '#1007', badge: 'shipped', badgeLabel: 'Shipped', item: 'Oversized Hoodie — Black, M', price: '$58.00' },
+        luna: "Order #1007 shipped Tuesday — it's in transit and expected to arrive Thursday. Tracking is in your email!",
+        stamp: '✓ Resolved in 6s',
+      },
+      {
+        customer: 'Can I cancel order #2214?',
+        order: { id: '#2214', badge: 'processing', badgeLabel: 'Processing', item: 'Canvas Tote Bag', price: '$24.00' },
+        luna: "I've staged a cancellation for order #2214 — it's now waiting on the merchant's one-tap approval.",
+        stamp: '✓ Staged in 4s',
+      },
+    ];
+    let scenarioIdx = 0;
+    let timers = [];
+    const after = (ms, fn) => timers.push(setTimeout(fn, ms));
+
+    function typeText(el, text, speed, onDone) {
+      el.style.display = 'inline-block';
+      el.classList.add('is-typing');
+      el.textContent = '';
+      let i = 0;
+      function step() {
+        if (i <= text.length) {
+          el.textContent = text.slice(0, i);
+          i++;
+          timers.push(setTimeout(step, speed));
+        } else {
+          el.classList.remove('is-typing');
+          if (onDone) onDone();
+        }
+      }
+      step();
+    }
+
+    function resetDemo() {
+      customerEl.textContent = ''; customerEl.classList.remove('is-typing'); customerEl.style.display = 'none';
+      statusEl.style.display = 'none';
+      orderCardEl.style.display = 'none'; orderCardEl.classList.remove('hd-anim-in');
+      lunaEl.textContent = ''; lunaEl.classList.remove('is-typing'); lunaEl.style.display = 'none';
+      stampEl.style.display = 'none'; stampEl.classList.remove('hd-anim-in');
+      bodyEl.classList.remove('fading');
+    }
+
+    function runCycle() {
+      timers.forEach(clearTimeout);
+      timers = [];
+      const s = SCENARIOS[scenarioIdx % SCENARIOS.length];
+      resetDemo();
+
+      typeText(customerEl, s.customer, 65, () => {
+        after(400, () => {
+          statusEl.style.display = 'flex';
+          after(1300, () => {
+            statusEl.style.display = 'none';
+            orderCardEl.querySelector('.hd-order-id').textContent = `Order ${s.order.id}`;
+            const badgeEl = orderCardEl.querySelector('.hd-order-badge');
+            badgeEl.textContent = s.order.badgeLabel;
+            badgeEl.className = 'hd-order-badge ' + s.order.badge;
+            orderCardEl.querySelector('.hd-order-item').textContent = s.order.item;
+            orderCardEl.querySelector('.hd-order-price').textContent = s.order.price;
+            orderCardEl.style.display = 'block';
+            orderCardEl.classList.add('hd-anim-in');
+            after(900, () => {
+              typeText(lunaEl, s.luna, 28, () => {
+                after(300, () => {
+                  stampEl.textContent = s.stamp;
+                  stampEl.style.display = 'inline-flex';
+                  stampEl.classList.add('hd-anim-in');
+                  after(3000, () => {
+                    bodyEl.classList.add('fading');
+                    after(500, () => {
+                      scenarioIdx++;
+                      runCycle();
+                    });
+                  });
+                });
+              });
+            });
+          });
+        });
+      });
+    }
+
+    runCycle();
+  })();
+
+  // Live date stamp under the 86.5% stat
+  const hbDateStamp = document.getElementById('hbDateStamp');
+  if (hbDateStamp) {
+    const today = new Date().toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+    hbDateStamp.textContent = `as of ${today}, updated daily`;
+  }
+
+  // Stat strip count-up on scroll into view
+  (function () {
+    const els = document.querySelectorAll('.hb-cu');
+    if (!els.length) return;
+
+    function animate(el) {
+      const target = parseFloat(el.dataset.target);
+      const decimals = parseInt(el.dataset.decimals || '0', 10);
+      const prefix = el.dataset.prefix || '';
+      const suffix = el.dataset.suffix || '';
+      const duration = 1200;
+      const start = performance.now();
+
+      function frame(now) {
+        const progress = Math.min((now - start) / duration, 1);
+        const eased = 1 - Math.pow(1 - progress, 3);
+        const value = target * eased;
+        el.textContent = `${prefix}${value.toFixed(decimals)}${suffix}`;
+        if (progress < 1) requestAnimationFrame(frame);
+      }
+      requestAnimationFrame(frame);
+    }
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          els.forEach(animate);
+          observer.disconnect();
+        }
+      });
+    }, { threshold: 0.4 });
+
+    observer.observe(document.querySelector('.hero-band'));
+  })();
+
+  // Scroll-reveal for repeating cards, staggered by 80ms
+  (function () {
+    const groups = [
+      { container: '#how-it-works .steps', items: '.step' },
+      { container: '#features .feat-grid', items: '.feat-card' },
+      { container: '#chat-widget .cw-points', items: '.cw-point' },
+      { container: '#pricing .price-cards-row', items: '.price-card' },
+      { container: '#faq .faq-wrap', items: '.faq-item' },
+    ];
+
+    const allItems = [];
+    groups.forEach(g => {
+      const container = document.querySelector(g.container);
+      if (!container) return;
+      container.querySelectorAll(g.items).forEach((el, i) => {
+        el.classList.add('reveal-item');
+        el.style.transitionDelay = `${i * 80}ms`;
+        allItems.push(el);
+      });
+    });
+    if (!allItems.length) return;
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.querySelectorAll('.reveal-item').forEach(el => el.classList.add('is-visible'));
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.15 });
+
+    groups.forEach(g => {
+      const container = document.querySelector(g.container);
+      if (container) observer.observe(container);
+    });
+
+    // Safety net in case IntersectionObserver never fires for an element
+    setTimeout(() => allItems.forEach(el => el.classList.add('is-visible')), 4000);
+  })();
+
   // Nav scroll behavior
   const nav = document.getElementById('nav');
   const onScroll = () => nav.classList.toggle('scrolled', window.scrollY > 24);
