@@ -1437,7 +1437,8 @@
         const res = await fetch(`${API_BASE}/api/public/live-feed`);
         if (res.ok) {
           const data = await res.json();
-          if (Array.isArray(data) && data.length) { tickets = data; isLive = true; }
+          const realFeed = Array.isArray(data) ? data : data.feed;
+          if (Array.isArray(realFeed) && realFeed.length) { tickets = realFeed; isLive = true; }
         }
       } catch (e) { /* endpoint not live yet, fall back to demo data */ }
 
@@ -1448,7 +1449,7 @@
       setInterval(() => {
         pushTicket(tickets[idx % tickets.length]);
         idx++;
-      }, 4000);
+      }, 3500);
     }
 
     initLiveFeed();
