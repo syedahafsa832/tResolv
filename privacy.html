@@ -95,7 +95,7 @@
     }
 
     /* ============================================================
-       FOUNDING 20 BANNER
+       TRIAL BANNER
     ============================================================ */
     .founding-banner {
       position: fixed; top: 0; left: 0; right: 0; z-index: 300;
@@ -112,10 +112,6 @@
       text-decoration-color: rgba(26,18,7,0.4); flex-shrink: 0; transition: opacity 0.15s;
     }
     .fb-cta:hover { opacity: 0.65; }
-    .fb-count {
-      font-family: var(--mono); font-size: 11.5px; font-weight: 600;
-      background: rgba(26,18,7,0.12); padding: 3px 10px; border-radius: 99px; flex-shrink: 0;
-    }
     .fb-close {
       position: absolute; right: 14px; top: 50%; transform: translateY(-50%);
       background: transparent; border: none; color: #1A1207; opacity: 0.55;
@@ -244,13 +240,12 @@
 <body>
 
 <!-- ============================================================
-     FOUNDING 20 BANNER
+     TRIAL BANNER
 ============================================================ -->
 <div class="founding-banner" id="foundingBanner">
   <div class="founding-banner-inner">
-    <span class="fb-text" id="fbText">🚀 <strong>Founding 20</strong> — Free for 60 days, first 20 Shopify brands only.</span>
-    <a href="https://app.tresolv.online" target="_blank" rel="noopener" class="fb-cta" id="fbCta">Claim your spot →</a>
-    <span class="fb-count" id="fbCount">0/20 claimed</span>
+    <span class="fb-text" id="fbText">🚀 Start your 14-day free trial. No credit card required.</span>
+    <a href="https://app.tresolv.online" target="_blank" rel="noopener" class="fb-cta" id="fbCta">Start free trial →</a>
   </div>
   <button class="fb-close" id="fbClose" aria-label="Dismiss banner">×</button>
 </div>
@@ -425,20 +420,8 @@
 </footer>
 
 <script>
-  const FOUNDING_CAP = 20;
-  const foundingCountPromise = fetch('https://hackathonn5.onrender.com/api/public/founding-count')
-    .then(r => (r.ok ? r.json() : Promise.reject()))
-    .then(data => {
-      const claimed = Number(data.claimed ?? data.count ?? data.signups ?? 0);
-      return Number.isNaN(claimed) ? 0 : Math.min(Math.max(0, claimed), FOUNDING_CAP);
-    })
-    .catch(() => 0);
-
   (function () {
     const banner = document.getElementById('foundingBanner');
-    const fbText = document.getElementById('fbText');
-    const fbCta = document.getElementById('fbCta');
-    const fbCount = document.getElementById('fbCount');
     const fbClose = document.getElementById('fbClose');
 
     function syncBannerHeight() {
@@ -458,19 +441,7 @@
       resizeTimer = setTimeout(syncBannerHeight, 120);
     }, { passive: true });
 
-    function renderCount(n) {
-      if (n >= FOUNDING_CAP) {
-        fbText.innerHTML = '🚀 <strong>Founding 20 is full</strong> — join the waitlist for the next cohort.';
-        fbCta.textContent = 'Join the waitlist →';
-        fbCount.textContent = `${FOUNDING_CAP}/${FOUNDING_CAP} claimed`;
-      } else {
-        fbCount.textContent = `${n}/${FOUNDING_CAP} claimed`;
-      }
-      syncBannerHeight();
-    }
-
-    renderCount(0);
-    foundingCountPromise.then(renderCount);
+    syncBannerHeight();
   })();
 
   const nav = document.getElementById('nav');

@@ -113,7 +113,7 @@
     }
 
     /* ============================================================
-       FOUNDING 20 BANNER
+       TRIAL BANNER
     ============================================================ */
     .founding-banner {
       position: fixed; top: 0; left: 0; right: 0; z-index: 300;
@@ -130,10 +130,6 @@
       text-decoration-color: rgba(26,18,7,0.4); flex-shrink: 0; transition: opacity 0.15s;
     }
     .fb-cta:hover { opacity: 0.65; }
-    .fb-count {
-      font-family: var(--mono); font-size: 11.5px; font-weight: 600;
-      background: rgba(26,18,7,0.12); padding: 3px 10px; border-radius: 99px; flex-shrink: 0;
-    }
     .fb-close {
       position: absolute; right: 14px; top: 50%; transform: translateY(-50%);
       background: transparent; border: none; color: #1A1207; opacity: 0.55;
@@ -362,29 +358,10 @@
     /* ============================================================
        PRICING
     ============================================================ */
-    .price-cards-row { display: grid; grid-template-columns: 280px 1fr; gap: 24px; margin-top: 64px; align-items: stretch; }
     .price-grid {
       display: grid; grid-template-columns: repeat(3,1fr);
       border: 1px solid var(--border); border-radius: 8px;
-      overflow: hidden;
-    }
-    .price-card.founding {
-      border: 1.5px dashed #F59E0B; border-radius: 8px;
-      background: linear-gradient(180deg, rgba(245,158,11,0.08), rgba(245,158,11,0.02));
-      box-shadow: 0 0 28px rgba(245,158,11,0.14);
-      display: flex; flex-direction: column; padding: 32px 26px;
-    }
-    .price-card.founding .price-tier { color: #B45309; }
-    .price-card.founding .price-amount { font-size: 32px; }
-    .price-card.founding .price-desc { min-height: 0; }
-    .price-card.founding .price-btn {
-      background: #F59E0B; color: #1A1207; border-color: #F59E0B; font-weight: 700;
-    }
-    .price-card.founding .price-btn:hover { background: #D88A09; border-color: #D88A09; color: #1A1207; }
-    .price-card.founding .price-features { margin-bottom: 18px; }
-    .price-card.founding .fp-count {
-      font-family: var(--mono); font-size: 11.5px; font-weight: 600;
-      color: #B45309; text-align: center;
+      overflow: hidden; margin-top: 64px;
     }
     .price-card { padding: 40px 36px; background: white; border-right: 1px solid var(--border); position: relative; }
     .price-card:last-child { border-right: none; }
@@ -613,7 +590,6 @@
       .steps { grid-template-columns: 1fr; gap: 40px; }
       .steps::after { display: none; }
       .feat-grid { grid-template-columns: 1fr; }
-      .price-cards-row { grid-template-columns: 1fr; }
       .price-grid { grid-template-columns: 1fr; }
       .price-card { border-right: none; border-bottom: 1px solid var(--border); }
       .price-card:last-child { border-bottom: none; }
@@ -634,13 +610,12 @@
 <body>
 
 <!-- ============================================================
-     FOUNDING 20 BANNER
+     TRIAL BANNER
 ============================================================ -->
 <div class="founding-banner" id="foundingBanner">
   <div class="founding-banner-inner">
-    <span class="fb-text" id="fbText">🚀 <strong>Founding 20</strong> — Free for 60 days, first 20 Shopify brands only.</span>
-    <a href="https://app.tresolv.online" target="_blank" rel="noopener" class="fb-cta" id="fbCta">Claim your spot →</a>
-    <span class="fb-count" id="fbCount">0/20 claimed</span>
+    <span class="fb-text" id="fbText">🚀 Start your 14-day free trial. No credit card required.</span>
+    <a href="https://app.tresolv.online" target="_blank" rel="noopener" class="fb-cta" id="fbCta">Start free trial →</a>
   </div>
   <button class="fb-close" id="fbClose" aria-label="Dismiss banner">×</button>
 </div>
@@ -1047,25 +1022,7 @@
     <div class="eyebrow"><span class="eyebrow-dot"></span>Pricing</div>
     <h2 class="section-title">Simple, honest pricing.</h2>
     <p class="section-sub">No setup fees. No per-ticket charges. Email and chat included in every plan.</p>
-    <div class="price-cards-row">
-
-      <div class="price-card founding" id="foundingPriceCard">
-        <div class="price-tier">Founding 20</div>
-        <div style="display:flex;align-items:baseline;gap:3px;margin-bottom:10px;">
-          <span class="price-amount">$0</span><span class="price-per">for 60 days</span>
-        </div>
-        <p class="price-desc">Limited to the first 20 Shopify brands.</p>
-        <a href="https://app.tresolv.online" target="_blank" rel="noopener" class="price-btn" id="fpCta">Claim your spot →</a>
-        <ul class="price-features">
-          <li class="price-feat"><span class="price-check">✓</span>Full Growth features</li>
-          <li class="price-feat"><span class="price-check">✓</span>5 tickets/day</li>
-          <li class="price-feat"><span class="price-check">✓</span>1 brand</li>
-          <li class="price-feat"><span class="price-check">✓</span>Direct line to the founder</li>
-        </ul>
-        <div class="fp-count" id="fpCount" style="margin-top:auto;">0/20 claimed</div>
-      </div>
-
-      <div class="price-grid">
+    <div class="price-grid">
 
       <div class="price-card">
         <div class="price-tier">Starter</div>
@@ -1123,7 +1080,6 @@
       </div>
 
       </div>
-    </div>
   </div>
 </section>
 
@@ -1138,10 +1094,10 @@
 
       <div class="faq-item">
         <button class="faq-q">
-          Why is tResolv free right now? What's the catch?
+          What happens after my free trial?
           <svg class="faq-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
         </button>
-        <div class="faq-a"><div class="faq-a-inner">We're a new product proving ourselves against companies with hundreds of millions in funding. The fastest way to prove tResolv works is to let it work for real brands, for free, and let the results speak. In exchange, we ask for honest feedback and permission to share your results if they're good. No catch, no credit card required, no surprise charges after 60 days — we'll ask you directly if you want to continue on a paid plan.</div></div>
+        <div class="faq-a"><div class="faq-a-inner">You get 14 days of full access, no credit card required. We're a new product proving ourselves against companies with hundreds of millions in funding, so the fastest way to prove tResolv works is to let it work for real brands and let the results speak. When your trial ends, we'll ask you directly if you want to continue on a paid plan — no surprise charges, no auto-billing.</div></div>
       </div>
 
       <div class="faq-item">
@@ -1283,22 +1239,10 @@
 </footer>
 
 <script>
-  // Shared Founding 20 claim count — fetched once, consumed by the banner and the pricing card.
-  const FOUNDING_CAP = 20;
-  const foundingCountPromise = fetch('https://hackathonn5.onrender.com/api/public/founding-count')
-    .then(r => (r.ok ? r.json() : Promise.reject()))
-    .then(data => {
-      const claimed = Number(data.claimed ?? data.count ?? data.signups ?? 0);
-      return Number.isNaN(claimed) ? 0 : Math.min(Math.max(0, claimed), FOUNDING_CAP);
-    })
-    .catch(() => 0); // endpoint not live yet, fall back to 0/20
-
-  // Founding 20 banner
+  // Trial banner — dismiss + height sync only. No claim counter, no live count
+  // fetch: the trial offer isn't capacity-limited, so there's nothing to poll.
   (function () {
     const banner = document.getElementById('foundingBanner');
-    const fbText = document.getElementById('fbText');
-    const fbCta = document.getElementById('fbCta');
-    const fbCount = document.getElementById('fbCount');
     const fbClose = document.getElementById('fbClose');
 
     function syncBannerHeight() {
@@ -1318,39 +1262,7 @@
       resizeTimer = setTimeout(syncBannerHeight, 120);
     }, { passive: true });
 
-    function renderCount(n) {
-      if (n >= FOUNDING_CAP) {
-        fbText.innerHTML = '🚀 <strong>Founding 20 is full</strong> — join the waitlist for the next cohort.';
-        fbCta.textContent = 'Join the waitlist →';
-        fbCount.textContent = `${FOUNDING_CAP}/${FOUNDING_CAP} claimed`;
-      } else {
-        fbCount.textContent = `${n}/${FOUNDING_CAP} claimed`;
-      }
-      syncBannerHeight();
-    }
-
-    renderCount(0);
-    foundingCountPromise.then(renderCount);
-  })();
-
-  // Founding 20 pricing card
-  (function () {
-    const card = document.getElementById('foundingPriceCard');
-    if (!card) return;
-    const countEl = document.getElementById('fpCount');
-    const ctaEl = document.getElementById('fpCta');
-
-    function render(n) {
-      if (n >= FOUNDING_CAP) {
-        countEl.textContent = `${FOUNDING_CAP}/${FOUNDING_CAP} claimed`;
-        ctaEl.textContent = 'Join the waitlist →';
-      } else {
-        countEl.textContent = `${n}/${FOUNDING_CAP} claimed`;
-      }
-    }
-
-    render(0);
-    foundingCountPromise.then(render);
+    syncBannerHeight();
   })();
 
   // Watch Luna Work — live ticket feed
@@ -1601,7 +1513,7 @@
       { container: '#how-it-works .steps', items: '.step' },
       { container: '#features .feat-grid', items: '.feat-card' },
       { container: '#chat-widget .cw-points', items: '.cw-point' },
-      { container: '#pricing .price-cards-row', items: '.price-card' },
+      { container: '#pricing .price-grid', items: '.price-card' },
       { container: '#faq .faq-wrap', items: '.faq-item' },
     ];
 
