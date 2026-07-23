@@ -21,6 +21,10 @@ export default function Nav() {
   }, []);
 
   const handleAnchor = (e, href) => {
+    // Section anchors (#how-it-works etc.) only exist on the homepage. On
+    // every other page, let the link navigate normally to /#anchor instead
+    // of silently doing nothing.
+    if (window.location.pathname !== '/') return;
     e.preventDefault();
     const target = document.querySelector(href);
     if (target) {
@@ -38,16 +42,17 @@ export default function Nav() {
         </a>
         <div className="nav-links">
           {[
-            { href: '#how-it-works', label: 'How it works' },
-            { href: '#features',     label: 'Features' },
-            { href: '#pricing',      label: 'Pricing' },
-            { href: '#faq',          label: 'FAQ' },
+            { href: '/#how-it-works', label: 'How it works' },
+            { href: '/#features',     label: 'Features' },
+            { href: '/#pricing',      label: 'Pricing' },
+            { href: '/#faq',          label: 'FAQ' },
+            { href: '/blog',          label: 'Blog' },
           ].map(({ href, label }) => (
             <a
               key={href}
               href={href}
               className="nav-link"
-              onClick={(e) => handleAnchor(e, href)}
+              onClick={(e) => href.includes('#') && handleAnchor(e, href.slice(1))}
             >
               {label}
             </a>
