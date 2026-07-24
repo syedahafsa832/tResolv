@@ -5,12 +5,14 @@ const tiers = [
     price: '$149',
     per: '/month',
     desc: 'For brands getting started with AI support.',
-    cta: 'Book a demo →',
+    cta: 'Claim your free spot →',
+    href: 'https://app.tresolv.online',
     features: [
       '1 brand',
       'Up to 300 conversations per month',
-      'Supervised mode — drafts for your review',
+      'Supervised mode, drafts for your review',
       'Gmail and Shopify integration',
+      'Chat widget (1 brand)',
       'Email support',
     ],
     featured: false,
@@ -22,12 +24,15 @@ const tiers = [
     price: '$349',
     per: '/month',
     desc: 'For growing brands that want full autopilot and direct Shopify action execution.',
-    cta: 'Book a demo →',
+    cta: 'Claim your free spot →',
+    href: 'https://app.tresolv.online',
     features: [
       'Up to 3 brands',
       'Unlimited conversations',
       'Autopilot and supervised modes',
       'Cancel, refund and address execution in Shopify',
+      'Chat widget (up to 3 brands)',
+      'Live tracking updates via Aftership',
       'Custom confidence threshold',
       'Priority support',
     ],
@@ -41,10 +46,13 @@ const tiers = [
     per: null,
     desc: 'For operators running many brands who need dedicated support and SLAs.',
     cta: 'Talk to us →',
+    href: 'https://calendar.app.google/YkSqLTsYr18bUP2Z6',
     features: [
       'Unlimited brands',
       'Unlimited conversations',
       'Dedicated account manager',
+      'Chat widget (unlimited brands)',
+      'Custom agent name and branding',
       'SLA guarantee',
       'Custom integrations',
     ],
@@ -60,10 +68,10 @@ export default function Pricing() {
         <div className="eyebrow"><span className="eyebrow-dot" />Pricing</div>
         <h2 className="section-title">Simple, honest pricing.</h2>
         <p className="section-sub">
-          No setup fees. No per-email charges. Pick the plan that fits your brand and scale from there.
+          No setup fees. No per-ticket charges. Email and chat included in every plan.
         </p>
         <div className="price-grid">
-          {tiers.map(({ id, name, price, per, desc, cta, features, featured, popular }) => (
+          {tiers.map(({ id, name, price, per, desc, cta, href, features, featured, popular }) => (
             <div key={id} className={`price-card${featured ? ' featured' : ''}`}>
               {popular && <div className="price-popular">Most popular</div>}
               <div className="price-tier">{name}</div>
@@ -78,7 +86,7 @@ export default function Pricing() {
                 )}
               </div>
               <p className="price-desc">{desc}</p>
-              <a href="#" className="price-btn">{cta}</a>
+              <a href={href} target="_blank" rel="noopener" className="price-btn">{cta}</a>
               <ul className="price-features">
                 {features.map((f) => (
                   <li key={f} className="price-feat">

@@ -87,8 +87,31 @@ const features = [
       </svg>
     ),
     title: 'Address auto-parsing',
-    body: "When a customer writes their new address in plain language, Resolv parses it into a clean structured format and stages it as a one-tap Shopify address update. You review the parsed address before it is applied.",
+    body: "When a customer writes their new address in plain language, tResolv parses it into a clean structured format and stages it as a one-tap Shopify address update. You review the parsed address before it is applied.",
     note: 'Always staged for your approval before Shopify is updated',
+  },
+  {
+    icon: (
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z" />
+      </svg>
+    ),
+    title: 'Chat Widget',
+    body: "Add a floating AI chat bubble to your Shopify storefront. Customers get instant answers about orders, returns, and refunds, handled live by Luna. Cancellations and refunds always stage for your approval, same as email.",
+    note: "Set your agent's name, color, and quick actions",
+    isNew: true,
+  },
+  {
+    icon: (
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M3 11l18-5v12L3 14v-3z" /><path d="M11.6 16.8a3 3 0 1 1-5.8-1.6" />
+      </svg>
+    ),
+    title: 'Live Tracking Updates',
+    body: 'When a customer asks where their order is, Luna queries real-time carrier data and replies with the actual status, "Your package is in Lahore, expected delivery June 10", not a link to go check yourself.',
+    note: 'Works with TCS, Leopards, DHL and 1100+ carriers',
+    isNew: true,
+    isWide: true,
   },
 ];
 
@@ -99,9 +122,10 @@ export default function Features() {
         <div className="eyebrow"><span className="eyebrow-dot" />Features</div>
         <h2 className="section-title">Everything you need.<br />Nothing you don't.</h2>
         <div className="feat-grid">
-          {features.map(({ icon, title, body, note }) => (
-            <div key={title} className="feat-card">
+          {features.map(({ icon, title, body, note, isNew, isWide }) => (
+            <div key={title} className={`feat-card${isWide ? ' feat-wide' : ''}`}>
               <div className="feat-icon">{icon}</div>
+              {isNew && <span className="feat-badge">New</span>}
               <h3 className="feat-title">{title}</h3>
               <p className="feat-body">{body}</p>
               <div className="feat-note">
@@ -110,6 +134,11 @@ export default function Features() {
               </div>
             </div>
           ))}
+        </div>
+        <div className="why-card">
+          <div className="why-eyebrow">Why tResolv?</div>
+          <p className="why-statement">Gorgias and Zendesk show your agents the order. <em>tResolv&apos;s AI acts on it.</em></p>
+          <p className="why-body">Refunds, cancellations, and address changes execute directly in Shopify, with your approval, without a human in the loop.</p>
         </div>
       </div>
     </section>

@@ -1,14 +1,21 @@
-const ResolvMark = ({ size = 22 }) => (
-  <svg width={size} height={size} viewBox="0 0 40 40" fill="none">
-    <rect x="2.5" y="4" width="35" height="25" rx="8.5" fill="#5B5BD6" />
-    <path d="M12 27 L12 37.5 L22 28.5 Z" fill="#5B5BD6" />
-    <path d="M12.4 16.4 l5 5 l10.2 -11.6" stroke="#fff" strokeWidth="3.8" strokeLinecap="round" strokeLinejoin="round" />
-  </svg>
-);
-
-const productLinks  = [{ href: '#how-it-works', label: 'How it works' }, { href: '#features', label: 'Features' }, { href: '#pricing', label: 'Pricing' }];
-const companyLinks  = [{ href: '#', label: 'About' }, { href: '#', label: 'Blog' }, { href: '#', label: 'Contact' }];
-const legalLinks    = [{ href: '#', label: 'Privacy' }, { href: '#', label: 'Terms' }, { href: '#', label: 'Security' }];
+const productLinks = [
+  { href: '/#how-it-works', label: 'How it works' },
+  { href: '/#features', label: 'Features' },
+  { href: '/#chat-widget', label: 'Chat Widget' },
+  { href: '/#pricing', label: 'Pricing' },
+  { href: '/#faq', label: 'FAQ' },
+];
+const companyLinks = [
+  { href: '#', label: 'About' },
+  { href: '/blog', label: 'Blog' },
+  { href: '#', label: 'Changelog' },
+  { href: '#', label: 'Contact' },
+];
+const legalLinks = [
+  { href: '/privacy', label: 'Privacy' },
+  { href: '#', label: 'Terms' },
+  { href: '#', label: 'Security' },
+];
 
 export default function Footer() {
   return (
@@ -17,11 +24,10 @@ export default function Footer() {
         <div className="footer-top">
           <div>
             <div className="footer-logo">
-              <ResolvMark />
-              Resolv
+              <span className="logo-t">t</span>Resolv
             </div>
             <p className="footer-tagline">
-              The AI support employee for Shopify brands. Resolv handles your inbox so you can focus on your business.
+              The AI support employee for Shopify brands. tResolv handles your inbox so you can focus on your business.
             </p>
           </div>
           <div className="footer-cols">
@@ -43,7 +49,7 @@ export default function Footer() {
         </div>
 
         <div className="footer-bottom">
-          <span className="footer-copy">© 2026 Resolv. All rights reserved.</span>
+          <span className="footer-copy">© 2026 tResolv. All rights reserved.</span>
           <div className="footer-socials">
             <a href="#" aria-label="X / Twitter">
               <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">

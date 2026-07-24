@@ -2,16 +2,18 @@
 
 import { useEffect, useState } from 'react';
 
-const ResolvMark = ({ size = 24 }) => (
-  <svg width={size} height={size} viewBox="0 0 40 40" fill="none">
-    <rect x="2.5" y="4" width="35" height="25" rx="8.5" fill="#5B5BD6" />
-    <path d="M12 27 L12 37.5 L22 28.5 Z" fill="#5B5BD6" />
-    <path d="M12.4 16.4 l5 5 l10.2 -11.6" stroke="#fff" strokeWidth="3.8" strokeLinecap="round" strokeLinejoin="round" />
-  </svg>
-);
+const NAV_LINKS = [
+  { href: '/#how-it-works', label: 'How it works' },
+  { href: '/#features',     label: 'Features' },
+  { href: '/#chat-widget',  label: 'Chat Widget' },
+  { href: '/#pricing',      label: 'Pricing' },
+  { href: '/#faq',          label: 'FAQ' },
+  { href: '/blog',          label: 'Blog' },
+];
 
 export default function Nav() {
   const [scrolled, setScrolled] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 24);
@@ -20,10 +22,16 @@ export default function Nav() {
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
+  useEffect(() => {
+    document.body.classList.toggle('nav-menu-open', menuOpen);
+    return () => document.body.classList.remove('nav-menu-open');
+  }, [menuOpen]);
+
   const handleAnchor = (e, href) => {
     // Section anchors (#how-it-works etc.) only exist on the homepage. On
     // every other page, let the link navigate normally to /#anchor instead
     // of silently doing nothing.
+    setMenuOpen(false);
     if (window.location.pathname !== '/') return;
     e.preventDefault();
     const target = document.querySelector(href);
@@ -34,20 +42,24 @@ export default function Nav() {
   };
 
   return (
-    <nav className={`nav${scrolled ? ' scrolled' : ''}`}>
+    <nav className={`nav${scrolled ? ' scrolled' : ''}${menuOpen ? ' menu-open' : ''}`}>
       <div className="nav-inner">
-        <a href="#" className="nav-logo">
-          <ResolvMark size={24} />
-          Resolv
+        <a href="/" className="nav-logo" onClick={() => setMenuOpen(false)}>
+          <span className="logo-t">t</span>Resolv
         </a>
+        <button
+          type="button"
+          className="nav-burger"
+          aria-label={menuOpen ? 'Close menu' : 'Open menu'}
+          aria-expanded={menuOpen}
+          onClick={() => setMenuOpen((v) => !v)}
+        >
+          <span />
+          <span />
+          <span />
+        </button>
         <div className="nav-links">
-          {[
-            { href: '/#how-it-works', label: 'How it works' },
-            { href: '/#features',     label: 'Features' },
-            { href: '/#pricing',      label: 'Pricing' },
-            { href: '/#faq',          label: 'FAQ' },
-            { href: '/blog',          label: 'Blog' },
-          ].map(({ href, label }) => (
+          {NAV_LINKS.map(({ href, label }) => (
             <a
               key={href}
               href={href}
@@ -57,10 +69,25 @@ export default function Nav() {
               {label}
             </a>
           ))}
+          <a
+            href="https://app.tresolv.online"
+            target="_blank"
+            rel="noopener"
+            className="btn btn-primary nav-cta-mobile"
+            onClick={() => setMenuOpen(false)}
+          >
+            Claim your free spot →
+          </a>
         </div>
         <div className="nav-cta">
-          <a href="#" className="btn btn-ghost-dark" style={{ fontSize: 13, padding: '9px 18px' }}>
-            Book a demo →
+          <a
+            href="https://app.tresolv.online"
+            target="_blank"
+            rel="noopener"
+            className="btn btn-primary"
+            style={{ fontSize: 13, padding: '9px 18px' }}
+          >
+            Claim your free spot →
           </a>
         </div>
       </div>

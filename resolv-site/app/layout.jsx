@@ -1,4 +1,5 @@
 import { DM_Sans, DM_Mono } from 'next/font/google';
+import TrialBanner from '@/components/TrialBanner';
 import './globals.css';
 
 const dmSans = DM_Sans({
@@ -27,7 +28,10 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en" className={`${dmSans.variable} ${dmMono.variable}`}>
-      <body>{children}</body>
+      <body>
+        <TrialBanner />
+        {children}
+      </body>
     </html>
   );
 }
