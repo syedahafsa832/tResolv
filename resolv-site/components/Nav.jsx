@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useState } from 'react';
+import { usePathname } from 'next/navigation';
 
 const NAV_LINKS = [
   { href: '/#how-it-works', label: 'How it works' },
@@ -13,8 +14,14 @@ const NAV_LINKS = [
 ];
 
 export default function Nav() {
+  const pathname = usePathname();
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+  // Every page except /blog starts with a dark hero/breadcrumb bar behind
+  // the fixed nav, so white nav text reads fine there from the top. Blog
+  // pages start on a plain light background, so the nav needs its
+  // "scrolled" (dark-text) styling immediately, not just after scrolling.
+  const isLightTop = pathname?.startsWith('/blog');
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 24);
@@ -43,7 +50,7 @@ export default function Nav() {
   };
 
   return (
-    <nav className={`nav${scrolled ? ' scrolled' : ''}${menuOpen ? ' menu-open' : ''}`}>
+    <nav className={`nav${scrolled || isLightTop ? ' scrolled' : ''}${menuOpen ? ' menu-open' : ''}`}>
       <div className="nav-inner">
         <a href="/" className="nav-logo" onClick={() => setMenuOpen(false)}>
           <span className="logo-t">t</span>Resolv

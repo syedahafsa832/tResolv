@@ -6,34 +6,38 @@ export default function TrialBanner() {
   const [dismissed, setDismissed] = useState(true);
   const ref = useRef(null);
 
-  const syncHeight = (hidden) => {
-    const h = hidden ? 0 : ref.current?.offsetHeight || 0;
-    document.documentElement.style.setProperty('--banner-h', `${h}px`);
-  };
-
   useEffect(() => {
-    const alreadyDismissed = sessionStorage.getItem('fb_dismissed') === '1';
-    setDismissed(alreadyDismissed);
-    // Height depends on layout, so sync after paint.
-    requestAnimationFrame(() => syncHeight(alreadyDismissed));
+    setDismissed(sessionStorage.getItem('fb_dismissed') === '1');
+  }, []);
+
+  // Re-syncs whenever `dismissed` changes, so this always runs after React
+  // has actually committed the banner to the DOM (unlike a one-shot rAF
+  // scheduled in the same effect as the setDismissed call above, which can
+  // fire before that state update is reflected in the DOM and read a null
+  // ref, permanently locking --banner-h at 0 while the banner is visible).
+  useEffect(() => {
+    const syncHeight = () => {
+      const h = dismissed ? 0 : ref.current?.offsetHeight || 0;
+      document.documentElement.style.setProperty('--banner-h', `${h}px`);
+    };
+    syncHeight();
+    if (dismissed) return;
 
     let resizeTimer;
     const onResize = () => {
       clearTimeout(resizeTimer);
-      resizeTimer = setTimeout(() => syncHeight(dismissed), 120);
+      resizeTimer = setTimeout(syncHeight, 120);
     };
     window.addEventListener('resize', onResize);
     return () => {
       window.removeEventListener('resize', onResize);
       clearTimeout(resizeTimer);
     };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [dismissed]);
 
   const handleClose = () => {
     sessionStorage.setItem('fb_dismissed', '1');
     setDismissed(true);
-    syncHeight(true);
   };
 
   if (dismissed) return null;
