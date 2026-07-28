@@ -3,16 +3,16 @@
 export const page = {
   path: '/ai-customer-support-employee',
   seo: {
-    title: 'AI Customer Support Employee for Shopify Brands | Resolv',
+    title: 'AI Customer Support Employee for Shopify Brands | tResolv',
     description:
-      'Resolv is an AI customer support employee that reads your inbox, resolves routine emails automatically, and stages every refund or cancellation for your approval.',
+      'tResolv is an AI customer support employee that reads your inbox, resolves routine emails automatically, and stages every refund or cancellation for your approval.',
     keywords: 'AI customer support employee, AI support employee, AI customer service employee',
   },
   hero: {
     eyebrow: 'AI Customer Support Employee',
     title: 'Hire an AI employee.',
     titleAccent: 'Not another helpdesk.',
-    sub: 'Resolv reads your support inbox, resolves routine customer emails on its own, and stops before every refund, cancellation, or address change until you approve it.',
+    sub: 'tResolv reads your support inbox, resolves routine customer emails on its own, and stops before every refund, cancellation, or address change until you approve it.',
     secondaryLabel: 'Your emails never leave Google.',
   },
   problem: {
@@ -30,7 +30,7 @@ export const page = {
     eyebrow: 'The solution',
     title: 'An employee, not a platform.',
     paragraphs: [
-      'Resolv reads incoming email, classifies the request, checks the live Shopify order, and drafts a reply grounded in what actually happened to that order — not a generic template.',
+      'tResolv reads incoming email, classifies the request, checks the live Shopify order, and drafts a reply grounded in what actually happened to that order — not a generic template.',
       'Routine, high-confidence replies go out on their own. Anything involving money — refunds, cancellations, exchanges, address changes — is staged in your approval queue. It never executes without your tap.',
     ],
     checks: [
@@ -40,10 +40,10 @@ export const page = {
     ],
   },
   steps: {
-    title: 'Set it up once. Resolv handles the rest.',
+    title: 'Set it up once. tResolv handles the rest.',
     sub: 'Three steps. No ongoing configuration required.',
     steps: [
-      { num: '01', title: 'Connect Gmail and Shopify', body: 'One Google OAuth click connects your inbox. Add your Shopify store and Resolv starts reading orders in real time.' },
+      { num: '01', title: 'Connect Gmail and Shopify', body: 'One Google OAuth click connects your inbox. Add your Shopify store and tResolv starts reading orders in real time.' },
       { num: '02', title: 'AI drafts with a confidence score', body: 'Every incoming email is classified, matched against the live order, and drafted with a visible confidence percentage.' },
       { num: '03', title: 'Approve or let autopilot run', body: 'High-confidence, non-financial replies send automatically. Refunds and cancellations always wait for your approval.' },
     ],
@@ -69,9 +69,9 @@ export const page = {
     ],
   },
   faqs: [
-    { q: 'Is this a chatbot or a real employee replacement?', a: 'Resolv works inside your existing Gmail inbox and Shopify store, the same way a support hire would — reading email, checking orders, and drafting replies. It is not a website widget; it is built to take over the inbox work itself.' },
+    { q: 'Is this a chatbot or a real employee replacement?', a: 'tResolv works inside your existing Gmail inbox and Shopify store, the same way a support hire would — reading email, checking orders, and drafting replies. It is not a website widget; it is built to take over the inbox work itself.' },
     { q: 'Does the AI ever send a refund or cancellation on its own?', a: 'No. Financial actions always require your one-tap approval, regardless of the AI\'s confidence score or which mode you run in.' },
-    { q: 'How much of my inbox will this actually resolve?', a: 'In live production use, Resolv resolves 86.5% of incoming support emails without a human touching them. The remainder is escalated or staged for approval.' },
+    { q: 'How much of my inbox will this actually resolve?', a: 'In live production use, tResolv resolves 86.5% of incoming support emails without a human touching them. The remainder is escalated or staged for approval.' },
     { q: 'What happens to emails the AI is not confident about?', a: 'They queue for human review instead of sending. You set the confidence threshold, so you control how cautious the AI is.' },
   ],
   relatedLinks: [
@@ -79,6 +79,8 @@ export const page = {
     { href: '/ai-refund-automation', label: 'AI Refund Automation' },
     { href: '/ai-return-automation', label: 'AI Return Automation' },
     { href: '/ai-email-customer-support', label: 'AI Email Customer Support' },
+    { href: '/tresolv-vs-gorgias', label: 'tResolv vs Gorgias' },
+    { href: '/blog/what-is-an-ai-customer-support-agent', label: 'What Is an AI Customer Support Agent?' },
   ],
   cta: {
     title: 'Hire your first AI support employee.',

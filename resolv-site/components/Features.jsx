@@ -12,7 +12,7 @@ const features = [
       </svg>
     ),
     title: 'Resolution engine',
-    body: 'Resolv classifies every incoming email, finds the right answer, and sends the reply automatically when confidence is high. No human needed for routine tickets.',
+    body: 'tResolv classifies every incoming email, finds the right answer, and sends the reply automatically when confidence is high. No human needed for routine tickets.',
     note: '86.5% resolution rate out of the box',
   },
   {
@@ -45,7 +45,7 @@ const features = [
       </svg>
     ),
     title: 'One console for all your brands',
-    body: 'Running multiple Shopify stores? One Resolv dashboard shows all of them. Each brand\'s conversations, approvals, and settings stay fully separate.',
+    body: 'Running multiple Shopify stores? One tResolv dashboard shows all of them. Each brand\'s conversations, approvals, and settings stay fully separate.',
     note: 'One login for all your brands',
   },
   {
@@ -56,7 +56,7 @@ const features = [
       </svg>
     ),
     title: 'Gmail native',
-    body: "Resolv connects via Google OAuth and processes emails inside Google's own infrastructure. Your customer emails are never copied to or stored on Resolv's servers.",
+    body: "tResolv connects via Google OAuth and processes emails inside Google's own infrastructure. Your customer emails are never copied to or stored on tResolv's servers.",
     note: 'Your emails never leave Google',
   },
   {
@@ -76,7 +76,7 @@ const features = [
       </svg>
     ),
     title: 'Order state awareness',
-    body: "Before drafting any reply, Resolv checks the live order state in Shopify. It will not attempt to cancel an already cancelled order, or refund one that has already been refunded. It knows what has already happened.",
+    body: "Before drafting any reply, tResolv checks the live order state in Shopify. It will not attempt to cancel an already cancelled order, or refund one that has already been refunded. It knows what has already happened.",
     note: 'No duplicate actions, no embarrassing errors',
   },
   {

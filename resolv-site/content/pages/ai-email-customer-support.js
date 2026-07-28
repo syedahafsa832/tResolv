@@ -1,16 +1,16 @@
 export const page = {
   path: '/ai-email-customer-support',
   seo: {
-    title: 'AI Email Customer Support | Resolv',
+    title: 'AI Email Customer Support | tResolv',
     description:
-      'Resolv reads and replies to customer support email directly inside Gmail — processed inside Google\'s infrastructure, never copied to Resolv\'s servers.',
+      'tResolv reads and replies to customer support email directly inside Gmail — processed inside Google\'s infrastructure, never copied to tResolv\'s servers.',
     keywords: 'AI email customer support, AI email support, AI email responder',
   },
   hero: {
     eyebrow: 'AI Email Support',
     title: 'AI support that lives',
     titleAccent: 'inside your inbox.',
-    sub: 'No new inbox to check, no widget to install. Resolv connects to the Gmail address you already use for support and starts drafting replies from there.',
+    sub: 'No new inbox to check, no widget to install. tResolv connects to the Gmail address you already use for support and starts drafting replies from there.',
     secondaryLabel: 'Your emails never leave Google.',
   },
   problem: {
@@ -26,21 +26,21 @@ export const page = {
     id: 'solution',
     alt: true,
     eyebrow: 'The solution',
-    title: 'Resolv works with the inbox you already have.',
+    title: 'tResolv works with the inbox you already have.',
     paragraphs: [
-      'Resolv connects to your existing Gmail address with one OAuth click. There is no migration, no new customer-facing portal, and no change to the email address your customers already use.',
-      'Emails are processed inside Google\'s own infrastructure via the Gmail API — nothing is copied to or stored on Resolv\'s servers.',
+      'tResolv connects to your existing Gmail address with one OAuth click. There is no migration, no new customer-facing portal, and no change to the email address your customers already use.',
+      'Emails are processed inside Google\'s own infrastructure via the Gmail API — nothing is copied to or stored on tResolv\'s servers.',
     ],
     checks: [
       { label: 'No inbox migration —', detail: 'connects to the Gmail address you already use for support.' },
-      { label: 'Google-native processing —', detail: 'emails are never copied to or stored on Resolv\'s servers.' },
+      { label: 'Google-native processing —', detail: 'emails are never copied to or stored on tResolv\'s servers.' },
       { label: 'Confidence-scored drafts —', detail: 'every reply shows how sure the AI is before it sends.' },
     ],
   },
   steps: {
     title: 'From inbox to resolved email',
     steps: [
-      { num: '01', title: 'Connect Gmail', body: 'One Google OAuth click. Resolv starts reading new mail immediately — no forwarding rules or migration.' },
+      { num: '01', title: 'Connect Gmail', body: 'One Google OAuth click. tResolv starts reading new mail immediately — no forwarding rules or migration.' },
       { num: '02', title: 'AI classifies and drafts', body: 'Each email is classified, checked against your Shopify order data if relevant, and drafted with a confidence score.' },
       { num: '03', title: 'Send automatically or review', body: 'High-confidence, non-financial replies send on their own. Everything else queues for your review.' },
     ],
@@ -66,8 +66,8 @@ export const page = {
     ],
   },
   faqs: [
-    { q: 'Do I need to change my support email address?', a: 'No. Resolv connects to the Gmail address you already use — customers keep emailing the same address.' },
-    { q: 'Are customer emails stored on Resolv\'s servers?', a: "No. Resolv processes email inside Google's infrastructure using the Gmail API. Emails are never copied to or stored on Resolv's servers." },
+    { q: 'Do I need to change my support email address?', a: 'No. tResolv connects to the Gmail address you already use — customers keep emailing the same address.' },
+    { q: 'Are customer emails stored on tResolv\'s servers?', a: "No. tResolv processes email inside Google's infrastructure using the Gmail API. Emails are never copied to or stored on tResolv's servers." },
     { q: 'What happens to spam or newsletter mail sent to my support address?', a: 'It is filtered out by quarantine before the AI drafts anything, so it never affects your resolution numbers.' },
     { q: 'Can I still see and reply to email manually?', a: 'Yes. You can take over any conversation at any time, and the AI pauses on that thread until you release it back.' },
   ],
@@ -75,9 +75,11 @@ export const page = {
     { href: '/ai-customer-support-employee', label: 'AI Customer Support Employee' },
     { href: '/shopify-ai-customer-support', label: 'Shopify AI Customer Support' },
     { href: '/ai-order-tracking-automation', label: 'AI Order Tracking Automation' },
+    { href: '/tresolv-vs-intercom', label: 'tResolv vs Intercom' },
+    { href: '/blog/ai-automation-for-shopify-stores', label: 'AI Automation for Shopify Stores' },
   ],
   cta: {
-    title: 'Let Resolv handle your inbox.',
+    title: 'Let tResolv handle your inbox.',
     sub: 'Start your 14-day free trial. No credit card required.',
   },
 };

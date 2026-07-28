@@ -69,6 +69,20 @@ export function faqPageSchema(faqs) {
   };
 }
 
+/** BreadcrumbList JSON-LD. `items` is an array of { label, path } — path is optional on the last (current) item. */
+export function breadcrumbListSchema(items) {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: items.map((item, index) => ({
+      '@type': 'ListItem',
+      position: index + 1,
+      name: item.label,
+      ...(item.path ? { item: absoluteUrl(item.path) } : {}),
+    })),
+  };
+}
+
 /** Article JSON-LD for blog posts. */
 export function articleSchema({ title, description, path, datePublished, dateModified }) {
   return {

@@ -1,4 +1,4 @@
-// Two-column "who each product is for" / "when Resolv is better" cards.
+// Two-column "who each product is for" / "when tResolv is better" cards.
 export default function WhoFor({ left, right }) {
   return (
     <section className="section section-alt">

@@ -1,16 +1,16 @@
 export const page = {
   path: '/ai-refund-automation',
   seo: {
-    title: 'AI Refund Automation | Resolv',
+    title: 'AI Refund Automation | tResolv',
     description:
-      'Resolv drafts refund responses and stages the Shopify refund for your one-tap approval — it never issues a refund without you.',
+      'tResolv drafts refund responses and stages the Shopify refund for your one-tap approval — it never issues a refund without you.',
     keywords: 'AI refund automation, refund automation Shopify, AI refund assistant',
   },
   hero: {
     eyebrow: 'AI Refund Automation',
     title: 'Refunds, drafted.',
     titleAccent: 'Never sent without you.',
-    sub: 'Resolv checks a refund request against the order and your return policy, drafts the response, and stages the Shopify refund for your one-tap approval — every time.',
+    sub: 'tResolv checks a refund request against the order and your return policy, drafts the response, and stages the Shopify refund for your one-tap approval — every time.',
   },
   problem: {
     id: 'problem',
@@ -27,7 +27,7 @@ export const page = {
     eyebrow: 'The solution',
     title: 'AI drafts it. You approve it.',
     paragraphs: [
-      'Resolv checks the order against your return policy and current refund status, then drafts a reply and stages the refund in Shopify — but the refund itself does not execute until you tap approve.',
+      'tResolv checks the order against your return policy and current refund status, then drafts a reply and stages the refund in Shopify — but the refund itself does not execute until you tap approve.',
       'This is a deliberate design choice, not a limitation: the repetitive part (checking eligibility, writing the response) is automated, and the part with real financial consequence stays with you.',
     ],
     checks: [
@@ -39,7 +39,7 @@ export const page = {
   steps: {
     title: 'How a refund request is handled',
     steps: [
-      { num: '01', title: 'Customer requests a refund', body: 'Resolv matches the email to the order and checks its refund and return-eligibility status.' },
+      { num: '01', title: 'Customer requests a refund', body: 'tResolv matches the email to the order and checks its refund and return-eligibility status.' },
       { num: '02', title: 'Refund is staged, not sent', body: 'A reply is drafted and the Shopify refund is prepared, waiting in your approval queue.' },
       { num: '03', title: 'You approve with one tap', body: 'Only after your approval does the refund execute in Shopify and the reply send.' },
     ],
@@ -54,7 +54,7 @@ export const page = {
     ],
   },
   useCases: {
-    title: 'Refund scenarios Resolv handles',
+    title: 'Refund scenarios tResolv handles',
     items: [
       { title: 'Standard return-window refunds', body: 'Checked against your policy and staged for approval.' },
       { title: 'Damaged or defective items', body: 'Drafted with an empathetic response and staged as a refund or replacement candidate.' },
@@ -65,15 +65,17 @@ export const page = {
     ],
   },
   faqs: [
-    { q: 'Can Resolv issue a refund without my approval?', a: 'No. Every refund is staged and requires your one-tap approval before it executes in Shopify, regardless of confidence level.' },
+    { q: 'Can tResolv issue a refund without my approval?', a: 'No. Every refund is staged and requires your one-tap approval before it executes in Shopify, regardless of confidence level.' },
     { q: 'How does it decide if an order is refund-eligible?', a: 'It checks the order\'s current state and your store\'s configured return-window and policy settings.' },
-    { q: 'What if a customer asks for a refund on an already-refunded order?', a: 'Resolv checks the live order state, recognizes it was already refunded, and drafts an explanation instead of staging a duplicate refund.' },
+    { q: 'What if a customer asks for a refund on an already-refunded order?', a: 'tResolv checks the live order state, recognizes it was already refunded, and drafts an explanation instead of staging a duplicate refund.' },
     { q: 'Can I set rules for which refunds need extra review?', a: '[Requires validation] — confirm current configuration options for refund-specific approval rules.' },
   ],
   relatedLinks: [
     { href: '/ai-return-automation', label: 'AI Return Automation' },
     { href: '/shopify-ai-customer-support', label: 'Shopify AI Customer Support' },
     { href: '/ai-customer-support-employee', label: 'AI Customer Support Employee' },
+    { href: '/gorgias-alternatives', label: 'Gorgias Alternatives' },
+    { href: '/blog/how-to-reduce-ecommerce-support-tickets', label: 'How to Reduce Ecommerce Support Tickets' },
   ],
   cta: {
     title: 'Automate the refund reply. Keep the refund decision.',

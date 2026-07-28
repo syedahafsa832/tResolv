@@ -1,5 +1,6 @@
 import { DM_Sans, DM_Mono } from 'next/font/google';
 import TrialBanner from '@/components/TrialBanner';
+import { SITE } from '@/lib/site';
 import './globals.css';
 
 const dmSans = DM_Sans({
@@ -17,11 +18,20 @@ const dmMono = DM_Mono({
 });
 
 export const metadata = {
-  title: 'Resolv — AI Support Employee for Shopify Brands',
+  metadataBase: new URL(SITE.url),
+  title: 'tResolv — AI Support Employee for Shopify Brands',
   description:
-    'Resolv reads your inbox, drafts replies, and resolves 86.5% of customer support emails automatically. Every financial action requires your approval.',
+    'tResolv reads your inbox, drafts replies, and resolves 86.5% of customer support emails automatically. Every financial action requires your approval.',
   icons: {
     icon: '/favicon.svg',
+  },
+  openGraph: {
+    siteName: SITE.name,
+    type: 'website',
+    locale: 'en_US',
+  },
+  twitter: {
+    card: 'summary_large_image',
   },
 };
 

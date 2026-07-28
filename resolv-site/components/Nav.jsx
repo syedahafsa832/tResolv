@@ -9,6 +9,7 @@ const NAV_LINKS = [
   { href: '/#pricing',      label: 'Pricing' },
   { href: '/#faq',          label: 'FAQ' },
   { href: '/blog',          label: 'Blog' },
+  { href: 'mailto:syedahafsa722@gmail.com', label: 'Contact' },
 ];
 
 export default function Nav() {

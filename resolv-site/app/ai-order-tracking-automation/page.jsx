@@ -1,4 +1,4 @@
-import { buildMetadata, softwareApplicationSchema, faqPageSchema } from '@/lib/seo';
+import { buildMetadata, softwareApplicationSchema, faqPageSchema, breadcrumbListSchema } from '@/lib/seo';
 import PageShell from '@/components/seo/PageShell';
 import PageHero from '@/components/seo/PageHero';
 import TextSection from '@/components/seo/TextSection';
@@ -13,12 +13,14 @@ import { page } from '@/content/pages/ai-order-tracking-automation';
 export const metadata = buildMetadata({ ...page.seo, path: page.path });
 
 export default function Page() {
+  const breadcrumb = [{ label: 'Home', path: '/' }, { label: page.hero.eyebrow }];
   const schema = [
-    softwareApplicationSchema({ name: 'Resolv', description: page.seo.description, path: page.path }),
+    softwareApplicationSchema({ name: 'tResolv', description: page.seo.description, path: page.path }),
     faqPageSchema(page.faqs),
+    breadcrumbListSchema(breadcrumb),
   ];
   return (
-    <PageShell schema={schema}>
+    <PageShell schema={schema} breadcrumb={breadcrumb}>
       <PageHero {...page.hero} />
       <TextSection {...page.problem} />
       <TextSection {...page.solution} />

@@ -13,7 +13,7 @@ export default function ComparisonTable({ competitorName, rows }) {
         <thead>
           <tr>
             <th>Capability</th>
-            <th>Resolv</th>
+            <th>tResolv</th>
             <th>{competitorName}</th>
           </tr>
         </thead>

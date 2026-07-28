@@ -5,8 +5,8 @@ import PageHero from '@/components/seo/PageHero';
 import { posts } from '@/content/blog/posts';
 
 export const metadata = buildMetadata({
-  title: 'Blog | Resolv',
-  description: 'Guides on AI customer support, Shopify automation, and reducing repetitive support work — from the team building Resolv.',
+  title: 'Blog | tResolv',
+  description: 'Guides on AI customer support, Shopify automation, and reducing repetitive support work — from the team building tResolv.',
   path: '/blog',
 });
 

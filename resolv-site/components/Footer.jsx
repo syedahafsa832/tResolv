@@ -9,7 +9,7 @@ const companyLinks = [
   { href: '#', label: 'About' },
   { href: '/blog', label: 'Blog' },
   { href: '#', label: 'Changelog' },
-  { href: '#', label: 'Contact' },
+  { href: 'mailto:syedahafsa722@gmail.com', label: 'Contact' },
 ];
 const legalLinks = [
   { href: '/privacy', label: 'Privacy' },

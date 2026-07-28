@@ -1,20 +1,20 @@
 export const page = {
   path: '/gorgias-alternatives',
   seo: {
-    title: 'Gorgias Alternatives for Shopify Support | Resolv',
+    title: 'Gorgias Alternatives for Shopify Support | tResolv',
     description:
-      'Looking for a Gorgias alternative? See how Resolv\'s AI-employee approach — staged financial actions, Gmail-native processing — compares.',
+      'Looking for a Gorgias alternative? See how tResolv\'s AI-employee approach — staged financial actions, Gmail-native processing — compares.',
     keywords: 'Gorgias alternatives, Gorgias alternative, best Gorgias alternative',
   },
   hero: {
     eyebrow: 'Gorgias Alternatives',
     title: 'Looking for a',
     titleAccent: 'Gorgias alternative?',
-    sub: 'If you\'re evaluating options beyond Gorgias, here\'s how Resolv\'s approach — an AI employee that works inside Gmail and stages financial actions for approval — differs.',
+    sub: 'If you\'re evaluating options beyond Gorgias, here\'s how tResolv\'s approach — an AI employee that works inside Gmail and stages financial actions for approval — differs.',
   },
   intro: [
     'Brands look for Gorgias alternatives for different reasons — pricing, wanting AI to work inside the inbox they already use, or wanting a different approach to governance around automated actions.',
-    'This page is not a claim that Gorgias is bad. It\'s a look at one specific alternative — Resolv — and the philosophy behind it, so you can decide if it fits what you\'re looking for.',
+    'This page is not a claim that Gorgias is bad. It\'s a look at one specific alternative — tResolv — and the philosophy behind it, so you can decide if it fits what you\'re looking for.',
   ],
   table: {
     competitorName: 'Gorgias',
@@ -37,7 +37,7 @@ export const page = {
       ],
     },
     right: {
-      title: 'Consider Resolv if',
+      title: 'Consider tResolv if',
       items: [
         'You want AI working directly inside Gmail instead of a separate helpdesk inbox',
         'You want every refund and cancellation staged for approval by default',
@@ -48,23 +48,24 @@ export const page = {
   whenBetter: {
     id: 'when-better',
     alt: true,
-    eyebrow: 'When Resolv is the better fit',
+    eyebrow: 'When tResolv is the better fit',
     title: 'The clearest signal: where do you want AI to work?',
     paragraphs: [
-      'If the answer is "inside the Gmail inbox I already use, with financial actions always staged for my approval," Resolv is built around exactly that answer.',
-      'If you need the broadest existing feature set for Shopify-specific automations today, it\'s worth evaluating Gorgias\'s current documentation directly alongside a Resolv trial.',
+      'If the answer is "inside the Gmail inbox I already use, with financial actions always staged for my approval," tResolv is built around exactly that answer.',
+      'If you need the broadest existing feature set for Shopify-specific automations today, it\'s worth evaluating Gorgias\'s current documentation directly alongside a tResolv trial.',
     ],
   },
   faqs: [
-    { q: 'What is the biggest difference between Resolv and Gorgias?', a: 'Resolv works inside your existing Gmail inbox and stages every financial action for approval by default. Gorgias is a broader conversational AI helpdesk platform with its own dedicated interface.' },
-    { q: 'Is switching from Gorgias difficult?', a: '[Requires validation] — migration effort depends on your current setup. Resolv itself is designed to connect to Gmail and Shopify in about 10 minutes.' },
-    { q: 'Are there other Gorgias alternatives besides Resolv?', a: 'Yes — the broader market includes several customer service platforms. This page focuses specifically on the Resolv approach rather than surveying every alternative.' },
-    { q: 'Can I try Resolv without committing?', a: 'Yes. The 14-day free trial requires no credit card.' },
+    { q: 'What is the biggest difference between tResolv and Gorgias?', a: 'tResolv works inside your existing Gmail inbox and stages every financial action for approval by default. Gorgias is a broader conversational AI helpdesk platform with its own dedicated interface.' },
+    { q: 'Is switching from Gorgias difficult?', a: '[Requires validation] — migration effort depends on your current setup. tResolv itself is designed to connect to Gmail and Shopify in about 10 minutes.' },
+    { q: 'Are there other Gorgias alternatives besides tResolv?', a: 'Yes — the broader market includes several customer service platforms. This page focuses specifically on the tResolv approach rather than surveying every alternative.' },
+    { q: 'Can I try tResolv without committing?', a: 'Yes. The 14-day free trial requires no credit card.' },
   ],
   relatedLinks: [
-    { href: '/tresolv-vs-gorgias', label: 'Resolv vs Gorgias' },
+    { href: '/tresolv-vs-gorgias', label: 'tResolv vs Gorgias' },
     { href: '/ai-customer-support-employee', label: 'AI Customer Support Employee' },
     { href: '/shopify-ai-customer-support', label: 'Shopify AI Customer Support' },
+    { href: '/blog/best-ai-customer-support-tools', label: 'Best AI Customer Support Tools for Shopify Brands' },
   ],
   cta: {
     title: 'See the alternative for yourself.',

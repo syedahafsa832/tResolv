@@ -2,7 +2,7 @@ const steps = [
   {
     num: '01',
     title: 'Connect your stack',
-    body: 'Link your Gmail and Shopify in under 10 minutes. Resolv starts reading your inbox in real time from the moment you connect.',
+    body: 'Link your Gmail and Shopify in under 10 minutes. tResolv starts reading your inbox in real time from the moment you connect.',
   },
   {
     num: '02',
@@ -21,9 +21,9 @@ export default function HowItWorks() {
     <section className="section" id="how-it-works">
       <div className="wrap">
         <div className="eyebrow"><span className="eyebrow-dot" />How it works</div>
-        <h2 className="section-title">Set it up once.<br />Resolv handles the rest.</h2>
+        <h2 className="section-title">Set it up once.<br />tResolv handles the rest.</h2>
         <p className="section-sub">
-          Three steps. No ongoing configuration. Resolv starts working from the moment you connect.
+          Three steps. No ongoing configuration. tResolv starts working from the moment you connect.
         </p>
         <div className="steps">
           {steps.map(({ num, title, body }) => (

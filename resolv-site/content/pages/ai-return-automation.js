@@ -1,16 +1,16 @@
 export const page = {
   path: '/ai-return-automation',
   seo: {
-    title: 'AI Return Automation | Resolv',
+    title: 'AI Return Automation | tResolv',
     description:
-      'Resolv handles return requests end to end — checking eligibility, drafting the reply, and staging exchanges or refunds for your approval.',
+      'tResolv handles return requests end to end — checking eligibility, drafting the reply, and staging exchanges or refunds for your approval.',
     keywords: 'AI return automation, Shopify return automation, AI returns assistant',
   },
   hero: {
     eyebrow: 'AI Return Automation',
     title: 'Returns, handled —',
     titleAccent: 'without losing customer trust.',
-    sub: 'Resolv checks return eligibility, drafts the reply, and stages the exchange or refund for your approval — so returns move fast without becoming a liability.',
+    sub: 'tResolv checks return eligibility, drafts the reply, and stages the exchange or refund for your approval — so returns move fast without becoming a liability.',
   },
   problem: {
     id: 'problem',
@@ -27,7 +27,7 @@ export const page = {
     eyebrow: 'The solution',
     title: 'Fast, because it\'s grounded in the real order.',
     paragraphs: [
-      'Resolv checks the order against your return policy, explains the process clearly, and stages the resulting exchange or refund for your approval — all within minutes of the request arriving.',
+      'tResolv checks the order against your return policy, explains the process clearly, and stages the resulting exchange or refund for your approval — all within minutes of the request arriving.',
       'Because every step is grounded in your actual Shopify data and policy settings, the reply holds up to scrutiny instead of reading like a generic returns FAQ.',
     ],
     checks: [
@@ -39,7 +39,7 @@ export const page = {
   steps: {
     title: 'From return request to resolution',
     steps: [
-      { num: '01', title: 'Return request arrives', body: 'Resolv identifies the request type — exchange, refund, or store credit — and matches it to the order.' },
+      { num: '01', title: 'Return request arrives', body: 'tResolv identifies the request type — exchange, refund, or store credit — and matches it to the order.' },
       { num: '02', title: 'Eligibility is checked', body: 'The order is checked against your return window and policy before any commitment is made in the reply.' },
       { num: '03', title: 'Action is staged for approval', body: 'The resulting exchange or refund waits in your queue until you approve it.' },
     ],
@@ -54,7 +54,7 @@ export const page = {
     ],
   },
   useCases: {
-    title: 'Return scenarios Resolv handles',
+    title: 'Return scenarios tResolv handles',
     items: [
       { title: 'Size or fit exchanges', body: 'Drafted with your sizing information and staged as an exchange.' },
       { title: 'Damaged item returns', body: 'Handled with an empathetic reply and staged as a refund or replacement.' },
@@ -65,7 +65,7 @@ export const page = {
     ],
   },
   faqs: [
-    { q: 'Does Resolv decide return eligibility on its own?', a: 'It checks eligibility against your store\'s configured return window and policy, but the resulting refund or exchange is always staged for your approval.' },
+    { q: 'Does tResolv decide return eligibility on its own?', a: 'It checks eligibility against your store\'s configured return window and policy, but the resulting refund or exchange is always staged for your approval.' },
     { q: 'Can it process an exchange directly in Shopify?', a: 'It stages the exchange as an action tied to the order; you approve before it is finalized.' },
     { q: 'What about return shipping labels?', a: '[Requires validation] — confirm current support for generating return labels automatically.' },
     { q: 'How is this different from the refund automation page?', a: 'Refund automation covers requests that start as "refund me." Return automation covers the broader return flow, which can resolve to an exchange, store credit, or refund.' },
@@ -74,6 +74,8 @@ export const page = {
     { href: '/ai-refund-automation', label: 'AI Refund Automation' },
     { href: '/ai-order-tracking-automation', label: 'AI Order Tracking Automation' },
     { href: '/shopify-ai-customer-support', label: 'Shopify AI Customer Support' },
+    { href: '/tresolv-vs-gorgias', label: 'tResolv vs Gorgias' },
+    { href: '/blog/best-ai-customer-support-tools', label: 'Best AI Customer Support Tools for Shopify Brands' },
   ],
   cta: {
     title: 'Make returns fast without losing control.',

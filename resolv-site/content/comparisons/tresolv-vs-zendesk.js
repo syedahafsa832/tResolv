@@ -1,20 +1,20 @@
 export const page = {
   path: '/tresolv-vs-zendesk',
   seo: {
-    title: 'Resolv vs Zendesk — AI Support for Shopify Brands | Resolv',
+    title: 'tResolv vs Zendesk — AI Support for Shopify Brands | tResolv',
     description:
-      'How Resolv compares to Zendesk for Shopify customer support: a focused AI employee for ecommerce vs. a broad enterprise service platform.',
-    keywords: 'Resolv vs Zendesk, Zendesk alternative, Zendesk comparison',
+      'How tResolv compares to Zendesk for Shopify customer support: a focused AI employee for ecommerce vs. a broad enterprise service platform.',
+    keywords: 'tResolv vs Zendesk, Zendesk alternative, Zendesk comparison',
   },
   hero: {
-    eyebrow: 'Resolv vs Zendesk',
-    title: 'Resolv vs Zendesk:',
+    eyebrow: 'tResolv vs Zendesk',
+    title: 'tResolv vs Zendesk:',
     titleAccent: 'built for Shopify, not enterprise support teams.',
-    sub: 'Zendesk is a mature, broad enterprise customer service platform. Resolv is a focused AI employee built specifically around Shopify order and inbox workflows.',
+    sub: 'Zendesk is a mature, broad enterprise customer service platform. tResolv is a focused AI employee built specifically around Shopify order and inbox workflows.',
   },
   intro: [
     'Zendesk serves a very wide range of support teams, from small businesses to large enterprises, across many industries. That breadth is a real strength for complex, multi-channel enterprise support operations.',
-    'Resolv is not trying to be a general-purpose enterprise platform. It is built specifically for Shopify brands who want an AI employee handling their Gmail inbox and Shopify order questions.',
+    'tResolv is not trying to be a general-purpose enterprise platform. It is built specifically for Shopify brands who want an AI employee handling their Gmail inbox and Shopify order questions.',
   ],
   table: {
     competitorName: 'Zendesk',
@@ -37,7 +37,7 @@ export const page = {
       ],
     },
     right: {
-      title: 'Resolv tends to fit',
+      title: 'tResolv tends to fit',
       items: [
         'Shopify brands that want to avoid standing up a full enterprise support stack',
         'Small teams who want the AI to actually resolve tickets, not just organize them',
@@ -48,23 +48,24 @@ export const page = {
   whenBetter: {
     id: 'when-better',
     alt: true,
-    eyebrow: 'When Resolv is the better fit',
-    title: 'Choose Resolv when you want simplicity, not enterprise scope.',
+    eyebrow: 'When tResolv is the better fit',
+    title: 'Choose tResolv when you want simplicity, not enterprise scope.',
     paragraphs: [
-      'If your team is a Shopify brand looking for an AI that resolves order-related email automatically without a lengthy enterprise implementation, Resolv is built around exactly that scope.',
+      'If your team is a Shopify brand looking for an AI that resolves order-related email automatically without a lengthy enterprise implementation, tResolv is built around exactly that scope.',
       'If you run a large, multi-department support organization with needs beyond ecommerce, Zendesk\'s breadth may be a better structural fit — this page is not suggesting otherwise.',
     ],
   },
   faqs: [
-    { q: 'Is Resolv trying to replace Zendesk for enterprise teams?', a: 'No. Resolv is built specifically for Shopify brands, not as a general enterprise service platform replacement.' },
+    { q: 'Is tResolv trying to replace Zendesk for enterprise teams?', a: 'No. tResolv is built specifically for Shopify brands, not as a general enterprise service platform replacement.' },
     { q: 'We already have Zendesk set up — is switching worth it?', a: 'That depends on your team\'s needs. If Zendesk manages your support well, the more relevant question is whether AI is actually resolving tickets inside it or just organizing them.' },
-    { q: 'Does Resolv integrate with Zendesk?', a: '[Requires validation] — check current integration support before assuming compatibility.' },
-    { q: 'How long does Resolv take to set up compared to Zendesk?', a: 'Most Shopify brands connect Gmail and Shopify and are live within about 10 minutes. Zendesk implementation timelines vary by plan and use case — [Requires validation] for a direct comparison.' },
+    { q: 'Does tResolv integrate with Zendesk?', a: '[Requires validation] — check current integration support before assuming compatibility.' },
+    { q: 'How long does tResolv take to set up compared to Zendesk?', a: 'Most Shopify brands connect Gmail and Shopify and are live within about 10 minutes. Zendesk implementation timelines vary by plan and use case — [Requires validation] for a direct comparison.' },
   ],
   relatedLinks: [
     { href: '/ai-customer-support-employee', label: 'AI Customer Support Employee' },
     { href: '/shopify-ai-customer-support', label: 'Shopify AI Customer Support' },
-    { href: '/tresolv-vs-intercom', label: 'Resolv vs Intercom' },
+    { href: '/tresolv-vs-intercom', label: 'tResolv vs Intercom' },
+    { href: '/blog/ai-support-agent-vs-chatbot', label: 'AI Support Agent vs Chatbot: What\'s the Difference?' },
   ],
   cta: {
     title: 'Simpler than an enterprise helpdesk. Built for Shopify.',
