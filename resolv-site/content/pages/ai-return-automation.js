@@ -58,7 +58,7 @@ export const page = {
     items: [
       { title: 'Size or fit exchanges', body: 'Drafted with your sizing information and staged as an exchange.' },
       { title: 'Damaged item returns', body: 'Handled with an empathetic reply and staged as a refund or replacement.' },
-      { title: 'Store credit requests', body: '[Requires validation], confirm current support for store-credit-specific return flows.' },
+      { title: 'Store credit requests', body: 'Varies by configuration, confirm current support for store-credit-specific return flows.' },
       { title: 'Out-of-window returns', body: 'Explained accurately against your policy rather than promised automatically.' },
       { title: 'Return shipping questions', body: 'Answered using your store\'s configured return shipping process.' },
       { title: 'Disputed returns', body: 'Escalated to a human when the situation falls outside your confidence threshold.' },
@@ -67,7 +67,7 @@ export const page = {
   faqs: [
     { q: 'Does tResolv decide return eligibility on its own?', a: 'It checks eligibility against your store\'s configured return window and policy, but the resulting refund or exchange is always staged for your approval.' },
     { q: 'Can it process an exchange directly in Shopify?', a: 'It stages the exchange as an action tied to the order; you approve before it is finalized.' },
-    { q: 'What about return shipping labels?', a: '[Requires validation], confirm current support for generating return labels automatically.' },
+    { q: 'What about return shipping labels?', a: 'Confirm current support for generating return labels automatically.' },
     { q: 'How is this different from the refund automation page?', a: 'Refund automation covers requests that start as "refund me." Return automation covers the broader return flow, which can resolve to an exchange, store credit, or refund.' },
   ],
   relatedLinks: [

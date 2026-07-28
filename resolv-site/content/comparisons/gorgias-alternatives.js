@@ -20,11 +20,11 @@ export const page = {
     competitorName: 'Gorgias',
     rows: [
       { label: 'Category', resolv: 'AI customer support employee', competitor: 'Conversational AI platform for ecommerce' },
-      { label: 'Works inside your existing Gmail inbox', resolv: true, competitor: '[Requires validation]' },
-      { label: 'Financial actions always require approval', resolv: 'Yes, by default, not a setting to configure', competitor: '[Requires validation]' },
-      { label: 'Confidence score on every draft', resolv: true, competitor: '[Requires validation]' },
-      { label: 'Published live resolution-rate data', resolv: '86.5%, from live production use', competitor: '[Requires validation]' },
-      { label: 'Setup time', resolv: 'Typically under 10 minutes', competitor: '[Requires validation]' },
+      { label: 'Works inside your existing Gmail inbox', resolv: true, competitor: 'Not publicly confirmed.' },
+      { label: 'Financial actions always require approval', resolv: 'Yes, by default, not a setting to configure', competitor: 'Gorgias offers configurable workflows. Check current documentation for how financial actions are handled in your implementation.' },
+      { label: 'AI draft confidence visibility', resolv: 'Confidence score shown on every drafted reply.', competitor: 'Check current product documentation.' },
+      { label: 'AI resolution approach', resolv: 'Designed to automate a large share of repetitive customer conversations while keeping financial actions under human approval.', competitor: 'Not publicly confirmed.' },
+      { label: 'Setup time', resolv: 'Typically under 10 minutes', competitor: 'Varies depending on configuration.' },
     ],
   },
   whoFor: {
@@ -57,7 +57,7 @@ export const page = {
   },
   faqs: [
     { q: 'What is the biggest difference between tResolv and Gorgias?', a: 'tResolv works inside your existing Gmail inbox and stages every financial action for approval by default. Gorgias is a broader conversational AI helpdesk platform with its own dedicated interface.' },
-    { q: 'Is switching from Gorgias difficult?', a: '[Requires validation], migration effort depends on your current setup. tResolv itself is designed to connect to Gmail and Shopify in about 10 minutes.' },
+    { q: 'Is switching from Gorgias difficult?', a: 'Migration effort depends on your current setup. tResolv itself is designed to connect to Gmail and Shopify in about 10 minutes.' },
     { q: 'Are there other Gorgias alternatives besides tResolv?', a: 'Yes, the broader market includes several customer service platforms. This page focuses specifically on the tResolv approach rather than surveying every alternative.' },
     { q: 'Can I try tResolv without committing?', a: 'Yes. The 14-day free trial requires no credit card.' },
   ],

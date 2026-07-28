@@ -20,11 +20,11 @@ export const page = {
     competitorName: 'Zendesk',
     rows: [
       { label: 'Category', resolv: 'AI customer support employee', competitor: 'Enterprise customer service platform' },
-      { label: 'Shopify-native order actions', resolv: 'Yes, refunds, cancellations, address changes staged directly from order data', competitor: '[Requires validation], not established as a core focus in publicly available positioning' },
-      { label: 'Setup complexity', resolv: 'Gmail + Shopify connection, typically live within 10 minutes', competitor: '[Requires validation]' },
+      { label: 'Shopify-native order actions', resolv: 'Yes, refunds, cancellations, address changes staged directly from order data', competitor: 'Not a primary focus of Zendesk\'s publicly available positioning. Check current documentation for specifics.' },
+      { label: 'Setup complexity', resolv: 'Gmail + Shopify connection, typically live within 10 minutes', competitor: 'Designed for enterprise deployments and a wide range of support use cases. Setup varies depending on configuration.' },
       { label: 'Primary buyer', resolv: 'Shopify brand owners and small support teams', competitor: 'Enterprise support organizations' },
-      { label: 'Financial actions always require approval', resolv: true, competitor: '[Requires validation]' },
-      { label: 'Confidence score shown on every draft', resolv: true, competitor: '[Requires validation]' },
+      { label: 'Financial approval workflow', resolv: 'Refunds, cancellations, and address changes require approval before execution.', competitor: 'Not publicly confirmed as a default workflow.' },
+      { label: 'AI draft confidence visibility', resolv: 'Confidence score shown on every drafted reply.', competitor: 'Check current product documentation.' },
     ],
   },
   whoFor: {
@@ -58,8 +58,8 @@ export const page = {
   faqs: [
     { q: 'Is tResolv trying to replace Zendesk for enterprise teams?', a: 'No. tResolv is built specifically for Shopify brands, not as a general enterprise service platform replacement.' },
     { q: 'We already have Zendesk set up, is switching worth it?', a: 'That depends on your team\'s needs. If Zendesk manages your support well, the more relevant question is whether AI is actually resolving tickets inside it or just organizing them.' },
-    { q: 'Does tResolv integrate with Zendesk?', a: '[Requires validation], check current integration support before assuming compatibility.' },
-    { q: 'How long does tResolv take to set up compared to Zendesk?', a: 'Most Shopify brands connect Gmail and Shopify and are live within about 10 minutes. Zendesk implementation timelines vary by plan and use case, [Requires validation] for a direct comparison.' },
+    { q: 'Can I use tResolv alongside Zendesk?', a: 'tResolv is designed primarily for Shopify brands using Gmail and Shopify workflows. If your team already uses Zendesk, evaluate whether your support process requires both systems. Check current integration options before planning a deployment.' },
+    { q: 'How long does tResolv take to set up compared to Zendesk?', a: 'Most Shopify brands connect Gmail and Shopify and are live within about 10 minutes. Zendesk implementation timelines vary by plan and use case, check current documentation for a direct comparison.' },
   ],
   relatedLinks: [
     { href: '/ai-customer-support-employee', label: 'AI Customer Support Employee' },

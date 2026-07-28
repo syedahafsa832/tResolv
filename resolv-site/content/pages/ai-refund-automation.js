@@ -32,7 +32,7 @@ export const page = {
     ],
     checks: [
       { label: 'Never executes automatically:', detail: 'every refund waits for your one-tap approval, regardless of confidence score.' },
-      { label: 'Checked against your policy:', detail: 'eligibility is evaluated using your actual return window and rules.' },
+      { label: 'Checked against your policy:', detail: 'checks the order and available store information before preparing a refund for review.' },
       { label: 'No duplicate refunds:', detail: 'checks whether the order was already refunded before staging anything.' },
     ],
   },
@@ -48,7 +48,7 @@ export const page = {
     title: 'Built for the highest-stakes ticket type',
     features: [
       { icon: 'refund', title: 'Staged refund actions', body: 'Every refund is prepared against the real Shopify order and held for your approval before it executes.', note: 'Zero unauthorized financial actions' },
-      { icon: 'shield', title: 'Policy-aware eligibility', body: 'Refund eligibility is checked against your store\'s actual return window and rules, not a generic assumption.', note: 'Configurable per brand' },
+      { icon: 'shield', title: 'Policy-aware eligibility', body: 'Refund eligibility is checked against the order and available store information before a refund is prepared, not a generic assumption.', note: 'Built around your store\'s refund workflow' },
       { icon: 'package', title: 'Duplicate-refund protection', body: 'Checks current order state so it never stages a second refund on an order already refunded.', note: 'No embarrassing double refunds' },
       { icon: 'gauge', title: 'Confidence scoring', body: 'Every drafted response shows a confidence score, so you know how the AI reasoned about the request.', note: 'Full visibility before you approve' },
     ],
@@ -58,7 +58,6 @@ export const page = {
     items: [
       { title: 'Standard return-window refunds', body: 'Checked against your policy and staged for approval.' },
       { title: 'Damaged or defective items', body: 'Drafted with an empathetic response and staged as a refund or replacement candidate.' },
-      { title: 'Partial refunds', body: '[Requires validation], confirm current support for partial vs. full refund staging in your plan.' },
       { title: 'Already-refunded orders', body: 'Recognized and explained instead of staging a duplicate action.' },
       { title: 'Out-of-window requests', body: 'Drafted with a policy-accurate explanation rather than an automatic refund.' },
       { title: 'Escalated disputes', body: 'Handed to a human when the situation falls outside your confidence threshold.' },
@@ -66,9 +65,9 @@ export const page = {
   },
   faqs: [
     { q: 'Can tResolv issue a refund without my approval?', a: 'No. Every refund is staged and requires your one-tap approval before it executes in Shopify, regardless of confidence level.' },
-    { q: 'How does it decide if an order is refund-eligible?', a: 'It checks the order\'s current state and your store\'s configured return-window and policy settings.' },
+    { q: 'How does it decide if an order is refund-eligible?', a: 'It checks the order\'s current state and the available information about your return window and policies before deciding whether a refund is eligible.' },
     { q: 'What if a customer asks for a refund on an already-refunded order?', a: 'tResolv checks the live order state, recognizes it was already refunded, and drafts an explanation instead of staging a duplicate refund.' },
-    { q: 'Can I set rules for which refunds need extra review?', a: '[Requires validation], confirm current configuration options for refund-specific approval rules.' },
+    { q: 'When does tResolv ask for approval?', a: 'Refunds always require approval before they are executed in Shopify.' },
   ],
   relatedLinks: [
     { href: '/ai-return-automation', label: 'AI Return Automation' },

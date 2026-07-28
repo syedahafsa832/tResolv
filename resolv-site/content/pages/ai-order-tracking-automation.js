@@ -60,14 +60,14 @@ export const page = {
       { title: 'Lost package claims', body: 'Recognizes when tracking shows delivered but the customer says otherwise, and escalates appropriately.' },
       { title: 'Multiple items, one order', body: 'Reflects partial shipments and split fulfillment accurately.' },
       { title: 'Address mismatches', body: 'Flags when a shipping address looks incorrect based on tracking exceptions.' },
-      { title: 'International shipments', body: '[Requires validation] for carrier-specific international tracking detail.' },
+      { title: 'International shipments', body: 'Varies by carrier and destination, check current international tracking coverage before promising specific detail.' },
       { title: 'Escalation to a human', body: 'Unusual tracking situations are handed off instead of guessed at.' },
     ],
   },
   faqs: [
     { q: 'Does this replace my shipping carrier\'s tracking page?', a: 'No, it answers the support email itself, using the same underlying fulfillment and tracking data, so the customer doesn\'t have to go find that page themselves.' },
     { q: 'What if the order hasn\'t shipped yet?', a: 'tResolv explains the current fulfillment status accurately instead of guessing at a ship date.' },
-    { q: 'Does it work with third-party tracking tools?', a: '[Requires validation], check current integration support before relying on this for a specific tracking provider.' },
+    { q: 'Does it work with third-party tracking tools?', a: 'Check current integration support before relying on this for a specific tracking provider.' },
     { q: 'Can it handle "my package says delivered but I don\'t have it"?', a: 'Yes, this is treated as a higher-risk case and can be routed to a human rather than resolved automatically, depending on your confidence threshold.' },
   ],
   relatedLinks: [

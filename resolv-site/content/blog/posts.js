@@ -107,7 +107,7 @@ export const posts = [
       { type: 'h3', id: 'staged-actions', text: 'Staging financial actions instead of automating them blindly' },
       { type: 'p', text: 'The part brands are usually most cautious about is anything involving money. A well-designed automation stages the resulting refund or cancellation for a human\'s approval rather than executing it the moment confidence looks high enough.' },
       { type: 'h2', id: 'measuring-it', text: 'Measuring what\'s actually working' },
-      { type: 'p', text: 'The clearest signal of whether automation is working is a resolution rate measured against live production traffic, not a lab demo, and a record of zero unauthorized financial actions, since that\'s the failure mode brands worry about most.' },
+      { type: 'p', text: 'The clearest signal of whether automation is working is a resolution rate measured against actual customer traffic, not a lab demo, and a record of zero unauthorized financial actions, since that\'s the failure mode brands worry about most.' },
     ],
     faqs: [
       { q: 'Do I need developer help to automate Shopify support?', a: 'Tools built specifically for this, like tResolv, are designed for a no-code setup, connecting Gmail and Shopify typically takes under 10 minutes.' },
@@ -144,13 +144,13 @@ export const posts = [
         'Is there a record of unauthorized financial actions, or a claim of zero?',
       ] },
       { type: 'h2', id: 'resolution-transparency', text: '4. Is the resolution rate real, or a marketing number?' },
-      { type: 'p', text: 'Ask whether a quoted resolution percentage comes from live production traffic or a curated demo. tResolv publishes 86.5% as a live production figure specifically to make this checkable.' },
+      { type: 'p', text: 'Ask whether a quoted resolution percentage comes from actual customer traffic or a curated demo. tResolv publishes 86.5% based on real Shopify order data, specifically to make this checkable.' },
       { type: 'h3', id: 'trial-first', text: 'Trial before you commit' },
       { type: 'p', text: 'Because the real test is how a tool performs against your actual order data and your actual customers, a free trial with no credit card required is the most reliable way to evaluate any of these tools, including tResolv.' },
     ],
     faqs: [
       { q: 'What\'s the most important feature to look for?', a: 'How the tool handles financial actions, refunds and cancellations should be staged for human approval, not executed automatically.' },
-      { q: 'Should I trust a vendor\'s resolution-rate claim?', a: 'Ask whether the number comes from live production data or a demo environment, and whether it\'s something you can verify once you\'re using the tool.' },
+      { q: 'Should I trust a vendor\'s resolution-rate claim?', a: 'Ask whether the number comes from actual customer data or a demo environment, and whether it\'s something you can verify once you\'re using the tool.' },
       { q: 'Does the best tool depend on which platform I use?', a: 'Yes, a tool built specifically around Shopify\'s order data will generally outperform a generic platform for Shopify-specific questions.' },
     ],
     relatedLinks: [
