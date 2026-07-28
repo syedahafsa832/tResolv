@@ -3,7 +3,7 @@ export const page = {
   seo: {
     title: 'AI Order Tracking Automation | tResolv',
     description:
-      'tResolv answers "where is my order" automatically using live Shopify fulfillment and tracking data — no manual lookups required.',
+      'tResolv answers "where is my order" automatically using live Shopify fulfillment and tracking data, no manual lookups required.',
     keywords: 'AI order tracking automation, order status automation, AI order status assistant',
   },
   hero: {
@@ -17,7 +17,7 @@ export const page = {
     eyebrow: 'The problem',
     title: 'Order status questions dominate the inbox.',
     paragraphs: [
-      '"Where is my order" is consistently one of the highest-volume support requests for any Shopify brand — and one of the least interesting to answer manually.',
+      '"Where is my order" is consistently one of the highest-volume support requests for any Shopify brand, and one of the least interesting to answer manually.',
       'Every one requires the same lookup: open Shopify, find the order, check fulfillment and tracking, then write essentially the same reply.',
     ],
   },
@@ -28,12 +28,12 @@ export const page = {
     title: 'Live tracking data, drafted automatically.',
     paragraphs: [
       'tResolv matches the incoming email to the customer\'s order, checks the current fulfillment and tracking status in Shopify, and drafts a reply that reflects exactly where the order is right now.',
-      'Because it checks live data every time, the answer is never a stale template — if the order shipped an hour ago, the reply reflects that.',
+      'Because it checks live data every time, the answer is never a stale template, if the order shipped an hour ago, the reply reflects that.',
     ],
     checks: [
-      { label: 'Live fulfillment lookups —', detail: 'checked against Shopify at the moment of reply, not cached.' },
-      { label: 'Automatic order matching —', detail: 'finds the right order even when the customer doesn\'t include a number.' },
-      { label: 'No manual tab-switching —', detail: 'no one on your team has to open Shopify to answer this question.' },
+      { label: 'Live fulfillment lookups:', detail: 'checked against Shopify at the moment of reply, not cached.' },
+      { label: 'Automatic order matching:', detail: 'finds the right order even when the customer doesn\'t include a number.' },
+      { label: 'No manual tab-switching:', detail: 'no one on your team has to open Shopify to answer this question.' },
     ],
   },
   steps: {
@@ -41,7 +41,7 @@ export const page = {
     steps: [
       { num: '01', title: 'Email arrives', body: 'tResolv identifies this as an order-status request and matches it to the customer\'s order.' },
       { num: '02', title: 'Fulfillment is checked live', body: 'Current shipping and tracking status is pulled directly from Shopify.' },
-      { num: '03', title: 'Reply sends automatically', body: 'A grounded, accurate reply is sent — no lookup, no copy-pasting a tracking link.' },
+      { num: '03', title: 'Reply sends automatically', body: 'A grounded, accurate reply is sent, no lookup, no copy-pasting a tracking link.' },
     ],
   },
   features: {
@@ -65,10 +65,10 @@ export const page = {
     ],
   },
   faqs: [
-    { q: 'Does this replace my shipping carrier\'s tracking page?', a: 'No — it answers the support email itself, using the same underlying fulfillment and tracking data, so the customer doesn\'t have to go find that page themselves.' },
+    { q: 'Does this replace my shipping carrier\'s tracking page?', a: 'No, it answers the support email itself, using the same underlying fulfillment and tracking data, so the customer doesn\'t have to go find that page themselves.' },
     { q: 'What if the order hasn\'t shipped yet?', a: 'tResolv explains the current fulfillment status accurately instead of guessing at a ship date.' },
-    { q: 'Does it work with third-party tracking tools?', a: '[Requires validation] — check current integration support before relying on this for a specific tracking provider.' },
-    { q: 'Can it handle "my package says delivered but I don\'t have it"?', a: 'Yes — this is treated as a higher-risk case and can be routed to a human rather than resolved automatically, depending on your confidence threshold.' },
+    { q: 'Does it work with third-party tracking tools?', a: '[Requires validation], check current integration support before relying on this for a specific tracking provider.' },
+    { q: 'Can it handle "my package says delivered but I don\'t have it"?', a: 'Yes, this is treated as a higher-risk case and can be routed to a human rather than resolved automatically, depending on your confidence threshold.' },
   ],
   relatedLinks: [
     { href: '/shopify-ai-customer-support', label: 'Shopify AI Customer Support' },

@@ -1,6 +1,6 @@
 import { SITE } from '@/lib/site';
 
-// Shorter hero band for interior SEO pages — reuses the homepage's dark
+// Shorter hero band for interior SEO pages, reuses the homepage's dark
 // hero styling (.hero, eyebrow, h1) but without the 100vh height or the
 // console mockup, since interior pages have content below the fold.
 export default function PageHero({ eyebrow, title, titleAccent, sub, primaryLabel = 'Start free trial →', secondaryLabel }) {

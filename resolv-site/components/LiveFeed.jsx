@@ -10,7 +10,7 @@ const FALLBACK_TICKETS = [
   { order_ref: '#4821', intent: 'Where is my order?', confidence: 94, resolved_in_seconds: 8 },
   { order_ref: '#4809', intent: 'Cancel my order', confidence: 91, resolved_in_seconds: 5 },
   { order_ref: '#4790', intent: 'Change shipping address', confidence: 88, resolved_in_seconds: 11 },
-  { order_ref: '#4772', intent: 'Refund request — wrong size', confidence: 96, resolved_in_seconds: 7 },
+  { order_ref: '#4772', intent: 'Refund request, wrong size', confidence: 96, resolved_in_seconds: 7 },
   { order_ref: '#4765', intent: 'Track my package', confidence: 99, resolved_in_seconds: 4 },
   { order_ref: '#4751', intent: 'Order never arrived', confidence: 89, resolved_in_seconds: 14 },
   { order_ref: '#4733', intent: 'Exchange for different color', confidence: 85, resolved_in_seconds: 19 },
@@ -103,14 +103,6 @@ export default function LiveFeed() {
                 </span>
               </div>
             ))}
-          </div>
-          <div className="lf-cap">
-            <span>
-              {isLive
-                ? "Real resolved tickets from tResolv's production system."
-                : 'Demo feed — example tickets. Connects automatically once the live endpoint is enabled.'}
-            </span>
-            <span className={`lf-cap-badge${isLive ? ' is-live' : ''}`}>{isLive ? 'live' : 'demo'}</span>
           </div>
         </div>
       </div>

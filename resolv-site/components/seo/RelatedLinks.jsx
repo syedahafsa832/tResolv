@@ -1,6 +1,6 @@
 import Link from 'next/link';
 
-// Internal-linking block — every money/comparison/blog page includes one so
+// Internal-linking block, every money/comparison/blog page includes one so
 // the site forms the hub-and-spoke structure from the SEO architecture doc.
 // `links`: [{ href, label }]
 export default function RelatedLinks({ title = 'Related pages', links }) {

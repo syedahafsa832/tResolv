@@ -17,7 +17,7 @@ export default function ComparisonPage({ data }) {
           <ComparisonTable competitorName={data.table.competitorName} rows={data.table.rows} />
           <p className="disclosure-note">
             Comparison based on publicly available information as of the time of writing. Competitor
-            capabilities change — verify current details on the competitor&apos;s own website before deciding.
+            capabilities change, verify current details on the competitor&apos;s own website before deciding.
           </p>
         </div>
       </section>

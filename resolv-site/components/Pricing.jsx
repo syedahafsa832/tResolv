@@ -2,17 +2,18 @@ const tiers = [
   {
     id: 'starter',
     name: 'Starter',
-    price: '$149',
+    originalPrice: '$149',
+    price: '$99',
     per: '/month',
     desc: 'For brands getting started with AI support.',
-    cta: 'Claim your free spot →',
+    cta: 'Claim your founding spot →',
     href: 'https://app.tresolv.online',
     features: [
-      '1 brand',
-      'Up to 300 conversations per month',
-      'Supervised mode, drafts for your review',
-      'Gmail and Shopify integration',
-      'Chat widget (1 brand)',
+      '1 Shopify brand',
+      '500 conversations per month',
+      'Supervised AI support',
+      'Gmail + Shopify integration',
+      'Chat widget',
       'Email support',
     ],
     featured: false,
@@ -21,19 +22,19 @@ const tiers = [
   {
     id: 'growth',
     name: 'Growth',
-    price: '$349',
+    originalPrice: '$349',
+    price: '$249',
     per: '/month',
-    desc: 'For growing brands that want full autopilot and direct Shopify action execution.',
-    cta: 'Claim your free spot →',
+    desc: 'For growing brands that want full autopilot and Shopify action execution.',
+    cta: 'Claim your founding spot →',
     href: 'https://app.tresolv.online',
     features: [
       'Up to 3 brands',
       'Unlimited conversations',
-      'Autopilot and supervised modes',
-      'Cancel, refund and address execution in Shopify',
-      'Chat widget (up to 3 brands)',
-      'Live tracking updates via Aftership',
-      'Custom confidence threshold',
+      'Autopilot mode',
+      'Shopify actions (refunds, cancellations, updates)',
+      'Chat widget',
+      'AfterShip tracking',
       'Priority support',
     ],
     featured: true,
@@ -66,18 +67,19 @@ export default function Pricing() {
     <section className="section" id="pricing">
       <div className="wrap">
         <div className="eyebrow"><span className="eyebrow-dot" />Pricing</div>
-        <h2 className="section-title">Simple, honest pricing.</h2>
+        <h2 className="section-title">Founding Launch Pricing.</h2>
         <p className="section-sub">
-          No setup fees. No per-ticket charges. Email and chat included in every plan.
+          Locked in for our first 20 brands. No setup fees, no per-ticket charges.
         </p>
         <div className="price-grid">
-          {tiers.map(({ id, name, price, per, desc, cta, href, features, featured, popular }) => (
+          {tiers.map(({ id, name, originalPrice, price, per, desc, cta, href, features, featured, popular }) => (
             <div key={id} className={`price-card${featured ? ' featured' : ''}`}>
               {popular && <div className="price-popular">Most popular</div>}
               <div className="price-tier">{name}</div>
-              <div style={{ display: 'flex', alignItems: 'baseline', gap: 3, marginBottom: 10 }}>
+              <div style={{ display: 'flex', alignItems: 'baseline', gap: 8, marginBottom: 10 }}>
                 {price ? (
                   <>
+                    {originalPrice && <span className="price-original">{originalPrice}</span>}
                     <span className="price-amount">{price}</span>
                     <span className="price-per">{per}</span>
                   </>

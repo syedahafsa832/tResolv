@@ -13,7 +13,7 @@ const POINTS = [
   },
   {
     title: 'Same safety rails',
-    body: 'Every guardrail from email support carries over — confidence scoring, quarantine, and approval-gated financial actions.',
+    body: 'Every guardrail from email support carries over, confidence scoring, quarantine, and approval-gated financial actions.',
   },
 ];
 

@@ -1,4 +1,4 @@
-// Lists only h2-level blocks — the blog's top-level structure.
+// Lists only h2-level blocks, the blog's top-level structure.
 export default function TableOfContents({ blocks }) {
   const headings = blocks.filter((b) => b.type === 'h2');
   if (!headings.length) return null;

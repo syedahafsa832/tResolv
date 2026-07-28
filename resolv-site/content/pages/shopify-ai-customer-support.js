@@ -3,14 +3,14 @@ export const page = {
   seo: {
     title: 'Shopify AI Customer Support | tResolv',
     description:
-      'tResolv connects to your Shopify store and Gmail inbox to answer order, refund, and shipping questions automatically — grounded in your real order data.',
+      'tResolv connects to your Shopify store and Gmail inbox to answer order, refund, and shipping questions automatically, grounded in your real order data.',
     keywords: 'Shopify AI customer support, Shopify AI support, Shopify customer service AI',
   },
   hero: {
     eyebrow: 'Shopify AI Support',
     title: 'AI customer support',
     titleAccent: 'built for Shopify.',
-    sub: 'tResolv reads your Shopify order data before it replies, so answers about shipping, refunds, and cancellations are grounded in what actually happened — not a generic script.',
+    sub: 'tResolv reads your Shopify order data before it replies, so answers about shipping, refunds, and cancellations are grounded in what actually happened, not a generic script.',
     secondaryLabel: 'Install in under 10 minutes.',
   },
   problem: {
@@ -19,7 +19,7 @@ export const page = {
     title: 'Generic helpdesks don\'t know your orders.',
     paragraphs: [
       'Most support tools treat every ticket the same, whether it\'s a marketing question or "where is my order #4471." Agents end up tabbing into Shopify to look up order status, shipping, and refund eligibility for almost every email.',
-      'That lookup step is where most of the time goes — not writing the reply.',
+      'That lookup step is where most of the time goes, not writing the reply.',
     ],
   },
   solution: {
@@ -29,21 +29,21 @@ export const page = {
     title: 'Order-aware replies, not templates.',
     paragraphs: [
       'tResolv is connected directly to your Shopify store. Before it drafts a reply, it checks the order: has it shipped, is it cancelled already, is it eligible for a refund under your policy.',
-      'That context means the AI does not attempt to cancel an order that already shipped, or refund one that was already refunded — the class of mistake that makes AI support feel careless.',
+      'That context means the AI does not attempt to cancel an order that already shipped, or refund one that was already refunded, the class of mistake that makes AI support feel careless.',
     ],
     checks: [
-      { label: 'Live order lookups —', detail: 'every reply about an order is checked against Shopify first.' },
-      { label: 'Policy-aware refund logic —', detail: 'your return-window settings decide what the AI can promise.' },
-      { label: 'Multi-store support —', detail: 'run more than one Shopify brand from a single tResolv console.' },
+      { label: 'Live order lookups:', detail: 'every reply about an order is checked against Shopify first.' },
+      { label: 'Policy-aware refund logic:', detail: 'your return-window settings decide what the AI can promise.' },
+      { label: 'Multi-store support:', detail: 'run more than one Shopify brand from a single tResolv console.' },
     ],
   },
   steps: {
     title: 'From Shopify order to resolved ticket',
     sub: 'No manual lookups. No copy-pasting order numbers between tabs.',
     steps: [
-      { num: '01', title: 'Connect your Shopify store', body: 'tResolv reads order, fulfillment, and customer data the moment you connect — no manual sync required.' },
+      { num: '01', title: 'Connect your Shopify store', body: 'tResolv reads order, fulfillment, and customer data the moment you connect, no manual sync required.' },
       { num: '02', title: 'Customer email arrives', body: 'tResolv matches the email to the right order automatically, even when the customer doesn\'t include the order number.' },
-      { num: '03', title: 'Reply reflects the real order state', body: 'The draft — or the staged refund/cancellation — is built from what Shopify actually shows right now.' },
+      { num: '03', title: 'Reply reflects the real order state', body: 'The draft, or the staged refund/cancellation, is built from what Shopify actually shows right now.' },
     ],
   },
   features: {
@@ -52,7 +52,7 @@ export const page = {
       { icon: 'package', title: 'Order state awareness', body: 'Checks fulfillment and refund status before replying, so it never contradicts what already happened to an order.', note: 'No duplicate actions' },
       { icon: 'refund', title: 'Refund and cancellation actions', body: 'Stages refunds, cancellations, and address changes directly against the Shopify order for your approval.', note: 'Always requires your tap' },
       { icon: 'layers', title: 'Multi-brand console', body: 'Manage every Shopify store you run from one login, with conversations and approvals kept separate per brand.', note: 'One login, every brand' },
-      { icon: 'mail', title: 'Gmail native', body: 'Connects via Google OAuth and processes email inside Google\'s infrastructure — nothing is copied to tResolv\'s servers.', note: 'Emails never leave Google' },
+      { icon: 'mail', title: 'Gmail native', body: 'Connects via Google OAuth and processes email inside Google\'s infrastructure, nothing is copied to tResolv\'s servers.', note: 'Emails never leave Google' },
     ],
   },
   useCases: {

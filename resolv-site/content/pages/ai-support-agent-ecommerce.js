@@ -3,14 +3,14 @@ export const page = {
   seo: {
     title: 'AI Support Agent for Ecommerce | tResolv',
     description:
-      'An AI support agent built for ecommerce brands — resolves routine post-purchase questions automatically and stages every refund or cancellation for approval.',
+      'An AI support agent built for ecommerce brands, resolves routine post-purchase questions automatically and stages every refund or cancellation for approval.',
     keywords: 'AI support agent ecommerce, ecommerce AI support, AI customer support ecommerce',
   },
   hero: {
     eyebrow: 'AI Support Agent for Ecommerce',
     title: 'The support agent',
     titleAccent: 'ecommerce brands actually need.',
-    sub: 'Post-purchase questions — order status, refunds, exchanges, cancellations — are the bulk of ecommerce support. tResolv resolves them automatically and keeps financial actions under your approval.',
+    sub: 'Post-purchase questions, order status, refunds, exchanges, cancellations, are the bulk of ecommerce support. tResolv resolves them automatically and keeps financial actions under your approval.',
   },
   problem: {
     id: 'problem',
@@ -18,7 +18,7 @@ export const page = {
     title: 'Post-purchase support is repetitive by nature.',
     paragraphs: [
       'Ecommerce support tickets are overwhelmingly the same handful of requests: order status, refund requests, cancellations, exchanges, and address corrections.',
-      'General-purpose helpdesk software wasn\'t built around that pattern — it treats every ticket type the same, leaving your team to do the repetitive work by hand.',
+      'General-purpose helpdesk software wasn\'t built around that pattern, it treats every ticket type the same, leaving your team to do the repetitive work by hand.',
     ],
   },
   solution: {
@@ -31,9 +31,9 @@ export const page = {
       'High-confidence, non-financial replies send automatically. Anything involving money always waits for your approval first.',
     ],
     checks: [
-      { label: 'Built for post-purchase support —', detail: 'order status, refunds, exchanges, and cancellations are the core use case, not an afterthought.' },
-      { label: 'Confidence-gated automation —', detail: 'you control how much the AI is trusted to send on its own.' },
-      { label: 'Approval required for money —', detail: 'refunds and cancellations never execute without your tap.' },
+      { label: 'Built for post-purchase support:', detail: 'order status, refunds, exchanges, and cancellations are the core use case, not an afterthought.' },
+      { label: 'Confidence-gated automation:', detail: 'you control how much the AI is trusted to send on its own.' },
+      { label: 'Approval required for money:', detail: 'refunds and cancellations never execute without your tap.' },
     ],
   },
   steps: {
@@ -48,7 +48,7 @@ export const page = {
     title: 'Purpose-built for ecommerce tickets',
     features: [
       { icon: 'bolt', title: 'Resolution engine', body: 'Resolves the majority of routine post-purchase emails without a human touching them.', note: '86.5% resolution rate in production' },
-      { icon: 'shield', title: 'Staged financial actions', body: 'Refunds, cancellations, and exchanges are staged for your one-tap approval — never automatic.', note: 'Zero unauthorized financial actions' },
+      { icon: 'shield', title: 'Staged financial actions', body: 'Refunds, cancellations, and exchanges are staged for your one-tap approval, never automatic.', note: 'Zero unauthorized financial actions' },
       { icon: 'gauge', title: 'Confidence scoring', body: 'Every draft carries a confidence percentage so you know how sure the AI is before anything sends.', note: 'You set the threshold' },
       { icon: 'clock', title: '24/7 coverage', body: 'Support requests are read and answered outside business hours, not just during your team\'s shift.', note: 'No overnight backlog' },
     ],
@@ -56,7 +56,7 @@ export const page = {
   useCases: {
     title: 'What ecommerce brands automate first',
     items: [
-      { title: 'Order status inquiries', body: 'The single most common ticket type — answered instantly with live order data.' },
+      { title: 'Order status inquiries', body: 'The single most common ticket type, answered instantly with live order data.' },
       { title: 'Refund requests', body: 'Checked against your return policy before a refund is staged for approval.' },
       { title: 'Cancellation requests', body: 'Verified against fulfillment status before staging.' },
       { title: 'Exchanges', body: 'Sized and product-swap requests are routed with the relevant order context attached.' },

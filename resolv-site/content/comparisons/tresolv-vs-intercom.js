@@ -1,7 +1,7 @@
 export const page = {
   path: '/tresolv-vs-intercom',
   seo: {
-    title: 'tResolv vs Intercom — AI Customer Support Compared | tResolv',
+    title: 'tResolv vs Intercom | AI Customer Support Compared | tResolv',
     description:
       'How tResolv compares to Intercom for Shopify customer support: a dedicated Shopify AI employee vs. a broad AI-first communication platform.',
     keywords: 'tResolv vs Intercom, Intercom alternative, Intercom comparison',
@@ -21,7 +21,7 @@ export const page = {
     rows: [
       { label: 'Category', resolv: 'AI customer support employee', competitor: 'AI-first customer service platform' },
       { label: 'Primary focus', resolv: 'Shopify order support via Gmail', competitor: 'Broad customer communication across channels' },
-      { label: 'Shopify order-state awareness', resolv: 'Yes — checks live fulfillment and refund status before replying', competitor: '[Requires validation]' },
+      { label: 'Shopify order-state awareness', resolv: 'Yes, checks live fulfillment and refund status before replying', competitor: '[Requires validation]' },
       { label: 'Financial actions always require approval', resolv: true, competitor: '[Requires validation]' },
       { label: 'Confidence score shown on every draft', resolv: true, competitor: '[Requires validation]' },
       { label: 'Setup time', resolv: 'Typically under 10 minutes', competitor: '[Requires validation]' },
@@ -56,9 +56,9 @@ export const page = {
     ],
   },
   faqs: [
-    { q: 'Is Intercom a bad fit for Shopify brands?', a: 'Not necessarily — many businesses use Intercom successfully. The distinction here is scope: Intercom is a broad platform, tResolv is a focused Shopify support employee.' },
-    { q: 'Can tResolv do live chat like Intercom?', a: '[Requires validation] — confirm current chat-channel support before assuming feature parity.' },
-    { q: 'Which is easier to set up?', a: 'tResolv is designed for a fast, no-code setup connecting Gmail and Shopify, typically live within 10 minutes. Setup time for Intercom depends on your configuration — [Requires validation] for a direct comparison.' },
+    { q: 'Is Intercom a bad fit for Shopify brands?', a: 'Not necessarily, many businesses use Intercom successfully. The distinction here is scope: Intercom is a broad platform, tResolv is a focused Shopify support employee.' },
+    { q: 'Can tResolv do live chat like Intercom?', a: '[Requires validation], confirm current chat-channel support before assuming feature parity.' },
+    { q: 'Which is easier to set up?', a: 'tResolv is designed for a fast, no-code setup connecting Gmail and Shopify, typically live within 10 minutes. Setup time for Intercom depends on your configuration, [Requires validation] for a direct comparison.' },
     { q: 'Do both keep financial actions under human approval?', a: 'tResolv always stages refunds, cancellations, and address changes for your one-tap approval. [Requires validation] for Intercom\'s current approval workflow behavior.' },
   ],
   relatedLinks: [

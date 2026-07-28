@@ -1,7 +1,7 @@
 export const page = {
   path: '/tresolv-vs-gorgias',
   seo: {
-    title: 'tResolv vs Gorgias — AI Customer Support Compared | tResolv',
+    title: 'tResolv vs Gorgias | AI Customer Support Compared | tResolv',
     description:
       'How tResolv compares to Gorgias for Shopify customer support: AI employee positioning, staged financial actions, and approval-first governance.',
     keywords: 'tResolv vs Gorgias, Gorgias alternative, Gorgias comparison',
@@ -10,10 +10,10 @@ export const page = {
     eyebrow: 'tResolv vs Gorgias',
     title: 'tResolv vs Gorgias:',
     titleAccent: 'an AI employee vs a helpdesk platform.',
-    sub: 'Both connect to Shopify. The difference is philosophy — Gorgias is a conversational AI platform you operate; tResolv is an AI employee that works the inbox and asks before it touches money.',
+    sub: 'Both connect to Shopify. The difference is philosophy, Gorgias is a conversational AI platform you operate; tResolv is an AI employee that works the inbox and asks before it touches money.',
   },
   intro: [
-    'Gorgias is a well-established conversational AI platform built for ecommerce, with deep Shopify action support. If you already use Gorgias, this page is not trying to tell you it\'s bad — it\'s explaining what tResolv does differently.',
+    'Gorgias is a well-established conversational AI platform built for ecommerce, with deep Shopify action support. If you already use Gorgias, this page is not trying to tell you it\'s bad, it\'s explaining what tResolv does differently.',
     'The core difference is not a feature list. It\'s whether the tool is something your team operates, or something that works on its own and asks for your approval only when money is involved.',
   ],
   table: {
@@ -21,7 +21,7 @@ export const page = {
     rows: [
       { label: 'Category', resolv: 'AI customer support employee', competitor: 'Conversational AI platform for ecommerce' },
       { label: 'Built for Shopify', resolv: true, competitor: true },
-      { label: 'Financial actions always require approval', resolv: 'Yes — refunds, cancellations, and address changes always stage for your one-tap approval', competitor: '[Requires validation]' },
+      { label: 'Financial actions always require approval', resolv: 'Yes, refunds, cancellations, and address changes always stage for your one-tap approval', competitor: '[Requires validation]' },
       { label: 'Confidence score shown on every draft', resolv: true, competitor: '[Requires validation]' },
       { label: 'Gmail-native (no separate inbox)', resolv: true, competitor: '[Requires validation]' },
       { label: 'Published live resolution-rate data', resolv: '86.5%, from live production use', competitor: '[Requires validation]' },
@@ -51,15 +51,15 @@ export const page = {
     eyebrow: 'When tResolv is the better fit',
     title: 'Choose tResolv when governance matters as much as automation.',
     paragraphs: [
-      'If your priority is a platform that resolves conversations autonomously while keeping an explicit, visible approval step on anything financial, tResolv is built around that requirement specifically — not as a setting to configure, but as the default behavior.',
-      'If you need the deepest existing Shopify action library today, evaluate Gorgias\'s current feature set directly — this page is not a substitute for checking their latest documentation.',
+      'If your priority is a platform that resolves conversations autonomously while keeping an explicit, visible approval step on anything financial, tResolv is built around that requirement specifically, not as a setting to configure, but as the default behavior.',
+      'If you need the deepest existing Shopify action library today, evaluate Gorgias\'s current feature set directly, this page is not a substitute for checking their latest documentation.',
     ],
   },
   faqs: [
-    { q: 'We already use Gorgias — why would we switch?', a: 'You may not need to switch entirely. The question worth asking is whether you need another helpdesk platform to operate, or fewer repetitive conversations reaching your team in the first place — that\'s the problem tResolv is built to solve.' },
-    { q: 'Is Gorgias worse than tResolv?', a: 'This page does not claim that. Gorgias has real strengths, particularly its established Shopify action depth. The comparison here is about philosophy — platform vs. employee — not a feature-by-feature "better/worse" claim.' },
+    { q: 'We already use Gorgias, why would we switch?', a: 'You may not need to switch entirely. The question worth asking is whether you need another helpdesk platform to operate, or fewer repetitive conversations reaching your team in the first place, that\'s the problem tResolv is built to solve.' },
+    { q: 'Is Gorgias worse than tResolv?', a: 'This page does not claim that. Gorgias has real strengths, particularly its established Shopify action depth. The comparison here is about philosophy, platform vs. employee, not a feature-by-feature "better/worse" claim.' },
     { q: 'Does tResolv have the same Shopify actions as Gorgias?', a: 'tResolv supports staged refunds, cancellations, exchanges, and address changes, all requiring your approval. For a full feature-by-feature comparison, check Gorgias\'s current documentation directly.' },
-    { q: 'Can I run tResolv alongside Gorgias?', a: '[Requires validation] — this depends on your specific setup and is worth testing directly rather than assuming.' },
+    { q: 'Can I run tResolv alongside Gorgias?', a: '[Requires validation], this depends on your specific setup and is worth testing directly rather than assuming.' },
   ],
   relatedLinks: [
     { href: '/ai-customer-support-employee', label: 'AI Customer Support Employee' },

@@ -1,6 +1,6 @@
 // All 6 blog posts. Each entry: metadata + intro + structured content blocks
 // ({type:'h2'|'h3'|'p'|'ul', ...}) + faqs + relatedLinks + cta.
-// Kept in one file since every post shares the same template — see
+// Kept in one file since every post shares the same template, see
 // components/seo/BlogBody.jsx and app/blog/[slug]/page.jsx.
 
 export const posts = [
@@ -9,16 +9,16 @@ export const posts = [
     title: 'What Is an AI Customer Support Agent?',
     description: 'A plain-language explanation of what an AI customer support agent actually does, how it differs from a chatbot, and where it fits in an ecommerce support workflow.',
     datePublished: '2026-01-15',
-    intro: 'An AI customer support agent is software that reads incoming customer messages, understands what\'s being asked, and either answers directly or takes a defined action — instead of just routing the message to a human.',
+    intro: 'An AI customer support agent is software that reads incoming customer messages, understands what\'s being asked, and either answers directly or takes a defined action, instead of just routing the message to a human.',
     blocks: [
       { type: 'h2', id: 'what-it-does', text: 'What an AI customer support agent actually does' },
       { type: 'p', text: 'At a basic level, an AI customer support agent performs three jobs a human agent would otherwise do: classify the incoming message, look up the relevant context (an order, an account, a policy), and draft or send a response.' },
-      { type: 'p', text: 'The more capable versions go further than replying — they can check the state of an order in a system like Shopify, and stage an action (a refund, a cancellation) rather than just describing what the customer should do next.' },
+      { type: 'p', text: 'The more capable versions go further than replying, they can check the state of an order in a system like Shopify, and stage an action (a refund, a cancellation) rather than just describing what the customer should do next.' },
       { type: 'h2', id: 'agent-vs-chatbot', text: 'How this differs from a basic chatbot' },
       { type: 'p', text: 'A traditional chatbot follows a decision tree: if the customer says X, show response Y. It works for a narrow set of anticipated phrases and breaks down outside that script.' },
       { type: 'p', text: 'An AI customer support agent, in the modern sense, uses a language model to understand open-ended requests written in the customer\'s own words, and grounds its response in live data rather than a fixed script.' },
       { type: 'h2', id: 'where-it-fits', text: 'Where it fits in an ecommerce support workflow' },
-      { type: 'p', text: 'For Shopify brands specifically, the highest-volume support requests are repetitive by nature: order status, refund eligibility, cancellations, and address changes. This is exactly the category of request an AI agent is best suited to handle — the answer depends on data (the order), not judgment.' },
+      { type: 'p', text: 'For Shopify brands specifically, the highest-volume support requests are repetitive by nature: order status, refund eligibility, cancellations, and address changes. This is exactly the category of request an AI agent is best suited to handle, the answer depends on data (the order), not judgment.' },
       { type: 'ul', items: [
         'Order status and tracking questions',
         'Refund and return eligibility checks',
@@ -27,14 +27,14 @@ export const posts = [
         'Policy and FAQ-style questions',
       ] },
       { type: 'h3', id: 'what-stays-with-humans', text: 'What should stay with a human' },
-      { type: 'p', text: 'Anything involving real judgment — a disputed charge, an angry customer, an edge case your policy doesn\'t clearly cover — is better handled by a person. A well-designed AI agent recognizes low-confidence situations and escalates rather than guessing.' },
+      { type: 'p', text: 'Anything involving real judgment, a disputed charge, an angry customer, an edge case your policy doesn\'t clearly cover, is better handled by a person. A well-designed AI agent recognizes low-confidence situations and escalates rather than guessing.' },
       { type: 'h2', id: 'resolv-approach', text: 'How tResolv approaches this' },
       { type: 'p', text: 'tResolv is built specifically as an AI customer support employee for Shopify brands: it reads your Gmail inbox, checks the live Shopify order before replying, and stages any refund, cancellation, or address change for your one-tap approval rather than executing it automatically.' },
     ],
     faqs: [
       { q: 'Is an AI customer support agent the same as a chatbot?', a: 'Not quite. A chatbot typically follows a fixed decision tree. An AI agent understands open-ended language and grounds its response in live data, like an order\'s current status.' },
       { q: 'Can an AI agent handle refunds on its own?', a: 'It depends on the tool. tResolv checks refund eligibility and drafts the response, but stages the actual refund for a human\'s approval rather than executing it automatically.' },
-      { q: 'What kind of support requests are AI agents best at?', a: 'Repetitive, data-dependent requests — order status, cancellations, refund eligibility — where the correct answer depends on looking something up rather than exercising judgment.' },
+      { q: 'What kind of support requests are AI agents best at?', a: 'Repetitive, data-dependent requests, order status, cancellations, refund eligibility, where the correct answer depends on looking something up rather than exercising judgment.' },
     ],
     relatedLinks: [
       { href: '/ai-customer-support-employee', label: 'AI Customer Support Employee' },
@@ -50,13 +50,13 @@ export const posts = [
     title: 'AI Support Agent vs Chatbot: What\'s the Difference?',
     description: 'AI support agents and chatbots get used interchangeably, but they work differently. Here\'s what actually separates them for ecommerce support.',
     datePublished: '2026-01-18',
-    intro: '"AI agent" and "chatbot" often get used as if they mean the same thing. They don\'t — and the difference matters a lot for what you should expect from either one.',
+    intro: '"AI agent" and "chatbot" often get used as if they mean the same thing. They don\'t, and the difference matters a lot for what you should expect from either one.',
     blocks: [
       { type: 'h2', id: 'chatbot-definition', text: 'What a chatbot is built to do' },
       { type: 'p', text: 'A classic chatbot works off a decision tree or a set of trigger phrases. It matches what the customer typed against a list of known patterns and returns a pre-written response. Outside that script, it either fails silently or hands off to a human.' },
-      { type: 'p', text: 'This works fine for simple, predictable questions — store hours, return policy links — but breaks down the moment a customer phrases something unexpectedly.' },
+      { type: 'p', text: 'This works fine for simple, predictable questions, store hours, return policy links, but breaks down the moment a customer phrases something unexpectedly.' },
       { type: 'h2', id: 'agent-definition', text: 'What an AI agent is built to do' },
-      { type: 'p', text: 'An AI agent uses a language model to understand the intent behind a message however it\'s phrased, then grounds its answer in real data — an order\'s shipping status, a return policy\'s actual window — rather than a static script.' },
+      { type: 'p', text: 'An AI agent uses a language model to understand the intent behind a message however it\'s phrased, then grounds its answer in real data, an order\'s shipping status, a return policy\'s actual window, rather than a static script.' },
       { type: 'p', text: 'The practical difference shows up immediately: a chatbot answers "where is my order" with a generic shipping policy link. An AI agent checks the specific order and answers with its actual status.' },
       { type: 'h2', id: 'key-differences', text: 'The key differences, side by side' },
       { type: 'ul', items: [
@@ -66,13 +66,13 @@ export const posts = [
         'Chatbots fail silently outside their script; well-built AI agents escalate to a human when uncertain.',
       ] },
       { type: 'h3', id: 'confidence-scoring', text: 'Why confidence scoring matters here' },
-      { type: 'p', text: 'The best AI agents don\'t just generate an answer — they attach a confidence score to it, so a human can see how sure the system is before anything sends automatically. This is the mechanism that keeps an AI agent from behaving like an overconfident chatbot.' },
+      { type: 'p', text: 'The best AI agents don\'t just generate an answer, they attach a confidence score to it, so a human can see how sure the system is before anything sends automatically. This is the mechanism that keeps an AI agent from behaving like an overconfident chatbot.' },
       { type: 'h2', id: 'which-for-ecommerce', text: 'Which one ecommerce support actually needs' },
-      { type: 'p', text: 'For Shopify brands, most support volume is order-related and data-dependent. That\'s the exact category where a chatbot\'s fixed scripts fall short and an AI agent\'s live data grounding pays off — provided financial actions still require human approval.' },
+      { type: 'p', text: 'For Shopify brands, most support volume is order-related and data-dependent. That\'s the exact category where a chatbot\'s fixed scripts fall short and an AI agent\'s live data grounding pays off, provided financial actions still require human approval.' },
     ],
     faqs: [
-      { q: 'Is a chatbot ever the right choice?', a: 'For very simple, static questions — hours, location, a policy link — a basic chatbot can be sufficient. It struggles as soon as questions require real data or vary in phrasing.' },
-      { q: 'Do AI agents replace chatbots entirely?', a: 'For ecommerce support specifically, yes in most cases — order-related questions need live data a static chatbot can\'t provide.' },
+      { q: 'Is a chatbot ever the right choice?', a: 'For very simple, static questions, hours, location, a policy link, a basic chatbot can be sufficient. It struggles as soon as questions require real data or vary in phrasing.' },
+      { q: 'Do AI agents replace chatbots entirely?', a: 'For ecommerce support specifically, yes in most cases, order-related questions need live data a static chatbot can\'t provide.' },
       { q: 'Can an AI agent make mistakes like a chatbot can?', a: 'Any automated system can make mistakes. The difference is that a well-built AI agent shows a confidence score and escalates uncertain cases instead of guessing with false confidence.' },
     ],
     relatedLinks: [
@@ -87,17 +87,17 @@ export const posts = [
   {
     slug: 'how-shopify-stores-automate-customer-support',
     title: 'How Shopify Stores Automate Customer Support',
-    description: 'A practical look at how Shopify brands automate repetitive support work — order status, refunds, cancellations — without losing control of financial decisions.',
+    description: 'A practical look at how Shopify brands automate repetitive support work, order status, refunds, cancellations, without losing control of financial decisions.',
     datePublished: '2026-01-22',
     intro: 'Shopify support tickets follow a predictable pattern: order status, refunds, cancellations, and address changes make up the bulk of the inbox. Here\'s how brands actually automate that pattern.',
     blocks: [
       { type: 'h2', id: 'the-pattern', text: 'The pattern behind most Shopify support tickets' },
       { type: 'p', text: 'Across Shopify brands, a small number of request types account for most support volume: "where is my order," refund requests, cancellation requests, and address corrections. These are largely data-lookup problems, not judgment calls.' },
-      { type: 'p', text: 'That predictability is exactly what makes this category automatable — the correct answer to "where is my order #4471" is deterministic once you check the order.' },
+      { type: 'p', text: 'That predictability is exactly what makes this category automatable, the correct answer to "where is my order #4471" is deterministic once you check the order.' },
       { type: 'h2', id: 'connecting-the-stack', text: 'Connecting Gmail and Shopify' },
       { type: 'p', text: 'The first step in automating Shopify support is connecting the two systems that matter: the inbox where customers write in, and the Shopify store that holds the order data. Once connected, incoming email can be automatically matched to the relevant order.' },
       { type: 'h2', id: 'classify-and-ground', text: 'Classifying the request and grounding the reply' },
-      { type: 'p', text: 'Each incoming email gets classified by intent — order status, refund, cancellation, or something else — and the reply is drafted using the order\'s actual current state, not a generic template.' },
+      { type: 'p', text: 'Each incoming email gets classified by intent, order status, refund, cancellation, or something else, and the reply is drafted using the order\'s actual current state, not a generic template.' },
       { type: 'ul', items: [
         'Order status: checked against live fulfillment and tracking data',
         'Refund requests: checked against your return-window policy',
@@ -107,12 +107,12 @@ export const posts = [
       { type: 'h3', id: 'staged-actions', text: 'Staging financial actions instead of automating them blindly' },
       { type: 'p', text: 'The part brands are usually most cautious about is anything involving money. A well-designed automation stages the resulting refund or cancellation for a human\'s approval rather than executing it the moment confidence looks high enough.' },
       { type: 'h2', id: 'measuring-it', text: 'Measuring what\'s actually working' },
-      { type: 'p', text: 'The clearest signal of whether automation is working is a resolution rate measured against live production traffic, not a lab demo — and a record of zero unauthorized financial actions, since that\'s the failure mode brands worry about most.' },
+      { type: 'p', text: 'The clearest signal of whether automation is working is a resolution rate measured against live production traffic, not a lab demo, and a record of zero unauthorized financial actions, since that\'s the failure mode brands worry about most.' },
     ],
     faqs: [
-      { q: 'Do I need developer help to automate Shopify support?', a: 'Tools built specifically for this, like tResolv, are designed for a no-code setup — connecting Gmail and Shopify typically takes under 10 minutes.' },
-      { q: 'What if my brand has unusual return policies?', a: 'Automation should be checked against your store\'s actual configured policy, not a generic assumption — this is a configuration step worth verifying before going live.' },
-      { q: 'Is it safe to automate refunds?', a: 'The safer pattern is automating the draft and eligibility check, then staging the refund itself for human approval — not letting the system execute refunds unattended.' },
+      { q: 'Do I need developer help to automate Shopify support?', a: 'Tools built specifically for this, like tResolv, are designed for a no-code setup, connecting Gmail and Shopify typically takes under 10 minutes.' },
+      { q: 'What if my brand has unusual return policies?', a: 'Automation should be checked against your store\'s actual configured policy, not a generic assumption, this is a configuration step worth verifying before going live.' },
+      { q: 'Is it safe to automate refunds?', a: 'The safer pattern is automating the draft and eligibility check, then staging the refund itself for human approval, not letting the system execute refunds unattended.' },
     ],
     relatedLinks: [
       { href: '/shopify-ai-customer-support', label: 'Shopify AI Customer Support' },
@@ -135,7 +135,7 @@ export const posts = [
       { type: 'h2', id: 'inbox-fit', text: '1. Does it work with the inbox you already use?' },
       { type: 'p', text: 'Some tools require migrating to a new helpdesk interface. Others, like tResolv, connect directly to the Gmail address you already use for support, so there\'s no change to what your customers see.' },
       { type: 'h2', id: 'order-awareness', text: '2. Does it check live order data, or just answer generically?' },
-      { type: 'p', text: 'A tool that grounds every reply in the order\'s current Shopify state will avoid the class of mistake that makes AI support feel careless — like offering to cancel an order that already shipped.' },
+      { type: 'p', text: 'A tool that grounds every reply in the order\'s current Shopify state will avoid the class of mistake that makes AI support feel careless, like offering to cancel an order that already shipped.' },
       { type: 'h2', id: 'financial-governance', text: '3. How does it handle refunds and cancellations?' },
       { type: 'p', text: 'This is the single most important question for most brands. Look specifically for whether financial actions are staged for approval by default, or whether that\'s an optional setting you have to remember to configure.' },
       { type: 'ul', items: [
@@ -146,12 +146,12 @@ export const posts = [
       { type: 'h2', id: 'resolution-transparency', text: '4. Is the resolution rate real, or a marketing number?' },
       { type: 'p', text: 'Ask whether a quoted resolution percentage comes from live production traffic or a curated demo. tResolv publishes 86.5% as a live production figure specifically to make this checkable.' },
       { type: 'h3', id: 'trial-first', text: 'Trial before you commit' },
-      { type: 'p', text: 'Because the real test is how a tool performs against your actual order data and your actual customers, a free trial with no credit card required is the most reliable way to evaluate any of these tools — including tResolv.' },
+      { type: 'p', text: 'Because the real test is how a tool performs against your actual order data and your actual customers, a free trial with no credit card required is the most reliable way to evaluate any of these tools, including tResolv.' },
     ],
     faqs: [
-      { q: 'What\'s the most important feature to look for?', a: 'How the tool handles financial actions — refunds and cancellations should be staged for human approval, not executed automatically.' },
+      { q: 'What\'s the most important feature to look for?', a: 'How the tool handles financial actions, refunds and cancellations should be staged for human approval, not executed automatically.' },
       { q: 'Should I trust a vendor\'s resolution-rate claim?', a: 'Ask whether the number comes from live production data or a demo environment, and whether it\'s something you can verify once you\'re using the tool.' },
-      { q: 'Does the best tool depend on which platform I use?', a: 'Yes — a tool built specifically around Shopify\'s order data will generally outperform a generic platform for Shopify-specific questions.' },
+      { q: 'Does the best tool depend on which platform I use?', a: 'Yes, a tool built specifically around Shopify\'s order data will generally outperform a generic platform for Shopify-specific questions.' },
     ],
     relatedLinks: [
       { href: '/ai-customer-support-employee', label: 'AI Customer Support Employee' },
@@ -164,18 +164,18 @@ export const posts = [
   {
     slug: 'how-to-reduce-ecommerce-support-tickets',
     title: 'How to Reduce Ecommerce Support Tickets',
-    description: 'Practical ways to reduce repetitive ecommerce support volume — from proactive order updates to AI-resolved routine tickets.',
+    description: 'Practical ways to reduce repetitive ecommerce support volume, from proactive order updates to AI-resolved routine tickets.',
     datePublished: '2026-02-03',
-    intro: 'Reducing ticket volume isn\'t about ignoring customers — it\'s about resolving the repetitive requests before they need a human, and answering the rest faster.',
+    intro: 'Reducing ticket volume isn\'t about ignoring customers, it\'s about resolving the repetitive requests before they need a human, and answering the rest faster.',
     blocks: [
       { type: 'h2', id: 'why-volume-grows', text: 'Why support volume grows faster than headcount' },
-      { type: 'p', text: 'As an ecommerce brand grows, order volume grows — and so does the number of "where is my order" and "I want a refund" emails. Hiring proportionally to match that growth isn\'t sustainable for most brands.' },
+      { type: 'p', text: 'As an ecommerce brand grows, order volume grows, and so does the number of "where is my order" and "I want a refund" emails. Hiring proportionally to match that growth isn\'t sustainable for most brands.' },
       { type: 'h2', id: 'proactive-communication', text: '1. Reduce tickets before they\'re written' },
-      { type: 'p', text: 'A meaningful share of order-status tickets can be prevented with clear, proactive shipping and delay communication — customers who already know their order is delayed are less likely to email asking.' },
+      { type: 'p', text: 'A meaningful share of order-status tickets can be prevented with clear, proactive shipping and delay communication, customers who already know their order is delayed are less likely to email asking.' },
       { type: 'h2', id: 'self-serve', text: '2. Make policy information easy to find' },
       { type: 'p', text: 'Clear, visible return and refund policy pages reduce the volume of "can I return this" questions that would otherwise become tickets requiring a reply.' },
       { type: 'h2', id: 'automate-the-rest', text: '3. Automate what remains with AI, not a script' },
-      { type: 'p', text: 'For the tickets that do arrive, an AI agent that checks live order data can resolve routine requests — order status, refund eligibility, cancellations — without a human touching them, while staging anything financial for approval.' },
+      { type: 'p', text: 'For the tickets that do arrive, an AI agent that checks live order data can resolve routine requests, order status, refund eligibility, cancellations, without a human touching them, while staging anything financial for approval.' },
       { type: 'ul', items: [
         'Order status and tracking questions resolved automatically',
         'Refund eligibility checked against your policy before a human reviews it',
@@ -183,13 +183,13 @@ export const posts = [
         'Only genuinely uncertain or sensitive requests reach a person',
       ] },
       { type: 'h3', id: 'measure-resolution', text: 'Track resolution rate, not just ticket count' },
-      { type: 'p', text: 'The useful metric isn\'t how many tickets come in — it\'s what percentage get resolved without a human. That number tells you whether your reduction efforts (proactive comms, self-serve policy pages, AI resolution) are actually working.' },
+      { type: 'p', text: 'The useful metric isn\'t how many tickets come in, it\'s what percentage get resolved without a human. That number tells you whether your reduction efforts (proactive comms, self-serve policy pages, AI resolution) are actually working.' },
       { type: 'h2', id: 'what-not-to-automate', text: 'What you shouldn\'t try to reduce' },
-      { type: 'p', text: 'Don\'t optimize away genuine escalations — angry customers, disputed charges, and edge cases still need a human, and a good system routes them there instead of suppressing them.' },
+      { type: 'p', text: 'Don\'t optimize away genuine escalations, angry customers, disputed charges, and edge cases still need a human, and a good system routes them there instead of suppressing them.' },
     ],
     faqs: [
       { q: 'What\'s the fastest way to reduce ticket volume?', a: 'Proactive shipping communication typically has the fastest impact, since it prevents a large share of "where is my order" emails before they\'re written.' },
-      { q: 'Is automating support the same as ignoring customers?', a: 'No — the goal is resolving repetitive, data-dependent requests automatically so humans can focus on the requests that need judgment.' },
+      { q: 'Is automating support the same as ignoring customers?', a: 'No, the goal is resolving repetitive, data-dependent requests automatically so humans can focus on the requests that need judgment.' },
       { q: 'How do I know if my automation is actually working?', a: 'Track the percentage of tickets resolved without human involvement, measured against live traffic, not a demo or pilot period.' },
     ],
     relatedLinks: [
@@ -204,29 +204,29 @@ export const posts = [
   {
     slug: 'ai-automation-for-shopify-stores',
     title: 'AI Automation for Shopify Stores: A Practical Overview',
-    description: 'What AI automation actually looks like for a Shopify store\'s customer support — beyond the buzzwords, with a focus on what should stay human.',
+    description: 'What AI automation actually looks like for a Shopify store\'s customer support, beyond the buzzwords, with a focus on what should stay human.',
     datePublished: '2026-02-10',
-    intro: 'AI automation for Shopify stores means something specific in a support context: reading email, checking real order data, and resolving the repetitive part — while keeping financial decisions with a person.',
+    intro: 'AI automation for Shopify stores means something specific in a support context: reading email, checking real order data, and resolving the repetitive part, while keeping financial decisions with a person.',
     blocks: [
       { type: 'h2', id: 'what-automation-means-here', text: 'What "AI automation" means for support specifically' },
-      { type: 'p', text: 'In the context of Shopify customer support, AI automation means an inbox that reads incoming email, classifies it, checks the relevant order in Shopify, and either replies or stages an action — without requiring a human to do that lookup manually.' },
+      { type: 'p', text: 'In the context of Shopify customer support, AI automation means an inbox that reads incoming email, classifies it, checks the relevant order in Shopify, and either replies or stages an action, without requiring a human to do that lookup manually.' },
       { type: 'h2', id: 'the-building-blocks', text: 'The building blocks of a working system' },
       { type: 'ul', items: [
-        'Inbox connection — reading email where your customers already write in, typically Gmail',
-        'Order-state awareness — checking Shopify before replying, not answering blind',
-        'Confidence scoring — a visible measure of how sure the AI is before anything sends',
-        'Approval gating — refunds, cancellations, and address changes staged, not automatic',
-        'Escalation — low-confidence or sensitive conversations routed to a human',
+        'Inbox connection, reading email where your customers already write in, typically Gmail',
+        'Order-state awareness, checking Shopify before replying, not answering blind',
+        'Confidence scoring, a visible measure of how sure the AI is before anything sends',
+        'Approval gating, refunds, cancellations, and address changes staged, not automatic',
+        'Escalation, low-confidence or sensitive conversations routed to a human',
       ] },
       { type: 'h2', id: 'multi-brand', text: 'Automation across multiple Shopify stores' },
       { type: 'p', text: 'Brands running more than one Shopify store benefit from a single console that keeps each store\'s conversations, approvals, and settings separate, rather than duplicating the setup per store.' },
       { type: 'h3', id: 'quarantine', text: 'Filtering out what shouldn\'t reach the AI at all' },
-      { type: 'p', text: 'A meaningful part of automation is what gets filtered before the AI even sees it — promotional email, automated notifications, and email-loop risks should be quarantined so they don\'t distort resolution numbers or waste AI drafting effort.' },
+      { type: 'p', text: 'A meaningful part of automation is what gets filtered before the AI even sees it, promotional email, automated notifications, and email-loop risks should be quarantined so they don\'t distort resolution numbers or waste AI drafting effort.' },
       { type: 'h2', id: 'getting-started', text: 'Getting started' },
       { type: 'p', text: 'For most Shopify brands, getting started means connecting Gmail and Shopify, setting a confidence threshold, and reviewing the first batch of AI-drafted replies before turning on full autopilot for routine requests.' },
     ],
     faqs: [
-      { q: 'Is AI automation only for large Shopify stores?', a: 'No — the repetitive-ticket pattern (order status, refunds, cancellations) exists at any order volume, and small teams often benefit the most from automating it.' },
+      { q: 'Is AI automation only for large Shopify stores?', a: 'No, the repetitive-ticket pattern (order status, refunds, cancellations) exists at any order volume, and small teams often benefit the most from automating it.' },
       { q: 'Does automation replace my support team?', a: 'It\'s built to absorb the repetitive share of requests, freeing your team to focus on escalations and judgment calls rather than replacing the team outright.' },
       { q: 'How do I control how much the AI automates on its own?', a: 'A confidence threshold you set determines what sends automatically versus what queues for review, and financial actions require approval regardless of that setting.' },
     ],

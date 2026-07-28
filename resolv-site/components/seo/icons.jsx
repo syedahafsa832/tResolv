@@ -1,4 +1,4 @@
-// Small shared icon set for feature/use-case grids on SEO pages — same
+// Small shared icon set for feature/use-case grids on SEO pages, same
 // stroke style (18x18, currentColor, strokeWidth 2) as the homepage's
 // Features.jsx so new pages look consistent instead of introducing a new
 // icon language. Referenced by name from data files.

@@ -3,7 +3,7 @@ import { SITE, absoluteUrl } from './site';
 /**
  * Builds a Next.js `metadata` export object: title, description, canonical,
  * Open Graph, and Twitter card. Every SEO page should build its metadata
- * through this function instead of hand-rolling the object — keeps the
+ * through this function instead of hand-rolling the object, keeps the
  * canonical/OG shape consistent across all ~20 pages.
  */
 export function buildMetadata({ title, description, path, keywords }) {
@@ -69,7 +69,7 @@ export function faqPageSchema(faqs) {
   };
 }
 
-/** BreadcrumbList JSON-LD. `items` is an array of { label, path } — path is optional on the last (current) item. */
+/** BreadcrumbList JSON-LD. `items` is an array of { label, path }, path is optional on the last (current) item. */
 export function breadcrumbListSchema(items) {
   return {
     '@context': 'https://schema.org',

@@ -5,14 +5,14 @@ import { useEffect, useRef, useState } from 'react';
 const SCENARIOS = [
   {
     customer: 'Where is my order #1007?',
-    order: { id: '#1007', badge: 'shipped', badgeLabel: 'Shipped', item: 'Oversized Hoodie — Black, M', price: '$58.00' },
-    luna: "Order #1007 shipped Tuesday — it's in transit and expected to arrive Thursday. Tracking is in your email!",
+    order: { id: '#1007', badge: 'shipped', badgeLabel: 'Shipped', item: 'Oversized Hoodie, Black, M', price: '$58.00' },
+    luna: "Order #1007 shipped Tuesday, it's in transit and expected to arrive Thursday. Tracking is in your email!",
     stamp: '✓ Resolved in 6s',
   },
   {
     customer: 'Can I cancel order #2214?',
     order: { id: '#2214', badge: 'processing', badgeLabel: 'Processing', item: 'Canvas Tote Bag', price: '$24.00' },
-    luna: "I've staged a cancellation for order #2214 — it's now waiting on the merchant's one-tap approval.",
+    luna: "I've staged a cancellation for order #2214, it's now waiting on the merchant's one-tap approval.",
     stamp: '✓ Staged in 4s',
   },
 ];

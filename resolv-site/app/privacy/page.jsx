@@ -24,7 +24,7 @@ export default function PrivacyPage() {
 
           <h2>What we collect and why</h2>
           <p><strong>When you sign up as a merchant</strong>, we collect your email address and organisation name. We need this to create and manage your account.</p>
-          <p><strong>When you connect Gmail</strong>, we access your support inbox to read incoming customer emails and send replies on your behalf. We only read emails in your inbox — nothing else in your Gmail account.</p>
+          <p><strong>When you connect Gmail</strong>, we access your support inbox to read incoming customer emails and send replies on your behalf. We only read emails in your inbox, nothing else in your Gmail account.</p>
           <p><strong>When you connect Shopify</strong>, we access order data (order number, items, status, customer name, shipping address) to help our AI give accurate answers to your customers.</p>
           <p><strong>Usage data</strong>: we collect basic analytics like ticket counts and resolution rates to help us improve the product and show you your dashboard stats.</p>
 
@@ -49,11 +49,11 @@ export default function PrivacyPage() {
           <h2>Who we share data with</h2>
           <p>We use a small number of trusted services to run tResolv:</p>
           <ul className="provider-list">
-            <li><strong>Mistral AI</strong> (France, EU) — powers our AI replies</li>
-            <li><strong>Supabase</strong> (EU region) — stores your account and ticket data</li>
-            <li><strong>Google Gmail API</strong> — reads and sends emails via your connected account</li>
-            <li><strong>Render.com</strong> — hosts our backend</li>
-            <li><strong>Vercel</strong> — hosts our dashboard</li>
+            <li><strong>Mistral AI</strong> (France, EU), powers our AI replies</li>
+            <li><strong>Supabase</strong> (EU region), stores your account and ticket data</li>
+            <li><strong>Google Gmail API</strong>, reads and sends emails via your connected account</li>
+            <li><strong>Render.com</strong>, hosts our backend</li>
+            <li><strong>Vercel</strong>, hosts our dashboard</li>
           </ul>
           <p>None of these providers are permitted to use your data for their own purposes.</p>
 
@@ -70,7 +70,7 @@ export default function PrivacyPage() {
           <hr className="privacy-divider" />
 
           <h2>Lawful basis</h2>
-          <p>We process support email data under <strong>legitimate interests</strong> — specifically, acting as a data processor on behalf of the merchant to provide the service they&apos;ve signed up for. Account data is processed under <strong>contract</strong>. We&apos;ve assessed that these interests do not override the rights of individuals whose data is processed.</p>
+          <p>We process support email data under <strong>legitimate interests</strong>, specifically, acting as a data processor on behalf of the merchant to provide the service they&apos;ve signed up for. Account data is processed under <strong>contract</strong>. We&apos;ve assessed that these interests do not override the rights of individuals whose data is processed.</p>
 
           <hr className="privacy-divider" />
 

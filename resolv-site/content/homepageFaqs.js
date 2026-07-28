@@ -1,9 +1,9 @@
-// Shared with app/page.jsx (FAQPage schema) and components/FAQ.jsx (rendered accordion) —
+// Shared with app/page.jsx (FAQPage schema) and components/FAQ.jsx (rendered accordion):
 // keep this the single source so the schema never drifts from what's on the page.
 export const faqs = [
   {
     q: 'What happens after my free trial?',
-    a: "You get 14 days of full access, no credit card required. We're a new product proving ourselves against companies with hundreds of millions in funding, so the fastest way to prove tResolv works is to let it work for real brands and let the results speak. When your trial ends, we'll ask you directly if you want to continue on a paid plan — no surprise charges, no auto-billing.",
+    a: "You get 14 days of full access, no credit card required. We're a new product proving ourselves against companies with hundreds of millions in funding, so the fastest way to prove tResolv works is to let it work for real brands and let the results speak. When your trial ends, we'll ask you directly if you want to continue on a paid plan, no surprise charges, no auto-billing.",
   },
   {
     q: 'Does the chat widget replace my email support?',

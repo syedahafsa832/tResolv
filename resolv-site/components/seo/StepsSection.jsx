@@ -1,4 +1,4 @@
-// "How it works" — reuses the homepage's numbered .steps pattern.
+// "How it works", reuses the homepage's numbered .steps pattern.
 export default function StepsSection({ id = 'how-it-works', eyebrow = 'How it works', title, sub, steps }) {
   return (
     <section className="section" id={id}>

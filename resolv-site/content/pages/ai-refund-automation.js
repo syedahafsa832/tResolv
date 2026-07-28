@@ -3,14 +3,14 @@ export const page = {
   seo: {
     title: 'AI Refund Automation | tResolv',
     description:
-      'tResolv drafts refund responses and stages the Shopify refund for your one-tap approval — it never issues a refund without you.',
+      'tResolv drafts refund responses and stages the Shopify refund for your one-tap approval, it never issues a refund without you.',
     keywords: 'AI refund automation, refund automation Shopify, AI refund assistant',
   },
   hero: {
     eyebrow: 'AI Refund Automation',
     title: 'Refunds, drafted.',
     titleAccent: 'Never sent without you.',
-    sub: 'tResolv checks a refund request against the order and your return policy, drafts the response, and stages the Shopify refund for your one-tap approval — every time.',
+    sub: 'tResolv checks a refund request against the order and your return policy, drafts the response, and stages the Shopify refund for your one-tap approval, every time.',
   },
   problem: {
     id: 'problem',
@@ -18,7 +18,7 @@ export const page = {
     title: 'Refunds are the request brands trust AI with least.',
     paragraphs: [
       'Refund requests need real judgment: is the order eligible, is it within the return window, has it already been refunded. Getting it wrong costs money or damages trust.',
-      'That is exactly why most brands won\'t let AI touch refunds at all — even though the reply itself (checking eligibility, explaining the process) is repetitive work.',
+      'That is exactly why most brands won\'t let AI touch refunds at all, even though the reply itself (checking eligibility, explaining the process) is repetitive work.',
     ],
   },
   solution: {
@@ -27,13 +27,13 @@ export const page = {
     eyebrow: 'The solution',
     title: 'AI drafts it. You approve it.',
     paragraphs: [
-      'tResolv checks the order against your return policy and current refund status, then drafts a reply and stages the refund in Shopify — but the refund itself does not execute until you tap approve.',
+      'tResolv checks the order against your return policy and current refund status, then drafts a reply and stages the refund in Shopify, but the refund itself does not execute until you tap approve.',
       'This is a deliberate design choice, not a limitation: the repetitive part (checking eligibility, writing the response) is automated, and the part with real financial consequence stays with you.',
     ],
     checks: [
-      { label: 'Never executes automatically —', detail: 'every refund waits for your one-tap approval, regardless of confidence score.' },
-      { label: 'Checked against your policy —', detail: 'eligibility is evaluated using your actual return window and rules.' },
-      { label: 'No duplicate refunds —', detail: 'checks whether the order was already refunded before staging anything.' },
+      { label: 'Never executes automatically:', detail: 'every refund waits for your one-tap approval, regardless of confidence score.' },
+      { label: 'Checked against your policy:', detail: 'eligibility is evaluated using your actual return window and rules.' },
+      { label: 'No duplicate refunds:', detail: 'checks whether the order was already refunded before staging anything.' },
     ],
   },
   steps: {
@@ -58,7 +58,7 @@ export const page = {
     items: [
       { title: 'Standard return-window refunds', body: 'Checked against your policy and staged for approval.' },
       { title: 'Damaged or defective items', body: 'Drafted with an empathetic response and staged as a refund or replacement candidate.' },
-      { title: 'Partial refunds', body: '[Requires validation] — confirm current support for partial vs. full refund staging in your plan.' },
+      { title: 'Partial refunds', body: '[Requires validation], confirm current support for partial vs. full refund staging in your plan.' },
       { title: 'Already-refunded orders', body: 'Recognized and explained instead of staging a duplicate action.' },
       { title: 'Out-of-window requests', body: 'Drafted with a policy-accurate explanation rather than an automatic refund.' },
       { title: 'Escalated disputes', body: 'Handed to a human when the situation falls outside your confidence threshold.' },
@@ -68,7 +68,7 @@ export const page = {
     { q: 'Can tResolv issue a refund without my approval?', a: 'No. Every refund is staged and requires your one-tap approval before it executes in Shopify, regardless of confidence level.' },
     { q: 'How does it decide if an order is refund-eligible?', a: 'It checks the order\'s current state and your store\'s configured return-window and policy settings.' },
     { q: 'What if a customer asks for a refund on an already-refunded order?', a: 'tResolv checks the live order state, recognizes it was already refunded, and drafts an explanation instead of staging a duplicate refund.' },
-    { q: 'Can I set rules for which refunds need extra review?', a: '[Requires validation] — confirm current configuration options for refund-specific approval rules.' },
+    { q: 'Can I set rules for which refunds need extra review?', a: '[Requires validation], confirm current configuration options for refund-specific approval rules.' },
   ],
   relatedLinks: [
     { href: '/ai-return-automation', label: 'AI Return Automation' },

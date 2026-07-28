@@ -1,4 +1,4 @@
-// Visual breadcrumb trail. `items` is [{ label, path? }] — the last item
+// Visual breadcrumb trail. `items` is [{ label, path? }], the last item
 // (current page) should omit `path` since it isn't a link.
 export default function Breadcrumbs({ items }) {
   if (!items || items.length === 0) return null;
