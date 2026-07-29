@@ -14,7 +14,7 @@ export default function Hero() {
             Your AI<br />support<br /><span className="accent">employee</span>
           </h1>
           <p className="hero-sub">
-            tResolv reads your inbox, handles live chat on your storefront, and resolves <strong>86.5%</strong> of
+            tResolv reads your inbox, handles live chat on your storefront, and resolves routine
             customer support tickets without you lifting a finger. Every refund and cancellation requires your
             one-tap approval.
           </p>
@@ -37,7 +37,7 @@ export default function Hero() {
               <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                 <path d="M13 2 3 14h9l-1 8 10-12h-9l1-8z" />
               </svg>
-              10× cheaper than Gorgias.
+              Built to reduce support cost and complexity.
             </span>
           </div>
         </div>

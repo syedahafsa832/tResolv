@@ -17,7 +17,7 @@ import { faqs as homepageFaqs } from '@/content/homepageFaqs';
 export const metadata = buildMetadata({
   title: 'tResolv | AI Support Employee for Shopify Brands',
   description:
-    'tResolv reads your inbox, handles live chat on your storefront, and resolves 86.5% of customer support tickets automatically. Every refund and cancellation requires your one-tap approval.',
+    'tResolv reads your inbox, handles live chat on your storefront, and resolves routine customer support tickets automatically. Every refund and cancellation requires your one-tap approval.',
   path: '/',
 });
 

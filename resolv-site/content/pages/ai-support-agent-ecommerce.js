@@ -47,7 +47,7 @@ export const page = {
   features: {
     title: 'Purpose-built for ecommerce tickets',
     features: [
-      { icon: 'bolt', title: 'Resolution engine', body: 'Resolves the majority of routine post-purchase emails without a human touching them.', note: '86.5% resolution rate across real Shopify workflows' },
+      { icon: 'bolt', title: 'Resolution engine', body: 'Resolves the majority of routine post-purchase emails without a human touching them.', note: 'Handles routine post-purchase emails automatically' },
       { icon: 'shield', title: 'Staged financial actions', body: 'Refunds, cancellations, and exchanges are staged for your one-tap approval, never automatic.', note: 'Zero unauthorized financial actions' },
       { icon: 'gauge', title: 'Confidence scoring', body: 'Every draft carries a confidence percentage so you know how sure the AI is before anything sends.', note: 'You set the threshold' },
       { icon: 'clock', title: '24/7 coverage', body: 'Support requests are read and answered outside business hours, not just during your team\'s shift.', note: 'No overnight backlog' },
@@ -68,7 +68,7 @@ export const page = {
     { q: 'How is this different from a live chat widget?', a: 'tResolv works inside your email inbox, where most ecommerce support actually happens, rather than only inside an on-site chat widget.' },
     { q: 'Does it require a developer to set up?', a: 'No. Connecting Gmail and Shopify takes about 10 minutes and requires no code.' },
     { q: 'Can I control how aggressive the automation is?', a: 'Yes. The confidence threshold is yours to set, and financial actions always require approval regardless of that setting.' },
-    { q: 'What ecommerce platforms does this work with?', a: 'tResolv is built Shopify-first. Support for other ecommerce platforms is not currently confirmed.' },
+    { q: 'What ecommerce platforms does this work with?', a: 'tResolv is built specifically for Shopify and does not currently support other ecommerce platforms.' },
   ],
   relatedLinks: [
     { href: '/ai-customer-support-employee', label: 'AI Customer Support Employee' },

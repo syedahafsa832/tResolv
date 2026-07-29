@@ -34,7 +34,7 @@ export const page = {
       'Routine, high-confidence replies go out on their own. Anything involving money, refunds, cancellations, exchanges, address changes, is staged in your approval queue. It never executes without your tap.',
     ],
     checks: [
-      { label: 'Resolves routine emails automatically:', detail: '86.5% of tickets resolved without a human touching them, based on real Shopify order data.' },
+      { label: 'Resolves routine emails automatically:', detail: 'Routine tickets are resolved without a human touching them, based on real Shopify order data.' },
       { label: 'Never moves money without you:', detail: 'refunds and cancellations always wait for your one-tap approval.' },
       { label: 'Grounded in real order data:', detail: 'checks Shopify before replying, so it never contradicts what already happened to an order.' },
     ],
@@ -51,7 +51,7 @@ export const page = {
   features: {
     title: 'What the AI employee actually does',
     features: [
-      { icon: 'bolt', title: 'Resolution engine', body: 'Classifies every incoming email and answers routine questions, order status, shipping, sizing, policy questions, without a human in the loop.', note: '86.5% resolution rate' },
+      { icon: 'bolt', title: 'Resolution engine', body: 'Classifies every incoming email and answers routine questions, order status, shipping, sizing, policy questions, without a human in the loop.', note: 'Resolves routine tickets automatically' },
       { icon: 'shield', title: 'Staged financial actions', body: 'Refunds, cancellations, exchanges, and address changes are staged for your one-tap approval. They never execute automatically.', note: 'Zero unauthorized financial actions' },
       { icon: 'gauge', title: 'Confidence scoring', body: 'Every draft shows a confidence score. You set the autopilot threshold, anything below it queues for your review first.', note: 'Fully configurable threshold' },
       { icon: 'quarantine', title: 'Smart quarantine', body: 'Promotions, automated notifications, and email-loop risks are filtered out before the AI ever drafts a reply.', note: 'Keeps resolution numbers accurate' },
@@ -71,7 +71,7 @@ export const page = {
   faqs: [
     { q: 'Is this a chatbot or a real employee replacement?', a: 'tResolv works inside your existing Gmail inbox and Shopify store, the same way a support hire would, reading email, checking orders, and drafting replies. It is not a website widget; it is built to take over the inbox work itself.' },
     { q: 'Does the AI ever send a refund or cancellation on its own?', a: 'No. Financial actions always require your one-tap approval, regardless of the AI\'s confidence score or which mode you run in.' },
-    { q: 'How much of my inbox will this actually resolve?', a: 'Across real Shopify workflows, tResolv resolves 86.5% of incoming support emails without a human touching them. The remainder is escalated or staged for approval.' },
+    { q: 'How much of my inbox will this actually resolve?', a: 'tResolv resolves routine, repetitive support emails automatically without a human touching them. More complex or uncertain requests are escalated or staged for your approval.' },
     { q: 'What happens to emails the AI is not confident about?', a: 'They queue for human review instead of sending. You set the confidence threshold, so you control how cautious the AI is.' },
   ],
   relatedLinks: [

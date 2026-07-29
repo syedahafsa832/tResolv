@@ -13,7 +13,7 @@ const features = [
     ),
     title: 'Resolution engine',
     body: 'tResolv classifies every incoming email, finds the right answer, and sends the reply automatically when confidence is high. No human needed for routine tickets.',
-    note: '86.5% resolution rate out of the box',
+    note: 'Resolves routine tickets automatically, out of the box',
   },
   {
     icon: (
@@ -108,8 +108,8 @@ const features = [
       </svg>
     ),
     title: 'Live Tracking Updates',
-    body: 'When a customer asks where their order is, Luna queries real-time carrier data and replies with the actual status, "Your package is in Lahore, expected delivery June 10", not a link to go check yourself.',
-    note: 'Works with TCS, Leopards, DHL and 1100+ carriers',
+    body: 'When a customer asks where their order is, Luna checks live tracking status through AfterShip and replies with the actual status, "Your package is in Lahore, expected delivery June 10", not a link to go check yourself.',
+    note: 'Tracking updates provided through AfterShip',
     isNew: true,
     isWide: true,
   },

@@ -28,18 +28,18 @@ export const page = {
     title: 'Fast, because it\'s grounded in the real order.',
     paragraphs: [
       'tResolv checks the order against your return policy, explains the process clearly, and stages the resulting exchange or refund for your approval, all within minutes of the request arriving.',
-      'Because every step is grounded in your actual Shopify data and policy settings, the reply holds up to scrutiny instead of reading like a generic returns FAQ.',
+      'Because every step is grounded in your actual Shopify data, the reply holds up to scrutiny instead of reading like a generic returns FAQ.',
     ],
     checks: [
       { label: 'Fast first response:', detail: 'return requests are answered in minutes, not hours.' },
-      { label: 'Policy-grounded:', detail: 'eligibility reflects your actual return window and rules, not a guess.' },
+      { label: 'Policy-grounded:', detail: 'checks the order against the available return window information before responding, not a guess.' },
       { label: 'Exchanges and refunds staged:', detail: 'the resulting action always waits for your approval.' },
     ],
   },
   steps: {
     title: 'From return request to resolution',
     steps: [
-      { num: '01', title: 'Return request arrives', body: 'tResolv identifies the request type, exchange, refund, or store credit, and matches it to the order.' },
+      { num: '01', title: 'Return request arrives', body: 'tResolv identifies the request type, exchange or refund, and matches it to the order.' },
       { num: '02', title: 'Eligibility is checked', body: 'The order is checked against your return window and policy before any commitment is made in the reply.' },
       { num: '03', title: 'Action is staged for approval', body: 'The resulting exchange or refund waits in your queue until you approve it.' },
     ],
@@ -47,7 +47,7 @@ export const page = {
   features: {
     title: 'Return handling that respects your policy',
     features: [
-      { icon: 'returns', title: 'Policy-aware return logic', body: 'Return eligibility is checked against your store\'s actual return window and product rules.', note: 'Configurable per brand' },
+      { icon: 'returns', title: 'Policy-aware return logic', body: 'Return eligibility is checked against your store\'s actual return window and product rules.', note: 'Built around your store\'s return workflow' },
       { icon: 'refund', title: 'Staged exchanges and refunds', body: 'Whatever the return resolves to, the resulting Shopify action is staged for your one-tap approval.', note: 'Never automatic' },
       { icon: 'clock', title: 'Fast first response', body: 'Return requests get an accurate, policy-grounded reply within minutes of arriving.', note: 'No overnight wait' },
       { icon: 'shield', title: 'Order-state checks', body: 'Verifies the order hasn\'t already been returned or refunded before staging a new action.', note: 'No duplicate processing' },
@@ -58,17 +58,15 @@ export const page = {
     items: [
       { title: 'Size or fit exchanges', body: 'Drafted with your sizing information and staged as an exchange.' },
       { title: 'Damaged item returns', body: 'Handled with an empathetic reply and staged as a refund or replacement.' },
-      { title: 'Store credit requests', body: 'Varies by configuration, confirm current support for store-credit-specific return flows.' },
       { title: 'Out-of-window returns', body: 'Explained accurately against your policy rather than promised automatically.' },
       { title: 'Return shipping questions', body: 'Answered using your store\'s configured return shipping process.' },
       { title: 'Disputed returns', body: 'Escalated to a human when the situation falls outside your confidence threshold.' },
     ],
   },
   faqs: [
-    { q: 'Does tResolv decide return eligibility on its own?', a: 'It checks eligibility against your store\'s configured return window and policy, but the resulting refund or exchange is always staged for your approval.' },
+    { q: 'Does tResolv decide return eligibility on its own?', a: 'It checks eligibility against the order and available return information, but the resulting refund or exchange is always staged for your approval.' },
     { q: 'Can it process an exchange directly in Shopify?', a: 'It stages the exchange as an action tied to the order; you approve before it is finalized.' },
-    { q: 'What about return shipping labels?', a: 'Confirm current support for generating return labels automatically.' },
-    { q: 'How is this different from the refund automation page?', a: 'Refund automation covers requests that start as "refund me." Return automation covers the broader return flow, which can resolve to an exchange, store credit, or refund.' },
+    { q: 'How is this different from the refund automation page?', a: 'Refund automation covers requests that start as "refund me." Return automation covers the broader return flow, which can resolve to an exchange or a refund.' },
   ],
   relatedLinks: [
     { href: '/ai-refund-automation', label: 'AI Refund Automation' },

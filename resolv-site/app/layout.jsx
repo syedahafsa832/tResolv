@@ -21,7 +21,7 @@ export const metadata = {
   metadataBase: new URL(SITE.url),
   title: 'tResolv | AI Support Employee for Shopify Brands',
   description:
-    'tResolv reads your inbox, drafts replies, and resolves 86.5% of customer support emails automatically. Every financial action requires your approval.',
+    'tResolv reads your inbox, drafts replies, and resolves routine customer support emails automatically. Every financial action requires your approval.',
   icons: {
     icon: '/favicon.svg',
   },

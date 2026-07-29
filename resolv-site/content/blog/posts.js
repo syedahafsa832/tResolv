@@ -144,7 +144,7 @@ export const posts = [
         'Is there a record of unauthorized financial actions, or a claim of zero?',
       ] },
       { type: 'h2', id: 'resolution-transparency', text: '4. Is the resolution rate real, or a marketing number?' },
-      { type: 'p', text: 'Ask whether a quoted resolution percentage comes from actual customer traffic or a curated demo. tResolv publishes 86.5% based on real Shopify order data, specifically to make this checkable.' },
+      { type: 'p', text: 'Ask whether a quoted resolution percentage comes from actual customer traffic or a curated demo, and whether the vendor is willing to explain how it\'s measured.' },
       { type: 'h3', id: 'trial-first', text: 'Trial before you commit' },
       { type: 'p', text: 'Because the real test is how a tool performs against your actual order data and your actual customers, a free trial with no credit card required is the most reliable way to evaluate any of these tools, including tResolv.' },
     ],
