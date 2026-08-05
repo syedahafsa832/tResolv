@@ -33,8 +33,4 @@ export const faqs = [
     q: 'Does tResolv ever execute financial actions automatically?',
     a: 'No. Refunds, cancellations, address changes, and order restores always appear in your approval queue. They never execute without your tap, regardless of confidence level or which mode you are in.',
   },
-  {
-    q: 'Can I use tResolv across multiple Shopify stores?',
-    a: "Yes. The Growth and Scale plans support multiple brands from a single tResolv console. Each store's conversations, approvals, and settings are fully separate and independently configurable.",
-  },
 ];

@@ -34,7 +34,7 @@ export const page = {
     checks: [
       { label: 'Live order lookups:', detail: 'every reply about an order is checked against Shopify first.' },
       { label: 'Policy-aware refund logic:', detail: 'your return-window settings decide what the AI can promise.' },
-      { label: 'Multi-store support:', detail: 'run more than one Shopify brand from a single tResolv console.' },
+      { label: 'Store knowledge grounding:', detail: 'products, policies, and pages are imported so replies match what your store actually says.' },
     ],
   },
   steps: {
@@ -51,7 +51,7 @@ export const page = {
     features: [
       { icon: 'package', title: 'Order state awareness', body: 'Checks fulfillment and refund status before replying, so it never contradicts what already happened to an order.', note: 'No duplicate actions' },
       { icon: 'refund', title: 'Refund and cancellation actions', body: 'Stages refunds, cancellations, and address changes directly against the Shopify order for your approval.', note: 'Always requires your tap' },
-      { icon: 'layers', title: 'Multi-brand console', body: 'Manage every Shopify store you run from one login, with conversations and approvals kept separate per brand.', note: 'One login, every brand' },
+      { icon: 'layers', title: 'Chat widget', body: 'A floating AI chat bubble on your storefront answers order, refund, and shipping questions live, grounded in the same Shopify data as email.', note: 'Same guardrails as email' },
       { icon: 'mail', title: 'Gmail native', body: 'Connects via Google OAuth and processes email inside Google\'s infrastructure, nothing is copied to tResolv\'s servers.', note: 'Emails never leave Google' },
     ],
   },
@@ -63,12 +63,11 @@ export const page = {
       { title: '"Can I get a refund?"', body: 'Checked against your return window and order state before a refund is staged.' },
       { title: '"Can you change my address?"', body: 'The new address is parsed and staged as a Shopify order update for your review.' },
       { title: 'Size and product questions', body: 'Answered from your store\'s product and sizing information.' },
-      { title: 'Multiple stores', body: 'Every brand\'s Shopify data and conversations stay separate in one console.' },
+      { title: 'Storefront chat questions', body: 'The chat widget answers the same order and refund questions live, right on your storefront.' },
     ],
   },
   faqs: [
-    { q: 'Does tResolv need custom setup to work with my Shopify store?', a: 'No. Connecting Shopify is a single step, and tResolv begins reading order data immediately. Most brands are fully live within 10 minutes.' },
-    { q: 'Can it handle more than one Shopify store?', a: 'Yes. Multi-brand plans let you run several Shopify stores from one tResolv console, with each store\'s data and approvals kept separate.' },
+    { q: 'Does tResolv need custom setup to work with my Shopify store?', a: 'No. Connecting Shopify is a single step, and tResolv begins reading order data immediately. Most stores are fully live within 10 minutes.' },
     { q: 'Will it ever refund or cancel an order without asking me?', a: 'No. Refunds, cancellations, exchanges, and address changes are always staged for your one-tap approval before Shopify is updated.' },
     { q: 'What if the order data in Shopify changes after the AI drafts a reply?', a: 'tResolv checks the live order state at the time of each action, so a stale draft cannot trigger an action against outdated order information.' },
   ],

@@ -65,7 +65,7 @@ export const page = {
       { title: 'Cancellations', body: 'Confirms the order has not shipped before staging a cancellation, never a duplicate or invalid action.' },
       { title: 'Address changes', body: 'Parses a plain-language address from the customer email into a staged Shopify update.' },
       { title: 'Escalations', body: 'Hands off automatically to a human when confidence is low or the conversation needs judgment.' },
-      { title: 'Multi-brand support', body: 'One console for every Shopify store you run, with conversations and approvals kept fully separate per brand.' },
+      { title: 'Storefront chat', body: 'The same AI employee answers live on your storefront chat widget, not just email.' },
     ],
   },
   faqs: [

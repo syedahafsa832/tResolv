@@ -5,11 +5,10 @@ const tiers = [
     originalPrice: '$149',
     price: '$99',
     per: '/month',
-    desc: 'For brands getting started with AI support.',
+    desc: 'For a growing Shopify store getting started with AI support.',
     cta: 'Claim your founding spot →',
     href: 'https://app.tresolv.online',
     features: [
-      '1 Shopify brand',
       '500 conversations per month',
       'Supervised AI support',
       'Gmail + Shopify integration',
@@ -25,11 +24,10 @@ const tiers = [
     originalPrice: '$349',
     price: '$249',
     per: '/month',
-    desc: 'For growing brands that want full autopilot and Shopify action execution.',
+    desc: 'For a store that wants full autopilot and Shopify action execution.',
     cta: 'Claim your founding spot →',
     href: 'https://app.tresolv.online',
     features: [
-      'Up to 3 brands',
       'Unlimited conversations',
       'Autopilot mode',
       'Shopify actions (refunds, cancellations, updates)',
@@ -45,14 +43,13 @@ const tiers = [
     name: 'Scale',
     price: null,
     per: null,
-    desc: 'For operators running many brands who need dedicated support and SLAs.',
+    desc: 'For high-volume stores needing custom infrastructure and SLAs.',
     cta: 'Talk to us →',
     href: 'https://calendar.app.google/YkSqLTsYr18bUP2Z6',
     features: [
-      'Unlimited brands',
       'Unlimited conversations',
       'Dedicated account manager',
-      'Chat widget (unlimited brands)',
+      'Chat widget',
       'Custom agent name and branding',
       'SLA guarantee',
       'Custom integrations',
@@ -69,7 +66,7 @@ export default function Pricing() {
         <div className="eyebrow"><span className="eyebrow-dot" />Pricing</div>
         <h2 className="section-title">Founding Launch Pricing.</h2>
         <p className="section-sub">
-          Locked in for our first 20 brands. No setup fees, no per-ticket charges.
+          Locked in for our first 20 stores. No setup fees, no per-ticket charges.
         </p>
         <div className="price-grid">
           {tiers.map(({ id, name, originalPrice, price, per, desc, cta, href, features, featured, popular }) => (
