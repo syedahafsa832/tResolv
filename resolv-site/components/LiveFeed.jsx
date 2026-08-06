@@ -81,12 +81,14 @@ export default function LiveFeed() {
         <div className="lf-head">
           <div>
             <div className="lf-live">
-              <span className="lf-live-dot" />
-              Live
+              {isLive && <span className="lf-live-dot" />}
+              {isLive ? 'Live' : 'Example'}
             </div>
             <h2 className="section-title" style={{ marginTop: 10 }}>Watch Luna work.</h2>
             <p className="section-sub">
-              Real resolved tickets, streamed straight from production. No mockup, no demo data dressed up as real.
+              {isLive
+                ? 'Real resolved tickets, streamed straight from production.'
+                : 'Example resolutions showing the kind of tickets Luna handles automatically.'}
             </p>
           </div>
         </div>

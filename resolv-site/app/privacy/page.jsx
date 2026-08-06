@@ -18,7 +18,7 @@ export default function PrivacyPage() {
       <div className="privacy-body">
         <div className="privacy-content">
           <h2>Who we are</h2>
-          <p>tResolv is an AI-powered customer support tool for Shopify brands. We&apos;re based online at <a href="https://tresolv.online">tresolv.online</a>. If you have any questions about this policy, email us at <a href="mailto:syedahafsa722@gmail.com">syedahafsa722@gmail.com</a>.</p>
+          <p>tResolv is an AI-powered customer support tool for Shopify brands. We&apos;re based online at <a href="https://tresolv.online">tresolv.online</a>. If you have any questions about this policy, email us at <a href="mailto:hello@tresolv.online">hello@tresolv.online</a>.</p>
 
           <hr className="privacy-divider" />
 
@@ -65,7 +65,7 @@ export default function PrivacyPage() {
           <hr className="privacy-divider" />
 
           <h2>Your rights (UK GDPR)</h2>
-          <p>You have the right to access, correct, or delete your data at any time. Just email us at <a href="mailto:syedahafsa722@gmail.com">syedahafsa722@gmail.com</a> and we&apos;ll respond within 7 days.</p>
+          <p>You have the right to access, correct, or delete your data at any time. Just email us at <a href="mailto:hello@tresolv.online">hello@tresolv.online</a> and we&apos;ll respond within 7 days.</p>
 
           <hr className="privacy-divider" />
 
@@ -78,7 +78,7 @@ export default function PrivacyPage() {
           <p>If we make significant changes, we&apos;ll notify merchants by email. Minor updates will just reflect a new &quot;last updated&quot; date at the top.</p>
 
           <div className="privacy-contact">
-            <strong>Questions?</strong> Email us at <a href="mailto:syedahafsa722@gmail.com">syedahafsa722@gmail.com</a>
+            <strong>Questions?</strong> Email us at <a href="mailto:hello@tresolv.online">hello@tresolv.online</a>
           </div>
         </div>
       </div>

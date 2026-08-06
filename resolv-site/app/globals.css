@@ -663,6 +663,7 @@ button { font-family: inherit; cursor: pointer; }
   .hb-item:nth-child(odd) { padding-right: 24px; }
   .hb-item:nth-child(even) { padding-left: 24px; border-left: 1px solid rgba(255,255,255,0.07) !important; }
   .footer-top { flex-direction: column; gap: 40px; }
+  .footer-cols { flex-wrap: wrap; gap: 32px 40px; }
 
   .nav-burger { display: flex; }
   .nav-cta { display: none; }

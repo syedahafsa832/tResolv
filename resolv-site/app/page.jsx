@@ -51,6 +51,17 @@ export default function Home() {
       <Nav />
       <main>
         <Hero />
+        <section className="section" style={{ padding: '56px 0' }}>
+          <div className="wrap">
+            <h2 className="section-title" style={{ fontSize: 20 }}>Why tResolv connects Gmail</h2>
+            <p className="section-sub" style={{ maxWidth: 680 }}>
+              tResolv is an AI customer support employee for Shopify brands. It requests access to your Gmail
+              inbox to read incoming customer support conversations, keep context across a thread, and generate
+              AI-assisted replies on your behalf. Gmail data is used only to provide this support automation
+              service, it is never sold, and it is never used to train AI models.
+            </p>
+          </div>
+        </section>
         <HowItWorks />
         <Features />
         <LiveFeed />

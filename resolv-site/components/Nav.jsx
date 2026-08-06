@@ -10,7 +10,7 @@ const NAV_LINKS = [
   { href: '/#pricing',      label: 'Pricing' },
   { href: '/#faq',          label: 'FAQ' },
   { href: '/blog',          label: 'Blog' },
-  { href: 'mailto:syedahafsa722@gmail.com', label: 'Contact' },
+  { href: 'mailto:hello@tresolv.online', label: 'Contact' },
 ];
 
 export default function Nav() {
