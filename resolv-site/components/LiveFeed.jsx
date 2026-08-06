@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState } from 'react';
 
-const API_BASE = 'https://hackathonn5.onrender.com';
+const API_BASE = 'https://backend.tresolv.online';
 const MAX_ROWS = 6;
 const PUSH_INTERVAL = 3500;
 

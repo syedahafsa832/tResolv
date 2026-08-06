@@ -3,7 +3,6 @@
 import { useEffect, useRef, useState } from 'react';
 
 const STATS = [
-  { target: 2, suffix: ' min', label: 'average response time' },
   { target: 0, prefix: '$', label: 'unauthorized financial actions' },
   { target: 10, suffix: ' min', label: 'to go live' },
 ];
@@ -52,6 +51,10 @@ export default function HeroStats() {
   return (
     <div className="hero-band" ref={ref}>
       <div className="hero-band-inner">
+        <div className="hb-item">
+          <div className="hb-val">Respond in seconds</div>
+          <div className="hb-label">with Luna</div>
+        </div>
         {STATS.map((stat) => (
           <div key={stat.label} className="hb-item">
             <div className="hb-val hb-cu"><CountUp {...stat} active={active} /></div>
