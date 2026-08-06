@@ -34,6 +34,7 @@ export default function sitemap() {
     { url: absoluteUrl('/'), changeFrequency: 'weekly', priority: 1 },
     { url: absoluteUrl('/blog'), changeFrequency: 'weekly', priority: 0.8 },
     { url: absoluteUrl('/privacy'), changeFrequency: 'yearly', priority: 0.3 },
+    { url: absoluteUrl('/terms'), changeFrequency: 'yearly', priority: 0.3 },
   ];
 
   const contentEntries = [...moneyPages, ...comparisonPages].map((page) => ({
