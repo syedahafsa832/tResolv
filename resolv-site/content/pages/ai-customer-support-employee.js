@@ -31,7 +31,7 @@ export const page = {
     title: 'An employee, not a platform.',
     paragraphs: [
       'tResolv reads incoming email, classifies the request, checks the live Shopify order, and drafts a reply grounded in what actually happened to that order, not a generic template.',
-      'Routine, high-confidence replies go out on their own. Anything involving money, refunds, cancellations, exchanges, address changes, is staged in your approval queue. It never executes without your tap.',
+      'Routine, high-confidence replies go out on their own. Anything involving money, refunds, cancellations, address changes, is staged in your approval queue and never executes without your tap. Exchanges are routed to your support team to complete.',
     ],
     checks: [
       { label: 'Resolves routine emails automatically:', detail: 'Routine tickets are resolved without a human touching them, based on real Shopify order data.' },
@@ -52,7 +52,7 @@ export const page = {
     title: 'What the AI employee actually does',
     features: [
       { icon: 'bolt', title: 'Resolution engine', body: 'Classifies every incoming email and answers routine questions, order status, shipping, sizing, policy questions, without a human in the loop.', note: 'Resolves routine tickets automatically' },
-      { icon: 'shield', title: 'Staged financial actions', body: 'Refunds, cancellations, exchanges, and address changes are staged for your one-tap approval. They never execute automatically.', note: 'Zero unauthorized financial actions' },
+      { icon: 'shield', title: 'Staged financial actions', body: 'Refunds, cancellations, and address changes are staged for your one-tap approval and never execute automatically. Exchanges are routed to your support team to complete.', note: 'Zero unauthorized financial actions' },
       { icon: 'gauge', title: 'Confidence scoring', body: 'Every draft shows a confidence score. You set the autopilot threshold, anything below it queues for your review first.', note: 'Fully configurable threshold' },
       { icon: 'quarantine', title: 'Smart quarantine', body: 'Promotions, automated notifications, and email-loop risks are filtered out before the AI ever drafts a reply.', note: 'Keeps resolution numbers accurate' },
     ],

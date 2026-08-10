@@ -58,7 +58,7 @@ export const page = {
   faqs: [
     { q: 'We already use Gorgias, why would we switch?', a: 'You may not need to switch entirely. The question worth asking is whether you need another helpdesk platform to operate, or fewer repetitive conversations reaching your team in the first place, that\'s the problem tResolv is built to solve.' },
     { q: 'Is Gorgias worse than tResolv?', a: 'This page does not claim that. Gorgias has real strengths, particularly its established Shopify action depth. The comparison here is about philosophy, platform vs. employee, not a feature-by-feature "better/worse" claim.' },
-    { q: 'Does tResolv have the same Shopify actions as Gorgias?', a: 'tResolv supports staged refunds, cancellations, exchanges, and address changes, all requiring your approval. For a full feature-by-feature comparison, check Gorgias\'s current documentation directly.' },
+    { q: 'Does tResolv have the same Shopify actions as Gorgias?', a: 'tResolv supports staged refunds, cancellations, and address changes, all requiring your approval; exchanges are routed to your support team. For a full feature-by-feature comparison, check Gorgias\'s current documentation directly.' },
     { q: 'Can I run tResolv alongside Gorgias?', a: 'This depends on your specific setup, evaluate your support workflow to determine whether running both systems makes sense for your team.' },
   ],
   relatedLinks: [

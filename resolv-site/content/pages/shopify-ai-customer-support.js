@@ -68,7 +68,7 @@ export const page = {
   },
   faqs: [
     { q: 'Does tResolv need custom setup to work with my Shopify store?', a: 'No. Connecting Shopify is a single step, and tResolv begins reading order data immediately. Most stores are fully live within 10 minutes.' },
-    { q: 'Will it ever refund or cancel an order without asking me?', a: 'No. Refunds, cancellations, exchanges, and address changes are always staged for your one-tap approval before Shopify is updated.' },
+    { q: 'Will it ever refund or cancel an order without asking me?', a: 'No. Refunds, cancellations, and address changes are always staged for your one-tap approval before Shopify is updated. Exchanges are routed to your support team to complete.' },
     { q: 'What if the order data in Shopify changes after the AI drafts a reply?', a: 'tResolv checks the live order state at the time of each action, so a stale draft cannot trigger an action against outdated order information.' },
   ],
   relatedLinks: [

@@ -10,7 +10,7 @@ export const page = {
     eyebrow: 'AI Support Agent for Ecommerce',
     title: 'The support agent',
     titleAccent: 'ecommerce brands actually need.',
-    sub: 'Post-purchase questions, order status, refunds, exchanges, cancellations, are the bulk of ecommerce support. tResolv resolves them automatically and keeps financial actions under your approval.',
+    sub: 'Post-purchase questions, order status, refunds, exchanges, cancellations, are the bulk of ecommerce support. tResolv resolves routine questions automatically, keeps refunds, cancellations, and address changes under your approval, and routes exchanges to your support team.',
   },
   problem: {
     id: 'problem',
@@ -48,7 +48,7 @@ export const page = {
     title: 'Purpose-built for ecommerce tickets',
     features: [
       { icon: 'bolt', title: 'Resolution engine', body: 'Resolves the majority of routine post-purchase emails without a human touching them.', note: 'Handles routine post-purchase emails automatically' },
-      { icon: 'shield', title: 'Staged financial actions', body: 'Refunds, cancellations, and exchanges are staged for your one-tap approval, never automatic.', note: 'Zero unauthorized financial actions' },
+      { icon: 'shield', title: 'Staged financial actions', body: 'Refunds and cancellations are staged for your one-tap approval, never automatic. Exchanges are routed to your support team to complete.', note: 'Zero unauthorized financial actions' },
       { icon: 'gauge', title: 'Confidence scoring', body: 'Every draft carries a confidence percentage so you know how sure the AI is before anything sends.', note: 'You set the threshold' },
       { icon: 'clock', title: '24/7 coverage', body: 'Support requests are read and answered outside business hours, not just during your team\'s shift.', note: 'No overnight backlog' },
     ],

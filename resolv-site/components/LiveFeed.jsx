@@ -6,17 +6,23 @@ const API_BASE = 'https://backend.tresolv.online';
 const MAX_ROWS = 6;
 const PUSH_INTERVAL = 3500;
 
+// Only fully-automatable intents (order status/tracking/product availability/
+// general support questions) are shown here as "Resolved". Refunds,
+// cancellations, and address changes are staged for merchant approval, not
+// completed by Luna alone - showing those as "Resolved" would overclaim what
+// this product actually does. The real /api/public/live-feed endpoint applies
+// the same filter (see backend public_feed.py _STAGED_ACTION_INTENTS).
 const FALLBACK_TICKETS = [
   { order_ref: '#4821', intent: 'Where is my order?', confidence: 94, resolved_in_seconds: 8 },
-  { order_ref: '#4809', intent: 'Cancel my order', confidence: 91, resolved_in_seconds: 5 },
-  { order_ref: '#4790', intent: 'Change shipping address', confidence: 88, resolved_in_seconds: 11 },
-  { order_ref: '#4772', intent: 'Refund request, wrong size', confidence: 96, resolved_in_seconds: 7 },
-  { order_ref: '#4765', intent: 'Track my package', confidence: 99, resolved_in_seconds: 4 },
+  { order_ref: '#4809', intent: 'Is this in stock in medium?', confidence: 91, resolved_in_seconds: 5 },
+  { order_ref: '#4790', intent: "What's your return policy?", confidence: 88, resolved_in_seconds: 11 },
+  { order_ref: '#4772', intent: 'Track my package', confidence: 96, resolved_in_seconds: 7 },
+  { order_ref: '#4765', intent: 'When will my order ship?', confidence: 99, resolved_in_seconds: 4 },
   { order_ref: '#4751', intent: 'Order never arrived', confidence: 89, resolved_in_seconds: 14 },
-  { order_ref: '#4733', intent: 'Exchange for different color', confidence: 85, resolved_in_seconds: 19 },
-  { order_ref: '#4720', intent: 'Update delivery address', confidence: 92, resolved_in_seconds: 9 },
-  { order_ref: '#4702', intent: 'Where is my refund?', confidence: 93, resolved_in_seconds: 6 },
-  { order_ref: '#4688', intent: 'Cancel before it ships', confidence: 90, resolved_in_seconds: 13 },
+  { order_ref: '#4733', intent: 'Do you have this in black?', confidence: 85, resolved_in_seconds: 19 },
+  { order_ref: '#4720', intent: 'What size should I get?', confidence: 92, resolved_in_seconds: 9 },
+  { order_ref: '#4702', intent: 'Is my order confirmed?', confidence: 93, resolved_in_seconds: 6 },
+  { order_ref: '#4688', intent: "What's the delivery estimate?", confidence: 90, resolved_in_seconds: 13 },
 ];
 
 function formatDuration(seconds) {
