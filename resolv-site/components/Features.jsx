@@ -23,7 +23,7 @@ const features = [
       </svg>
     ),
     title: 'Staged financial actions',
-    body: 'Refunds, cancellations, exchanges, and address changes are always staged for your one-tap approval. They never execute automatically. Ever.',
+    body: 'Refunds, cancellations, and address changes are always staged for your one-tap approval. They never execute automatically. Ever. Exchanges and returns are routed to your support team while full automation is being built.',
     note: 'Refunds and cancellations always require your approval',
   },
   {

@@ -5,7 +5,7 @@ const POINTS = [
   },
   {
     title: 'Shopify action cards',
-    body: 'Refunds, cancellations, and returns show up as structured cards inside the chat, staged for your one-tap approval.',
+    body: 'Refunds and cancellations show up as structured cards inside the chat, staged for your one-tap approval. Returns and exchanges are routed to your support team (coming soon to full automation).',
   },
   {
     title: 'Customizable identity',
@@ -49,7 +49,7 @@ export default function ChatWidgetSection() {
               <div className="cw-chips">
                 <span className="cw-chip">Track order</span>
                 <span className="cw-chip">Request refund</span>
-                <span className="cw-chip">Start return</span>
+                <span className="cw-chip">Ask about a return</span>
               </div>
             </div>
             <div className="cw-widget-input">

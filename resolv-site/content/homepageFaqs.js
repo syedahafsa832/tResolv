@@ -15,7 +15,7 @@ export const faqs = [
   },
   {
     q: 'Does tResolv ever send emails without my approval?',
-    a: 'Only when you enable Autopilot mode and the AI confidence is above the threshold you set. Financial actions, refunds, cancellations, exchanges, address changes, always require your one-tap approval, regardless of confidence level.',
+    a: 'Only when you enable Autopilot mode and the AI confidence is above the threshold you set. Financial actions, refunds, cancellations, and address changes, always require your one-tap approval, regardless of confidence level. Exchanges and returns are routed to your support team (full automation coming soon).',
   },
   {
     q: 'What if the AI gets something wrong?',
