@@ -232,17 +232,28 @@ button { font-family: inherit; cursor: pointer; }
 .price-card { padding: 40px 36px; background: white; border-right: 1px solid var(--border); position: relative; }
 .price-card:last-child { border-right: none; }
 .price-card.featured { background: var(--dark); }
-.price-tier { font-size: 11.5px; font-weight: 600; letter-spacing: 0.6px; text-transform: uppercase; color: var(--text-3); margin-bottom: 12px; }
+.price-tier { font-size: 11.5px; font-weight: 600; letter-spacing: 0.6px; text-transform: uppercase; color: var(--text-3); margin-bottom: 4px; }
 .price-card.featured .price-tier { color: rgba(255,255,255,0.38); }
+.price-kicker { font-size: 12.5px; color: var(--text-3); margin-bottom: 8px; }
+.price-card.featured .price-kicker { color: rgba(255,255,255,0.45); }
+.price-name { font-size: 19px; font-weight: 700; color: var(--text); line-height: 1.3; margin-bottom: 12px; }
+.price-card.featured .price-name { color: white; }
+.price-founding {
+  display: inline-block; font-size: 11px; font-weight: 600;
+  color: var(--accent); background: var(--accent-light);
+  padding: 3px 10px; border-radius: 99px; margin-bottom: 10px;
+}
+.price-card.featured .price-founding { background: rgba(15,182,204,0.18); color: #5fd8e8; }
 .price-amount { font-family: var(--font-mono), ui-monospace, monospace; font-size: 42px; font-weight: 500; color: var(--text); line-height: 1; }
 .price-card.featured .price-amount { color: white; }
-.price-original {
-  font-family: var(--font-mono), ui-monospace, monospace;
-  font-size: 20px; font-weight: 500; color: var(--text-3);
-  text-decoration: line-through; line-height: 1;
-}
-.price-card.featured .price-original { color: rgba(255,255,255,0.3); }
 .price-amount.custom { font-family: var(--font-sans), system-ui, sans-serif; font-size: 26px; font-weight: 700; }
+.price-quote {
+  font-size: 13px; color: var(--text-3); font-style: italic; line-height: 1.5;
+  margin-top: 20px; padding-top: 16px; border-top: 1px solid var(--border);
+}
+.price-card.featured .price-quote { color: rgba(255,255,255,0.4); border-top-color: rgba(255,255,255,0.1); }
+.price-plus-note { font-size: 12.5px; color: var(--text-3); margin: -2px 0 12px; }
+.price-card.featured .price-plus-note { color: rgba(255,255,255,0.4); }
 .price-per { font-size: 14px; color: var(--text-3); margin-left: 2px; }
 .price-card.featured .price-per { color: rgba(255,255,255,0.35); }
 .price-desc { font-size: 14px; color: var(--text-2); margin: 12px 0 28px; line-height: 1.6; min-height: 44px; }

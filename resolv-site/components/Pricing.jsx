@@ -1,59 +1,84 @@
 const tiers = [
   {
     id: 'starter',
-    name: 'Starter',
-    originalPrice: '$149',
-    price: '$99',
+    tier: 'Starter',
+    kicker: 'Get help',
+    name: 'The Support Sidekick',
+    desc: 'For founders who are tired of answering the same customer questions.',
+    price: '$49',
     per: '/month',
-    desc: 'For a growing Shopify store getting started with AI support.',
+    founding: 'Founding price — limited founding spots',
     cta: 'Claim your founding spot →',
     href: 'https://app.tresolv.online',
     features: [
-      '500 conversations per month',
-      'Supervised AI support',
-      'Gmail + Shopify integration',
-      'Chat widget',
-      'Email support',
+      '100 conversations per month',
+      'Gmail + Shopify',
+      'AI email support',
+      'Live chat widget',
+      'Live Shopify order lookup',
+      'Shipping & tracking questions',
+      'Product/order questions',
+      'Returns & policy questions',
+      'AI-drafted replies',
+      'Human approval before replies/actions',
+      'Confidence scoring',
+      'Email quarantine / loop protection',
     ],
+    quote: 'Let Luna handle the repetitive stuff. You handle the business.',
     featured: false,
     popular: false,
   },
   {
     id: 'growth',
-    name: 'Growth',
-    originalPrice: '$349',
-    price: '$249',
+    tier: 'Growth',
+    kicker: 'Get out of the inbox',
+    name: 'The AI Support Employee',
+    desc: 'For Shopify brands ready to stop managing their inbox themselves.',
+    price: '$99',
     per: '/month',
-    desc: 'For a store that wants full autopilot and Shopify action execution.',
+    founding: 'Founding price',
     cta: 'Claim your founding spot →',
     href: 'https://app.tresolv.online',
+    plusNote: 'Includes everything in Starter, plus:',
     features: [
-      'Unlimited conversations',
-      'Autopilot mode',
-      'Shopify actions (refunds, cancellations, updates)',
-      'Chat widget',
-      'AfterShip tracking',
+      '250 conversations per month',
+      'Autopilot for high-confidence routine tickets',
+      'Shopify action workflows',
+      'Refund approval workflows',
+      'Cancellation approval workflows',
+      'Address-change workflows',
+      'AfterShip live tracking',
+      'Live storefront chat',
+      'Customizable Luna identity',
       'Priority support',
     ],
+    quote: 'Your AI support employee.',
     featured: true,
     popular: true,
   },
   {
     id: 'scale',
-    name: 'Scale',
-    price: null,
-    per: null,
-    desc: 'For high-volume stores needing custom infrastructure and SLAs.',
+    tier: 'Scale',
+    kicker: 'Build your support operation',
+    name: 'The Support Department',
+    desc: 'For brands where support is becoming a real operational bottleneck.',
+    price: '$249',
+    per: '/month+',
+    founding: null,
     cta: 'Talk to us →',
     href: 'https://calendar.app.google/YkSqLTsYr18bUP2Z6',
     features: [
-      'Unlimited conversations',
-      'Dedicated account manager',
-      'Chat widget',
-      'Custom agent name and branding',
-      'SLA guarantee',
+      'Higher/custom conversation volume',
+      'Full autopilot where supported',
+      'Shopify action execution with existing approval safeguards',
       'Custom integrations',
+      'Custom agent identity/branding',
+      'AfterShip',
+      'Priority support',
+      'Dedicated onboarding',
+      'Custom SLA options',
     ],
+    quote: "Your support team shouldn't be the reason you stop growing.",
     featured: false,
     popular: false,
   },
@@ -69,23 +94,20 @@ export default function Pricing() {
           Locked in for our first 20 stores. No setup fees, no per-ticket charges.
         </p>
         <div className="price-grid">
-          {tiers.map(({ id, name, originalPrice, price, per, desc, cta, href, features, featured, popular }) => (
+          {tiers.map(({ id, tier, kicker, name, desc, price, per, founding, cta, href, plusNote, features, quote, featured, popular }) => (
             <div key={id} className={`price-card${featured ? ' featured' : ''}`}>
               {popular && <div className="price-popular">Most popular</div>}
-              <div className="price-tier">{name}</div>
+              <div className="price-tier">{tier}</div>
+              <div className="price-kicker">{kicker}</div>
+              <div className="price-name">{name}</div>
+              {founding && <div className="price-founding">{founding}</div>}
               <div style={{ display: 'flex', alignItems: 'baseline', gap: 8, marginBottom: 10 }}>
-                {price ? (
-                  <>
-                    {originalPrice && <span className="price-original">{originalPrice}</span>}
-                    <span className="price-amount">{price}</span>
-                    <span className="price-per">{per}</span>
-                  </>
-                ) : (
-                  <span className="price-amount custom">Contact us</span>
-                )}
+                <span className="price-amount">{price}</span>
+                <span className="price-per">{per}</span>
               </div>
               <p className="price-desc">{desc}</p>
               <a href={href} target="_blank" rel="noopener" className="price-btn">{cta}</a>
+              {plusNote && <p className="price-plus-note">{plusNote}</p>}
               <ul className="price-features">
                 {features.map((f) => (
                   <li key={f} className="price-feat">
@@ -94,6 +116,7 @@ export default function Pricing() {
                   </li>
                 ))}
               </ul>
+              <p className="price-quote">"{quote}"</p>
             </div>
           ))}
         </div>
