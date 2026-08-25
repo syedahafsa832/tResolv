@@ -1,5 +1,6 @@
 import Nav              from '@/components/Nav';
 import Hero             from '@/components/Hero';
+import ProductVideo     from '@/components/ProductVideo';
 import HowItWorks       from '@/components/HowItWorks';
 import Features         from '@/components/Features';
 import LiveFeed         from '@/components/LiveFeed';
@@ -51,6 +52,7 @@ export default function Home() {
       <Nav />
       <main>
         <Hero />
+        <ProductVideo />
         <HowItWorks />
         <Features />
         <LiveFeed />
