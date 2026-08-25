@@ -447,6 +447,8 @@ button { font-family: inherit; cursor: pointer; }
    PRODUCT VIDEO (below hero)
 ============================================================ */
 .product-video-wrap {
+  max-width: 760px;
+  margin: 0 auto;
   border-radius: 14px;
   overflow: hidden;
   box-shadow: 0 30px 80px rgba(0,0,0,0.18), 0 0 0 1px rgba(0,0,0,0.06);
