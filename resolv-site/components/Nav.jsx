@@ -17,11 +17,12 @@ export default function Nav() {
   const pathname = usePathname();
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
-  // Every page except /blog starts with a dark hero/breadcrumb bar behind
-  // the fixed nav, so white nav text reads fine there from the top. Blog
-  // pages start on a plain light background, so the nav needs its
-  // "scrolled" (dark-text) styling immediately, not just after scrolling.
-  const isLightTop = pathname?.startsWith('/blog');
+  // Interior SEO/legal pages start with a dark breadcrumb bar or dark
+  // privacy-hero behind the fixed nav, so white nav text reads fine there
+  // from the top. The homepage hero and blog pages start on a plain light
+  // background, so the nav needs its "scrolled" (dark-text) styling
+  // immediately, not just after scrolling.
+  const isLightTop = pathname === '/' || pathname?.startsWith('/blog');
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 24);
