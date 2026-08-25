@@ -1,4 +1,4 @@
-import HeroDemo from './HeroDemo';
+import HeroVideo from './HeroVideo';
 import HeroStats from './HeroStats';
 
 export default function Hero() {
@@ -42,7 +42,7 @@ export default function Hero() {
           </div>
         </div>
 
-        <HeroDemo />
+        <HeroVideo />
       </div>
 
       <HeroStats />
