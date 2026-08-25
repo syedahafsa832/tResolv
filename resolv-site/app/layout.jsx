@@ -23,7 +23,7 @@ export const metadata = {
   description:
     'tResolv reads your inbox, drafts replies, and resolves routine customer support emails automatically. Every financial action requires your approval.',
   icons: {
-    icon: '/favicon.svg',
+    icon: '/favicon.png',
   },
   openGraph: {
     siteName: SITE.name,
