@@ -40,6 +40,8 @@ const schema = [
 
 const relatedLinks = [
   { href: '/ai-customer-support-employee', label: 'AI Customer Support Employee' },
+  { href: '/shopify-ai-customer-support', label: 'Shopify AI Customer Support' },
+  { href: '/ai-order-tracking-automation', label: 'AI Order Tracking Automation' },
   { href: '/tresolv-vs-gorgias', label: 'tResolv vs Gorgias' },
   { href: '/tresolv-vs-zendesk', label: 'tResolv vs Zendesk' },
   { href: '/blog', label: 'Blog' },

@@ -4,7 +4,7 @@
 export const SITE = {
   name: 'tResolv',
   legalName: 'tResolv',
-  url: 'https://tresolv.online',
+  url: 'https://www.tresolv.online',
   appUrl: 'https://app.tresolv.online',
   defaultTitleSuffix: ' | tResolv',
 };

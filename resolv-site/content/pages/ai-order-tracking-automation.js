@@ -3,21 +3,21 @@ export const page = {
   seo: {
     title: 'AI Order Tracking Automation | tResolv',
     description:
-      'tResolv answers "where is my order" automatically using live Shopify fulfillment and tracking data, no manual lookups required.',
-    keywords: 'AI order tracking automation, order status automation, AI order status assistant',
+      'tResolv answers "where is my order" (WISMO) automatically using live Shopify fulfillment and tracking data, no manual lookups required.',
+    keywords: 'AI order tracking automation, WISMO automation, order status automation, AI order status assistant',
   },
   hero: {
     eyebrow: 'AI Order Tracking Automation',
     title: '"Where is my order?"',
     titleAccent: 'Answered automatically.',
-    sub: 'Order status is the single most common support email. tResolv checks live Shopify fulfillment and tracking data and answers it without a human involved.',
+    sub: 'Order status, often shortened to WISMO, is the single most common support email. tResolv checks live Shopify fulfillment and tracking data and answers it without a human involved.',
   },
   problem: {
     id: 'problem',
     eyebrow: 'The problem',
-    title: 'Order status questions dominate the inbox.',
+    title: 'WISMO questions dominate the inbox.',
     paragraphs: [
-      '"Where is my order" is consistently one of the highest-volume support requests for any Shopify brand, and one of the least interesting to answer manually.',
+      '"Where is my order" (support teams call this WISMO for short) is consistently one of the highest-volume support requests for any Shopify brand, and one of the least interesting to answer manually.',
       'Every one requires the same lookup: open Shopify, find the order, check fulfillment and tracking, then write essentially the same reply.',
     ],
   },
@@ -65,6 +65,7 @@ export const page = {
     ],
   },
   faqs: [
+    { q: 'What does WISMO mean?', a: 'WISMO stands for "where is my order", the industry shorthand for order-status support requests. It\'s usually the single highest-volume ticket type for a Shopify store, which is why tResolv is built to answer it automatically from live Shopify data.' },
     { q: 'Does this replace my shipping carrier\'s tracking page?', a: 'No, it answers the support email itself, using the same underlying fulfillment and tracking data, so the customer doesn\'t have to go find that page themselves.' },
     { q: 'What if the order hasn\'t shipped yet?', a: 'tResolv explains the current fulfillment status accurately instead of guessing at a ship date.' },
     { q: 'What tracking provider does tResolv use?', a: 'Tracking updates are provided through AfterShip.' },
