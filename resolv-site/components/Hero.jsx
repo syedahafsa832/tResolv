@@ -11,7 +11,7 @@ export default function Hero() {
             AI customer support for Shopify
           </div>
           <h1>
-            Stop answering the<br />same <span className="accent">customer questions</span>.
+            Stop answering the same <span className="accent">customer questions</span>.
           </h1>
           <p className="hero-sub">
             tResolv answers your customers, checks their orders, and handles common support requests like
