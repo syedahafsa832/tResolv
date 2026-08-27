@@ -22,7 +22,7 @@ export default function Hero() {
             <a href="https://app.tresolv.online" target="_blank" rel="noopener" className="btn btn-primary" style={{ fontSize: 15, padding: '13px 26px' }}>
               Try tResolv free →
             </a>
-            <a href="https://calendar.app.google/YkSqLTsYr18bUP2Z6" target="_blank" rel="noopener" className="btn btn-ghost-light" style={{ fontSize: 15, padding: '13px 26px' }}>
+            <a href="#product-demo" className="btn btn-ghost-light" style={{ fontSize: 15, padding: '13px 26px' }}>
               Watch it handle a real ticket →
             </a>
           </div>

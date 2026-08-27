@@ -30,7 +30,7 @@ export default function ProductVideo() {
   }, []);
 
   return (
-    <section className="section" style={{ paddingBottom: 0 }}>
+    <section id="product-demo" className="section" style={{ paddingBottom: 0 }}>
       <div className="wrap">
         <div className="product-video-wrap" ref={wrapRef} style={{ aspectRatio: '16 / 9' }}>
           {shouldLoad && (
