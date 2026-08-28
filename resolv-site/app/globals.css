@@ -36,6 +36,7 @@ body {
   background: var(--bg);
   -webkit-font-smoothing: antialiased;
   line-height: 1.6;
+  overflow-x: hidden;
 }
 a { text-decoration: none; color: inherit; }
 button { font-family: inherit; cursor: pointer; }
@@ -141,7 +142,7 @@ button { font-family: inherit; cursor: pointer; }
 .hero {
   background: var(--bg-2); min-height: 100vh;
   display: flex; flex-direction: column; justify-content: center;
-  padding: calc(120px + var(--banner-h)) 0 0; overflow: hidden; position: relative;
+  padding: calc(120px + var(--banner-h)) 0 0; position: relative;
   transition: padding-top 0.25s ease;
 }
 .hero-inner {
@@ -157,10 +158,11 @@ button { font-family: inherit; cursor: pointer; }
 .hero h1 .accent { color: var(--accent-text); }
 .hero-sub {
   font-size: 17px; color: var(--text-2);
-  line-height: 1.72; max-width: 450px; margin-bottom: 40px;
+  line-height: 1.72; max-width: 450px; margin-bottom: 32px;
 }
 .hero-sub strong { color: var(--text); font-weight: 600; }
 .hero-actions { display: flex; align-items: center; gap: 18px; flex-wrap: wrap; }
+.hero-trust { margin-top: 18px !important; }
 .hero-assurance {
   font-size: 13px; color: var(--text-3);
   display: flex; align-items: center; gap: 7px;
@@ -174,7 +176,7 @@ button { font-family: inherit; cursor: pointer; }
   background: var(--accent); color: #fff;
   display: flex; align-items: center; justify-content: center;
 }
-.hero-feat-row { display: flex; flex-wrap: wrap; gap: 28px; margin-top: 36px; }
+.hero-feat-row { display: flex; flex-wrap: wrap; gap: 24px; margin-top: 28px; }
 .hero-feat { display: flex; align-items: center; gap: 12px; }
 .hero-feat-icon {
   width: 40px; height: 40px; border-radius: 10px; flex-shrink: 0;
@@ -489,13 +491,13 @@ button { font-family: inherit; cursor: pointer; }
 /* ============================================================
    HERO MICRO-DEMO
 ============================================================ */
-.hd-outer { perspective: 1800px; position: relative; }
+.hd-outer { perspective: 1800px; position: sticky; top: calc(100px + var(--banner-h)); }
 .hd-outer::before {
   content: '';
   position: absolute;
-  inset: -80px;
+  inset: -30px;
   background: radial-gradient(closest-side, rgba(15,182,204,0.35), rgba(15,182,204,0.12) 55%, transparent 75%);
-  filter: blur(50px);
+  filter: blur(40px);
   z-index: -1;
   pointer-events: none;
 }
