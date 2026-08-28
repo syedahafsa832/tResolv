@@ -147,7 +147,7 @@ button { font-family: inherit; cursor: pointer; }
 .hero-inner {
   max-width: 1320px; margin: 0 auto; padding: 0 48px;
   display: grid; grid-template-columns: 1fr 1fr;
-  gap: 72px; align-items: center;
+  gap: 72px; align-items: start;
 }
 .hero h1 {
   font-size: clamp(46px, 5.8vw, 74px); font-weight: 700;
@@ -489,7 +489,16 @@ button { font-family: inherit; cursor: pointer; }
 /* ============================================================
    HERO MICRO-DEMO
 ============================================================ */
-.hd-outer { perspective: 1800px; }
+.hd-outer { perspective: 1800px; position: relative; }
+.hd-outer::before {
+  content: '';
+  position: absolute;
+  inset: -80px;
+  background: radial-gradient(closest-side, rgba(15,182,204,0.35), rgba(15,182,204,0.12) 55%, transparent 75%);
+  filter: blur(50px);
+  z-index: -1;
+  pointer-events: none;
+}
 .hd-card {
   background: white; border-radius: 14px; overflow: hidden;
   box-shadow: 0 30px 80px rgba(0,0,0,0.18), 0 0 0 1px rgba(0,0,0,0.06);
