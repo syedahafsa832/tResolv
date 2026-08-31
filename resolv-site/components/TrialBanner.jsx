@@ -45,9 +45,9 @@ export default function TrialBanner() {
   return (
     <div className="founding-banner" ref={ref}>
       <div className="founding-banner-inner">
-        <span className="fb-text">🚀 Start your 14-day free trial. No credit card required.</span>
+        <span className="fb-text">Start your 14-day free trial. No credit card required.</span>
         <a href="https://app.tresolv.online" target="_blank" rel="noopener" className="fb-cta">
-          Start free trial →
+          Start free trial
         </a>
       </div>
       <button type="button" className="fb-close" aria-label="Dismiss banner" onClick={handleClose}>
