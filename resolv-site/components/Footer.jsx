@@ -5,6 +5,11 @@ const productLinks = [
   { href: '/#pricing', label: 'Pricing' },
   { href: '/#faq', label: 'FAQ' },
 ];
+const solutionLinks = [
+  { href: '/shopify-ai-customer-support', label: 'Shopify AI Customer Support' },
+  { href: '/ai-order-tracking-automation', label: 'WISMO / Order Tracking' },
+  { href: '/gorgias-alternatives', label: 'Gorgias Alternatives' },
+];
 const companyLinks = [
   { href: '/blog', label: 'Blog' },
   { href: 'mailto:hello@tresolv.online', label: 'Contact' },
@@ -31,6 +36,7 @@ export default function Footer() {
           <div className="footer-cols">
             {[
               { heading: 'Product', links: productLinks },
+              { heading: 'Solutions', links: solutionLinks },
               { heading: 'Company', links: companyLinks },
               { heading: 'Legal',   links: legalLinks },
             ].map(({ heading, links }) => (
