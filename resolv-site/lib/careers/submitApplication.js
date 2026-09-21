@@ -42,17 +42,17 @@ export function validateApplication(raw) {
     values[q.name] = v;
 
     if (!v) {
-      errors[q.name] = q.type === 'select' ? 'pick one' : 'this one is required';
+      errors[q.name] = q.type === 'select' ? 'Pick one' : 'This one is required';
     } else if (q.type === 'email' && !EMAIL_RE.test(v)) {
-      errors[q.name] = 'that email doesn’t look right';
+      errors[q.name] = 'That email doesn’t look right';
     } else if (q.type === 'url' && !LINKEDIN_RE.test(v)) {
-      errors[q.name] = 'paste your LinkedIn profile link (linkedin.com/in/…)';
+      errors[q.name] = 'Paste your LinkedIn profile link (linkedin.com/in/...)';
     } else if (q.type === 'select' && !q.options.includes(v)) {
-      errors[q.name] = 'pick one of the options';
+      errors[q.name] = 'Pick one of the options';
     } else if (q.min && v.length < q.min) {
-      errors[q.name] = `a little more detail please (at least ${q.min} characters)`;
+      errors[q.name] = `A little more detail please (at least ${q.min} characters)`;
     } else if (q.max && v.length > q.max) {
-      errors[q.name] = `too long (max ${q.max} characters)`;
+      errors[q.name] = `Too long (max ${q.max} characters)`;
     }
   }
   return { errors, values };

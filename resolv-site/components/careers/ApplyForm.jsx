@@ -39,12 +39,12 @@ function Field({ q, index, value, error, onChange, onBlur }) {
   };
   return (
     <div className="cr-field">
-      <label className="cr-label" htmlFor={id}>{index && <em>{String(index).padStart(2, '0')}</em>}{q.label}</label>
+      <label className="cr-label" htmlFor={id}>{index && <span className="cr-num">{String(index).padStart(2, '0')}</span>}{q.label}</label>
       {q.hint && <span className="cr-hint" id={`${id}-hint`}>{q.hint}</span>}
       {q.type === 'textarea' && <textarea {...common} maxLength={q.max} rows={5} />}
       {q.type === 'select' && (
         <select {...common}>
-          <option value="">choose one…</option>
+          <option value="">Choose one…</option>
           {q.options.map((o) => <option key={o} value={o}>{o}</option>)}
         </select>
       )}
@@ -127,44 +127,36 @@ export default function ApplyForm() {
 
   if (state === 'done') {
     return (
-      <div className="cr-wrap cr-narrow">
-        <section className="cr-success">
-          <div className="cr-success-badge"><Icon name="Check" size={38} strokeWidth={3} /></div>
-          <h1 className="cr-h1" style={{ fontSize: 'clamp(34px, 6vw, 52px)' }}>
-            application <span className="cr-grad">received.</span>
-          </h1>
-          <p className="cr-lead">
-            Thanks for taking the time. A human reads every application. If it looks like
-            a fit, we&rsquo;ll email you{sentEmail.current ? <> at <strong>{sentEmail.current}</strong></> : ''}.
-          </p>
-          <div className="cr-cta-row" style={{ justifyContent: 'center' }}>
-            <Link href="/careers" className="cr-btn cr-btn-ghost">back to careers</Link>
-          </div>
-        </section>
+      <div className="cr-success">
+        <div className="cr-success-badge"><Icon name="Check" size={30} strokeWidth={3} /></div>
+        <h1>Application <span className="accent">received.</span></h1>
+        <p className="cr-apply-sub">
+          Thanks for taking the time. A human reads every application. If it looks like
+          a fit, we&apos;ll email you{sentEmail.current ? <> at <strong>{sentEmail.current}</strong></> : ''}.
+        </p>
+        <Link href="/careers" className="btn btn-ghost-light">Back to careers</Link>
       </div>
     );
   }
 
   let n = 0;
   return (
-    <div className="cr-wrap cr-narrow">
-      <Link href="/careers" className="cr-backlink">&larr; back to careers</Link>
+    <div>
+      <Link href="/careers" className="cr-back">← Back to careers</Link>
 
-      <section className="cr-apply-head" style={{ marginTop: 20 }}>
-        <div className="cr-eyebrow">application &middot; {ROLE.title}</div>
-        <h1 className="cr-h2" style={{ fontSize: 'clamp(32px, 5.4vw, 52px)' }}>
-          tell us how <span className="cr-grad">you think.</span>
-        </h1>
-        <p className="cr-lead">
-          About 8&ndash;12 minutes. No CV needed. We care about your thinking and your
-          initiative, not your resume. Your answers save in this browser as you go.
-        </p>
-        <div className="cr-chips"><span className="cr-chip cr-chip-hot">commission-based</span></div>
-      </section>
+      <div className="eyebrow"><span className="eyebrow-dot" />Application · {ROLE.title}</div>
+      <h1>Tell us how <span className="accent">you think.</span></h1>
+      <p className="cr-apply-sub">
+        About 8 to 12 minutes. No CV needed. We care about your thinking and your
+        initiative, not your resume. Your answers save in this browser as you go.
+      </p>
+      <div className="cr-tags" style={{ marginTop: 20, marginBottom: 0 }}>
+        <span className="cr-tag cr-tag-hot">Commission-based</span>
+      </div>
 
       <div className="cr-progress" role="status" aria-live="polite">
         <div className="cr-progress-row">
-          <span>your progress</span>
+          <span>Your progress</span>
           <span>{percent}%</span>
         </div>
         <div className="cr-bar"><div style={{ width: `${percent}%` }} /></div>
@@ -198,15 +190,20 @@ export default function ApplyForm() {
         </div>
 
         <div className="cr-notice">
-          <b>this is a commission-based role.</b>
+          <b>This is a commission-based role.</b>
           <p>{COMMISSION_NOTE}</p>
         </div>
 
         {banner && <div className="cr-banner" role="alert">{banner}</div>}
 
-        <div className="cr-submit-row">
-          <button type="submit" className="cr-btn cr-btn-primary" disabled={state === 'sending'}>
-            {state === 'sending' ? 'sending…' : <>submit application <Icon name="ArrowRight" /></>}
+        <div className="cr-submit">
+          <button
+            type="submit"
+            className="btn btn-primary"
+            style={{ fontSize: 15, padding: '13px 26px', opacity: state === 'sending' ? 0.6 : 1 }}
+            disabled={state === 'sending'}
+          >
+            {state === 'sending' ? 'Sending…' : 'Submit application →'}
           </button>
         </div>
       </form>

@@ -28,7 +28,7 @@ export default function Nav() {
   // from the top. The homepage hero and blog pages start on a plain light
   // background, so the nav needs its "scrolled" (dark-text) styling
   // immediately, not just after scrolling.
-  const isLightTop = pathname === '/' || pathname?.startsWith('/blog');
+  const isLightTop = pathname === '/' || pathname?.startsWith('/blog') || pathname?.startsWith('/careers');
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 24);

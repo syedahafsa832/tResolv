@@ -17,9 +17,10 @@ export default function ApplyPage() {
   return (
     <>
       <Nav />
-      <main className="cr-root">
-        <div className="cr-glow" aria-hidden="true" />
-        <ApplyForm />
+      <main className="cr-apply">
+        <div className="wrap">
+          <ApplyForm />
+        </div>
       </main>
       <Footer />
     </>
