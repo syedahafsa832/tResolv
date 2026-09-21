@@ -315,3 +315,7 @@ select.cr-input { appearance: none; -webkit-appearance: none; cursor: pointer; p
 @media (max-width: 520px) {
   .cr-ad-cards { grid-template-columns: repeat(2, 1fr); }
 }
+
+.cr-paste-tag { margin-left: 8px; padding: 2px 9px; border-radius: 99px; font-size: 11.5px; font-weight: 600; background: var(--orange-soft); color: #b35513; white-space: nowrap; vertical-align: middle; }
+.cr-ad-paste-note { margin-top: 18px; padding: 16px 20px; border-radius: 18px; background: var(--orange-soft); color: #7a3f0e; font-size: 15px; line-height: 1.55; }
+.cr-ad-paste-note b { display: block; margin-bottom: 2px; }

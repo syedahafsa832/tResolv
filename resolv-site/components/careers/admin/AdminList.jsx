@@ -6,7 +6,7 @@ import { useRouter } from 'next/navigation';
 import { getAdminClient } from '@/lib/careers/adminClient';
 import { STATUSES, StatusSelect, fmtDate } from './adminBits';
 
-const COLS = 'id,full_name,email,location,role,status,created_at,updated_at,linkedin_url';
+const COLS = 'id,full_name,email,location,role,status,created_at,updated_at,linkedin_url,pasted_fields';
 
 export default function AdminList() {
   const router = useRouter();
@@ -79,7 +79,7 @@ export default function AdminList() {
           </div>
           {visible.map((r) => (
             <div key={r.id} className="cr-ad-row" role="row" onClick={() => router.push(`/careers/admin/${r.id}`)}>
-              <span className="cr-ad-name"><Link href={`/careers/admin/${r.id}`} onClick={(e) => e.stopPropagation()}>{r.full_name}</Link></span>
+              <span className="cr-ad-name"><Link href={`/careers/admin/${r.id}`} onClick={(e) => e.stopPropagation()}>{r.full_name}</Link>{Object.values(r.pasted_fields || {}).some((p) => p >= 60) && <span className="cr-paste-tag">pasted</span>}</span>
               <span className="cr-ad-email">{r.email}</span>
               <span>{r.location}</span>
               <span>{r.role}</span>

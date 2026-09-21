@@ -63,7 +63,7 @@ export function validateApplication(raw) {
 
 // Returns { ok: true } or { ok: false, reason: 'unconfigured'|'duplicate'|'error' }.
 // Never reports success unless Supabase confirmed the insert.
-export async function submitApplication(values) {
+export async function submitApplication(values, pasted = {}) {
   if (!careersConfigured) {
     console.error(
       '[careers] NEXT_PUBLIC_CAREERS_SUPABASE_URL / NEXT_PUBLIC_CAREERS_SUPABASE_ANON_KEY are not set; application not sent.',
@@ -74,7 +74,7 @@ export async function submitApplication(values) {
     const supabase = await getClient();
     // Only the known question columns are sent (status/role/timestamps are
     // set by the database). No .select(): applicants have no read access.
-    const row = Object.fromEntries(FIELD_NAMES.map((n) => [n, values[n]]));
+    const row = { ...Object.fromEntries(FIELD_NAMES.map((n) => [n, values[n]])), pasted_fields: pasted };
     const { error } = await supabase.from('applications').insert(row);
     if (!error) return { ok: true };
     if (error.code === '23505') return { ok: false, reason: 'duplicate' };
