@@ -3,7 +3,7 @@
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { getAdminClient } from '@/lib/careers/adminClient';
-import { StatusSelect, fmtDate } from './adminBits';
+import { StatusSelect, fmtDate, callSelection, selectionMessage } from './adminBits';
 
 const GROUPS = [
   { title: 'basic', fields: [['full_name', 'name'], ['email', 'email'], ['linkedin_url', 'linkedin'], ['location', 'location']] },
@@ -31,7 +31,63 @@ const GROUPS = [
   },
 ];
 
+function Row({ label, value }) {
+  return <div className="cr-ad-field"><div className="cr-ad-label">{label}</div><div className="cr-ad-value">{value}</div></div>;
+}
+
+function TeamAccess({ appId, refreshKey }) {
+  const [info, setInfo] = useState(undefined);
+  const [msg, setMsg] = useState('');
+  const [busy, setBusy] = useState(false);
+
+  const load = async () => {
+    const sb = getAdminClient();
+    const { data: tm } = await sb.from('team_members').select('*').eq('application_id', appId).maybeSingle();
+    let done = 0; let req = 0;
+    if (tm) {
+      const [p, m] = await Promise.all([
+        sb.from('onboarding_progress').select('module_id', { count: 'exact', head: true }).eq('team_member_id', tm.id),
+        sb.from('onboarding_modules').select('id', { count: 'exact', head: true }).eq('published', true),
+      ]);
+      done = p.count || 0; req = m.count || 0;
+    }
+    setInfo({ tm, done, req });
+  };
+  useEffect(() => { load(); }, [appId, refreshKey]); // eslint-disable-line react-hooks/exhaustive-deps
+
+  const resend = async () => {
+    setBusy(true); setMsg('');
+    const res = await callSelection(appId, true);
+    setMsg(selectionMessage(res)); setBusy(false); load();
+  };
+
+  const tm = info && info.tm;
+  return (
+    <section className="cr-ad-group">
+      <h2>team access</h2>
+      {info === undefined && <p className="cr-ad-sub">loading…</p>}
+      {info && !tm && <p className="cr-ad-sub">no team member yet. it’s created when the welcome email is sent.</p>}
+      {tm && (
+        <>
+          <Row label="team member" value={tm.status} />
+          <Row label="auth account" value={tm.auth_user_id ? 'created' : 'not yet'} />
+          <Row label="welcome email" value={tm.welcome_email_sent_at ? `sent ${fmtDate(tm.welcome_email_sent_at, true)}` : 'not sent'} />
+          <Row label="last login" value={tm.last_login_at ? fmtDate(tm.last_login_at, true) : 'never'} />
+          <Row label="onboarding progress" value={`${info.done} / ${info.req} items`} />
+        </>
+      )}
+      <div style={{ marginTop: 20, display: 'flex', gap: 14, alignItems: 'center', flexWrap: 'wrap' }}>
+        <button type="button" className="cr-btn cr-btn-ghost cr-btn-sm" onClick={resend} disabled={busy}>
+          {busy ? 'sending…' : tm && tm.welcome_email_sent_at ? 'resend welcome email' : 'send welcome email'}
+        </button>
+        {msg && <span className="cr-ad-sub">{msg}</span>}
+      </div>
+    </section>
+  );
+}
+
 export default function AdminDetail({ id }) {
+  const [teamKey, setTeamKey] = useState(0);
   const [app, setApp] = useState(undefined); // undefined = loading, null = not found
   const [error, setError] = useState('');
 
@@ -58,7 +114,7 @@ export default function AdminDetail({ id }) {
                 updated {fmtDate(app.updated_at, true)}
               </p>
             </div>
-            <StatusSelect id={app.id} value={app.status} size="lg" onSaved={(u) => setApp((a) => ({ ...a, status: u.status, updated_at: u.updated_at }))} />
+            <StatusSelect id={app.id} value={app.status} size="lg" onSelectionDone={() => setTeamKey((k) => k + 1)} onSaved={(u) => setApp((a) => ({ ...a, status: u.status, updated_at: u.updated_at }))} />
           </div>
 
           {Object.keys(app.pasted_fields || {}).length > 0 && (
@@ -68,6 +124,8 @@ export default function AdminDetail({ id }) {
               this comes from their browser, so treat it as a hint.
             </div>
           )}
+
+          {app.status === 'selected' && <TeamAccess appId={app.id} refreshKey={teamKey} />}
 
           {GROUPS.map((g) => (
             <section key={g.title} className="cr-ad-group">
