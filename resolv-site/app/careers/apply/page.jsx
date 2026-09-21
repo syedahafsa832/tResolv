@@ -1,8 +1,6 @@
-import Nav from '@/components/Nav';
-import Footer from '@/components/Footer';
+import { CareersHeader, CareersFooter } from '@/components/careers/CareersChrome';
 import ApplyForm from '@/components/careers/ApplyForm';
 import { buildMetadata } from '@/lib/seo';
-import '../careers.css';
 
 export const metadata = {
   ...buildMetadata({
@@ -16,13 +14,11 @@ export const metadata = {
 export default function ApplyPage() {
   return (
     <>
-      <Nav />
+      <CareersHeader />
       <main className="cr-apply">
-        <div className="wrap">
-          <ApplyForm />
-        </div>
+        <ApplyForm />
       </main>
-      <Footer />
+      <CareersFooter />
     </>
   );
 }
