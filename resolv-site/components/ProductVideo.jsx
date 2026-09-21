@@ -36,7 +36,7 @@ export default function ProductVideo() {
           {shouldLoad && (
             <video
               className="product-video"
-              src="/video/tresolv-product-demo.mp4"
+              src="/video/tresolv-product-video.mp4"
               autoPlay
               muted
               playsInline
