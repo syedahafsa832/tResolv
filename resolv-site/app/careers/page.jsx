@@ -16,110 +16,135 @@ export const metadata = buildMetadata({
   path: '/careers',
 });
 
-const delay = (ms) => ({ animationDelay: `${ms}ms` });
-
 export default function CareersPage() {
   return (
     <>
       <Nav />
-      <main className="cr-root">
-        <div className="cr-glow" aria-hidden="true" />
-        <div className="cr-wrap">
-          <section className="cr-hero">
-            <div>
-              <div className="cr-pill cr-rise"><span className="cr-dot" /> 1 open role</div>
-              <h1 className="cr-h1 cr-rise" style={delay(80)}>
-                we&rsquo;re building tResolv.<br />
-                <span className="cr-grad">come help us grow it.</span>
+      <main>
+        <section className="hero cr-hero">
+          <div className="hero-inner">
+            <div className="hero-text">
+              <div className="eyebrow">
+                <span className="eyebrow-dot" />
+                Now hiring · 1 open role
+              </div>
+              <h1>
+                We&apos;re building tResolv.<br />
+                <span className="accent">Come help us grow it.</span>
               </h1>
-              <p className="cr-lead cr-rise" style={delay(160)}>
-                <strong>You don&rsquo;t need years of experience.</strong> You need curiosity,
+              <p className="hero-sub">
+                <strong>You don&apos;t need years of experience.</strong> You need curiosity,
                 initiative, and the ability to figure things out.
               </p>
-              <div className="cr-cta-row cr-rise" style={delay(240)}>
-                <Link href="/careers/apply" className="cr-btn cr-btn-primary">
-                  apply now <Icon name="ArrowRight" />
+              <div className="hero-actions">
+                <Link
+                  href="/careers/apply"
+                  className="btn btn-primary"
+                  style={{ fontSize: 15, padding: '13px 26px' }}
+                >
+                  Apply now →
                 </Link>
-                <a href="#role" className="cr-btn cr-btn-ghost">see the role</a>
+                <a href="#role" className="hero-watch-link">
+                  See the role
+                  <span className="hero-watch-icon"><Icon name="ArrowDown" size={14} /></span>
+                </a>
+              </div>
+              <div className="hero-trust" style={{ display: 'flex', gap: 24, flexWrap: 'wrap', marginTop: 24 }}>
+                <span className="hero-assurance">Commission-based · No CV needed · About 10 minutes to apply</span>
               </div>
             </div>
 
-            <div className="cr-chat cr-rise" style={delay(320)} aria-hidden="true">
-              <div className="cr-chat-label"><span>a good day, roughly</span><span>example</span></div>
-              <div className="cr-bubble cr-bubble-them">hey, who&rsquo;s this?</div>
-              <div className="cr-bubble cr-bubble-you">
-                hi! noticed your customers keep asking &ldquo;where&rsquo;s my order?&rdquo; &mdash;
-                we built something for exactly that.
+            <div className="hd-outer" aria-hidden="true">
+              <div className="hd-card">
+                <div className="hd-chrome">
+                  <div className="hd-dots">
+                    <span className="hd-dot hd-dot-r" />
+                    <span className="hd-dot hd-dot-y" />
+                    <span className="hd-dot hd-dot-g" />
+                  </div>
+                  <div className="hd-title">Outreach · example</div>
+                </div>
+                <div className="hd-body">
+                  <div className="hd-msg hd-msg-customer">
+                    Hi! Noticed your customers keep asking &ldquo;where&apos;s my order?&rdquo; We built something for exactly that.
+                  </div>
+                  <div className="hd-msg hd-msg-luna">Wait, tell me more.</div>
+                  <div className="hd-msg hd-msg-customer">Happy to show you. Free for a quick chat this week?</div>
+                  <div className="hd-msg hd-msg-luna">Yes, send over a time.</div>
+                  <div className="hd-stamp">Conversation started</div>
+                </div>
               </div>
-              <div className="cr-bubble cr-bubble-them">wait&hellip; tell me more</div>
-              <span className="cr-chat-tag"><Icon name="Check" size={14} /> conversation started</span>
             </div>
-          </section>
+          </div>
+        </section>
 
-          <section className="cr-section" id="role">
-            <div className="cr-eyebrow">open role</div>
-            <h2 className="cr-h2">{ROLE.title}</h2>
-            <div className="cr-chips">
-              <span className="cr-chip cr-chip-hot">commission-based</span>
-              <span className="cr-chip">no experience required</span>
+        <section className="section" id="role">
+          <div className="wrap">
+            <div className="eyebrow"><span className="eyebrow-dot" />Open role</div>
+            <h2 className="section-title">{ROLE.title}</h2>
+            <div className="cr-tags">
+              <span className="cr-tag cr-tag-hot">Commission-based</span>
+              <span className="cr-tag">No experience required</span>
             </div>
-            <p className="cr-role-intro">
-              Not a traditional corporate sales job. You&rsquo;ll help tResolv grow by finding
-              Shopify brands that could use us, starting real conversations, and helping turn
-              them into customers.
+            <p className="section-sub cr-section-sub">
+              This is not a traditional corporate sales job. You&apos;ll help tResolv grow by finding
+              Shopify brands that could use us, starting real conversations, and helping turn them into customers.
             </p>
 
-            <div className="cr-grid">
+            <div className="feat-grid cr-grid">
               {ROLE_SECTIONS.map((s) => (
-                <article className="cr-card" key={s.key}>
-                  <div className="cr-card-head">
-                    <span className="cr-card-icon"><Icon name={s.icon} size={19} /></span>
-                    <h3>{s.title}</h3>
-                  </div>
+                <div className="feat-card" key={s.key}>
+                  <div className="feat-icon"><Icon name={s.icon} size={18} /></div>
+                  <h3 className="feat-title">{s.title}</h3>
                   <ul className="cr-list">
                     {s.items.map((it) => <li key={it}>{it}</li>)}
                   </ul>
                   {s.footnote && <p className="cr-foot">{s.footnote}</p>}
-                </article>
+                </div>
               ))}
             </div>
-          </section>
+          </div>
+        </section>
 
-          <section className="cr-section" id="money">
-            <div className="cr-eyebrow">compensation</div>
-            <h2 className="cr-h2">let&rsquo;s be upfront about money.</h2>
+        <section className="section section-alt" id="money">
+          <div className="wrap">
+            <div className="eyebrow"><span className="eyebrow-dot" />Compensation</div>
+            <h2 className="section-title">Let&apos;s be upfront about money.</h2>
             <div className="cr-money">
               <h3>This role is commission-based.</h3>
               <p>{COMMISSION_NOTE}</p>
               <div className="cr-money-struct">
-                <span>commission structure</span>
+                <span>Commission structure</span>
                 {COMMISSION_STRUCTURE || COMMISSION_STRUCTURE_FALLBACK}
               </div>
             </div>
 
-            <div className="cr-steps">
+            <h3 className="section-title" style={{ fontSize: 26, marginTop: 72, marginBottom: 0 }}>How applying works</h3>
+            <div className="steps" style={{ marginTop: 40 }}>
               {HOW_IT_WORKS.map((s, i) => (
-                <div className="cr-step" key={s.title}>
-                  <i>0{i + 1}</i>
-                  <b>{s.title}</b>
-                  <p>{s.body}</p>
+                <div key={s.title} className="step">
+                  <div className="step-num">0{i + 1}</div>
+                  <h3 className="step-title">{s.title}</h3>
+                  <p className="step-body">{s.body}</p>
                 </div>
               ))}
             </div>
-          </section>
+          </div>
+        </section>
 
-          <section className="cr-section">
-            <div className="cr-final">
-              <h2 className="cr-h2" style={{ marginTop: 0 }}>
-                sound like <span className="cr-grad">you?</span>
-              </h2>
-              <p>Takes about 10 minutes. No CV, no cover letter. Just show us how you think.</p>
-              <Link href="/careers/apply" className="cr-btn cr-btn-primary">
-                apply now <Icon name="ArrowRight" />
-              </Link>
-            </div>
-          </section>
-        </div>
+        <section className="section pre-cta">
+          <div className="wrap">
+            <h2>Sound like you?</h2>
+            <p>Takes about 10 minutes. No CV, no cover letter. Just show us how you think.</p>
+            <Link
+              href="/careers/apply"
+              className="btn btn-primary"
+              style={{ fontSize: 16, padding: '14px 32px' }}
+            >
+              Apply now →
+            </Link>
+          </div>
+        </section>
       </main>
       <Footer />
     </>
