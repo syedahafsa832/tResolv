@@ -18,7 +18,10 @@ function getClient() {
       createClient(SUPABASE_URL, ANON_KEY, {
         auth: { persistSession: false, autoRefreshToken: false, detectSessionInUrl: false },
       }),
-    );
+    ).catch((err) => {
+      clientPromise = undefined; // don't cache a failed load: let the next attempt retry
+      throw err;
+    });
   }
   return clientPromise;
 }
