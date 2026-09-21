@@ -12,8 +12,18 @@ export const page = {
     eyebrow: 'AI Customer Support Employee',
     title: 'Hire an AI employee.',
     titleAccent: 'Not another helpdesk.',
+    descriptor: 'AI customer support employee for Shopify brands: resolves routine support emails and asks for your approval before any refund, cancellation, or address change.',
     sub: 'tResolv reads your support inbox, resolves routine customer emails on its own, and stops before every refund, cancellation, or address change until you approve it.',
     secondaryLabel: 'Your emails never leave Google.',
+  },
+  answer: {
+    id: 'answer',
+    eyebrow: 'Short answer',
+    title: 'What is an AI customer support employee?',
+    paragraphs: [
+      'An AI customer support employee is software that works your support inbox the way a team member would: it reads customer emails, checks the order, replies to routine requests, and asks a human to approve anything involving money.',
+      'tResolv is built this way for Shopify brands. It reads your Gmail inbox and storefront chat, and stages every refund, cancellation, and address change for your one-tap approval.',
+    ],
   },
   problem: {
     id: 'problem',
@@ -40,7 +50,7 @@ export const page = {
     ],
   },
   steps: {
-    title: 'Set it up once. tResolv handles the rest.',
+    title: 'How does setup work, and when does tResolv ask for approval?',
     sub: 'Three steps. No ongoing configuration required.',
     steps: [
       { num: '01', title: 'Connect Gmail and Shopify', body: 'One Google OAuth click connects your inbox. Add your Shopify store and tResolv starts reading orders in real time.' },
@@ -81,6 +91,7 @@ export const page = {
     { href: '/ai-email-customer-support', label: 'AI Email Customer Support' },
     { href: '/tresolv-vs-gorgias', label: 'tResolv vs Gorgias' },
     { href: '/blog/what-is-an-ai-customer-support-agent', label: 'What Is an AI Customer Support Agent?' },
+    { href: '/ai-support-agent-ecommerce', label: 'AI Support Agent for Ecommerce' },
   ],
   cta: {
     title: 'Hire your first AI support employee.',

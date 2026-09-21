@@ -109,6 +109,10 @@ export default function Features() {
       <div className="wrap">
         <div className="eyebrow"><span className="eyebrow-dot" />Features</div>
         <h2 className="section-title">Everything you need.<br />Nothing you don't.</h2>
+        <p className="section-sub">
+          What tResolv does for Shopify brands: AI replies to support email and storefront chat, live
+          Shopify order lookups, and refunds, cancellations, and address changes staged for your approval.
+        </p>
         <div className="feat-grid">
           {features.map(({ icon, title, body, note, isNew, isWide }) => (
             <div key={title} className={`feat-card${isWide ? ' feat-wide' : ''}`}>

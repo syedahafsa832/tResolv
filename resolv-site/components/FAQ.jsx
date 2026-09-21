@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import Link from 'next/link';
 import { faqs } from '@/content/homepageFaqs';
 
 const ChevronIcon = () => (
@@ -10,7 +11,8 @@ const ChevronIcon = () => (
   </svg>
 );
 
-export default function FAQ() {
+// `linkToPage`: the homepage accordion links through to the full /faq page.
+export default function FAQ({ linkToPage = false }) {
   const [openIndex, setOpenIndex] = useState(null);
 
   const toggle = (i) => setOpenIndex(openIndex === i ? null : i);
@@ -20,6 +22,10 @@ export default function FAQ() {
       <div className="wrap">
         <div className="eyebrow"><span className="eyebrow-dot" />FAQ</div>
         <h2 className="section-title">Honest answers.</h2>
+        <p className="section-sub">
+          tResolv FAQ: what happens after the free trial, how human approval works for refunds and
+          cancellations, how Gmail and Shopify setup works, and how customer data is handled.
+        </p>
         <div className="faq-wrap">
           {faqs.map(({ q, a }, i) => (
             <div key={i} className={`faq-item${openIndex === i ? ' open' : ''}`}>
@@ -33,6 +39,11 @@ export default function FAQ() {
             </div>
           ))}
         </div>
+        {linkToPage && (
+          <p className="section-sub" style={{ marginTop: 28, maxWidth: 'none' }}>
+            <Link href="/faq" className="inline-link">Read the full FAQ →</Link>
+          </p>
+        )}
       </div>
     </section>
   );

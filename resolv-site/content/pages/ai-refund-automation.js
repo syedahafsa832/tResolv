@@ -10,7 +10,17 @@ export const page = {
     eyebrow: 'AI Refund Automation',
     title: 'Refunds, drafted.',
     titleAccent: 'Never sent without you.',
+    descriptor: 'AI refund automation for Shopify stores, with your approval required before any refund is issued.',
     sub: 'tResolv checks a refund request against the order and your return policy, drafts the response, and stages the Shopify refund for your one-tap approval, every time.',
+  },
+  answer: {
+    id: 'answer',
+    eyebrow: 'Short answer',
+    title: 'How does AI refund automation work in tResolv?',
+    paragraphs: [
+      'When a customer asks for a refund, tResolv matches the email to the Shopify order, checks its refund status and your return policy, drafts the reply, and stages the refund for your one-tap approval. The refund does not execute in Shopify until you approve it, regardless of confidence level.',
+      'tResolv also checks whether the order was already refunded, so it does not stage a duplicate.',
+    ],
   },
   problem: {
     id: 'problem',
@@ -37,7 +47,7 @@ export const page = {
     ],
   },
   steps: {
-    title: 'How a refund request is handled',
+    title: 'How does tResolv handle a refund request?',
     steps: [
       { num: '01', title: 'Customer requests a refund', body: 'tResolv matches the email to the order and checks its refund and return-eligibility status.' },
       { num: '02', title: 'Refund is staged, not sent', body: 'A reply is drafted and the Shopify refund is prepared, waiting in your approval queue.' },
@@ -75,6 +85,7 @@ export const page = {
     { href: '/ai-customer-support-employee', label: 'AI Customer Support Employee' },
     { href: '/gorgias-alternatives', label: 'Gorgias Alternatives' },
     { href: '/blog/how-to-reduce-ecommerce-support-tickets', label: 'How to Reduce Ecommerce Support Tickets' },
+    { href: '/ai-support-agent-ecommerce', label: 'AI Support Agent for Ecommerce' },
   ],
   cta: {
     title: 'Automate the refund reply. Keep the refund decision.',

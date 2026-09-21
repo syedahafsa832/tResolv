@@ -1,3 +1,5 @@
+import { sharedRows, OFFICIAL_SOURCES } from './shared';
+
 export const page = {
   path: '/tresolv-vs-gorgias',
   seo: {
@@ -25,23 +27,36 @@ export const page = {
       { label: 'AI draft confidence visibility', resolv: 'Confidence score shown on every drafted reply.', competitor: 'Check current product documentation.' },
       { label: 'Gmail-native (no separate inbox)', resolv: true, competitor: 'Uses a dedicated customer support workspace. See Gorgias documentation for current email workflow options.' },
       { label: 'AI resolution approach', resolv: 'Designed to automate a large share of repetitive customer conversations while keeping financial actions under human approval.', competitor: 'Not publicly confirmed.' },
+      ...sharedRows('Gorgias', { aiClaim: 'Yes, a conversational AI platform for ecommerce (per Gorgias)' }),
+    ],
+  },
+  sources: OFFICIAL_SOURCES.Gorgias,
+  differences: {
+    id: 'differences',
+    eyebrow: 'Key differences',
+    title: 'What are the main differences between tResolv and Gorgias?',
+    checks: [
+      { label: 'Scope:', detail: 'Gorgias is a conversational AI platform for ecommerce with broad Shopify action support (per Gorgias\'s own positioning). tResolv is narrower: an AI employee for Shopify support email and storefront chat.' },
+      { label: 'Where the work happens:', detail: 'tResolv works inside the Gmail inbox you already use. Gorgias uses a dedicated customer support workspace (see the table above).' },
+      { label: 'Approvals for money:', detail: 'tResolv stages every refund, cancellation, and address change for your one-tap approval by default. How financial actions are handled in a Gorgias setup: not verified here, see Gorgias\'s documentation.' },
+      { label: 'Setup and pricing:', detail: 'tResolv typically connects to Gmail and Shopify in under 10 minutes. tResolv plans are $49, $99, and $249+ per month with a 14-day free trial and no credit card required. Gorgias setup time and pricing: not verified here, see its pricing page.' },
     ],
   },
   whoFor: {
     left: {
-      title: 'Gorgias tends to fit',
+      title: 'Choose Gorgias if…',
       items: [
-        'Teams that want a full conversational AI platform with broad Shopify action support (per Gorgias\'s own positioning)',
-        'Brands already invested in the Gorgias ecosystem and workflows',
-        'Teams that want a dedicated helpdesk interface separate from email',
+        'You want a full conversational AI platform with broad Shopify action support (per Gorgias\'s own positioning).',
+        'Your team is already invested in the Gorgias ecosystem and workflows.',
+        'You want a dedicated helpdesk interface separate from your email inbox.',
       ],
     },
     right: {
-      title: 'tResolv tends to fit',
+      title: 'Choose tResolv if…',
       items: [
-        'Shopify brands who want AI to work directly inside the Gmail inbox they already use',
-        'Teams that want every refund, cancellation, and address change staged for approval by default',
-        'Brands that want a transparent confidence score on every AI-drafted reply',
+        'You want AI to work directly inside the Gmail inbox you already use.',
+        'You want every refund, cancellation, and address change staged for your approval by default.',
+        'You want a visible confidence score on every AI-drafted reply.',
       ],
     },
   },
@@ -55,11 +70,27 @@ export const page = {
       'If your evaluation depends on specific Shopify workflows, compare the latest feature documentation from both products before making a decision.',
     ],
   },
+  migration: {
+    id: 'migration',
+    eyebrow: 'Switching or adding tResolv',
+    title: 'What should you consider before moving from Gorgias to tResolv?',
+    paragraphs: [
+        'tResolv is not a drop-in replacement for a full helpdesk, so the useful question is what you would change and what you would keep.',
+      ],
+    checks: [
+      { label: 'Your inbox:', detail: 'tResolv reads a Gmail support address. Check that your customer email can reach one before planning a move.' },
+      { label: 'Your workflows:', detail: 'List the Gorgias workflows you rely on and confirm what would need a different approach. tResolv focuses on Shopify order questions, refunds, cancellations, and address changes, and routes exchanges to your support team.' },
+      { label: 'Try it first:', detail: 'The 14-day free trial needs no credit card, so you can evaluate tResolv on your real inbox before changing anything.' },
+      { label: 'Running both:', detail: 'Whether this makes sense depends on your setup. Not verified here.' },
+    ],
+  },
   faqs: [
     { q: 'We already use Gorgias, why would we switch?', a: 'You may not need to switch entirely. The question worth asking is whether you need another helpdesk platform to operate, or fewer repetitive conversations reaching your team in the first place, that\'s the problem tResolv is built to solve.' },
     { q: 'Is Gorgias worse than tResolv?', a: 'This page does not claim that. Gorgias has real strengths, particularly its established Shopify action depth. The comparison here is about philosophy, platform vs. employee, not a feature-by-feature "better/worse" claim.' },
     { q: 'Does tResolv have the same Shopify actions as Gorgias?', a: 'tResolv supports staged refunds, cancellations, and address changes, all requiring your approval; exchanges are routed to your support team. For a full feature-by-feature comparison, check Gorgias\'s current documentation directly.' },
     { q: 'Can I run tResolv alongside Gorgias?', a: 'This depends on your specific setup, evaluate your support workflow to determine whether running both systems makes sense for your team.' },
+    { q: 'What is the main difference between tResolv and Gorgias?', a: 'Gorgias is a conversational AI platform for ecommerce with its own support workspace. tResolv is an AI employee that works inside your Gmail inbox and stages every refund, cancellation, and address change for your approval.' },
+    { q: 'How does tResolv pricing compare with Gorgias?', a: 'tResolv plans are $49, $99, and $249+ per month with a 14-day free trial and no credit card required. Gorgias pricing is not verified here; check its pricing page for current plans.' },
   ],
   relatedLinks: [
     { href: '/ai-customer-support-employee', label: 'AI Customer Support Employee' },

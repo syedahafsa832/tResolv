@@ -23,6 +23,7 @@ export default function Page() {
   return (
     <PageShell schema={schema} breadcrumb={breadcrumb}>
       <PageHero {...page.hero} />
+      {page.answer && <TextSection {...page.answer} />}
       <TextSection {...page.problem} />
       <TextSection {...page.solution} />
       <StepsSection {...page.steps} />

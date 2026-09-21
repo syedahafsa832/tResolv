@@ -1,3 +1,5 @@
+import { sharedRows, OFFICIAL_SOURCES } from './shared';
+
 export const page = {
   path: '/tresolv-vs-intercom',
   seo: {
@@ -25,23 +27,36 @@ export const page = {
       { label: 'Financial actions always require approval', resolv: true, competitor: 'Not publicly confirmed.' },
       { label: 'AI draft confidence visibility', resolv: 'Confidence score shown on every drafted reply.', competitor: 'Check current product documentation.' },
       { label: 'Setup time', resolv: 'Typically under 10 minutes', competitor: 'Varies depending on configuration.' },
+      ...sharedRows('Intercom', { aiClaim: 'Yes, an AI-first customer service platform (per Intercom)' }),
+    ],
+  },
+  sources: OFFICIAL_SOURCES.Intercom,
+  differences: {
+    id: 'differences',
+    eyebrow: 'Key differences',
+    title: 'What are the main differences between tResolv and Intercom?',
+    checks: [
+      { label: 'Scope:', detail: 'Intercom is a broadly positioned AI-first customer service platform used across businesses and channels. tResolv is a dedicated AI employee for Shopify support email and storefront chat.' },
+      { label: 'Purpose-built vs. configured:', detail: 'tResolv comes set up around Gmail and Shopify. A general-purpose platform is configured toward a use case; how much configuration Shopify support needs in Intercom: not verified here.' },
+      { label: 'Approvals for money:', detail: 'tResolv stages every refund, cancellation, and address change for your one-tap approval. Intercom\'s approval behavior: not verified here, see its documentation.' },
+      { label: 'Setup and pricing:', detail: 'tResolv typically connects to Gmail and Shopify in under 10 minutes. tResolv plans are $49, $99, and $249+ per month with a 14-day free trial and no credit card required. Intercom setup time and pricing: not verified here, see its pricing page.' },
     ],
   },
   whoFor: {
     left: {
-      title: 'Intercom tends to fit',
+      title: 'Choose Intercom if…',
       items: [
-        'Businesses needing a broad AI-first communication platform across multiple channels',
-        'Teams outside of Shopify-specific ecommerce',
-        'Organizations wanting a general-purpose customer messaging platform they configure themselves',
+        'You need a broad AI-first communication platform across multiple channels.',
+        'Your team is outside Shopify-specific ecommerce.',
+        'You want a general-purpose customer messaging platform that you configure yourself.',
       ],
     },
     right: {
-      title: 'tResolv tends to fit',
+      title: 'Choose tResolv if…',
       items: [
-        'Shopify brands who want AI handling Gmail support specifically, not a general platform',
-        'Teams that want order-aware replies without connecting a separate messaging layer',
-        'Brands that want financial actions staged for approval by default, not configured after the fact',
+        'You are a Shopify brand and want AI handling Gmail support specifically.',
+        'You want order-aware replies without connecting a separate messaging layer.',
+        'You want financial actions staged for approval by default, not configured after the fact.',
       ],
     },
   },
@@ -55,11 +70,26 @@ export const page = {
       'If you need a general-purpose AI communication layer across many channels and use cases beyond ecommerce support, Intercom\'s broader platform may be the more natural fit.',
     ],
   },
+  migration: {
+    id: 'migration',
+    eyebrow: 'Switching or adding tResolv',
+    title: 'What should you consider before adding tResolv alongside or instead of Intercom?',
+    paragraphs: [
+        'Start by naming the job. If it is Shopify support email, tResolv is scoped to it. If Intercom also serves other kinds of customer messaging, that work stays outside tResolv\'s scope.',
+      ],
+    checks: [
+      { label: 'Your inbox:', detail: 'tResolv reads a Gmail support address. Check that your customer email can reach one.' },
+      { label: 'Live chat:', detail: 'tResolv includes a storefront chat widget. Intercom\'s chat capabilities: not verified here.' },
+      { label: 'Try it first:', detail: 'The 14-day free trial needs no credit card, so you can evaluate tResolv on your real inbox before changing anything.' },
+    ],
+  },
   faqs: [
     { q: 'Is Intercom a bad fit for Shopify brands?', a: 'Not necessarily, many businesses use Intercom successfully. The distinction here is scope: Intercom is a broad platform, tResolv is a focused Shopify support employee.' },
-    { q: 'Can tResolv do live chat like Intercom?', a: 'Confirm current chat-channel support before assuming feature parity.' },
+    { q: 'Can tResolv do live chat like Intercom?', a: 'tResolv includes a storefront chat widget that answers order, refund, and shipping questions with the same guardrails as email. Intercom\'s chat capabilities are not verified here; check its documentation before assuming feature parity.' },
     { q: 'Which is easier to set up?', a: 'tResolv is designed for a fast, no-code setup connecting Gmail and Shopify, typically live within 10 minutes. Setup time for Intercom depends on your configuration, check current documentation for a direct comparison.' },
     { q: 'Do both keep financial actions under human approval?', a: 'tResolv always stages refunds, cancellations, and address changes for your one-tap approval. Check Intercom\'s current documentation for its approval workflow behavior.' },
+    { q: 'What is the main difference between tResolv and Intercom?', a: 'Intercom is a broad AI-first customer service platform. tResolv is a focused AI employee for Shopify brands that works inside Gmail and stages every refund, cancellation, and address change for approval.' },
+    { q: 'How does tResolv pricing compare with Intercom?', a: 'tResolv plans are $49, $99, and $249+ per month with a 14-day free trial and no credit card required. Intercom pricing is not verified here; check its pricing page for current plans.' },
   ],
   relatedLinks: [
     { href: '/ai-customer-support-employee', label: 'AI Customer Support Employee' },

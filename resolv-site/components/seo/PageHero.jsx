@@ -3,7 +3,8 @@ import { SITE } from '@/lib/site';
 // Shorter hero band for interior SEO pages, reuses the homepage's dark
 // hero styling (.hero, eyebrow, h1) but without the 100vh height or the
 // console mockup, since interior pages have content below the fold.
-export default function PageHero({ eyebrow, title, titleAccent, sub, primaryLabel = 'Start free trial →', secondaryLabel }) {
+// `descriptor`: plain-language H2 under the slogan H1 stating what the page is about.
+export default function PageHero({ eyebrow, title, titleAccent, descriptor, sub, primaryLabel = 'Start free trial →', secondaryLabel }) {
   return (
     <section className="hero" style={{ minHeight: 'auto', padding: '150px 0 72px' }}>
       <div className="wrap" style={{ maxWidth: 780 }}>
@@ -11,6 +12,7 @@ export default function PageHero({ eyebrow, title, titleAccent, sub, primaryLabe
         <h1 style={{ fontSize: 'clamp(34px, 4.4vw, 54px)' }}>
           {title} {titleAccent && <span className="accent">{titleAccent}</span>}
         </h1>
+        {descriptor && <h2 className="hero-descriptor">{descriptor}</h2>}
         <p className="hero-sub" style={{ maxWidth: 620 }}>{sub}</p>
         <div className="hero-actions">
           <a href={SITE.appUrl} target="_blank" rel="noopener" className="btn btn-primary" style={{ fontSize: 15, padding: '13px 26px' }}>

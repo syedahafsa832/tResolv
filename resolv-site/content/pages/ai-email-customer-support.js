@@ -10,8 +10,18 @@ export const page = {
     eyebrow: 'AI Email Support',
     title: 'AI support that lives',
     titleAccent: 'inside your inbox.',
+    descriptor: 'AI email customer support for Shopify stores, working inside the Gmail inbox you already use.',
     sub: 'No new inbox to check, no widget to install. tResolv connects to the Gmail address you already use for support and starts drafting replies from there.',
     secondaryLabel: 'Your emails never leave Google.',
+  },
+  answer: {
+    id: 'answer',
+    eyebrow: 'Short answer',
+    title: 'How does tResolv handle customer support email?',
+    paragraphs: [
+      'tResolv connects to the Gmail address you already use for support. It reads incoming emails, filters out spam and automated mail, matches order-related requests to the Shopify order, and drafts a reply based on the live order.',
+      'Replies send automatically only in Autopilot mode above your confidence threshold. Refunds, cancellations, and address changes always wait for your approval. Emails are processed inside Google\'s infrastructure and are not stored on tResolv\'s servers.',
+    ],
   },
   problem: {
     id: 'problem',
@@ -38,7 +48,7 @@ export const page = {
     ],
   },
   steps: {
-    title: 'From inbox to resolved email',
+    title: 'What happens when a customer emails your support address?',
     steps: [
       { num: '01', title: 'Connect Gmail', body: 'One Google OAuth click. tResolv starts reading new mail immediately, no forwarding rules or migration.' },
       { num: '02', title: 'AI classifies and drafts', body: 'Each email is classified, checked against your Shopify order data if relevant, and drafted with a confidence score.' },
@@ -77,6 +87,7 @@ export const page = {
     { href: '/ai-order-tracking-automation', label: 'AI Order Tracking Automation' },
     { href: '/tresolv-vs-intercom', label: 'tResolv vs Intercom' },
     { href: '/blog/ai-automation-for-shopify-stores', label: 'AI Automation for Shopify Stores' },
+    { href: '/ai-refund-automation', label: 'AI Refund Automation' },
   ],
   cta: {
     title: 'Let tResolv handle your inbox.',

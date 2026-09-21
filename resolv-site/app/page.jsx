@@ -11,14 +11,14 @@ import PreCTA           from '@/components/PreCTA';
 import Footer           from '@/components/Footer';
 import RelatedLinks     from '@/components/seo/RelatedLinks';
 import JsonLd           from '@/components/seo/JsonLd';
-import { buildMetadata, softwareApplicationSchema, faqPageSchema } from '@/lib/seo';
+import { buildMetadata, softwareApplicationSchema, faqPageSchema, organizationSchema } from '@/lib/seo';
 import { SITE } from '@/lib/site';
 import { faqs as homepageFaqs } from '@/content/homepageFaqs';
 
 export const metadata = buildMetadata({
   title: 'tResolv | AI Support Employee for Shopify Brands',
   description:
-    'tResolv reads your inbox, handles live chat on your storefront, and resolves routine customer support tickets automatically. Every refund and cancellation requires your one-tap approval.',
+    'tResolv reads your inbox, handles storefront live chat, and resolves routine support tickets. Every refund and cancellation requires your one-tap approval.',
   path: '/',
 });
 
@@ -30,18 +30,14 @@ const schema = [
     path: '/',
   }),
   faqPageSchema(homepageFaqs),
-  {
-    '@context': 'https://schema.org',
-    '@type': 'Organization',
-    name: SITE.legalName,
-    url: SITE.url,
-  },
+  organizationSchema(),
 ];
 
 const relatedLinks = [
   { href: '/ai-customer-support-employee', label: 'AI Customer Support Employee' },
   { href: '/shopify-ai-customer-support', label: 'Shopify AI Customer Support' },
   { href: '/ai-order-tracking-automation', label: 'AI Order Tracking Automation' },
+  { href: '/ai-support-agent-ecommerce', label: 'AI Support Agent for Ecommerce' },
   { href: '/tresolv-vs-gorgias', label: 'tResolv vs Gorgias' },
   { href: '/tresolv-vs-zendesk', label: 'tResolv vs Zendesk' },
   { href: '/blog', label: 'Blog' },
@@ -59,8 +55,8 @@ export default function Home() {
         <Features />
         <LiveFeed />
         <ChatWidgetSection />
-        <Pricing />
-        <FAQ />
+        <Pricing linkToPage />
+        <FAQ linkToPage />
         <PreCTA />
         <RelatedLinks links={relatedLinks} />
       </main>

@@ -1,4 +1,85 @@
-import { SITE, absoluteUrl } from './site';
+import { SITE, ORG_ID, absoluteUrl } from './site';
+import { tiers } from '@/content/pricing';
+
+/** Reference to the canonical Organization node (defined once by organizationSchema). */
+export const orgRef = { '@id': ORG_ID };
+
+/**
+ * The one canonical Organization entity. Emit it on the homepage and /about;
+ * every other schema node points at it via `orgRef` instead of redefining it.
+ */
+export function organizationSchema() {
+  const org = {
+    '@context': 'https://schema.org',
+    '@type': 'Organization',
+    '@id': ORG_ID,
+    name: SITE.legalName,
+    url: SITE.url,
+    logo: {
+      '@type': 'ImageObject',
+      url: absoluteUrl('/favicon.png'),
+      width: 512,
+      height: 512,
+    },
+    description:
+      'tResolv is an AI customer support employee for Shopify brands. It resolves routine support emails and storefront chat, and requires human approval for every refund, cancellation, and address change.',
+    email: SITE.contactEmail,
+    contactPoint: {
+      '@type': 'ContactPoint',
+      contactType: 'customer support',
+      email: SITE.contactEmail,
+      url: absoluteUrl('/contact'),
+    },
+  };
+  if (SITE.founder) org.founder = { '@type': 'Person', name: SITE.founder };
+  if (SITE.sameAs.length) org.sameAs = SITE.sameAs;
+  return org;
+}
+
+/**
+ * Real paid plans as an AggregateOffer built from content/pricing.js. The
+ * free trial is described in text only, never as a $0 Offer, so the markup
+ * does not claim the product itself is free.
+ */
+export function pricingOffers() {
+  const amounts = tiers.map((t) => t.amount);
+  return {
+    '@type': 'AggregateOffer',
+    priceCurrency: 'USD',
+    lowPrice: String(Math.min(...amounts)),
+    highPrice: String(Math.max(...amounts)),
+    offerCount: tiers.length,
+    url: absoluteUrl('/pricing'),
+    description:
+      'Monthly plans starting at $49. 14-day free trial, no credit card required.',
+    offers: tiers.map((t) => ({
+      '@type': 'Offer',
+      name: `${t.tier} plan`,
+      price: String(t.amount),
+      priceCurrency: 'USD',
+      priceSpecification: {
+        '@type': 'UnitPriceSpecification',
+        price: String(t.amount),
+        priceCurrency: 'USD',
+        unitCode: 'MON',
+      },
+      url: absoluteUrl('/pricing'),
+      ...(t.per.includes('+')
+        ? { description: 'Starting price. Higher or custom conversation volume is quoted individually.' }
+        : {}),
+    })),
+  };
+}
+
+// Default social preview: the site's existing branded image (app/opengraph-image.png).
+// Page-level `openGraph`/`twitter` objects replace the root file-based image, so
+// it has to be listed explicitly for every page. Dimensions match the file.
+const SOCIAL_IMAGE = {
+  url: absoluteUrl('/opengraph-image.png'),
+  width: 1672,
+  height: 941,
+  alt: 'tResolv: AI customer support employee for Shopify brands',
+};
 
 /**
  * Builds a Next.js `metadata` export object: title, description, canonical,
@@ -20,11 +101,13 @@ export function buildMetadata({ title, description, path, keywords }) {
       siteName: SITE.name,
       type: 'website',
       locale: 'en_US',
+      images: [SOCIAL_IMAGE],
     },
     twitter: {
       card: 'summary_large_image',
       title,
       description,
+      images: [SOCIAL_IMAGE.url],
     },
   };
 }
@@ -39,17 +122,8 @@ export function softwareApplicationSchema({ name, description, path }) {
     url: absoluteUrl(path),
     applicationCategory: 'BusinessApplication',
     operatingSystem: 'Web',
-    offers: {
-      '@type': 'Offer',
-      price: '0',
-      priceCurrency: 'USD',
-      description: '14-day free trial, no credit card required',
-    },
-    provider: {
-      '@type': 'Organization',
-      name: SITE.legalName,
-      url: SITE.url,
-    },
+    offers: pricingOffers(),
+    provider: orgRef,
   };
 }
 
@@ -93,13 +167,7 @@ export function articleSchema({ title, description, path, datePublished, dateMod
     url: absoluteUrl(path),
     datePublished,
     dateModified: dateModified || datePublished,
-    author: {
-      '@type': 'Organization',
-      name: SITE.legalName,
-    },
-    publisher: {
-      '@type': 'Organization',
-      name: SITE.legalName,
-    },
+    author: orgRef,
+    publisher: orgRef,
   };
 }

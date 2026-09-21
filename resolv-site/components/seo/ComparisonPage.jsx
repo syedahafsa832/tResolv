@@ -19,10 +19,23 @@ export default function ComparisonPage({ data }) {
             Comparison based on publicly available information as of the time of writing. Competitor
             capabilities change, verify current details on the competitor&apos;s own website before deciding.
           </p>
+          {data.sources?.length > 0 && (
+            <p className="compare-sources">
+              Official sources:{' '}
+              {data.sources.map(({ label, href }, i) => (
+                <span key={href}>
+                  {i > 0 && ' · '}
+                  <a href={href} target="_blank" rel="noopener">{label}</a>
+                </span>
+              ))}
+            </p>
+          )}
         </div>
       </section>
+      {data.differences && <TextSection {...data.differences} />}
       <WhoFor left={data.whoFor.left} right={data.whoFor.right} />
       <TextSection {...data.whenBetter} />
+      {data.migration && <TextSection {...data.migration} />}
       <FAQSection faqs={data.faqs} />
       <CTABand {...data.cta} />
       <RelatedLinks links={data.relatedLinks} />

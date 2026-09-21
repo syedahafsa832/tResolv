@@ -92,6 +92,7 @@ export default function LiveFeed() {
             </div>
             <h2 className="section-title" style={{ marginTop: 10 }}>Watch Luna work.</h2>
             <p className="section-sub">
+              Luna is tResolv&apos;s AI support employee for Shopify brands.{' '}
               {isLive
                 ? 'Real resolved tickets, streamed straight from production.'
                 : 'Example resolutions showing the kind of tickets Luna handles automatically.'}

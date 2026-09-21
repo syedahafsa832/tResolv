@@ -10,12 +10,22 @@ export const page = {
     eyebrow: 'AI Order Tracking Automation',
     title: '"Where is my order?"',
     titleAccent: 'Answered automatically.',
-    sub: 'Order status, often shortened to WISMO, is the single most common support email. tResolv checks live Shopify fulfillment and tracking data and answers it without a human involved.',
+    descriptor: 'WISMO automation for Shopify: answers “where is my order” emails from live fulfillment and tracking data.',
+    sub: 'Order status, often shortened to WISMO, is the single most common support email. tResolv checks live Shopify fulfillment and tracking data and answers it without a human doing the lookup.',
+  },
+  answer: {
+    id: 'answer',
+    eyebrow: 'Short answer',
+    title: 'Can tResolv answer "where is my order" emails?',
+    paragraphs: [
+      'Yes. tResolv matches the email to the customer\'s Shopify order, checks the current fulfillment and tracking status (tracking updates come through AfterShip), and drafts a reply that reflects where the order is right now.',
+      'Replies send automatically only when Autopilot is enabled and confidence is above your threshold; otherwise they wait for your review. Unusual cases, such as tracking that says delivered when the customer says otherwise, can be routed to a human.',
+    ],
   },
   problem: {
     id: 'problem',
     eyebrow: 'The problem',
-    title: 'WISMO questions dominate the inbox.',
+    title: 'What is WISMO, and why does it dominate the inbox?',
     paragraphs: [
       '"Where is my order" (support teams call this WISMO for short) is consistently one of the highest-volume support requests for any Shopify brand, and one of the least interesting to answer manually.',
       'Every one requires the same lookup: open Shopify, find the order, check fulfillment and tracking, then write essentially the same reply.',
@@ -41,7 +51,7 @@ export const page = {
     steps: [
       { num: '01', title: 'Email arrives', body: 'tResolv identifies this as an order-status request and matches it to the customer\'s order.' },
       { num: '02', title: 'Fulfillment is checked live', body: 'Current shipping and tracking status is pulled directly from Shopify.' },
-      { num: '03', title: 'Reply sends automatically', body: 'A grounded, accurate reply is sent, no lookup, no copy-pasting a tracking link.' },
+      { num: '03', title: 'Reply goes out', body: 'A grounded, accurate reply is sent automatically in Autopilot mode when confidence is above your threshold, or held for your review. No lookup, no copy-pasting a tracking link.' },
     ],
   },
   features: {
@@ -49,7 +59,7 @@ export const page = {
     features: [
       { icon: 'package', title: 'Order state awareness', body: 'Checks whether an order has shipped, is in transit, or has been delivered before replying.', note: 'Always current, never cached' },
       { icon: 'location', title: 'Address and shipment matching', body: 'Matches the customer\'s email to the correct order automatically, even without an order number.', note: 'No manual matching' },
-      { icon: 'bolt', title: 'Automatic resolution', body: 'Order-status emails are one of the highest-confidence ticket types tResolv handles.', note: 'Resolved without a human, in most cases' },
+      { icon: 'bolt', title: 'Automatic resolution', body: 'Order-status emails are one of the highest-confidence ticket types tResolv handles.', note: 'Autopilot sends high-confidence replies' },
       { icon: 'clock', title: '24/7 coverage', body: 'Tracking questions get answered outside business hours instead of waiting for your team to log in.', note: 'No overnight backlog' },
     ],
   },
@@ -77,6 +87,7 @@ export const page = {
     { href: '/ai-email-customer-support', label: 'AI Email Customer Support' },
     { href: '/tresolv-vs-zendesk', label: 'tResolv vs Zendesk' },
     { href: '/blog/how-shopify-stores-automate-customer-support', label: 'How Shopify Stores Automate Customer Support' },
+    { href: '/blog/how-to-reduce-ecommerce-support-tickets', label: 'How to Reduce Ecommerce Support Tickets' },
   ],
   cta: {
     title: 'Stop answering "where is my order" by hand.',

@@ -161,6 +161,12 @@ button { font-family: inherit; cursor: pointer; }
   line-height: 1.72; max-width: 450px; margin-bottom: 32px;
 }
 .hero-sub strong { color: var(--text); font-weight: 600; }
+.hero-descriptor {
+  font-size: 18px; font-weight: 600; line-height: 1.5; letter-spacing: -0.1px;
+  color: var(--text); max-width: 620px; margin: 0 0 14px;
+}
+.inline-link { color: var(--accent-text); font-weight: 600; text-decoration: none; }
+.inline-link:hover { text-decoration: underline; }
 .hero-actions { display: flex; align-items: center; gap: 18px; flex-wrap: wrap; }
 .hero-trust { margin-top: 18px !important; }
 .hero-assurance {
@@ -358,7 +364,7 @@ button { font-family: inherit; cursor: pointer; }
   font-weight: 700; font-size: 19px; color: white; letter-spacing: -0.6px; margin-bottom: 14px;
 }
 .footer-tagline { font-size: 14px; color: rgba(255,255,255,0.38); line-height: 1.65; max-width: 260px; }
-.footer-cols { display: flex; gap: 56px; }
+.footer-cols { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 36px 44px; }
 .footer-col h4 {
   font-size: 11.5px; font-weight: 600; letter-spacing: 0.5px;
   text-transform: uppercase; color: rgba(255,255,255,0.3); margin-bottom: 16px;
@@ -752,7 +758,7 @@ button { font-family: inherit; cursor: pointer; }
   .hb-item:nth-child(odd) { padding-right: 24px; }
   .hb-item:nth-child(even) { padding-left: 24px; border-left: 1px solid var(--border) !important; }
   .footer-top { flex-direction: column; gap: 40px; }
-  .footer-cols { flex-wrap: wrap; gap: 32px 40px; }
+  .footer-cols { flex-wrap: wrap; justify-content: flex-start; gap: 32px 40px; }
 
   .nav-burger { display: flex; }
   .nav-cta { display: none; }
@@ -835,3 +841,15 @@ button { font-family: inherit; cursor: pointer; }
   padding: 11px 6px; border-radius: 6px;
 }
 .nf-btn-ghost:hover { color: var(--accent-hover); }
+
+/* Contact page: method cards + comparison-table source links */
+.contact-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1px; background: var(--border); border: 1px solid var(--border); border-radius: 8px; overflow: hidden; margin-top: 40px; }
+.contact-card { background: white; padding: 30px 28px; display: flex; flex-direction: column; gap: 10px; }
+.contact-card .use-case-body { flex: 1; }
+.compare-table a { color: var(--accent-text); font-weight: 600; text-decoration: none; }
+.compare-table a:hover { text-decoration: underline; }
+.compare-sources { font-size: 13px; color: var(--text-2); margin-top: 12px; line-height: 1.7; }
+.compare-sources a { color: var(--accent-text); font-weight: 600; text-decoration: none; }
+.compare-sources a:hover { text-decoration: underline; }
+.compare-table tbody th.row-label { background: transparent; text-transform: none; letter-spacing: 0; font-size: 14px; color: var(--text); font-weight: 600; }
+.compare-table caption.sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }

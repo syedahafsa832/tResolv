@@ -10,7 +10,17 @@ export const page = {
     eyebrow: 'AI Support Agent for Ecommerce',
     title: 'The support agent',
     titleAccent: 'ecommerce brands actually need.',
+    descriptor: 'AI support agent for ecommerce brands: resolves routine order questions, keeps refunds, cancellations, and address changes under your approval, and routes exchanges to your team.',
     sub: 'Post-purchase questions, order status, refunds, exchanges, cancellations, are the bulk of ecommerce support. tResolv resolves routine questions automatically, keeps refunds, cancellations, and address changes under your approval, and routes exchanges to your support team.',
+  },
+  answer: {
+    id: 'answer',
+    eyebrow: 'Short answer',
+    title: 'What does an AI support agent do for an ecommerce store?',
+    paragraphs: [
+      'tResolv is an AI support agent for Shopify-based ecommerce brands. It reads support email and storefront chat, checks the live Shopify order, and answers routine post-purchase questions about order status, refund eligibility, cancellations, address changes, and returns.',
+      'Refunds, cancellations, and address changes are staged for your approval, and exchanges are routed to your support team. tResolv currently works only with Shopify.',
+    ],
   },
   problem: {
     id: 'problem',
@@ -37,7 +47,7 @@ export const page = {
     ],
   },
   steps: {
-    title: 'How the agent handles a ticket',
+    title: 'How does the agent handle an ecommerce support ticket?',
     steps: [
       { num: '01', title: 'Email arrives', body: 'tResolv classifies the request and matches it to the customer\'s order automatically.' },
       { num: '02', title: 'AI drafts with confidence', body: 'The reply is grounded in the order\'s real state, with a visible confidence score.' },

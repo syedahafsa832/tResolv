@@ -10,8 +10,18 @@ export const page = {
     eyebrow: 'Shopify AI Support',
     title: 'AI customer support',
     titleAccent: 'built for Shopify.',
+    descriptor: 'AI customer support for Shopify stores: replies grounded in live Shopify order data, with approval before any financial action.',
     sub: 'tResolv reads your Shopify order data before it replies, so answers about shipping, refunds, and cancellations are grounded in what actually happened, not a generic script.',
     secondaryLabel: 'Install in under 10 minutes.',
+  },
+  answer: {
+    id: 'answer',
+    eyebrow: 'Short answer',
+    title: 'Can tResolv answer Shopify order questions?',
+    paragraphs: [
+      'Yes. tResolv connects to your Shopify store and your Gmail inbox, checks the live order (fulfillment, refund, and cancellation status) before replying, and answers questions about shipping, refunds, cancellations, and address changes.',
+      'Refunds, cancellations, and address changes are staged for your one-tap approval and never execute without it.',
+    ],
   },
   problem: {
     id: 'problem',
@@ -38,7 +48,7 @@ export const page = {
     ],
   },
   steps: {
-    title: 'From Shopify order to resolved ticket',
+    title: 'How does tResolv use Shopify data to answer a ticket?',
     sub: 'No manual lookups. No copy-pasting order numbers between tabs.',
     steps: [
       { num: '01', title: 'Connect your Shopify store', body: 'tResolv reads order, fulfillment, and customer data the moment you connect, no manual sync required.' },
@@ -56,7 +66,7 @@ export const page = {
     ],
   },
   useCases: {
-    title: 'Common Shopify support requests, automated',
+    title: 'Which Shopify support requests can tResolv handle?',
     items: [
       { title: '"Where is my order?"', body: 'Answered with live tracking and fulfillment status, not a generic shipping policy link.' },
       { title: '"I want to cancel"', body: 'Checked against fulfillment status before staging the cancellation for approval.' },
@@ -78,6 +88,7 @@ export const page = {
     { href: '/ai-order-tracking-automation', label: 'AI Order Tracking Automation' },
     { href: '/gorgias-alternatives', label: 'Gorgias Alternatives' },
     { href: '/blog/how-shopify-stores-automate-customer-support', label: 'How Shopify Stores Automate Customer Support' },
+    { href: '/ai-support-agent-ecommerce', label: 'AI Support Agent for Ecommerce' },
   ],
   cta: {
     title: 'Give your Shopify inbox an AI employee.',

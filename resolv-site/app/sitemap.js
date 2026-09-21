@@ -33,6 +33,10 @@ export default function sitemap() {
   const staticEntries = [
     { url: absoluteUrl('/'), changeFrequency: 'weekly', priority: 1 },
     { url: absoluteUrl('/blog'), changeFrequency: 'weekly', priority: 0.8 },
+    { url: absoluteUrl('/pricing'), changeFrequency: 'monthly', priority: 0.8 },
+    { url: absoluteUrl('/about'), changeFrequency: 'monthly', priority: 0.5 },
+    { url: absoluteUrl('/contact'), changeFrequency: 'yearly', priority: 0.5 },
+    { url: absoluteUrl('/faq'), changeFrequency: 'monthly', priority: 0.6 },
     { url: absoluteUrl('/privacy'), changeFrequency: 'yearly', priority: 0.3 },
     { url: absoluteUrl('/terms'), changeFrequency: 'yearly', priority: 0.3 },
     { url: absoluteUrl('/security'), changeFrequency: 'yearly', priority: 0.3 },

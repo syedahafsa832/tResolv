@@ -10,7 +10,17 @@ export const page = {
     eyebrow: 'AI Return Automation',
     title: 'Returns, handled:',
     titleAccent: 'without losing customer trust.',
+    descriptor: 'How tResolv handles customer return requests: eligibility checks, drafted replies, and refunds staged for your approval, with exchanges routed to your team.',
     sub: 'tResolv checks return eligibility, drafts the reply, and stages the resulting refund for your approval, so returns move fast without becoming a liability. Exchanges are routed to your support team.',
+  },
+  answer: {
+    id: 'answer',
+    eyebrow: 'Short answer',
+    title: 'How does tResolv handle return requests?',
+    paragraphs: [
+      'tResolv identifies whether the customer wants a refund or an exchange, matches the email to the Shopify order, and checks it against your return window and policy before replying. A resulting refund is staged for your one-tap approval. A resulting exchange is routed to your support team, because exchange automation is not available yet.',
+      'tResolv does not execute returns or exchanges on its own.',
+    ],
   },
   problem: {
     id: 'problem',
@@ -37,7 +47,7 @@ export const page = {
     ],
   },
   steps: {
-    title: 'From return request to resolution',
+    title: 'What happens after a customer asks to return an item?',
     steps: [
       { num: '01', title: 'Return request arrives', body: 'tResolv identifies the request type, exchange or refund, and matches it to the order.' },
       { num: '02', title: 'Eligibility is checked', body: 'The order is checked against your return window and policy before any commitment is made in the reply.' },
@@ -74,6 +84,7 @@ export const page = {
     { href: '/shopify-ai-customer-support', label: 'Shopify AI Customer Support' },
     { href: '/tresolv-vs-gorgias', label: 'tResolv vs Gorgias' },
     { href: '/blog/best-ai-customer-support-tools', label: 'Best AI Customer Support Tools for Shopify Brands' },
+    { href: '/ai-support-agent-ecommerce', label: 'AI Support Agent for Ecommerce' },
   ],
   cta: {
     title: 'Make returns fast without losing control.',

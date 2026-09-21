@@ -2,18 +2,29 @@ const productLinks = [
   { href: '/#how-it-works', label: 'How it works' },
   { href: '/#features', label: 'Features' },
   { href: '/#chat-widget', label: 'Chat Widget' },
-  { href: '/#pricing', label: 'Pricing' },
-  { href: '/#faq', label: 'FAQ' },
+  { href: '/pricing', label: 'Pricing' },
+  { href: '/faq', label: 'FAQ' },
 ];
 const solutionLinks = [
-  { href: '/shopify-ai-customer-support', label: 'Shopify AI Customer Support' },
-  { href: '/ai-order-tracking-automation', label: 'WISMO / Order Tracking' },
+  { href: '/ai-customer-support-employee', label: 'AI Support Employee' },
+  { href: '/shopify-ai-customer-support', label: 'Shopify AI Support' },
+  { href: '/ai-support-agent-ecommerce', label: 'Ecommerce Support Agent' },
+  { href: '/ai-email-customer-support', label: 'AI Email Support' },
+  { href: '/ai-order-tracking-automation', label: 'Order Tracking (WISMO)' },
+  { href: '/ai-refund-automation', label: 'Refund Automation' },
+  { href: '/ai-return-automation', label: 'Return Automation' },
+];
+const compareLinks = [
+  { href: '/tresolv-vs-gorgias', label: 'tResolv vs Gorgias' },
+  { href: '/tresolv-vs-zendesk', label: 'tResolv vs Zendesk' },
+  { href: '/tresolv-vs-intercom', label: 'tResolv vs Intercom' },
   { href: '/gorgias-alternatives', label: 'Gorgias Alternatives' },
 ];
 const companyLinks = [
+  { href: '/about', label: 'About' },
+  { href: '/contact', label: 'Contact' },
   { href: '/careers', label: 'Careers' },
   { href: '/blog', label: 'Blog' },
-  { href: 'mailto:hello@tresolv.online', label: 'Contact' },
 ];
 const legalLinks = [
   { href: '/privacy', label: 'Privacy' },
@@ -38,6 +49,7 @@ export default function Footer() {
             {[
               { heading: 'Product', links: productLinks },
               { heading: 'Solutions', links: solutionLinks },
+              { heading: 'Compare', links: compareLinks },
               { heading: 'Company', links: companyLinks },
               { heading: 'Legal',   links: legalLinks },
             ].map(({ heading, links }) => (
