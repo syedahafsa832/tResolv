@@ -11,6 +11,7 @@ const solutionLinks = [
   { href: '/gorgias-alternatives', label: 'Gorgias Alternatives' },
 ];
 const companyLinks = [
+  { href: '/careers', label: 'Careers' },
   { href: '/blog', label: 'Blog' },
   { href: 'mailto:hello@tresolv.online', label: 'Contact' },
 ];
