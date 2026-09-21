@@ -1,25 +1,28 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { getTeamClient, teamConfigured } from '@/lib/careers/teamClient';
 
-// Landing page for the welcome-email link. The one-time token is only used when the person
-// clicks the button, so email link scanners can't burn it. The type is fixed in code, not read from the URL.
+// Landing page for the welcome-email link: signs the person in straight away and sends them to /team.
+// The sign-in happens in the browser (verifyOtp), so link scanners that only fetch the page can't use up
+// the one-time token. The token type is fixed in code, never read from the URL.
 export default function TeamAuth() {
   const router = useRouter();
-  const [token, setToken] = useState(null);
-  const [state, setState] = useState('idle'); // idle | working | failed
-  useEffect(() => { setToken(new URLSearchParams(window.location.search).get('token_hash') || ''); }, []);
+  const started = useRef(false);
+  const [state, setState] = useState('working'); // working | failed | invalid
 
-  const enter = async () => {
+  useEffect(() => {
+    if (started.current) return; // one-time token: never try twice
+    started.current = true;
+    const token = new URLSearchParams(window.location.search).get('token_hash');
+    if (!token) { setState('invalid'); return; }
     if (!teamConfigured) { setState('failed'); return; }
-    setState('working');
-    const { error } = await getTeamClient().auth.verifyOtp({ token_hash: token, type: 'magiclink' });
-    if (error) { setState('failed'); return; }
-    router.replace('/team');
-  };
+    getTeamClient().auth.verifyOtp({ token_hash: token, type: 'magiclink' }).then(({ error }) => {
+      if (error) setState('failed'); else router.replace('/team');
+    });
+  }, [router]);
 
   return (
     <div className="tm">
@@ -27,24 +30,22 @@ export default function TeamAuth() {
         <Link href="/careers" className="cr-logo"><span className="cr-wordmark"><span className="cr-logo-t">t</span>Resolv</span><span className="cr-head-pill">team</span></Link>
       </header>
       <div className="cr-ad-login">
-        <h1>you’re in 👀</h1>
-        {token === null && <p>one sec…</p>}
-        {token === '' && (
+        {state === 'working' && (
           <>
+            <h1>you’re in 👀</h1>
+            <p>signing you in to your team portal…</p>
+          </>
+        )}
+        {state === 'invalid' && (
+          <>
+            <h1>hmm.</h1>
             <p>this link isn’t valid.</p>
             <Link href="/team/login" className="cr-btn cr-btn-primary" style={{ width: '100%' }}>get a new sign-in link</Link>
           </>
         )}
-        {token && state !== 'failed' && (
-          <>
-            <p>tap below to enter your private team portal.</p>
-            <button type="button" className="cr-btn cr-btn-primary" onClick={enter} disabled={state === 'working'} style={{ width: '100%' }}>
-              {state === 'working' ? 'signing you in…' : 'enter your team portal →'}
-            </button>
-          </>
-        )}
         {state === 'failed' && (
           <>
+            <h1>link expired</h1>
             <div className="cr-banner" role="alert">this link has expired or was already used.</div>
             <Link href="/team/login" className="cr-btn cr-btn-primary" style={{ width: '100%', marginTop: 18 }}>get a new sign-in link</Link>
           </>
