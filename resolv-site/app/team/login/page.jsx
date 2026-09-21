@@ -2,21 +2,22 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
-import { getTeamClient, teamConfigured } from '@/lib/careers/teamClient';
+const BACKEND = process.env.NEXT_PUBLIC_CAREERS_BACKEND_URL || 'https://backend.tresolv.online';
 
 export default function TeamLogin() {
   const [email, setEmail] = useState('');
   const [state, setState] = useState('idle'); // idle | sending | sent | limited | error
   const submit = async (e) => {
     e.preventDefault();
-    if (!teamConfigured) { setState('error'); return; }
     setState('sending');
-    const { error } = await getTeamClient().auth.signInWithOtp({
-      email: email.trim().toLowerCase(),
-      options: { shouldCreateUser: false, emailRedirectTo: `${window.location.origin}/team` },
-    });
-    // Same message whether or not the address is on the team (no account enumeration).
-    setState(error && error.status === 429 ? 'limited' : 'sent');
+    try {
+      // The backend emails a link ONLY to active team members, and answers the same either way.
+      const r = await fetch(`${BACKEND}/api/careers/team-login`, {
+        method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ email: email.trim().toLowerCase() }),
+      });
+      const j = await r.json().catch(() => ({}));
+      setState(!r.ok ? 'error' : j.status === 'ok' ? 'sent' : j.status === 'not_on_team' ? 'notteam' : 'error');
+    } catch { setState('error'); }
   };
 
   return (
@@ -34,7 +35,12 @@ export default function TeamLogin() {
             <label className="cr-label-q" htmlFor="tm-email">email</label>
             <input id="tm-email" className="cr-input" type="email" autoComplete="email" required value={email} onChange={(e) => setEmail(e.target.value)} />
             {state === 'limited' && <div className="cr-banner" role="alert">too many requests. wait a minute and try again.</div>}
-            {state === 'error' && <div className="cr-banner" role="alert">sign-in isn’t available right now.</div>}
+            {state === 'notteam' && (
+              <div className="cr-banner" role="alert">
+                this email isn’t on the team portal, so no link was sent. only selected applicants get access. use the email you applied with, or <Link href="/careers" style={{ textDecoration: 'underline' }}>see the open role</Link>.
+              </div>
+            )}
+            {state === 'error' && <div className="cr-banner" role="alert">couldn’t send the link right now. try again in a minute.</div>}
             <button type="submit" className="cr-btn cr-btn-primary" disabled={state === 'sending'} style={{ marginTop: 22, width: '100%' }}>
               {state === 'sending' ? 'sending…' : 'email me a link'}
             </button>

@@ -23,13 +23,13 @@ export async function callSelection(id, resend = false) {
       body: JSON.stringify({ application_id: id, resend }),
     });
     const j = await r.json().catch(() => ({}));
-    return r.ok ? j : { status: 'error' };
-  } catch { return { status: 'error' }; }
+    return r.ok ? j : { status: 'error', detail: typeof j.detail === 'string' ? j.detail : `error ${r.status}` };
+  } catch { return { status: 'error', detail: 'could not reach the backend (CORS or network)' }; }
 }
 export const selectionMessage = (r) => ({
   sent: 'welcome email sent ✓', already_sent: 'welcome email already sent', in_progress: 'email is already being sent',
   inactive: 'team access is deactivated',
-}[r.status] || 'couldn’t send the welcome email. open the applicant and use resend.');
+}[r.status] || `couldn’t send the welcome email: ${r.detail || 'unknown error'}. open the applicant and use resend.`);
 
 // Saves the status to Supabase (RLS only lets admins do this) and reports the
 // saved row back. Shows the previous value again if the save fails.
