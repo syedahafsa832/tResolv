@@ -18,6 +18,22 @@ function loadDraft() {
   } catch { return EMPTY; }
 }
 const saveDraft = (v) => { try { localStorage.setItem(DRAFT_KEY, JSON.stringify(v)); } catch { /* optional */ } };
+// Paste tracking: pasting is allowed everywhere. We only count pasted characters per long answer
+// so the founder can see it in the admin dashboard.
+const PASTE_KEY = 'tresolv_careers_paste_v1';
+const PASTE_MIN = 30; // ignore tiny pastes (a URL, a word)
+const loadPaste = () => { try { return JSON.parse(localStorage.getItem(PASTE_KEY) || '{}') || {}; } catch { return {}; } };
+const savePaste = (v) => { try { localStorage.setItem(PASTE_KEY, JSON.stringify(v)); } catch { /* optional */ } };
+const clearPaste = () => { try { localStorage.removeItem(PASTE_KEY); } catch { /* optional */ } };
+function pasteStats(clean, chars) {
+  const out = {};
+  QUESTIONS.forEach((q) => {
+    const total = clean[q.name].length;
+    const pct = total ? Math.min(100, Math.round(((chars[q.name] || 0) / total) * 100)) : 0;
+    if (q.type === 'textarea' && pct >= 30) out[q.name] = pct;
+  });
+  return out;
+}
 const clearDraft = () => { try { localStorage.removeItem(DRAFT_KEY); } catch { /* optional */ } };
 
 const SUBMIT_ERRORS = {
@@ -26,7 +42,7 @@ const SUBMIT_ERRORS = {
   error: 'Something went wrong sending your application. Nothing was lost: your answers are still here, so try again in a moment.',
 };
 
-function Field({ q, index, value, error, onChange, onBlur }) {
+function Field({ q, index, value, error, onChange, onBlur, onPaste }) {
   const id = `f-${q.name}`;
   const describedBy = [q.hint && `${id}-hint`, error && `${id}-err`].filter(Boolean).join(' ') || undefined;
   const common = {
@@ -41,7 +57,7 @@ function Field({ q, index, value, error, onChange, onBlur }) {
     <div className="cr-field">
       <label className="cr-label-q" htmlFor={id}>{index && <span className="cr-num">{String(index).padStart(2, '0')}</span>}{q.label}</label>
       {q.hint && <span className="cr-hint" id={`${id}-hint`}>{q.hint}</span>}
-      {q.type === 'textarea' && <textarea {...common} maxLength={q.max} rows={5} />}
+      {q.type === 'textarea' && <textarea {...common} onPaste={onPaste} maxLength={q.max} rows={5} />}
       {q.type === 'select' && (
         <select {...common}>
           <option value="">Choose one…</option>
@@ -75,10 +91,10 @@ export default function ApplyForm() {
   const [errors, setErrors] = useState({});
   const [state, setState] = useState('idle'); // idle | sending | done
   const [banner, setBanner] = useState('');
-  const honeypot = useRef(null);
   const sentEmail = useRef('');
+  const pasteRef = useRef({});
 
-  useEffect(() => { setValues(loadDraft()); setHydrated(true); }, []);
+  useEffect(() => { setValues(loadDraft()); pasteRef.current = loadPaste(); setHydrated(true); }, []);
   useEffect(() => { if (hydrated && state !== 'done') saveDraft(values); }, [values, state, hydrated]);
   useEffect(() => { if (state === 'done') window.scrollTo(0, 0); }, [state]);
 
@@ -97,6 +113,13 @@ export default function ApplyForm() {
     setErrors((prev) => (e[name] && String(values[name]).trim() ? { ...prev, [name]: e[name] } : prev));
   };
 
+  const onPaste = (name) => (e) => {
+    const len = (e.clipboardData?.getData('text') || '').length;
+    if (len < PASTE_MIN) return;
+    pasteRef.current = { ...pasteRef.current, [name]: (pasteRef.current[name] || 0) + len };
+    savePaste(pasteRef.current);
+  };
+
   const onSubmit = async (ev) => {
     ev.preventDefault();
     if (state === 'sending') return;
@@ -109,14 +132,13 @@ export default function ApplyForm() {
       document.getElementById(`f-${firstBad.name}`)?.focus();
       return;
     }
-    // Bots fill hidden fields; people never see this one. Pretend it worked.
-    if (honeypot.current?.value) { setState('done'); return; }
-
     setState('sending');
-    const res = await submitApplication(clean);
+    const res = await submitApplication(clean, pasteStats(clean, pasteRef.current));
     if (res.ok) {
       sentEmail.current = clean.email;
       clearDraft();
+      clearPaste();
+      pasteRef.current = {};
       setValues(EMPTY);
       setState('done');
     } else {
@@ -178,16 +200,12 @@ export default function ApplyForm() {
                   error={errors[q.name]}
                   onChange={change}
                   onBlur={() => blur(q.name)}
+                  onPaste={onPaste(q.name)}
                 />
               );
             })}
           </fieldset>
         ))}
-
-        {/* honeypot: hidden from people and assistive tech */}
-        <div className="cr-hp" aria-hidden="true">
-          <label>Company website<input ref={honeypot} type="text" name="company_website" tabIndex={-1} autoComplete="off" /></label>
-        </div>
 
         <div className="cr-notice">
           <b>this is a commission-based role.</b>

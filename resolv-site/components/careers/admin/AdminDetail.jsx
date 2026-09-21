@@ -61,12 +61,20 @@ export default function AdminDetail({ id }) {
             <StatusSelect id={app.id} value={app.status} size="lg" onSaved={(u) => setApp((a) => ({ ...a, status: u.status, updated_at: u.updated_at }))} />
           </div>
 
+          {Object.keys(app.pasted_fields || {}).length > 0 && (
+            <div className="cr-ad-paste-note">
+              <b>copy-pasted answers</b>
+              {Object.keys(app.pasted_fields).length} of their long answers were mostly or partly pasted in (tagged below).
+              this comes from their browser, so treat it as a hint.
+            </div>
+          )}
+
           {GROUPS.map((g) => (
             <section key={g.title} className="cr-ad-group">
               <h2>{g.title}</h2>
               {g.fields.map(([key, label]) => (
                 <div key={key} className="cr-ad-field">
-                  <div className="cr-ad-label">{label}</div>
+                  <div className="cr-ad-label">{label}{app.pasted_fields?.[key] && <span className="cr-paste-tag">pasted ~{app.pasted_fields[key]}%</span>}</div>
                   <div className="cr-ad-value">
                     {key === 'linkedin_url'
                       ? <a href={app[key]} target="_blank" rel="noopener noreferrer">{app[key]}</a>
