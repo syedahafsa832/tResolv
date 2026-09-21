@@ -7,73 +7,49 @@ export const ROLE = {
   title: 'Lead Acquisition',
 };
 
-// TODO(commission): add the real commission structure here when it's decided.
-// Leave it as '' to show the "being finalised" fallback below. Do not invent
-// numbers: this string is shown publicly on /careers.
-export const COMMISSION_STRUCTURE = '';
-export const COMMISSION_STRUCTURE_FALLBACK =
-  "The exact commission structure is being finalised. We'll be upfront about it before anyone gets started.";
+// Compensation copy lives here so it is easy to change later.
+// TODO(commission): when the exact structure is decided, put it in `structure`
+// (shown as its own block on /careers). Do not invent numbers.
+export const COMPENSATION = {
+  headline: 'this role is currently commission-based.',
+  body: 'the exact commission structure will be shared clearly before you start.',
+  structure: '',
+};
+export const COMMISSION_NOTE = COMPENSATION.body;
 
-export const COMMISSION_NOTE =
-  'This is a commission-based role. There is no fixed salary, no guaranteed pay, no employment benefits, and it is not a paid internship. You earn commission only.';
-
-export const ROLE_SECTIONS = [
-  {
-    key: 'do',
-    icon: 'Search',
-    title: "What you'll do",
-    items: [
-      'Find potential customers and research Shopify brands',
-      'Spot qualified leads (who fits, who really doesn’t)',
-      'Start conversations and run outreach',
-      'Notice opportunities other people scroll past',
-      'Help turn conversations into customers',
-      'Test new acquisition ideas and tell us what worked',
-    ],
-  },
-  {
-    key: 'want',
-    icon: 'Sparkles',
-    title: "What we're looking for",
-    items: [
-      'Initiative: you start things without being told to',
-      'You learn fast (and enjoy it)',
-      'Clear communication, especially in writing',
-      'Curiosity and good research instincts',
-      'Problem solving when there’s no playbook',
-      'Follow-through. Actually doing the thing.',
-    ],
-  },
-  {
-    key: 'dont',
-    icon: 'BadgeCheck',
-    title: "What you don't need",
-    items: [
-      'Years of experience',
-      'A sales background',
-      'A CV (we don’t ask for one)',
-      'A fancy title or a big network',
-    ],
-    footnote: 'We care about how you think and what you actually do, not how polished your resume is.',
-  },
-  {
-    key: 'learn',
-    icon: 'Rocket',
-    title: "What you'll learn / work on",
-    items: [
-      'How a startup really finds its first customers',
-      'How Shopify brands and customer support work',
-      'Writing outreach people actually reply to',
-      'Turning a brand’s public footprint into a smart angle',
-      'Running small experiments and reading the results',
-    ],
-  },
+export const DO_ITEMS = [
+  { word: 'find', body: 'potential shopify brands that could actually use tResolv.' },
+  { word: 'research', body: 'figure out whether a company is worth reaching out to.' },
+  { word: 'reach out', body: 'start real conversations instead of sending spam.' },
+  { word: 'experiment', body: 'try different ways to find customers.' },
+  { word: 'learn', body: 'look at what worked and make the next attempt better.' },
 ];
 
-export const HOW_IT_WORKS = [
-  { title: 'Apply', body: 'About 10 minutes. No CV. Just your thinking.' },
-  { title: 'We read it', body: 'Every application gets read by a human.' },
-  { title: 'We email you', body: 'If it looks like a fit, we’ll reach out.' },
+export const NOT_NEEDED = ['years of experience', 'a sales background', 'a fancy cv', 'a huge network'];
+
+export const LOOK_FOR = [
+  { word: 'initiative', body: 'you start things without waiting to be asked.' },
+  { word: 'curiosity', body: 'you ask why, then go find out.' },
+  { word: 'learning fast', body: 'you try it, see what happened, do it better.' },
+  { word: 'communication', body: 'you can say (and write) things clearly.' },
+  { word: 'problem solving', body: 'there is no playbook. you figure one out.' },
+  { word: 'follow-through', body: 'you finish what you start.' },
+];
+
+export const LEARN = [
+  'finding your first customers',
+  'researching markets',
+  'writing outreach',
+  'starting conversations',
+  'testing growth ideas',
+  'learning what makes people respond',
+  'seeing how an early startup actually grows',
+];
+
+export const STEPS = [
+  { title: 'apply', body: 'about 10 minutes. no cv.' },
+  { title: 'we read', body: 'a human reads every application.' },
+  { title: 'we reach out', body: 'if it looks like a fit, we will contact you.' },
 ];
 
 const HOURS = ['Under 5 hours', '5 to 10 hours', '10 to 20 hours', '20+ hours'];

@@ -1,8 +1,10 @@
 'use client';
 
 import { useEffect, useRef, useState } from 'react';
+import { usePathname } from 'next/navigation';
 
 export default function TrialBanner() {
+  const pathname = usePathname();
   const [dismissed, setDismissed] = useState(true);
   const ref = useRef(null);
 
@@ -40,7 +42,8 @@ export default function TrialBanner() {
     setDismissed(true);
   };
 
-  if (dismissed) return null;
+  // The careers pages are a separate experience: no product trial banner there.
+  if (dismissed || pathname?.startsWith('/careers')) return null;
 
   return (
     <div className="founding-banner" ref={ref}>

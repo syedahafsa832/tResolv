@@ -39,7 +39,7 @@ function Field({ q, index, value, error, onChange, onBlur }) {
   };
   return (
     <div className="cr-field">
-      <label className="cr-label" htmlFor={id}>{index && <span className="cr-num">{String(index).padStart(2, '0')}</span>}{q.label}</label>
+      <label className="cr-label-q" htmlFor={id}>{index && <span className="cr-num">{String(index).padStart(2, '0')}</span>}{q.label}</label>
       {q.hint && <span className="cr-hint" id={`${id}-hint`}>{q.hint}</span>}
       {q.type === 'textarea' && <textarea {...common} maxLength={q.max} rows={5} />}
       {q.type === 'select' && (
@@ -129,12 +129,12 @@ export default function ApplyForm() {
     return (
       <div className="cr-success">
         <div className="cr-success-badge"><Icon name="Check" size={30} strokeWidth={3} /></div>
-        <h1>Application <span className="accent">received.</span></h1>
+        <h1>application <span className="accent">received.</span></h1>
         <p className="cr-apply-sub">
-          Thanks for taking the time. A human reads every application. If it looks like
+          thanks for taking the time. a human reads every application. if it looks like
           a fit, we&apos;ll email you{sentEmail.current ? <> at <strong>{sentEmail.current}</strong></> : ''}.
         </p>
-        <Link href="/careers" className="btn btn-ghost-light">Back to careers</Link>
+        <Link href="/careers" className="cr-btn cr-btn-ghost">back to careers</Link>
       </div>
     );
   }
@@ -142,21 +142,21 @@ export default function ApplyForm() {
   let n = 0;
   return (
     <div>
-      <Link href="/careers" className="cr-back">← Back to careers</Link>
+      <Link href="/careers" className="cr-back">← back to careers</Link>
 
-      <div className="eyebrow"><span className="eyebrow-dot" />Application · {ROLE.title}</div>
-      <h1>Tell us how <span className="accent">you think.</span></h1>
+      <div className="cr-eyebrow"><span className="cr-dot" />application · {ROLE.title}</div>
+      <h1>tell us how <span className="accent">you think.</span></h1>
       <p className="cr-apply-sub">
-        About 8 to 12 minutes. No CV needed. We care about your thinking and your
-        initiative, not your resume. Your answers save in this browser as you go.
+        about 8 to 12 minutes. no cv needed. we care about your thinking and your
+        initiative, not your resume. your answers save in this browser as you go.
       </p>
       <div className="cr-tags" style={{ marginTop: 20, marginBottom: 0 }}>
-        <span className="cr-tag cr-tag-hot">Commission-based</span>
+        <span className="cr-tag cr-tag-teal">commission-based</span>
       </div>
 
       <div className="cr-progress" role="status" aria-live="polite">
         <div className="cr-progress-row">
-          <span>Your progress</span>
+          <span>your progress</span>
           <span>{percent}%</span>
         </div>
         <div className="cr-bar"><div style={{ width: `${percent}%` }} /></div>
@@ -190,7 +190,7 @@ export default function ApplyForm() {
         </div>
 
         <div className="cr-notice">
-          <b>This is a commission-based role.</b>
+          <b>this is a commission-based role.</b>
           <p>{COMMISSION_NOTE}</p>
         </div>
 
@@ -199,11 +199,10 @@ export default function ApplyForm() {
         <div className="cr-submit">
           <button
             type="submit"
-            className="btn btn-primary"
-            style={{ fontSize: 15, padding: '13px 26px', opacity: state === 'sending' ? 0.6 : 1 }}
+            className="cr-btn cr-btn-primary"
             disabled={state === 'sending'}
           >
-            {state === 'sending' ? 'Sending…' : 'Submit application →'}
+            {state === 'sending' ? 'sending…' : 'submit application →'}
           </button>
         </div>
       </form>
