@@ -3,6 +3,7 @@
 import { useEffect, useState } from 'react';
 import { useTeam } from '@/components/team/TeamGate';
 import { fmt } from '@/lib/careers/teamClient';
+import TeamChat from '@/components/team/TeamChat';
 
 export default function Updates() {
   const { sb } = useTeam();
@@ -32,6 +33,7 @@ export default function Updates() {
           </article>
         ))}
       </div>
+      <TeamChat />
     </>
   );
 }

@@ -41,7 +41,10 @@ export default function AdminList() {
 
   return (
     <div className="cr-ad-body">
-      <h1 className="cr-ad-title">applications</h1>
+      <div style={{ display: 'flex', alignItems: 'baseline', justifyContent: 'space-between', gap: 12 }}>
+        <h1 className="cr-ad-title">applications</h1>
+        <Link href="/careers/admin/team" className="cr-linkbtn" style={{ marginBottom: 24 }}>team overview →</Link>
+      </div>
 
       <div className="cr-ad-cards">
         <button type="button" className={`cr-ad-card ${filter === 'all' ? 'is-on' : ''}`} onClick={() => setFilter('all')}>
