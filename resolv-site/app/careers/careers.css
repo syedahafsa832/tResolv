@@ -41,7 +41,7 @@
 .cr-head-pill { font-size: 13px; font-weight: 600; letter-spacing: 0; padding: 4px 12px; border-radius: 99px; background: var(--teal-soft); color: var(--teal); }
 .cr-head-link { font-size: 14px; color: var(--ink-2); }
 .cr-head-link:hover { color: var(--ink); }
-.cr-foot-bar { max-width: 1240px; margin: 0 auto; padding: 40px 32px 48px; display: flex; justify-content: space-between; font-size: 14px; color: var(--ink-3); }
+.cr-foot-bar { max-width: 1240px; margin: 0 auto; padding: 40px 32px 48px; display: flex; flex-wrap: wrap; gap: 10px 20px; justify-content: space-between; font-size: 14px; color: var(--ink-3); }
 .cr-foot-bar a:hover { color: var(--ink); }
 
 /* buttons */
