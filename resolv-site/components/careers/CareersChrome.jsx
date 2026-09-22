@@ -17,7 +17,10 @@ export function CareersFooter() {
   return (
     <footer className="cr-foot-bar">
       <span>© 2026 tResolv</span>
-      <a href="/">tresolv.online ↗</a>
+      <span style={{ display: 'flex', gap: 20 }}>
+        <Link href="/team/login">already on the team? sign in →</Link>
+        <a href="/">tresolv.online ↗</a>
+      </span>
     </footer>
   );
 }
