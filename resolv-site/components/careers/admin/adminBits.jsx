@@ -26,6 +26,20 @@ export async function callSelection(id, resend = false) {
     return r.ok ? j : { status: 'error', detail: typeof j.detail === 'string' ? j.detail : `error ${r.status}` };
   } catch { return { status: 'error', detail: 'could not reach the backend (CORS or network)' }; }
 }
+// One-off "please set up before 8pm" nudge to active members who have never logged in and haven't
+// already gotten this reminder. Fully idempotent on the backend - safe to click again.
+export async function callSetupReminder() {
+  try {
+    const { data } = await getAdminClient().auth.getSession();
+    const r = await fetch(`${BACKEND}/api/careers/setup-reminder`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${data.session?.access_token}` },
+    });
+    const j = await r.json().catch(() => ({}));
+    return r.ok ? j : { error: typeof j.detail === 'string' ? j.detail : `error ${r.status}` };
+  } catch { return { error: 'could not reach the backend (CORS or network)' }; }
+}
+
 export const selectionMessage = (r) => ({
   sent: 'welcome email sent ✓', already_sent: 'welcome email already sent', in_progress: 'email is already being sent',
   inactive: 'team access is deactivated',
