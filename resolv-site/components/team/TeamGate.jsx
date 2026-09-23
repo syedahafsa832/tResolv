@@ -4,6 +4,7 @@ import { createContext, useContext, useEffect, useState } from 'react';
 import Link from 'next/link';
 import { usePathname, useRouter } from 'next/navigation';
 import { getTeamClient, teamConfigured } from '@/lib/careers/teamClient';
+import AnnouncementBanner from '@/components/team/AnnouncementBanner';
 
 const TeamCtx = createContext(null);
 export const useTeam = () => useContext(TeamCtx);
@@ -89,7 +90,14 @@ export default function TeamGate({ children }) {
           <button type="button" className="cr-btn cr-btn-ghost cr-btn-sm" onClick={signOut}>sign out</button>
         </div>
       )}
-      {phase === 'ready' && <TeamCtx.Provider value={{ sb: getTeamClient(), member }}><main className="tm-body">{children}</main></TeamCtx.Provider>}
+      {phase === 'ready' && (
+        <TeamCtx.Provider value={{ sb: getTeamClient(), member }}>
+          <main className="tm-body">
+            <AnnouncementBanner />
+            {children}
+          </main>
+        </TeamCtx.Provider>
+      )}
     </div>
   );
 }

@@ -431,6 +431,26 @@ select.cr-input { appearance: none; -webkit-appearance: none; cursor: pointer; p
 .tm-tl-title { font-weight: 500; }
 .tm-tl-due { font-size: 12.5px; white-space: nowrap; }
 
+/* ---- /team: sticky kickoff-announcement banner ---- */
+.tm-banner { position: sticky; top: 0; z-index: 15; margin: 0 0 24px; padding: 20px 24px; border-radius: 22px; background: linear-gradient(120deg, #101317, #163a41); color: #fff; box-shadow: 0 14px 34px rgba(16, 19, 23, 0.22); }
+.tm-banner-title { display: block; margin-bottom: 8px; font-size: 20px; letter-spacing: -0.02em; color: #fff; }
+.tm-banner-body { max-width: 62ch; }
+.tm-banner-body .tm-rt { font-size: 15.5px; color: rgba(255, 255, 255, 0.82); }
+.tm-banner-body .tm-rt p { margin: 0 0 10px; }
+.tm-banner-body .tm-rt p:last-child { margin-bottom: 0; }
+.tm-banner-body .tm-rt strong { color: var(--teal-bright); }
+.tm-banner-actions { margin-top: 16px; display: flex; flex-wrap: wrap; align-items: center; gap: 10px; }
+.tm-banner-actions .cr-btn-primary { background: var(--teal-bright); color: #0a2226; box-shadow: none; }
+.tm-banner-actions .cr-btn-primary:hover:not(:disabled) { background: #2fd6ec; transform: translateY(-1px); }
+.tm-banner-ack { background: rgba(255, 255, 255, 0.12); color: #fff; border: 1px solid rgba(255, 255, 255, 0.22); }
+.tm-banner-ack:hover:not(:disabled) { background: rgba(255, 255, 255, 0.2); }
+.tm-banner-ack:disabled { opacity: 0.6; cursor: wait; }
+@media (max-width: 720px) {
+  .tm-banner { position: static; padding: 18px 20px; border-radius: 20px; }
+  .tm-banner-body { font-size: 14.5px; }
+  .tm-banner-actions .cr-btn { width: 100%; }
+}
+
 /* ---- /team/playbook ---- */
 .tm-pb-search { margin: 4px 0 28px; }
 .tm-pb-search-input { font-size: 18px; padding: 16px 20px; border-radius: 18px; }
