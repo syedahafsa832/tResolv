@@ -29,11 +29,24 @@ function reasonFor(r) {
   return 'on track';
 }
 
-function SetupReminderBar({ candidates }) {
+function SetupReminderBar({ candidates, alreadyReminded }) {
   const [phase, setPhase] = useState('idle'); // idle | confirm | sending | done | error
   const [result, setResult] = useState(null);
 
-  if (candidates.length === 0) return null;
+  if (candidates.length === 0 && alreadyReminded.length === 0) return null;
+
+  // Nothing left to send: everyone who hasn't logged in has already been reminded once.
+  // Showing the button here would look actionable but the backend would (correctly) send nothing.
+  if (candidates.length === 0) {
+    return (
+      <div className="cr-ad-group" style={{ background: 'var(--teal-soft)' }}>
+        <b>reminder already sent to everyone who hasn’t logged in yet</b>
+        <p className="cr-ad-sub" style={{ marginTop: 4 }}>
+          still waiting on {alreadyReminded.length}: {alreadyReminded.map((c) => c.name).join(', ')}
+        </p>
+      </div>
+    );
+  }
 
   const send = async () => {
     setPhase('sending');
@@ -46,9 +59,10 @@ function SetupReminderBar({ candidates }) {
     <div className="cr-ad-group" style={{ background: 'var(--orange-soft)', border: '1px solid rgba(240,128,58,0.35)' }}>
       {phase === 'idle' && (
         <>
-          <b>{candidates.length} people haven’t logged in yet</b>
+          <b>{candidates.length} people haven’t logged in and haven’t been reminded yet</b>
           <p className="cr-ad-sub" style={{ marginTop: 4 }}>
             {candidates.map((c) => c.name).join(', ')}
+            {alreadyReminded.length > 0 && ` (${alreadyReminded.length} more already reminded, just waiting on them)`}
           </p>
           <button type="button" className="cr-btn cr-btn-ghost cr-btn-sm" style={{ marginTop: 12 }} onClick={() => setPhase('confirm')}>
             send setup reminder →
@@ -87,7 +101,7 @@ export default function AdminTeam() {
 
   const load = async () => {
     setRows(null); setError('');
-    const { data, error: e } = await getAdminClient().from('team_ops_overview').select('*, last_login_at');
+    const { data, error: e } = await getAdminClient().from('team_ops_overview').select('*, last_login_at, followup_email_sent_at');
     if (e) { setError('couldn’t load the team overview.'); return; }
     setRows([...data].sort((a, b) => (RANK[a.engagement_status] ?? 9) - (RANK[b.engagement_status] ?? 9)));
   };
@@ -96,6 +110,8 @@ export default function AdminTeam() {
   const founders = rows ? rows.filter((r) => r.is_founder) : [];
   const tracked = rows ? rows.filter((r) => !r.is_founder) : [];
   const neverLoggedIn = tracked.filter((r) => !r.last_login_at);
+  const pendingReminder = neverLoggedIn.filter((r) => !r.followup_email_sent_at);
+  const alreadyReminded = neverLoggedIn.filter((r) => r.followup_email_sent_at);
   const summary = ['active', 'at_risk', 'inactive', 'unknown'].map((k) => ({
     key: k, label: k === 'unknown' ? 'not activated' : k.replace('_', ' '),
     count: tracked.filter((r) => r.engagement_status === k).length,
@@ -113,7 +129,7 @@ export default function AdminTeam() {
 
       {rows && tracked.length > 0 && (
         <>
-          <SetupReminderBar candidates={neverLoggedIn} />
+          <SetupReminderBar candidates={pendingReminder} alreadyReminded={alreadyReminded} />
 
           <div className="cr-ad-cards" style={{ gridTemplateColumns: 'repeat(4, 1fr)', marginBottom: 8 }}>
             {summary.map((s) => (
