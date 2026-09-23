@@ -1,4 +1,4 @@
-// Tiny client-side search over the playbook. No external library — the dataset (35 short
+// Tiny client-side search over the playbook. No external library, the dataset (35 short
 // sections) is small enough that scoring every section on each keystroke is effectively
 // instant, so there's no need for a real search index or a backend call.
 
