@@ -101,6 +101,12 @@ export default function TeamHome() {
       )}
       {!member.is_founder && <p className="tm-fineprint">missed deadlines may put your active team status at risk.</p>}
 
+      <Link href="/team/playbook" className="tm-move">
+        <span className="tm-kicker">resource</span>
+        <b>Lead Acquisition Playbook</b>
+        <small>Your practical guide to finding, contacting, qualifying, and converting Shopify brands. Open Playbook →</small>
+      </Link>
+
       <div className="tm-grid">
         <section className="tm-card">
           <span className="tm-kicker">your role</span>

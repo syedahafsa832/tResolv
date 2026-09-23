@@ -430,3 +430,60 @@ select.cr-input { appearance: none; -webkit-appearance: none; cursor: pointer; p
 .tm-tl-day { font-family: var(--font-mono), monospace; font-size: 12px; color: var(--teal); }
 .tm-tl-title { font-weight: 500; }
 .tm-tl-due { font-size: 12.5px; white-space: nowrap; }
+
+/* ---- /team/playbook ---- */
+.tm-pb-search { margin: 4px 0 28px; }
+.tm-pb-search-input { font-size: 18px; padding: 16px 20px; border-radius: 18px; }
+.tm-pb-search-hint { margin: 8px 0 0; font-size: 13px; color: var(--ink-3); }
+.tm-pb-results { margin-top: 10px; display: grid; gap: 8px; }
+.tm-pb-result { display: block; padding: 14px 18px; border-radius: 16px; background: #fff; border: 1px solid var(--line); }
+.tm-pb-result:hover { border-color: var(--teal); }
+.tm-pb-result b { display: block; font-size: 15.5px; letter-spacing: -0.02em; }
+.tm-pb-result span { display: block; margin-top: 3px; font-size: 13.5px; color: var(--ink-2); }
+.tm-pb-result mark { background: var(--yellow); border-radius: 3px; padding: 0 2px; }
+.tm-pb-recent { margin-top: 12px; display: flex; flex-wrap: wrap; align-items: center; gap: 8px; font-size: 13px; color: var(--ink-3); }
+.tm-pb-chip { padding: 5px 12px; border-radius: 99px; font: inherit; font-size: 13px; background: #fff; border: 1px solid var(--line); color: var(--ink-2); cursor: pointer; }
+.tm-pb-chip:hover { border-color: var(--teal); color: var(--teal); }
+
+.tm-pb-start { margin-bottom: 22px; padding: 24px 26px; border-radius: 26px; background: var(--ink); color: #fff; }
+.tm-pb-flow { margin: 14px 0 18px; display: flex; flex-wrap: wrap; gap: 8px 6px; align-items: center; font-size: 13.5px; }
+.tm-pb-flow-step { display: inline-flex; align-items: center; gap: 6px; padding: 7px 12px; border-radius: 99px; background: rgba(255, 255, 255, 0.1); }
+.tm-pb-flow-step em { font-style: normal; font-family: var(--font-mono), monospace; font-size: 11px; color: var(--teal-bright); }
+
+.tm-pb-ask { margin-bottom: 22px; display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.tm-pb-ask > div { padding: 18px 20px; border-radius: 20px; }
+.tm-pb-ask > div:first-child { background: #eef8f1; }
+.tm-pb-ask > div:last-child { background: var(--orange-soft); }
+.tm-pb-ask b { display: block; font-size: 14.5px; }
+.tm-pb-ask > div:first-child b { color: #1a7a43; }
+.tm-pb-ask > div:last-child b { color: #a3450f; }
+.tm-pb-ask p { margin: 4px 0 0; font-size: 13.5px; color: var(--ink-2); }
+
+.tm-pb-quick { margin-bottom: 28px; }
+.tm-pb-quick-grid { margin-top: 12px; display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; }
+.tm-pb-quick-card { display: block; padding: 14px 18px; border-radius: 16px; background: #fff; border: 1px solid var(--line); font-size: 14.5px; font-weight: 500; }
+.tm-pb-quick-card:hover { border-color: var(--teal); color: var(--teal); }
+
+.tm-pb-toc-toggle { display: none; margin-bottom: 14px; }
+
+.tm-pb-layout { display: grid; grid-template-columns: 220px 1fr; gap: 32px; align-items: start; }
+.tm-pb-toc { position: sticky; top: 12px; display: flex; flex-direction: column; gap: 2px; max-height: calc(100vh - 24px); overflow-y: auto; }
+.tm-pb-toc a { padding: 7px 10px; border-radius: 10px; font-size: 13.5px; color: var(--ink-2); }
+.tm-pb-toc a:hover { background: #fff; color: var(--teal); }
+
+.tm-pb-content { min-width: 0; }
+.tm-pb-section { padding-bottom: 30px; margin-bottom: 30px; border-bottom: 1px solid var(--line); scroll-margin-top: 16px; }
+.tm-pb-section:last-of-type { border-bottom: 0; }
+.tm-pb-section > h2 { margin: 0 0 4px; font-size: 24px; font-weight: 700; letter-spacing: -0.03em; }
+.tm-pb-done { margin-top: 12px; }
+
+@media (max-width: 900px) {
+  .tm-pb-ask { grid-template-columns: 1fr; }
+  .tm-pb-quick-grid { grid-template-columns: 1fr; }
+  .tm-pb-toc-toggle { display: inline-flex; }
+  .tm-pb-layout { grid-template-columns: 1fr; gap: 0; }
+  .tm-pb-toc { display: none; position: static; max-height: none; padding: 10px 14px; margin-bottom: 18px; border-radius: 16px; background: #fff; border: 1px solid var(--line); }
+  .tm-pb-toc.is-open { display: flex; }
+  .tm-pb-flow { font-size: 12.5px; }
+  .tm-pb-start { padding: 20px; }
+}

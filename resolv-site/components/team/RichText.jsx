@@ -5,6 +5,7 @@ function Inline({ text }) {
   return parseInline(text).map((n, i) => {
     if (n.t === 'bold') return <strong key={i}>{n.v}</strong>;
     if (n.t === 'link') {
+      if (n.href.startsWith('#')) return <a key={i} href={n.href}>{n.v}</a>;
       return n.href.startsWith('/')
         ? <Link key={i} href={n.href}>{n.v}</Link>
         : <a key={i} href={n.href} target="_blank" rel="noopener noreferrer">{n.v}</a>;

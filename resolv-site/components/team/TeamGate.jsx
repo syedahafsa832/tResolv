@@ -12,6 +12,7 @@ const NAV = [
   ['/team', 'home'],
   ['/team/onboarding', 'onboarding'],
   ['/team/tasks', 'tasks'],
+  ['/team/playbook', 'playbook'],
   ['/team/documents', 'documents'],
   ['/team/updates', 'updates'],
 ];

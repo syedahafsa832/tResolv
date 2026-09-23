@@ -23,7 +23,8 @@ export function parseBlocks(text) {
   return blocks;
 }
 
-// Inline: **bold** and [text](url). Only https links or internal /team/ links are allowed.
+// Inline: **bold** and [text](url). Only https links, internal /team/ links, or same-page
+// #anchor links are allowed.
 export function parseInline(text) {
   const out = [];
   const re = /\*\*([^*]+)\*\*|\[([^\]]+)\]\(([^)\s]+)\)/g;
@@ -31,7 +32,7 @@ export function parseInline(text) {
   while ((m = re.exec(text))) {
     if (m.index > last) out.push({ t: 'text', v: text.slice(last, m.index) });
     if (m[1] !== undefined) out.push({ t: 'bold', v: m[1] });
-    else if (/^(https:\/\/|\/team\/)/.test(m[3])) out.push({ t: 'link', v: m[2], href: m[3] });
+    else if (/^(https:\/\/|\/team\/|#)/.test(m[3])) out.push({ t: 'link', v: m[2], href: m[3] });
     else out.push({ t: 'text', v: m[2] });
     last = re.lastIndex;
   }
