@@ -3,7 +3,7 @@
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { getAdminClient } from '@/lib/careers/adminClient';
-import { fmtDate } from './adminBits';
+import { fmtDate, callSetupReminder } from './adminBits';
 import { daysAgo } from '@/lib/careers/teamClient';
 
 const ENGAGEMENT_COPY = {
@@ -29,6 +29,57 @@ function reasonFor(r) {
   return 'on track';
 }
 
+function SetupReminderBar({ candidates }) {
+  const [phase, setPhase] = useState('idle'); // idle | confirm | sending | done | error
+  const [result, setResult] = useState(null);
+
+  if (candidates.length === 0) return null;
+
+  const send = async () => {
+    setPhase('sending');
+    const res = await callSetupReminder();
+    if (res.error) { setPhase('error'); setResult(res); return; }
+    setPhase('done'); setResult(res);
+  };
+
+  return (
+    <div className="cr-ad-group" style={{ background: 'var(--orange-soft)', border: '1px solid rgba(240,128,58,0.35)' }}>
+      {phase === 'idle' && (
+        <>
+          <b>{candidates.length} people haven’t logged in yet</b>
+          <p className="cr-ad-sub" style={{ marginTop: 4 }}>
+            {candidates.map((c) => c.name).join(', ')}
+          </p>
+          <button type="button" className="cr-btn cr-btn-ghost cr-btn-sm" style={{ marginTop: 12 }} onClick={() => setPhase('confirm')}>
+            send setup reminder →
+          </button>
+        </>
+      )}
+      {phase === 'confirm' && (
+        <>
+          <b>send the "please set up today" email to these {candidates.length} people?</b>
+          <p className="cr-ad-sub" style={{ marginTop: 4 }}>
+            {candidates.map((c) => c.name).join(', ')}. anyone who already got this exact reminder, or has since logged in, is skipped automatically.
+          </p>
+          <div style={{ marginTop: 12, display: 'flex', gap: 10 }}>
+            <button type="button" className="cr-btn cr-btn-primary cr-btn-sm" onClick={send}>yes, send now</button>
+            <button type="button" className="cr-btn cr-btn-ghost cr-btn-sm" onClick={() => setPhase('idle')}>cancel</button>
+          </div>
+        </>
+      )}
+      {phase === 'sending' && <p>sending…</p>}
+      {phase === 'done' && (
+        <>
+          <b>sent to {result.sent_count} people ✓</b>
+          {result.sent?.length > 0 && <p className="cr-ad-sub" style={{ marginTop: 4 }}>{result.sent.map((s) => s.name).join(', ')}</p>}
+          {result.failed?.length > 0 && <p className="cr-ad-sub" style={{ marginTop: 4, color: 'var(--danger, #d13438)' }}>failed: {result.failed.map((s) => s.name).join(', ')}</p>}
+        </>
+      )}
+      {phase === 'error' && <p className="cr-ad-sub">couldn’t send: {result?.error}</p>}
+    </div>
+  );
+}
+
 // "Who is actually working vs who is just sitting in the team" - one glance, no HR dashboard.
 export default function AdminTeam() {
   const [rows, setRows] = useState(null);
@@ -36,7 +87,7 @@ export default function AdminTeam() {
 
   const load = async () => {
     setRows(null); setError('');
-    const { data, error: e } = await getAdminClient().from('team_ops_overview').select('*');
+    const { data, error: e } = await getAdminClient().from('team_ops_overview').select('*, last_login_at');
     if (e) { setError('couldn’t load the team overview.'); return; }
     setRows([...data].sort((a, b) => (RANK[a.engagement_status] ?? 9) - (RANK[b.engagement_status] ?? 9)));
   };
@@ -44,6 +95,7 @@ export default function AdminTeam() {
 
   const founders = rows ? rows.filter((r) => r.is_founder) : [];
   const tracked = rows ? rows.filter((r) => !r.is_founder) : [];
+  const neverLoggedIn = tracked.filter((r) => !r.last_login_at);
   const summary = ['active', 'at_risk', 'inactive', 'unknown'].map((k) => ({
     key: k, label: k === 'unknown' ? 'not activated' : k.replace('_', ' '),
     count: tracked.filter((r) => r.engagement_status === k).length,
@@ -61,6 +113,8 @@ export default function AdminTeam() {
 
       {rows && tracked.length > 0 && (
         <>
+          <SetupReminderBar candidates={neverLoggedIn} />
+
           <div className="cr-ad-cards" style={{ gridTemplateColumns: 'repeat(4, 1fr)', marginBottom: 8 }}>
             {summary.map((s) => (
               <div key={s.key} className="cr-ad-card" style={{ cursor: 'default' }}>
