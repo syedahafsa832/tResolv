@@ -13,8 +13,8 @@ export default function PreCTA() {
   return (
     <section className="section pre-cta">
       <div className="wrap">
-        <h2>Your support inbox, finally under control.</h2>
-        <p>tResolv handles routine tickets automatically while you focus on building your brand.</p>
+        <h2>Stop answering the same questions.</h2>
+        <p>Give the repetitive support work to Luna and keep your team focused on the customers who actually need them.</p>
         <div style={{ display: 'flex', gap: 18, flexWrap: 'wrap', justifyContent: 'center' }}>
           <a
             href={loggedIn ? 'https://app.tresolv.online/dashboard' : 'https://app.tresolv.online'}
@@ -23,12 +23,15 @@ export default function PreCTA() {
             className="btn btn-primary"
             style={{ fontSize: 16, padding: '14px 32px' }}
           >
-            {loggedIn ? 'Dashboard →' : 'Claim your free spot →'}
+            {loggedIn ? 'Dashboard →' : 'Try tResolv free →'}
           </a>
-          <a href="https://calendar.app.google/YkSqLTsYr18bUP2Z6" target="_blank" rel="noopener" className="btn btn-ghost-light" style={{ fontSize: 16, padding: '14px 32px' }}>
-            Book a demo →
+          <a href="#product-demo" className="btn btn-ghost-light" style={{ fontSize: 16, padding: '14px 32px' }}>
+            See how it works
           </a>
         </div>
+        <p className="hero-assurance" style={{ justifyContent: 'center', marginTop: 20 }}>
+          14 days free · No credit card required
+        </p>
       </div>
     </section>
   );
