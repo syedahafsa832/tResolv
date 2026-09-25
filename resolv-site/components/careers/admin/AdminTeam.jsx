@@ -94,16 +94,69 @@ function SetupReminderBar({ candidates, alreadyReminded }) {
   );
 }
 
+// Selected applicants who still need a nudge to actually join: never got a team_members row
+// (should be rare - selecting an application auto-creates one - but covers a failed/older send),
+// have a row but have never logged in (the closest real signal we have to "joined the group"),
+// or are logged in but haven't finished onboarding. Built entirely from existing tables/columns;
+// nothing new is stored, this just cross-references what's already there.
+function needsJoiningNudge(applications, tracked) {
+  const linkedinByAppId = new Map(applications.map((a) => [a.id, a.linkedin_url]));
+  const trackedByAppId = new Map(tracked.map((r) => [r.application_id, r]));
+  const selected = applications.filter((a) => a.status === 'selected');
+
+  const notInvited = selected
+    .filter((a) => !trackedByAppId.has(a.id))
+    .map((a) => ({ key: a.id, name: a.full_name, role: a.role, linkedin: a.linkedin_url, reason: 'no team access yet', tone: 'cr-status-rejected', appId: a.id }));
+
+  const notLoggedIn = tracked
+    .filter((r) => !r.last_login_at)
+    .map((r) => ({ key: r.team_member_id, name: r.name, role: r.role, linkedin: linkedinByAppId.get(r.application_id), reason: 'hasn’t logged in yet', tone: 'cr-status-interview', appId: r.application_id }));
+
+  const onboardingIncomplete = tracked
+    .filter((r) => r.last_login_at && r.onboarding_done < r.onboarding_total)
+    .map((r) => ({ key: r.team_member_id, name: r.name, role: r.role, linkedin: linkedinByAppId.get(r.application_id), reason: `onboarding ${r.onboarding_done}/${r.onboarding_total}`, tone: 'cr-status-shortlisted', appId: r.application_id }));
+
+  return [...notInvited, ...notLoggedIn, ...onboardingIncomplete];
+}
+
+function NeedsNudge({ people }) {
+  if (people.length === 0) return null;
+  return (
+    <div className="cr-ad-group" style={{ marginBottom: 20 }}>
+      <h2>selected, not fully joined yet ({people.length})</h2>
+      <p className="cr-ad-sub">people already selected for the BD team who haven’t joined/activated yet, or haven’t finished onboarding. worth a LinkedIn nudge.</p>
+      <div className="cr-ad-table" style={{ marginTop: 14 }}>
+        <div className="cr-ad-row cr-ad-row-head" style={{ gridTemplateColumns: '1.2fr 1fr 1.2fr 1fr' }}>
+          <span>name</span><span>role</span><span>status</span><span>linkedin</span>
+        </div>
+        {people.map((p) => (
+          <div key={p.key} className="cr-ad-row" style={{ gridTemplateColumns: '1.2fr 1fr 1.2fr 1fr', cursor: 'default' }}>
+            <span className="cr-ad-name"><Link href={`/careers/admin/${p.appId}`}>{p.name}</Link></span>
+            <span>{p.role}</span>
+            <span><span className={`cr-status ${p.tone}`} style={{ cursor: 'default' }}>{p.reason}</span></span>
+            <span>{p.linkedin ? <a href={p.linkedin} target="_blank" rel="noopener noreferrer">linkedin ↗</a> : '—'}</span>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
 // "Who is actually working vs who is just sitting in the team" - one glance, no HR dashboard.
 export default function AdminTeam() {
   const [rows, setRows] = useState(null);
+  const [apps, setApps] = useState([]);
   const [error, setError] = useState('');
 
   const load = async () => {
     setRows(null); setError('');
-    const { data, error: e } = await getAdminClient().from('team_ops_overview').select('*, last_login_at, followup_email_sent_at');
-    if (e) { setError('couldn’t load the team overview.'); return; }
-    setRows([...data].sort((a, b) => (RANK[a.engagement_status] ?? 9) - (RANK[b.engagement_status] ?? 9)));
+    const [ops, appRes] = await Promise.all([
+      getAdminClient().from('team_ops_overview').select('*, last_login_at, followup_email_sent_at'),
+      getAdminClient().from('applications').select('id,full_name,role,linkedin_url,status').limit(2000),
+    ]);
+    if (ops.error) { setError('couldn’t load the team overview.'); return; }
+    setRows([...ops.data].sort((a, b) => (RANK[a.engagement_status] ?? 9) - (RANK[b.engagement_status] ?? 9)));
+    setApps(appRes.error ? [] : appRes.data);
   };
   useEffect(() => { load(); }, []);
 
@@ -112,6 +165,7 @@ export default function AdminTeam() {
   const neverLoggedIn = tracked.filter((r) => !r.last_login_at);
   const pendingReminder = neverLoggedIn.filter((r) => !r.followup_email_sent_at);
   const alreadyReminded = neverLoggedIn.filter((r) => r.followup_email_sent_at);
+  const needsNudge = rows ? needsJoiningNudge(apps, tracked) : [];
   const summary = ['active', 'at_risk', 'inactive', 'unknown'].map((k) => ({
     key: k, label: k === 'unknown' ? 'not activated' : k.replace('_', ' '),
     count: tracked.filter((r) => r.engagement_status === k).length,
@@ -125,7 +179,10 @@ export default function AdminTeam() {
 
       {error && <div className="cr-banner" role="alert">{error} <button type="button" className="cr-linkbtn" onClick={load}>try again</button></div>}
       {!error && rows === null && <p className="cr-ad-state">loading…</p>}
-      {rows && tracked.length === 0 && <p className="cr-ad-state">no team members yet.</p>}
+
+      {rows && <NeedsNudge people={needsNudge} />}
+
+      {rows && tracked.length === 0 && needsNudge.length === 0 && <p className="cr-ad-state">no team members yet.</p>}
 
       {rows && tracked.length > 0 && (
         <>
