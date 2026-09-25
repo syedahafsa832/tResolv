@@ -110,10 +110,6 @@ export default function HeroDemo() {
 
   return (
     <div className="hd-outer">
-      <span className="hd-float-chip">
-        <span className="hd-float-chip-dot" />
-        Refunds need your approval
-      </span>
       <div className={`hd-card${fading ? ' hd-fading' : ''}`}>
         <div className="hd-chrome">
           <div className="hd-dots">

@@ -4,19 +4,16 @@ import HeroStats from './HeroStats';
 export default function Hero() {
   return (
     <section className="hero">
-      <div className="wrap hero-top">
-        <div className="eyebrow">
-          <span className="eyebrow-dot" />
-          AI customer support employee for Shopify brands
-        </div>
-        <h1 className="hero-display">
-          Stop repeating answers.<br />
-          Start <em className="serif-accent">resolving</em> tickets.
-        </h1>
-      </div>
-
-      <div className="wrap hero-split">
-        <div className="hero-copy">
+      <div className="hero-inner">
+        <div className="hero-text">
+          <div className="eyebrow">
+            <span className="eyebrow-dot" />
+            AI customer support employee for Shopify brands
+          </div>
+          <h1>
+            Stop repeating answers.<br />
+            <span className="accent">Start resolving tickets.</span>
+          </h1>
           <p className="hero-sub">
             tResolv is an AI customer support employee that understands customer requests, checks your
             Shopify data, and handles routine support for you.
@@ -66,9 +63,7 @@ export default function Hero() {
           </div>
         </div>
 
-        <div className="hero-visual">
-          <HeroDemo />
-        </div>
+        <HeroDemo />
       </div>
 
       <HeroStats />

@@ -1,7 +1,7 @@
 import Nav              from '@/components/Nav';
 import Hero             from '@/components/Hero';
-import InboxQuiets      from '@/components/InboxQuiets';
 import ProductVideo     from '@/components/ProductVideo';
+import LiveFeed         from '@/components/LiveFeed';
 import HowItWorks       from '@/components/HowItWorks';
 import MeetLuna         from '@/components/MeetLuna';
 import SafetyControl    from '@/components/SafetyControl';
@@ -56,8 +56,8 @@ export default function Home() {
       <Nav />
       <main>
         <Hero />
-        <InboxQuiets />
         <ProductVideo />
+        <LiveFeed />
         <HowItWorks />
         <MeetLuna />
         <SafetyControl />

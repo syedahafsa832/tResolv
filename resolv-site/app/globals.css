@@ -150,15 +150,6 @@ button { font-family: inherit; cursor: pointer; }
   display: grid; grid-template-columns: 1fr 1fr;
   gap: 72px; align-items: start;
 }
-.hero-top { margin-bottom: 44px; }
-.hero-display {
-  font-size: clamp(44px, 6.2vw, 88px); font-weight: 700;
-  line-height: 0.99; letter-spacing: -3.5px; color: var(--text);
-  max-width: 1080px; text-wrap: balance;
-}
-.hero-split { display: grid; grid-template-columns: 0.85fr 1.15fr; gap: 56px; align-items: end; }
-.hero-copy { max-width: 460px; }
-.hero-visual { position: relative; }
 .hero h1 {
   font-size: clamp(46px, 5.8vw, 74px); font-weight: 700;
   line-height: 1.03; letter-spacing: -3px; color: var(--text);
@@ -529,31 +520,26 @@ button { font-family: inherit; cursor: pointer; }
 /* ============================================================
    HERO MICRO-DEMO
 ============================================================ */
-.hd-outer { position: relative; }
+.hd-outer { perspective: 1800px; position: sticky; top: calc(100px + var(--banner-h)); }
 .hd-outer::before {
   content: '';
   position: absolute;
   inset: -30px;
-  background: radial-gradient(closest-side, rgba(15,182,204,0.30), rgba(15,182,204,0.10) 55%, transparent 75%);
+  background: radial-gradient(closest-side, rgba(15,182,204,0.35), rgba(15,182,204,0.12) 55%, transparent 75%);
   filter: blur(40px);
   z-index: -1;
   pointer-events: none;
 }
 .hd-card {
   background: white; border-radius: 14px; overflow: hidden;
-  box-shadow: 0 30px 80px rgba(0,0,0,0.16), 0 0 0 1px rgba(0,0,0,0.06);
+  box-shadow: 0 30px 80px rgba(0,0,0,0.18), 0 0 0 1px rgba(0,0,0,0.06);
   min-height: 360px;
-  transition: opacity 0.5s ease;
+  transform: rotateY(-9deg) rotateX(4deg);
+  transform-style: preserve-3d;
+  transition: opacity 0.5s ease, transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
 }
+.hd-outer:hover .hd-card { transform: rotateY(-3deg) rotateX(1deg); }
 .hd-card.hd-fading { opacity: 0; }
-.hd-float-chip {
-  position: absolute; top: -14px; right: 28px; z-index: 2;
-  display: inline-flex; align-items: center; gap: 6px;
-  font-size: 11.5px; font-weight: 600; color: var(--text);
-  background: white; border: 1px solid var(--border); border-radius: 99px;
-  padding: 6px 12px; box-shadow: 0 8px 20px rgba(0,0,0,0.1);
-}
-.hd-float-chip-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--warning); }
 .hd-chrome {
   background: #e5e5e8; height: 30px;
   display: flex; align-items: center; padding: 0 12px; gap: 12px;
@@ -764,54 +750,6 @@ button { font-family: inherit; cursor: pointer; }
 }
 .flow-col.is-tresolv .flow-result { border-top-color: rgba(15,182,204,0.25); }
 
-/* Editorial italic accent word inside oversized headlines. Used sparingly. */
-.serif-accent { font-family: var(--font-serif), Georgia, serif; font-style: italic; font-weight: 500; color: var(--accent-text); }
-
-/* ============================================================
-   INBOX QUIETS — flagship scroll-triggered product story
-============================================================ */
-.iq-panel {
-  border: 1px solid var(--border); border-radius: 14px; overflow: hidden; background: white;
-  box-shadow: 0 30px 80px rgba(0,0,0,0.10), 0 0 0 1px rgba(0,0,0,0.04);
-  margin-top: 56px;
-}
-.iq-head {
-  display: flex; align-items: center; justify-content: space-between;
-  padding: 16px 22px; border-bottom: 1px solid var(--border); background: var(--bg-2);
-}
-.iq-head-title { font-size: 13px; font-weight: 600; color: var(--text); }
-.iq-count { font-family: var(--font-mono), ui-monospace, monospace; font-size: 12px; color: var(--text-2); }
-.iq-body { display: grid; grid-template-columns: 1fr 1fr; min-height: 420px; }
-.iq-col { padding: 20px; display: flex; flex-direction: column; gap: 10px; }
-.iq-col + .iq-col { border-left: 1px solid var(--border); }
-.iq-col-label {
-  font-size: 11.5px; font-weight: 600; letter-spacing: 0.4px; text-transform: uppercase;
-  color: var(--text-3); margin-bottom: 6px;
-}
-.iq-row {
-  display: flex; align-items: flex-start; gap: 10px; padding: 11px 12px; border-radius: 8px;
-  background: var(--bg-2); font-size: 13px; transition: background 0.3s ease;
-}
-.iq-row.is-processing { background: var(--accent-light); }
-.iq-row-dot { width: 7px; height: 7px; border-radius: 50%; margin-top: 5px; flex-shrink: 0; background: var(--danger); }
-.iq-row-body { min-width: 0; }
-.iq-row-subject { font-weight: 600; color: var(--text); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-.iq-row-from { font-size: 11.5px; color: var(--text-3); }
-.iq-row-status { font-size: 11px; color: var(--accent-text); margin-top: 4px; display: flex; align-items: center; gap: 5px; }
-.iq-resolved-row {
-  display: flex; align-items: flex-start; gap: 10px; padding: 11px 12px; border-radius: 8px;
-  font-size: 13px; animation: iqIn 0.4s ease;
-}
-.iq-resolved-badge {
-  font-size: 10.5px; font-weight: 600; padding: 3px 9px; border-radius: 99px; flex-shrink: 0; white-space: nowrap;
-}
-.iq-resolved-badge.resolved { background: var(--success-bg); color: var(--success); }
-.iq-resolved-badge.staged { background: var(--warning-bg); color: var(--warning); }
-.iq-empty { font-size: 13px; color: var(--text-3); text-align: center; padding-top: 40px; }
-.iq-caption { margin-top: 14px; font-size: 12.5px; color: var(--text-3); }
-@keyframes iqIn { from { opacity: 0; transform: translateY(-6px); } to { opacity: 1; transform: translateY(0); } }
-@media (prefers-reduced-motion: reduce) { .iq-row, .iq-resolved-row { animation: none; transition: none; } }
-
 /* ============================================================
    PRIVACY PAGE
 ============================================================ */
@@ -868,10 +806,6 @@ button { font-family: inherit; cursor: pointer; }
   .luna-steps { grid-template-columns: 1fr 1fr; gap: 32px 24px; }
   .luna-identity { flex-direction: column; align-items: flex-start; }
   .flow-compare { grid-template-columns: 1fr; gap: 24px; }
-  .iq-body { grid-template-columns: 1fr; }
-  .iq-col + .iq-col { border-left: none; border-top: 1px solid var(--border); }
-  .hero-split { grid-template-columns: 1fr; }
-  .hero-visual { margin-top: 8px; }
   .lf-row { flex-direction: column; align-items: flex-start; gap: 4px; }
   .blog-layout { grid-template-columns: 1fr; }
   .toc { position: static; }
