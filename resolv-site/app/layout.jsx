@@ -1,4 +1,4 @@
-import { DM_Sans, DM_Mono } from 'next/font/google';
+import { DM_Sans, DM_Mono, Newsreader } from 'next/font/google';
 import TrialBanner from '@/components/TrialBanner';
 import { SITE } from '@/lib/site';
 import './globals.css';
@@ -14,6 +14,16 @@ const dmMono = DM_Mono({
   subsets: ['latin'],
   weight: ['400', '500'],
   variable: '--font-mono',
+  display: 'swap',
+});
+
+// Editorial italic accent used sparingly in oversized headlines only,
+// DM Sans stays the workhorse everywhere else.
+const newsreader = Newsreader({
+  subsets: ['latin'],
+  weight: ['400', '500'],
+  style: ['italic'],
+  variable: '--font-serif',
   display: 'swap',
 });
 
@@ -40,7 +50,7 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" className={`${dmSans.variable} ${dmMono.variable}`}>
+    <html lang="en" className={`${dmSans.variable} ${dmMono.variable} ${newsreader.variable}`}>
       <body>
         <TrialBanner />
         {children}
