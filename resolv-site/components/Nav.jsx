@@ -91,7 +91,7 @@ export default function Nav() {
             className="btn btn-primary nav-cta-mobile"
             onClick={() => setMenuOpen(false)}
           >
-            {loggedIn ? 'Dashboard →' : 'Try tResolv free →'}
+            {loggedIn ? 'Dashboard →' : 'Claim your free spot →'}
           </a>
         </div>
         <div className="nav-cta">
@@ -102,7 +102,7 @@ export default function Nav() {
             className="btn btn-primary"
             style={{ fontSize: 13, padding: '9px 18px' }}
           >
-            {loggedIn ? 'Dashboard →' : 'Try tResolv free →'}
+            {loggedIn ? 'Dashboard →' : 'Claim your free spot →'}
           </a>
         </div>
       </div>

@@ -127,6 +127,11 @@ export default function Features() {
             </div>
           ))}
         </div>
+        <div className="why-card">
+          <div className="why-eyebrow">Why tResolv?</div>
+          <p className="why-statement">Gorgias and Zendesk show your agents the order. <em>tResolv&apos;s AI acts on it.</em></p>
+          <p className="why-body">Refunds, cancellations, and address changes execute directly in Shopify, with your approval, without a human in the loop.</p>
+        </div>
       </div>
     </section>
   );
