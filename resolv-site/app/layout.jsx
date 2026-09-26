@@ -1,4 +1,4 @@
-import { DM_Sans, DM_Mono, Fraunces, Inter } from 'next/font/google';
+import { DM_Sans, DM_Mono, Fraunces, Inter, Instrument_Serif } from 'next/font/google';
 import { SITE } from '@/lib/site';
 import './globals.css';
 
@@ -28,12 +28,24 @@ const fraunces = Fraunces({
   display: 'swap',
 });
 
-// Geometric grotesk used for the homepage hero headline, matching the
-// approved reference (tight tracking, closed apertures on e/a/s).
+// Geometric grotesk used for the homepage hero headline and other bold
+// statement headings, matching the approved reference (tight tracking,
+// closed apertures on e/a/s).
 const inter = Inter({
   subsets: ['latin'],
-  weight: ['600'],
+  weight: ['600', '700'],
   variable: '--font-heading',
+  display: 'swap',
+});
+
+// High-contrast editorial italic used for the teal accent word inside
+// oversized headlines (the ".serif-accent" class), matching the approved
+// reference's calligraphic curves and teardrop terminals.
+const instrumentSerif = Instrument_Serif({
+  subsets: ['latin'],
+  weight: ['400'],
+  style: ['italic'],
+  variable: '--font-accent-italic',
   display: 'swap',
 });
 
@@ -60,7 +72,7 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" className={`${dmSans.variable} ${dmMono.variable} ${fraunces.variable} ${inter.variable}`}>
+    <html lang="en" className={`${dmSans.variable} ${dmMono.variable} ${fraunces.variable} ${inter.variable} ${instrumentSerif.variable}`}>
       <body>
         {children}
       </body>
