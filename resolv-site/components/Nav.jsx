@@ -2,7 +2,6 @@
 
 import { useEffect, useState } from 'react';
 import { usePathname } from 'next/navigation';
-import { isLoggedIn } from '@/lib/auth';
 
 const NAV_LINKS = [
   { href: '/#product-demo', label: 'See it work' },
@@ -16,11 +15,7 @@ export default function Nav() {
   const pathname = usePathname();
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
-  const [loggedIn, setLoggedIn] = useState(false);
 
-  useEffect(() => {
-    setLoggedIn(isLoggedIn());
-  }, []);
   // Interior SEO/legal pages start with a dark breadcrumb bar or dark
   // privacy-hero behind the fixed nav, so white nav text reads fine there
   // from the top. The homepage hero and blog pages start on a plain light
@@ -88,25 +83,6 @@ export default function Nav() {
               {label}
             </a>
           ))}
-          <a
-            href={loggedIn ? 'https://app.tresolv.online/dashboard' : 'https://app.tresolv.online'}
-            target="_blank"
-            rel="noopener"
-            className="btn btn-primary nav-cta-mobile"
-            onClick={() => setMenuOpen(false)}
-          >
-            {loggedIn ? 'Dashboard →' : 'Try tResolv free →'}
-          </a>
-        </div>
-        <div className="nav-cta">
-          <a
-            href={loggedIn ? 'https://app.tresolv.online/dashboard' : 'https://app.tresolv.online'}
-            target="_blank"
-            rel="noopener"
-            className="btn btn-primary"
-          >
-            {loggedIn ? 'Dashboard →' : 'Try tResolv free →'}
-          </a>
         </div>
       </div>
     </nav>

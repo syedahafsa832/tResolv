@@ -1,4 +1,4 @@
-import { DM_Sans, DM_Mono, Fraunces } from 'next/font/google';
+import { DM_Sans, DM_Mono, Fraunces, Inter } from 'next/font/google';
 import { SITE } from '@/lib/site';
 import './globals.css';
 
@@ -28,6 +28,15 @@ const fraunces = Fraunces({
   display: 'swap',
 });
 
+// Geometric grotesk used for the homepage hero headline, matching the
+// approved reference (tight tracking, closed apertures on e/a/s).
+const inter = Inter({
+  subsets: ['latin'],
+  weight: ['600'],
+  variable: '--font-heading',
+  display: 'swap',
+});
+
 export const metadata = {
   metadataBase: new URL(SITE.url),
   title: 'tResolv | AI Support Employee for Shopify Brands',
@@ -51,7 +60,7 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" className={`${dmSans.variable} ${dmMono.variable} ${fraunces.variable}`}>
+    <html lang="en" className={`${dmSans.variable} ${dmMono.variable} ${fraunces.variable} ${inter.variable}`}>
       <body>
         {children}
       </body>

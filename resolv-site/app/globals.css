@@ -197,7 +197,8 @@ button { font-family: inherit; cursor: pointer; }
 }
 .home-hero-eyebrow { justify-content: center; margin-bottom: 12px; }
 .home-hero-headline {
-  font-family: var(--font-serif), Georgia, serif; font-weight: 500; font-style: normal;
+  font-family: var(--font-heading), Inter, 'SF Pro Display', 'Helvetica Neue', Arial, sans-serif;
+  font-weight: 600; font-style: normal;
   font-size: clamp(28px, 4.6vw, 60px); line-height: 1.14; letter-spacing: -0.5px;
   color: var(--text); margin: 0 auto 14px; max-width: 900px;
 }
