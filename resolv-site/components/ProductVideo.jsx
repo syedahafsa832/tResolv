@@ -109,25 +109,13 @@ export default function ProductVideo() {
   return (
     <section id="product-demo" className="section" style={{ paddingBottom: 0 }}>
       <div className="wrap">
-        <div style={{ maxWidth: 760, margin: '0 auto 40px' }}>
-          <div className="eyebrow"><span className="eyebrow-dot" />Real product demo</div>
-          <h2 className="section-title" style={{ fontSize: 'clamp(26px, 3vw, 36px)' }}>Watch Luna resolve a ticket.</h2>
-          <p className="section-sub" style={{ maxWidth: 'none' }}>
-            A customer asks. Luna checks what actually happened. Then she handles the next step.
-          </p>
-        </div>
         <div className="product-video-wrap" ref={wrapRef} style={{ aspectRatio: '16 / 9' }}>
-          {!shouldLoad && (
-            // eslint-disable-next-line @next/next/no-img-element
-            <img className="product-video" src="/video/poster.jpg" alt="" aria-hidden="true" />
-          )}
           {shouldLoad && (
             <>
               <video
                 ref={videoRef}
                 className="product-video"
                 src="/video/tresolv-product-video.mp4"
-                poster="/video/poster.jpg"
                 muted
                 playsInline
                 controls

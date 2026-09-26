@@ -5,7 +5,9 @@ import { usePathname } from 'next/navigation';
 import { isLoggedIn } from '@/lib/auth';
 
 const NAV_LINKS = [
-  { href: '/#product-demo', label: 'See it work' },
+  { href: '/#how-it-works', label: 'How it works' },
+  { href: '/#features',     label: 'Features' },
+  { href: '/#chat-widget',  label: 'Chat Widget' },
   { href: '/#pricing',      label: 'Pricing' },
   { href: '/#faq',          label: 'FAQ' },
   { href: '/blog',          label: 'Blog' },
@@ -49,19 +51,13 @@ export default function Nav() {
     e.preventDefault();
     const target = document.querySelector(href);
     if (target) {
-      // Offset by the fixed nav's own current height (which already
-      // includes the trial banner's height via --banner-h) rather than a
-      // hardcoded value, so anchors land below the nav whether or not the
-      // dismissible banner is showing.
-      const navEl = document.querySelector('.nav');
-      const clearance = (navEl?.getBoundingClientRect().bottom || 62) + 12;
-      const top = target.getBoundingClientRect().top + window.scrollY - clearance;
+      const top = target.getBoundingClientRect().top + window.scrollY - 70;
       window.scrollTo({ top, behavior: 'smooth' });
     }
   };
 
   return (
-    <nav className={`nav${scrolled ? ' scrolled' : ''}${scrolled || isLightTop ? ' dark' : ''}${menuOpen ? ' menu-open' : ''}`}>
+    <nav className={`nav${scrolled || isLightTop ? ' scrolled' : ''}${menuOpen ? ' menu-open' : ''}`}>
       <div className="nav-inner">
         <a href="/" className="nav-logo" onClick={() => setMenuOpen(false)}>
           <span className="logo-t">t</span>Resolv
@@ -95,7 +91,7 @@ export default function Nav() {
             className="btn btn-primary nav-cta-mobile"
             onClick={() => setMenuOpen(false)}
           >
-            {loggedIn ? 'Dashboard →' : 'Try tResolv free →'}
+            {loggedIn ? 'Dashboard →' : 'Claim your free spot →'}
           </a>
         </div>
         <div className="nav-cta">
@@ -104,8 +100,9 @@ export default function Nav() {
             target="_blank"
             rel="noopener"
             className="btn btn-primary"
+            style={{ fontSize: 13, padding: '9px 18px' }}
           >
-            {loggedIn ? 'Dashboard →' : 'Try tResolv free →'}
+            {loggedIn ? 'Dashboard →' : 'Claim your free spot →'}
           </a>
         </div>
       </div>

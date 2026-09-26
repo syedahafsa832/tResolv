@@ -2,14 +2,6 @@
 // keep this the single source so the schema never drifts from what's on the page.
 export const faqs = [
   {
-    q: 'Does tResolv replace my support team?',
-    a: 'No. Luna handles the repetitive requests, tracking, product questions, policy questions, so your team spends less time on those and more time on customers and cases that actually need a person. Refunds, cancellations, and anything sensitive still come back to you.',
-  },
-  {
-    q: "What happens if Luna doesn't know the answer?",
-    a: "She doesn't guess. If a request falls outside what she can confidently answer from your Shopify data and store policies, it's queued for you or your team instead of being sent as a low-confidence guess.",
-  },
-  {
     q: 'What happens after my free trial?',
     a: "You get 14 days of full access, no credit card required. We're a new product proving ourselves against companies with hundreds of millions in funding, so the fastest way to prove tResolv works is to let it work for real brands and let the results speak. When your trial ends, we'll ask you directly if you want to continue on a paid plan, no surprise charges, no auto-billing.",
   },
@@ -40,9 +32,5 @@ export const faqs = [
   {
     q: 'Does tResolv ever execute financial actions automatically?',
     a: 'No. Refunds, cancellations, address changes, and order restores always appear in your approval queue. They never execute without your tap, regardless of confidence level or which mode you are in.',
-  },
-  {
-    q: 'Will it change my Shopify store?',
-    a: "Only in the ways you'd expect from support work: it can look up orders and products, and it can update an order's address, issue a refund, or cancel an order, once you approve it. It never touches your theme, your checkout, or your product listings.",
   },
 ];
