@@ -297,6 +297,12 @@ button { font-family: inherit; cursor: pointer; }
   padding-bottom: clamp(60px, 8vw, 140px);
 }
 .home-hero-eyebrow { justify-content: center; margin-bottom: 8px; }
+@media (max-width: 640px) {
+  /* At this width the eyebrow's full phrase wraps to 2 lines at the
+     default 11.5px; shrinking it keeps it a single line without
+     touching the shared .eyebrow style every other section uses. */
+  .home-hero-eyebrow { font-size: 9px; letter-spacing: 0.3px; padding: 6px 10px; }
+}
 .home-hero-headline {
   font-family: var(--font-inter), Inter, sans-serif; font-weight: 600; font-style: normal;
   font-size: clamp(26px, 3.9vw, 50px); line-height: 1.25; letter-spacing: -1px;
@@ -324,7 +330,7 @@ button { font-family: inherit; cursor: pointer; }
 .home-hero-watch { color: var(--accent-text); font-weight: 600; font-size: 15px; }
 .home-hero-watch:hover { text-decoration: underline; }
 .home-hero-assurance {
-  display: flex; align-items: center; justify-content: center; gap: 16px;
+  display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 8px 16px;
   margin-top: 16px; font-size: 12px; font-weight: 500; color: #64748B;
 }
 @media (min-width: 640px) { .home-hero-assurance { font-size: 14px; } }
@@ -334,6 +340,19 @@ button { font-family: inherit; cursor: pointer; }
 @media (max-width: 920px) {
   .home-hero { padding-top: calc(72px + var(--banner-h)); }
   .home-hero-content { padding-bottom: clamp(60px, 18vw, 130px); }
+}
+@media (max-width: 640px) {
+  /* Two classes to outrank the later global `.wrap { padding: 0 24px }`
+     rule in the RESPONSIVE section below, which otherwise wins the
+     cascade tie against a single-class .home-hero-content selector. */
+  .home-hero-content.wrap { padding-left: 16px; padding-right: 16px; }
+  /* At narrow widths "for every customer question." wraps onto its own
+     second line right under the underlined accent phrase. The underline
+     is positioned via .headline-accent's own fixed line-height (1.1), so
+     the parent's line-height doesn't move it relative to the next line;
+     pulling its own offset up is what actually clears the wrapped text. */
+  .home-hero-headline { line-height: 1.35; }
+  .headline-accent-underline { bottom: 2px; }
 }
 
 /* ============================================================
