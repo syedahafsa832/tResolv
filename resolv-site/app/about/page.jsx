@@ -8,7 +8,7 @@ import RelatedLinks from '@/components/seo/RelatedLinks';
 
 const path = '/about';
 const seo = {
-  title: 'About tResolv | AI Support Employee for Shopify Brands',
+  title: 'About tResolv | What It Is and How Approvals Work',
   description:
     'tResolv is an AI customer support employee for Shopify brands. It resolves routine emails and chat, and needs your approval for every refund or cancellation.',
 };
