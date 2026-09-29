@@ -1,30 +1,17 @@
-import { DM_Sans, DM_Mono, Fraunces } from 'next/font/google';
+import { DM_Mono, Inter } from 'next/font/google';
 import { SITE } from '@/lib/site';
 import './globals.css';
 
-const dmSans = DM_Sans({
-  subsets: ['latin'],
-  weight: ['400', '500', '600', '700'],
-  variable: '--font-sans',
-  display: 'swap',
-});
+// Inter is the one typeface for the whole site (body + every heading).
+// It is exposed as both --font-inter and, via globals.css, --font-sans so
+// legacy rules that reference --font-sans (careers/team pages) follow it too.
+const inter = Inter({ subsets: ['latin'], weight: ['400', '500', '600', '700'], variable: '--font-inter', display: 'swap' });
 
+// Mono is kept only for the careers/team pages' numbering; no homepage rule uses it.
 const dmMono = DM_Mono({
   subsets: ['latin'],
   weight: ['400', '500'],
   variable: '--font-mono',
-  display: 'swap',
-});
-
-// Editorial serif used for the hero headline and other emotional statement
-// moments; DM Sans stays the workhorse for everything functional/UI. Fraunces
-// has the higher-contrast, warm/organic character matching the approved hero
-// reference (chosen over Newsreader, which read too plain/text-like at hero size).
-const fraunces = Fraunces({
-  subsets: ['latin'],
-  weight: ['400', '500', '600'],
-  style: ['normal', 'italic'],
-  variable: '--font-serif',
   display: 'swap',
 });
 
@@ -51,7 +38,7 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" className={`${dmSans.variable} ${dmMono.variable} ${fraunces.variable}`}>
+    <html lang="en" className={`${inter.variable} ${dmMono.variable}`}>
       <body>
         {children}
       </body>

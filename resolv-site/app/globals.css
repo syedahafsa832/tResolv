@@ -1,10 +1,10 @@
 /* ============================================================
-   RESOLV — Global Styles
+   RESOLV: Global Styles
    Design tokens + layout + all section styles
 ============================================================ */
 
 :root {
-  /* Cyan is the live production brand color — do not revert to indigo. */
+  /* Cyan is the live production brand color: do not revert to indigo. */
   --accent:       #0FB6CC;
   --accent-hover: #0E97A9;
   --accent-light: #E2F7FA;
@@ -25,6 +25,8 @@
   --dark:         #0A0A0B;
   --dark-2:       #111117;
   --banner-h:     0px;
+  /* One typeface site-wide: everything that says --font-sans is Inter. */
+  --font-sans:    var(--font-inter);
 }
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -45,24 +47,31 @@ button { font-family: inherit; cursor: pointer; }
 .wrap { max-width: 1320px; margin: 0 auto; padding: 0 48px; }
 .section { padding: 104px 0; }
 .section-alt { background: var(--bg-2); }
+/* Homepage tinted bands (Trust, FAQ): one soft slate-50/50 wash across the
+   whole section container, so header, card and list sit on the same surface. */
+#safety, #faq { background: rgba(248, 250, 252, 0.5); }
 
 /* ---- TYPE ---- */
 .eyebrow {
   display: inline-flex; align-items: center; gap: 8px;
+  padding: 6px 14px; border-radius: 999px;
+  border: 1px solid rgba(15, 182, 204, 0.22); background: rgba(15, 182, 204, 0.06);
   font-size: 11.5px; font-weight: 600; letter-spacing: 0.7px;
   text-transform: uppercase; color: var(--accent-text); margin-bottom: 18px;
 }
 .eyebrow-dot { width: 5px; height: 5px; border-radius: 50%; background: var(--accent); flex-shrink: 0; }
+/* The one heading style for every main section on the site (hero and pricing
+   cards are the deliberate exceptions, see their own rules). Always Inter,
+   always this size/weight/spacing, so "Sound familiar?", "What else can it
+   handle?", "Founding Launch Pricing." etc. all read as the same hierarchy
+   instead of each section inventing its own heading treatment. */
 .section-title {
+  font-family: var(--font-inter), Inter, sans-serif;
   font-size: clamp(30px, 3.6vw, 44px); font-weight: 700;
   line-height: 1.08; letter-spacing: -1.5px; color: var(--text);
   margin-bottom: 14px; text-wrap: balance;
 }
 .section-sub { font-size: 17px; color: var(--text-2); line-height: 1.72; max-width: 520px; }
-.section-title-serif {
-  font-family: var(--font-serif), Georgia, serif; font-weight: 500; font-style: normal;
-  letter-spacing: -0.3px;
-}
 
 /* ---- BUTTONS ---- */
 .btn {
@@ -83,6 +92,64 @@ button { font-family: inherit; cursor: pointer; }
   border: 1px solid var(--border);
 }
 .btn-ghost-light:hover { color: var(--text); border-color: var(--text-3); }
+.btn-sm { padding: 8px 16px; font-size: 13px; }
+
+/* ============================================================
+   MOTION SYSTEM: one shared vocabulary (reveal / hover / press /
+   processing / state-transition) reused everywhere instead of bespoke
+   animation code per section. See lib/useReveal.js + components/Reveal.jsx.
+   Every rule here is transform/opacity only (cheap, composited) and the
+   whole block is neutralized under prefers-reduced-motion at the bottom.
+============================================================ */
+.reveal {
+  opacity: 0; transform: translateY(20px);
+  transition: opacity 700ms cubic-bezier(0.16, 1, 0.3, 1), transform 700ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+.reveal.is-visible { opacity: 1; transform: translateY(0); }
+.reveal-inline { display: inline-block; }
+
+/* Buttons: a tiny lift on hover, a tiny press on click, the same feel
+   everywhere a click matters (CTAs, approve/reject, price-btn, FAQ, tabs). */
+.btn, .approval-btn, .price-btn, .faq-q, .se-tab, .nf-btn-ghost {
+  transition: background 0.15s, color 0.15s, border-color 0.15s, transform 0.18s ease, box-shadow 0.18s ease;
+}
+.btn-primary:hover, .pre-cta-btn.btn-primary:hover { transform: translateY(-1px); }
+.btn:active, .approval-btn:active, .price-btn:active { transform: translateY(1px); }
+.btn-arrow { display: inline-block; transition: transform 0.2s ease; }
+.btn:hover .btn-arrow { transform: translateX(4px); }
+
+/* One reusable "Luna is working" indicator: a soft pulsing dot, not the
+   generic three-bounce-dots spinner. Reused by the sandbox loading state
+   and anywhere else Luna is shown thinking. */
+.luna-processing { display: inline-flex; align-items: center; gap: 9px; color: var(--text-2); font-size: 14px; }
+.luna-processing-dot {
+  width: 7px; height: 7px; border-radius: 50%; background: var(--accent); flex-shrink: 0;
+  animation: lunaPulse 1.4s ease-in-out infinite;
+}
+@keyframes lunaPulse {
+  0%, 100% { opacity: 0.35; transform: scale(0.8); }
+  50% { opacity: 1; transform: scale(1); }
+}
+
+/* Sandbox scenario switching: the outgoing panel fades/slides out, the
+   incoming one fades/slides in, short enough that it never feels like a
+   wait, just a polished swap. Driven by a `key` remount in ScenarioExplorer. */
+@keyframes scenarioIn {
+  from { opacity: 0; transform: translateX(10px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+.se-panel-content { animation: scenarioIn 220ms cubic-bezier(0.16, 1, 0.3, 1); }
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal { opacity: 1 !important; transform: none !important; transition: none !important; }
+  .luna-processing-dot { animation: none; opacity: 1; }
+  .se-panel-content, .approval-result { animation: none; }
+  .home-hero-scene-drift { animation: none !important; }
+  .btn-primary:hover, .pre-cta-btn.btn-primary:hover, .btn:hover .btn-arrow { transform: none; }
+  .hi-row, .safety-list li, .price-popular { opacity: 1 !important; transform: none !important; transition: none !important; }
+  .price-card:hover { transform: none; }
+  .faq-a-inner { opacity: 1 !important; transform: none !important; transition: none !important; }
+}
 
 /* ============================================================
    NAV
@@ -116,13 +183,19 @@ button { font-family: inherit; cursor: pointer; }
 .nav.dark .nav-logo { color: var(--text); }
 .logo-t { color: var(--accent); }
 .nav-links { display: flex; align-items: center; gap: 28px; flex: 1; }
-.nav-link { font-size: 14px; font-weight: 500; color: rgba(255,255,255,0.55); transition: color 0.15s; }
+.nav-link {
+  position: relative; font-size: 14px; font-weight: 500; color: rgba(255,255,255,0.55);
+  transition: color 0.15s;
+}
+.nav-link::after {
+  content: ''; position: absolute; left: 0; right: 100%; bottom: -4px; height: 1px;
+  background: currentColor; opacity: 0.55; transition: right 0.2s ease;
+}
 .nav-link:hover { color: white; }
+.nav-link:hover::after { right: 0; }
 .nav.dark .nav-link { color: var(--text-2); }
 .nav.dark .nav-link:hover { color: var(--text); }
 .nav-cta { margin-left: auto; }
-.nav.dark .nav-cta .btn-ghost-dark { color: var(--text-2); border-color: var(--border); }
-.nav.dark .nav-cta .btn-ghost-dark:hover { color: var(--text); border-color: var(--text-2); }
 .nav-cta-mobile { display: none; }
 
 .nav-burger {
@@ -167,10 +240,20 @@ button { font-family: inherit; cursor: pointer; }
 }
 
 /* ============================================================
-   HOMEPAGE HERO — organic sky/hill scene, editorial serif headline
+   HOMEPAGE HERO: organic sky/hill scene, editorial serif headline
 ============================================================ */
 .home-hero {
   position: relative; overflow: hidden;
+  /* Locking the section to the viewport height (rather than letting a
+     clamp()/vw content padding decide it) is what makes the hero always
+     fill the first screen exactly: no sliver of the next section peeking
+     in at some zoom levels, none of the next section's white missing at
+     others. 100svh is preferred where supported (it accounts for mobile
+     browser chrome); 100vh is the fallback for browsers that lack it. */
+  min-height: 100vh;
+  min-height: 100svh;
+  display: flex;
+  align-items: center;
   /* 70px clears the fixed 62px nav with a small margin; the nav floats over
      this section (position:fixed) so this padding is the only thing that
      keeps the eyebrow text from sliding underneath it. */
@@ -178,29 +261,61 @@ button { font-family: inherit; cursor: pointer; }
   transition: padding-top 0.25s ease;
 }
 .home-hero-scene {
-  position: absolute; inset: 0; z-index: 0; overflow: hidden;
-  /* Single pre-composited sky+hill photo, bottom-anchored: background-size
-     cover always fills the section width, and anchoring to the bottom means
-     the grass (the bottom of the image) is always the part that stays fully
-     on screen — a taller section just reveals more sky above it, it never
-     crops the grass away or pushes it below the fold. */
+  /* top/left/right pinned, but bottom deliberately overscans past the
+     section's own edge (instead of inset:0's exact bottom:0). .home-hero's
+     height is a viewport-relative unit, which browsers can still round to
+     a fractional px independently of the cover-background paint, leaving a
+     hairline gap of the next section's white showing through at the very
+     bottom. Overscanning by a few px guarantees the image always reaches
+     past the boundary; the next section (an opaque, normal-flow sibling)
+     simply paints over that sliver, so nothing is actually lost. */
+  position: absolute; top: 0; left: 0; right: 0; bottom: -4px; z-index: 0; overflow: hidden;
+}
+/* Barely-there ambient drift via background-position, not transform+scale:
+   an earlier version oversized this layer (inset + scale) so the pan never
+   revealed an edge, but background-size:cover on an already-108%-sized box
+   compounded with the scale into extra zoom, at wide/short viewports that
+   pushed the grass hill mostly out of frame. Panning within cover's own
+   natural overflow needs no oversizing at all, so the framing matches the
+   static (non-animated) crop exactly; only the position drifts, ~45s round
+   trip, imperceptibly slow. */
+.home-hero-scene-drift {
+  position: absolute; inset: 0;
   background: url('/hero/hero-scene.jpg') center bottom / cover no-repeat;
+  animation: heroSceneDrift 45s ease-in-out infinite alternate;
+}
+@keyframes heroSceneDrift {
+  from { background-position: center bottom; }
+  to   { background-position: 51% 97%; }
 }
 .home-hero-content {
   position: relative; z-index: 1;
+  width: 100%;
   max-width: 1080px; margin: 0 auto; text-align: center;
-  /* Bounded by both width and height: the background is bottom-anchored so
-     grass never gets cropped or misplaced by this shrinking, it just shows
-     less of it on a short window — which is exactly what keeps the whole
-     hero (grass included) fitting on screen without scrolling. */
-  padding-bottom: clamp(90px, min(11vw, 20vh), 220px);
+  /* Bottom breathing room so the copy sits above the grass line instead of
+     dead-center in the viewport. */
+  padding-bottom: clamp(60px, 8vw, 140px);
 }
-.home-hero-eyebrow { justify-content: center; margin-bottom: 12px; }
+.home-hero-eyebrow { justify-content: center; margin-bottom: 8px; }
 .home-hero-headline {
-  font-family: var(--font-serif), Georgia, serif; font-weight: 500; font-style: normal;
-  font-size: clamp(28px, 4.6vw, 60px); line-height: 1.14; letter-spacing: -0.5px;
-  color: var(--text); margin: 0 auto 14px; max-width: 900px;
+  font-family: var(--font-inter), Inter, sans-serif; font-weight: 600; font-style: normal;
+  font-size: clamp(26px, 3.9vw, 50px); line-height: 1.25; letter-spacing: -1px;
+  color: var(--text); margin: 0 auto 10px; max-width: 900px;
 }
+/* Same bold sans-serif as the rest of the headline, just italic and in
+   brand cyan, with a single smooth SVG underline stroke (drawn in Hero.jsx,
+   not a text-decoration or a repeating background tile, those render as a
+   spellcheck-squiggle at this font size instead of a clean marker stroke). */
+/* margin-right (not just the space character in the JSX) because whitespace
+   sitting directly against an inline-block box collapses inconsistently:
+   without it, the following word runs straight into "resolving"/"you". */
+.headline-accent { position: relative; display: inline-block; line-height: 1.1; margin-right: 0.28em; font-family: inherit; font-weight: inherit; font-style: italic; color: var(--accent-text); }
+/* Sits just under the phrase (clear of the italic descenders) and never
+   reaches the next line. vector-effect keeps the stroke a constant 3px even
+   though preserveAspectRatio="none" stretches the path across the phrase:
+   without it the stroke thickened/thinned with the stretch. */
+.headline-accent-underline { position: absolute; left: 0; right: 0; bottom: -6px; width: 100%; height: 8px; color: var(--accent-text); pointer-events: none; overflow: visible; }
+.headline-accent-underline path { vector-effect: non-scaling-stroke; }
 .home-hero-sub {
   font-size: 16px; color: var(--text-2); line-height: 1.65;
   max-width: 500px; margin: 0 auto 20px;
@@ -211,7 +326,7 @@ button { font-family: inherit; cursor: pointer; }
 .home-hero-assurance { margin-top: 12px; font-size: 13px; color: var(--text-3); }
 @media (max-width: 920px) {
   .home-hero { padding-top: calc(72px + var(--banner-h)); }
-  .home-hero-content { padding-bottom: clamp(90px, 26vw, 190px); }
+  .home-hero-content { padding-bottom: clamp(60px, 18vw, 130px); }
 }
 
 /* ============================================================
@@ -268,9 +383,17 @@ button { font-family: inherit; cursor: pointer; }
   border: 1px solid var(--border); border-radius: 8px;
   overflow: hidden; margin-top: 64px;
 }
-.price-card { padding: 40px 36px; background: white; border-right: 1px solid var(--border); position: relative; }
+.price-card {
+  padding: 40px 36px; background: white; border-right: 1px solid var(--border); position: relative;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.price-card:hover { transform: translateY(-3px); box-shadow: 0 14px 32px rgba(0,0,0,0.08); z-index: 2; }
+.price-card.featured:hover { box-shadow: inset 0 0 0 2px var(--accent), 0 18px 40px rgba(15,23,42,0.35); }
 .price-card:last-child { border-right: none; }
-.price-card.featured { background: var(--dark); }
+/* Softer than near-black: slate-900 with a 2px brand-cyan ring. The ring is an
+   inset shadow (not a border) so the card keeps the exact same size as its
+   neighbours and the grid doesn't shift. */
+.price-card.featured { background: #0F172A; box-shadow: inset 0 0 0 2px var(--accent); }
 .price-tier { font-size: 11.5px; font-weight: 600; letter-spacing: 0.6px; text-transform: uppercase; color: var(--text-3); margin-bottom: 4px; }
 .price-card.featured .price-tier { color: rgba(255,255,255,0.38); }
 .price-kicker { font-size: 12.5px; color: var(--text-3); margin-bottom: 8px; }
@@ -283,7 +406,7 @@ button { font-family: inherit; cursor: pointer; }
   padding: 3px 10px; border-radius: 99px; margin-bottom: 10px;
 }
 .price-card.featured .price-founding { background: rgba(15,182,204,0.18); color: #5fd8e8; }
-.price-amount { font-family: var(--font-mono), ui-monospace, monospace; font-size: 42px; font-weight: 500; color: var(--text); line-height: 1; }
+.price-amount { font-family: var(--font-inter), Inter, sans-serif; font-variant-numeric: tabular-nums; font-size: 42px; font-weight: 600; letter-spacing: -1px; color: var(--text); line-height: 1; }
 .price-card.featured .price-amount { color: white; }
 .price-amount.custom { font-family: var(--font-sans), system-ui, sans-serif; font-size: 26px; font-weight: 700; }
 .price-quote {
@@ -321,31 +444,46 @@ button { font-family: inherit; cursor: pointer; }
   font-size: 11px; font-weight: 600;
   background: var(--accent); color: white;
   padding: 3px 10px; border-radius: 99px;
+  opacity: 0; transform: scale(0.85);
+  transition: opacity 350ms ease, transform 350ms ease;
+  transition-delay: 420ms;
 }
+.reveal.is-visible .price-popular { opacity: 1; transform: scale(1); }
 
 /* ============================================================
    FAQ
 ============================================================ */
-.faq-wrap {
-  max-width: 740px; margin-top: 64px;
-  border: 1px solid var(--border); border-radius: 8px;
-  overflow: hidden; background: white;
+/* Centered intro block for the homepage FAQ accordion (eyebrow, title,
+   subtitle), distinct from the left-aligned .section-title pattern used
+   elsewhere on the page. */
+.faq-header { max-width: 672px; margin: 0 auto 48px; text-align: center; }
+.faq-header .section-sub { max-width: none; font-size: 16px; margin-top: 8px; }
+.faq-wrap { max-width: 768px; margin: 0 auto; }
+.faq-item {
+  background: white; border-radius: 12px;
+  border: 1px solid rgba(226, 232, 240, 0.8);
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  overflow: hidden; margin-bottom: 12px; transition: all 0.2s ease;
 }
-.faq-item { border-bottom: 1px solid var(--border); }
-.faq-item:last-child { border-bottom: none; }
+.faq-item:last-child { margin-bottom: 0; }
 .faq-q {
   width: 100%; display: flex; align-items: center;
   justify-content: space-between; gap: 20px;
-  padding: 22px 28px; font-size: 15px; font-weight: 600;
+  padding: 22px 28px; font-size: 16px; font-weight: 600;
   color: var(--text); background: white; border: none;
   text-align: left; transition: background 0.12s;
 }
+@media (min-width: 640px) { .faq-q { font-size: 18px; } }
 .faq-q:hover { background: var(--bg-2); }
-.faq-chevron { flex-shrink: 0; color: var(--text-3); transition: transform 0.22s; }
+.faq-chevron { flex-shrink: 0; color: var(--text-3); transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1); }
 .faq-item.open .faq-chevron { transform: rotate(180deg); }
-.faq-a { max-height: 0; overflow: hidden; transition: max-height 0.28s ease; }
+.faq-a { max-height: 0; overflow: hidden; transition: max-height 0.3s cubic-bezier(0.16, 1, 0.3, 1); }
 .faq-item.open .faq-a { max-height: 240px; }
-.faq-a-inner { padding: 0 28px 22px; font-size: 15px; color: var(--text-2); line-height: 1.72; }
+.faq-a-inner {
+  padding: 0 28px 22px; font-size: 15px; color: var(--text-2); line-height: 1.72; max-width: 820px;
+  opacity: 0; transform: translateY(-4px); transition: opacity 0.22s ease 0.06s, transform 0.22s ease 0.06s;
+}
+.faq-item.open .faq-a-inner { opacity: 1; transform: translateY(0); }
 
 /* ============================================================
    PRE-CTA
@@ -354,12 +492,23 @@ button { font-family: inherit; cursor: pointer; }
   background: linear-gradient(180deg, var(--bg) 0%, var(--accent-light) 160%);
   border-top: 1px solid var(--border); text-align: center;
 }
-.pre-cta h2 {
-  font-weight: 800; font-style: normal;
-  font-size: clamp(26px, 3vw, 40px); line-height: 1.2;
-  letter-spacing: -0.5px; color: var(--text); margin-bottom: 14px; text-wrap: balance;
+.pre-cta-eyebrow-dot { animation: livePulse 2s infinite; }
+/* The closing CTA is a deliberate exception to the shared .section-title
+   (see the Problem/ScenarioExplorer/SafetyControl/Pricing/FAQ headings):
+   it's the last thing a visitor reads, so it earns a larger statement
+   treatment, same weight as the hero headline (not the extrabold section
+   headings) so it echoes the hero rather than shouting louder than it. */
+.pre-cta-title {
+  font-family: var(--font-inter), Inter, sans-serif; font-weight: 600; font-style: normal;
+  font-size: clamp(32px, 5vw, 56px); line-height: 1.15; letter-spacing: -1px;
+  color: var(--text); max-width: 780px; margin: 0 auto 16px; text-wrap: balance;
 }
-.pre-cta p { font-size: 17px; color: var(--text-2); margin-bottom: 36px; max-width: 460px; margin-left: auto; margin-right: auto; }
+.pre-cta p { font-size: clamp(18px, 1.4vw, 20px); color: var(--text-2); line-height: 1.625; margin: 0 auto 32px; max-width: 620px; }
+.pre-cta-actions { display: flex; gap: 18px; flex-wrap: wrap; justify-content: center; }
+.pre-cta-btn { padding: 14px 24px; border-radius: 12px; font-size: 16px; }
+.pre-cta-btn.btn-primary { box-shadow: 0 12px 28px -6px rgba(15, 182, 204, 0.4); }
+.pre-cta-btn.btn-ghost-light { background: white; box-shadow: 0 1px 3px rgba(0,0,0,0.06); }
+.pre-cta-btn.btn-ghost-light:hover { background: var(--bg-2); }
 
 /* ============================================================
    FOOTER
@@ -392,7 +541,7 @@ button { font-family: inherit; cursor: pointer; }
 .footer-socials a:hover { color: white; }
 
 /* ============================================================
-   SEO PAGES — landing / comparison / blog
+   SEO PAGES: landing / comparison / blog
 ============================================================ */
 .check-list { list-style: none; display: flex; flex-direction: column; gap: 14px; margin-top: 28px; }
 .check-item { display: flex; align-items: flex-start; gap: 12px; font-size: 15px; color: var(--text-2); line-height: 1.6; }
@@ -432,7 +581,7 @@ button { font-family: inherit; cursor: pointer; }
 .who-for-card h3 { font-size: 17px; font-weight: 700; color: var(--text); margin-bottom: 14px; letter-spacing: -0.3px; }
 .who-for-card ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
 .who-for-card li { font-size: 14px; color: var(--text-2); line-height: 1.6; padding-left: 18px; position: relative; }
-.who-for-card li::before { content: '—'; position: absolute; left: 0; color: var(--text-3); }
+.who-for-card li::before { content: '-'; position: absolute; left: 0; color: var(--text-3); }
 
 .disclosure-note {
   margin-top: 20px; font-size: 13px; color: var(--text-3); line-height: 1.6;
@@ -490,18 +639,38 @@ button { font-family: inherit; cursor: pointer; }
    PRODUCT VIDEO (below hero)
 ============================================================ */
 #product-demo { scroll-margin-top: 90px; }
-.product-video-wrap {
-  max-width: 720px;
-  margin: 0 auto;
-  border-radius: 18px;
-  overflow: hidden;
-  box-shadow: 0 16px 48px rgba(0,0,0,0.12), 0 0 0 1px rgba(0,0,0,0.05);
-  background: #000;
+/* Browser-window frame around the demo: 896px (max-w-4xl) centered in the
+   container so left/right whitespace stay equal. The chrome bar reuses the
+   inbox card's .hi-chrome so both product mockups share one window style. */
+.browser-frame {
+  width: 100%; max-width: 896px; margin: 64px auto 0;
+  border-radius: 16px; overflow: hidden;
+  border: 1px solid #E2E8F0;
+  box-shadow: 0 25px 50px -12px rgba(0,0,0,0.25);
+  background: #0F172A;
 }
+.product-video-wrap { width: 100%; background: #0F172A; overflow: hidden; }
+/* Floating play affordance so it reads as a video at a glance; hidden while
+   the video is playing, back when it's paused/ended. */
+.product-video-play {
+  position: absolute; top: 50%; left: 50%; z-index: 3;
+  width: 76px; height: 76px; border: 0; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center; padding-left: 4px;
+  background: rgba(255,255,255,0.94); color: var(--accent-text);
+  box-shadow: 0 12px 32px rgba(0,0,0,0.28);
+  transform: translate(-50%, -50%) scale(1);
+  transition: transform 0.2s ease, background 0.2s ease;
+  cursor: pointer;
+}
+.product-video-play:hover { transform: translate(-50%, -50%) scale(1.1); background: #fff; }
+.product-video-play:active { transform: translate(-50%, -50%) scale(0.98); }
+@media (max-width: 920px) { .product-video-play { width: 60px; height: 60px; } }
+@media (prefers-reduced-motion: reduce) { .product-video-play:hover, .product-video-play:active { transform: translate(-50%, -50%); } }
 .product-video {
   display: block;
   width: 100%;
-  height: auto;
+  height: 100%;
+  object-fit: cover;
 }
 .product-video-wrap { position: relative; }
 .product-video-hint {
@@ -534,39 +703,47 @@ button { font-family: inherit; cursor: pointer; }
   background: white; border-radius: 14px; overflow: hidden;
   box-shadow: 0 40px 100px rgba(0,0,0,0.18), 0 0 0 1px rgba(0,0,0,0.06);
 }
-.hi-chrome { display: flex; gap: 6px; padding: 12px 18px; background: var(--bg-3); }
-.hi-chrome-dot { width: 9px; height: 9px; border-radius: 50%; }
+.hi-chrome { display: flex; gap: 6px; padding: 10px 16px; background: var(--bg-3); }
+.hi-chrome-dot { width: 8px; height: 8px; border-radius: 50%; }
 .hi-head {
   display: flex; align-items: center; justify-content: space-between;
-  padding: 15px 22px; border-bottom: 1px solid var(--border); background: var(--bg-2);
+  padding: 12px 18px; border-bottom: 1px solid var(--border); background: var(--bg-2);
 }
-.hi-head-title { font-size: 15px; font-weight: 600; color: var(--text); }
-.hi-count { font-family: var(--font-mono), ui-monospace, monospace; font-size: 13px; color: var(--text-2); transition: color 0.3s; }
-.hi-count.is-zero { color: var(--success); font-weight: 600; }
+.hi-head-title { font-size: 14px; font-weight: 600; color: var(--text); }
+.inbox-unread {
+  display: flex; align-items: center; gap: 6px;
+  font-size: 12px; font-weight: 600; color: var(--danger);
+}
+.inbox-unread-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--danger); flex-shrink: 0; }
 .hi-rows { display: flex; flex-direction: column; }
-.hi-row, .pi-row {
-  display: flex; align-items: center; gap: 16px; padding: 20px 26px;
+.hi-row {
+  display: flex; align-items: center; gap: 12px; padding: 13px 18px;
   border-bottom: 1px solid var(--border);
+  /* Rows come alive one after another once the card scrolls into view
+     (driven by the ancestor .reveal.is-visible, not a separate observer
+     per row), the inbox "gradually becoming active" rather than a flat
+     background image. */
+  opacity: 0; transform: translateY(8px);
+  transition: opacity 450ms ease, transform 450ms ease;
+  transition-delay: calc(var(--i, 0) * 70ms + 260ms);
 }
-.hi-row:last-child, .pi-row:last-child { border-bottom: none; }
-.hi-dot {
-  width: 8px; height: 8px; border-radius: 50%; background: var(--danger);
-  flex-shrink: 0; transition: opacity 0.3s;
+.reveal.is-visible .hi-row { opacity: 1; transform: translateY(0); }
+.hi-row:last-child { border-bottom: none; }
+.ticket-avatar {
+  width: 30px; height: 30px; border-radius: 50%; flex-shrink: 0;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 11px; font-weight: 700;
 }
-.hi-row.is-done .hi-dot { opacity: 0; }
 .hi-row-body { min-width: 0; flex: 1; }
-.hi-row-subject { font-size: 16.5px; font-weight: 600; color: var(--text); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-.hi-row-from { font-size: 12.5px; color: var(--text-3); margin-top: 2px; }
+.hi-row-subject { font-size: 13.5px; font-weight: 600; color: var(--text); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.hi-row-from { font-size: 12px; color: var(--text-3); margin-top: 2px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.hi-row-meta { display: flex; flex-direction: column; align-items: flex-end; gap: 5px; flex-shrink: 0; }
+.hi-row-time { font-size: 11px; color: var(--text-3); }
 .hi-badge {
-  font-size: 11px; font-weight: 600; padding: 4px 10px; border-radius: 99px;
-  flex-shrink: 0; opacity: 0; transform: translateX(6px);
-  transition: opacity 0.35s ease, transform 0.35s ease;
+  font-size: 10.5px; font-weight: 600; padding: 3px 9px; border-radius: 99px;
+  flex-shrink: 0; white-space: nowrap;
 }
-.hi-row.is-done .hi-badge { opacity: 1; transform: translateX(0); }
-.hi-badge.resolved { background: var(--success-bg); color: var(--success); }
-.hi-badge.staged { background: var(--warning-bg); color: var(--warning); }
-.hi-cap { padding: 12px 22px; background: var(--bg-2); font-size: 12px; color: var(--text-3); text-align: center; }
-@media (prefers-reduced-motion: reduce) { .hi-dot, .hi-badge { transition: none; } }
+.hi-badge.unresolved { background: #FCE4E7; color: #C23B4F; }
 
 /* ============================================================
    LIVE FEED
@@ -607,8 +784,14 @@ button { font-family: inherit; cursor: pointer; }
    SAFETY / CONTROL SPLIT
 ============================================================ */
 .safety-list { list-style: none; display: flex; flex-direction: column; gap: 12px; margin: 18px 0 22px; }
-.safety-list li { display: flex; align-items: flex-start; gap: 10px; font-size: 14px; color: var(--text-2); line-height: 1.5; padding-left: 0; }
+.safety-list li {
+  display: flex; align-items: flex-start; gap: 10px; font-size: 14px; color: var(--text-2); line-height: 1.5; padding-left: 0;
+  opacity: 0; transform: translateY(6px);
+  transition: opacity 400ms ease, transform 400ms ease;
+  transition-delay: calc(var(--i, 0) * 60ms + 200ms);
+}
 .safety-list li::before { content: none; }
+.reveal.is-visible .safety-list li { opacity: 1; transform: translateY(0); }
 .safety-check {
   width: 16px; height: 16px; border-radius: 50%; flex-shrink: 0; margin-top: 1px;
   display: flex; align-items: center; justify-content: center; font-size: 9px;
@@ -620,49 +803,74 @@ button { font-family: inherit; cursor: pointer; }
 .safety-footer.ok { color: var(--success); }
 .safety-footer.warn { color: var(--warning); }
 
-/* Editorial italic accent word inside oversized headlines. Used sparingly. */
-.serif-accent { font-family: var(--font-serif), Georgia, serif; font-style: italic; font-weight: 500; color: var(--accent-text); }
+/* Same highlight treatment as .headline-accent (sending.ac-style: a soft
+   background box, not a separate typeface), shared so every accent word
+   on the site (hero, problem section, pre-CTA) reads as one consistent
+   design language. */
+.serif-accent {
+  font-family: inherit; font-style: normal; font-weight: inherit; color: var(--accent-text);
+  background: var(--accent-light); padding: 0.05em 0.35em; border-radius: 8px;
+  box-decoration-break: clone; -webkit-box-decoration-break: clone;
+}
 
 /* ============================================================
-   PROBLEM LIST — quiet editorial breather between two visual-heavy screens
+   PROBLEM LIST: quiet editorial breather between two visual-heavy screens
 ============================================================ */
-.section-problem { padding: 140px 0; }
+.section-problem { padding: 104px 0; }
 .problem-layout { display: grid; grid-template-columns: 0.85fr 1.1fr; gap: 72px; align-items: center; }
-.problem-questions { list-style: none; display: flex; flex-direction: column; gap: 14px; margin: 28px 0 32px; }
-.problem-questions li { font-size: 16px; color: var(--text-2); line-height: 1.5; padding-left: 20px; position: relative; }
-.problem-questions li::before { content: '—'; position: absolute; left: 0; color: var(--text-3); }
-.problem-visual { max-width: 480px; }
-.pi-panel { box-shadow: 0 16px 40px rgba(0,0,0,0.06), 0 0 0 1px rgba(0,0,0,0.04); border-radius: 16px; }
-.pi-row {
-  opacity: 0; transform: translateY(-8px);
-  transition: opacity 0.4s ease, transform 0.4s ease, background 0.2s ease;
+/* min-width:0 overrides the grid item's default min-width:auto, which would
+   otherwise floor this column at its content's min-content width (the
+   longest unbreakable run in the heading) and force the column, and
+   the page, wider than the viewport on narrow screens. */
+.problem-copy { max-width: 560px; min-width: 0; }
+.problem-subtext { font-size: 16px; color: var(--text-2); line-height: 1.625; max-width: 28rem; }
+
+.problem-visual { width: 100%; max-width: 500px; min-width: 0; margin-left: auto; margin-right: auto; }
+.inbox-stack { position: relative; }
+.inbox-main { position: relative; z-index: 2; box-shadow: 0 40px 100px rgba(0,0,0,0.14), 0 0 0 1px rgba(0,0,0,0.06); }
+.ticket-peek {
+  position: absolute; width: 190px; background: white;
+  border: 1px solid var(--border); border-radius: 10px; padding: 10px 14px;
+  box-shadow: 0 10px 28px rgba(0,0,0,0.05);
 }
-.pi-row.is-in { opacity: 1; transform: translateY(0); }
-.problem-punch {
-  margin-top: 44px; font-size: 24px; font-weight: 700; line-height: 1.4;
-  letter-spacing: -0.4px; color: var(--text); max-width: 460px;
-  opacity: 0; transform: translateY(6px); transition: opacity 0.5s ease, transform 0.5s ease;
+.ticket-peek-subject { font-size: 12.5px; font-weight: 600; color: var(--text-2); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.ticket-peek-time { font-size: 11px; color: var(--text-3); margin-top: 3px; }
+.ticket-peek-left-2, .ticket-peek-left-3, .ticket-peek-right-2, .ticket-peek-right-3 { display: none; }
+.ticket-peek-left { left: -36px; }
+.ticket-peek-left-1 { top: 8%; transform: rotate(-6deg); z-index: 0; opacity: 0.65; }
+.ticket-peek-right { right: -36px; }
+.ticket-peek-right-1 { top: 8%; transform: rotate(6deg); z-index: 0; opacity: 0.65; }
+@media (max-width: 920px) {
+  .ticket-peek { display: none; }
 }
-.problem-punch.is-in { opacity: 1; transform: translateY(0); }
-@media (prefers-reduced-motion: reduce) { .pi-row, .problem-punch { transition: none; opacity: 1; transform: none; } }
 
 /* ============================================================
    SCENARIO EXPLORER
 ============================================================ */
-.se-tabs {
-  display: flex; flex-wrap: wrap; gap: 28px; margin-top: 44px;
-  border-bottom: 1px solid var(--border);
+/* 12-col grid: scenario picker + explanation on the left (5), the live
+   Luna card on the right (7), so the section fills the container instead of
+   a narrow panel hugging the left edge. */
+.se-layout {
+  display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: 32px;
+  margin-top: 64px; align-items: start;
 }
+.se-side { grid-column: span 5; min-width: 0; }
+.se-main { grid-column: span 7; min-width: 0; }
+.se-tabs { display: flex; flex-direction: column; gap: 12px; }
+/* Each scenario is a full-width card: title + one line saying what Luna does. */
 .se-tab {
-  padding: 0 0 14px; border: none; border-bottom: 2px solid transparent;
-  background: transparent; font-size: 14.5px; font-weight: 600; color: var(--text-3);
-  transition: color 0.15s, border-color 0.15s; margin-bottom: -1px;
+  display: flex; flex-direction: column; gap: 4px; width: 100%;
+  text-align: left; padding: 16px 18px; border: 1px solid var(--border); border-radius: 12px;
+  background: white; color: var(--text);
+  transition: background 0.15s, border-color 0.15s, box-shadow 0.15s, transform 0.18s ease;
 }
-.se-tab:hover { color: var(--text); }
-.se-tab.is-active { color: var(--text); border-bottom-color: var(--accent); }
+.se-tab-title { font-size: 15px; font-weight: 600; color: var(--text); }
+.se-tab-sub { font-size: 13px; font-weight: 400; color: var(--text-2); line-height: 1.5; }
+.se-tab:hover { border-color: var(--text-3); }
+.se-tab.is-active { border-color: var(--accent); box-shadow: 0 0 0 1px var(--accent), 0 8px 20px rgba(15,182,204,0.10); }
 .se-panel {
-  margin-top: 32px; border: 1px solid var(--border); border-radius: 16px;
-  padding: 32px; background: white; max-width: 640px;
+  border: 1px solid var(--border); border-radius: 16px;
+  padding: 32px; background: white;
   box-shadow: 0 12px 32px rgba(0,0,0,0.05);
 }
 .se-customer { font-size: 16px; font-weight: 600; color: var(--text); margin-bottom: 20px; line-height: 1.5; }
@@ -708,8 +916,14 @@ button { font-family: inherit; cursor: pointer; }
 /* ============================================================
    APPROVAL CARD DEMO (SafetyControl)
 ============================================================ */
-.safety-layout { display: grid; grid-template-columns: 1.05fr 0.95fr; gap: 48px; margin-top: 56px; align-items: center; }
-.safety-side { display: flex; flex-direction: column; gap: 28px; }
+/* Section header block: always left-aligned on the shared container edge
+   (the site-wide heading rule), with a readable measure. */
+.section-head-split { max-width: 672px; }
+
+/* 12-col grid: approval card takes 7, the two lists take 5. */
+.safety-layout { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: 32px; margin-top: 64px; align-items: center; }
+.safety-layout > .approval-card { grid-column: span 7; }
+.safety-side { grid-column: span 5; display: flex; flex-direction: column; gap: 28px; padding-left: 24px; }
 .safety-mini h3 { font-size: 15px; font-weight: 700; color: var(--text); margin-bottom: 4px; letter-spacing: -0.2px; }
 .approval-card {
   border: 1px solid var(--border); border-radius: 16px; background: white;
@@ -737,7 +951,7 @@ button { font-family: inherit; cursor: pointer; }
 .approval-btn.reject { background: transparent; border: 1px solid var(--danger); color: var(--danger); }
 .approval-btn.reject:hover { background: var(--danger-bg); }
 .approval-btn:disabled { opacity: 0.5; cursor: not-allowed; }
-.approval-result { margin-top: 16px; padding: 12px 14px; border-radius: 6px; font-size: 13px; }
+.approval-result { margin-top: 16px; padding: 12px 14px; border-radius: 6px; font-size: 13px; animation: scenarioIn 260ms cubic-bezier(0.16, 1, 0.3, 1); }
 .approval-result.success { background: var(--success-bg); color: var(--success); border: 1px solid var(--success); }
 .approval-result.neutral { background: var(--bg-2); color: var(--text-2); border: 1px solid var(--border); }
 .approval-caption { margin-top: 16px; font-size: 12px; color: var(--text-3); line-height: 1.6; }
@@ -761,7 +975,7 @@ button { font-family: inherit; cursor: pointer; }
 .privacy-content p { color: var(--text-2); margin-bottom: 14px; }
 .privacy-content ul { list-style: none; display: flex; flex-direction: column; gap: 8px; margin-bottom: 14px; padding-left: 0; }
 .privacy-content ul li { color: var(--text-2); padding-left: 20px; position: relative; }
-.privacy-content ul li::before { content: '—'; position: absolute; left: 0; color: var(--text-3); }
+.privacy-content ul li::before { content: '-'; position: absolute; left: 0; color: var(--text-3); }
 .privacy-content .provider-list { display: flex; flex-direction: column; gap: 8px; margin-bottom: 14px; }
 .privacy-content .provider-list li { padding-left: 0; }
 .privacy-content .provider-list li::before { content: none; }
@@ -801,7 +1015,11 @@ button { font-family: inherit; cursor: pointer; }
   .problem-layout { grid-template-columns: 1fr; gap: 40px; }
   .problem-visual { max-width: none; margin-top: 8px; }
   .safety-layout { grid-template-columns: 1fr; gap: 40px; }
-  .se-panel { max-width: none; padding: 24px; }
+  .safety-layout > .approval-card, .safety-side { grid-column: auto; }
+  .safety-side { padding-left: 0; }
+  .se-layout { grid-template-columns: 1fr; gap: 28px; }
+  .se-side, .se-main { grid-column: auto; }
+  .se-panel { padding: 24px; }
   .lf-row { flex-direction: column; align-items: flex-start; gap: 4px; }
   .blog-layout { grid-template-columns: 1fr; }
   .toc { position: static; }

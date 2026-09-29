@@ -2,7 +2,7 @@
 // Cell value: string | boolean | { prefix?, text, href } (link to a source).
 function Cell({ value }) {
   if (typeof value === 'boolean') {
-    return <td className={value ? 'yes' : ''}>{value ? '✓' : '—'}</td>;
+    return <td className={value ? 'yes' : ''}>{value ? '✓' : '-'}</td>;
   }
   if (value && typeof value === 'object') {
     const external = /^https?:/.test(value.href);

@@ -84,7 +84,7 @@ function TeamAccess({ appId, refreshKey, appliedAt }) {
     setDateErr(''); setBusy(true); setMsg('');
     const iso = new Date(`${dateInput}T09:00:00`).toISOString();
     const { error } = await getAdminClient().from('team_members').update({ activated_at: iso }).eq('id', tm.id);
-    setMsg(error ? (error.message || 'couldn’t set an activation date.') : `activated ${dateInput === todayStr() ? 'today' : `from ${dateInput}`} — starter task deadlines are set.`);
+    setMsg(error ? (error.message || 'couldn’t set an activation date.') : `activated ${dateInput === todayStr() ? 'today' : `from ${dateInput}`}: starter task deadlines are set.`);
     setBusy(false); setShowDateField(false); load();
   };
 
@@ -105,7 +105,7 @@ function TeamAccess({ appId, refreshKey, appliedAt }) {
       {info === undefined && <p className="cr-ad-sub">loading…</p>}
       {info && !tm && <p className="cr-ad-sub">no team member yet. it’s created when the welcome email is sent.</p>}
       {tm && tm.is_founder && (
-        <p className="cr-ad-sub">this is the founder’s own account — excluded from starter tasks, deadlines, engagement tracking, and reminders.</p>
+        <p className="cr-ad-sub">this is the founder’s own account: excluded from starter tasks, deadlines, engagement tracking, and reminders.</p>
       )}
       {tm && (
         <>

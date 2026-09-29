@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import Reveal from '@/components/Reveal';
 
 const RUNS_ON_ITS_OWN = [
   'Order tracking',
@@ -51,7 +52,7 @@ function ApprovalCardDemo() {
 
       {status === 'idle' && (
         <div className="approval-field">
-          <label htmlFor="approval-address">Parsed from the customer&apos;s message &mdash; edit if needed</label>
+          <label htmlFor="approval-address">Parsed from the customer&apos;s message, edit if needed</label>
           <input
             id="approval-address"
             type="text"
@@ -92,7 +93,7 @@ function ApprovalCardDemo() {
         </div>
       )}
 
-      <p className="approval-caption">Try it. Nothing here touches Shopify &mdash; it&apos;s a preview.</p>
+      <p className="approval-caption">Try it. Nothing here touches Shopify, it&apos;s a preview.</p>
     </div>
   );
 }
@@ -101,22 +102,24 @@ export default function SafetyControl() {
   return (
     <section className="section section-alt" id="safety">
       <div className="wrap">
-        <div className="eyebrow"><span className="eyebrow-dot" />Trust</div>
-        <h2 className="section-title section-title-serif">Luna knows when to act.<br />And when to ask you.</h2>
-        <p className="section-sub">
-          Routine support runs on its own. Anything that touches money or an order always comes
-          back to you first &mdash; try it below.
-        </p>
+        <div className="section-head-split">
+          <Reveal as="div" className="eyebrow"><span className="eyebrow-dot" />Trust</Reveal>
+          <Reveal as="h2" className="section-title" delay={80}>Luna knows when to act.<br />And when to ask you.</Reveal>
+          <Reveal as="p" className="section-sub" delay={140}>
+            Routine support runs on its own. Anything that touches money or an order always comes
+            back to you first, try it below.
+          </Reveal>
+        </div>
 
-        <div className="safety-layout">
+        <Reveal as="div" className="safety-layout" delay={180}>
           <ApprovalCardDemo />
 
           <div className="safety-side">
             <div className="safety-mini">
               <h3>Runs on its own</h3>
               <ul className="safety-list">
-                {RUNS_ON_ITS_OWN.map((item) => (
-                  <li key={item}>
+                {RUNS_ON_ITS_OWN.map((item, i) => (
+                  <li key={item} style={{ '--i': i }}>
                     <span className="safety-check ok">✓</span>
                     {item}
                   </li>
@@ -126,8 +129,8 @@ export default function SafetyControl() {
             <div className="safety-mini">
               <h3>Always needs your tap</h3>
               <ul className="safety-list">
-                {ALWAYS_NEEDS_APPROVAL.map((item) => (
-                  <li key={item}>
+                {ALWAYS_NEEDS_APPROVAL.map((item, i) => (
+                  <li key={item} style={{ '--i': i }}>
                     <span className="safety-check warn">!</span>
                     {item}
                   </li>
@@ -135,7 +138,7 @@ export default function SafetyControl() {
               </ul>
             </div>
           </div>
-        </div>
+        </Reveal>
       </div>
     </section>
   );

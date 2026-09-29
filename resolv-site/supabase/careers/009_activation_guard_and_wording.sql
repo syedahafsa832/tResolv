@@ -11,7 +11,7 @@ You earn commission when a real customer you brought actually pays tResolv, exac
 
 ## Active participation, not passive membership
 
-Being on the team means actively doing the work: researching brands, reaching out, and moving prospects forward. It is not a title you hold or a group you sit in, it is work you do. "Commission-based" does not mean "whenever I feel like it" — it means you're free to choose your own methods, not free to opt out of doing the work.
+Being on the team means actively doing the work: researching brands, reaching out, and moving prospects forward. It is not a title you hold or a group you sit in, it is work you do. "Commission-based" does not mean "whenever I feel like it": it means you're free to choose your own methods, not free to opt out of doing the work.
 
 ## Deadlines matter
 

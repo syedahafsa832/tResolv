@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import { faqs } from '@/content/homepageFaqs';
+import Reveal from '@/components/Reveal';
 
 const ChevronIcon = () => (
   <svg className="faq-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none"
@@ -20,13 +21,14 @@ export default function FAQ({ linkToPage = false }) {
   return (
     <section className="section section-alt" id="faq">
       <div className="wrap">
-        <div className="eyebrow"><span className="eyebrow-dot" />FAQ</div>
-        <h2 className="section-title">Honest answers.</h2>
-        <p className="section-sub">
-          tResolv FAQ: what happens after the free trial, how human approval works for refunds and
-          cancellations, how Gmail and Shopify setup works, and how customer data is handled.
-        </p>
-        <div className="faq-wrap">
+        <div className="faq-header">
+          <Reveal as="div" className="eyebrow"><span className="eyebrow-dot" />FAQ</Reveal>
+          <Reveal as="h2" className="section-title" delay={80}>Honest answers.</Reveal>
+          <Reveal as="p" className="section-sub" delay={140}>
+            Everything you need to know about setting up Luna, human-in-the-loop approvals, and pricing.
+          </Reveal>
+        </div>
+        <Reveal as="div" className="faq-wrap" delay={200}>
           {faqs.map(({ q, a }, i) => (
             <div key={i} className={`faq-item${openIndex === i ? ' open' : ''}`}>
               <button className="faq-q" onClick={() => toggle(i)}>
@@ -38,7 +40,7 @@ export default function FAQ({ linkToPage = false }) {
               </div>
             </div>
           ))}
-        </div>
+        </Reveal>
         {linkToPage && (
           <p className="section-sub" style={{ marginTop: 28, maxWidth: 'none' }}>
             <Link href="/faq" className="inline-link">Read the full FAQ →</Link>

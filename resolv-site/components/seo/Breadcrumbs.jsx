@@ -3,7 +3,7 @@
 // should omit `path` since it isn't a link. Deliberately dark/full-bleed
 // rather than blending into whatever section follows: some pages start
 // with a dark hero, others (blog) start light, and a fixed-position nav
-// sits on top of either — a dedicated bar is the only styling that clears
+// sits on top of either: a dedicated bar is the only styling that clears
 // the nav correctly and reads consistently on every page.
 export default function Breadcrumbs({ items }) {
   if (!items || items.length === 0) return null;
