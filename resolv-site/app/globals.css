@@ -323,7 +323,14 @@ button { font-family: inherit; cursor: pointer; }
 .home-hero-actions { display: flex; align-items: center; justify-content: center; gap: 24px; flex-wrap: wrap; }
 .home-hero-watch { color: var(--accent-text); font-weight: 600; font-size: 15px; }
 .home-hero-watch:hover { text-decoration: underline; }
-.home-hero-assurance { margin-top: 12px; font-size: 13px; color: var(--text-3); }
+.home-hero-assurance {
+  display: flex; align-items: center; justify-content: center; gap: 16px;
+  margin-top: 16px; font-size: 12px; font-weight: 500; color: #64748B;
+}
+@media (min-width: 640px) { .home-hero-assurance { font-size: 14px; } }
+.home-hero-assurance-item { display: inline-flex; align-items: center; gap: 6px; }
+.home-hero-assurance-icon { width: 14px; height: 14px; color: #10B981; flex-shrink: 0; }
+.home-hero-assurance-sep { color: #CBD5E1; }
 @media (max-width: 920px) {
   .home-hero { padding-top: calc(72px + var(--banner-h)); }
   .home-hero-content { padding-bottom: clamp(60px, 18vw, 130px); }
