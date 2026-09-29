@@ -543,6 +543,9 @@ button { font-family: inherit; cursor: pointer; }
   padding-top: 28px; gap: 24px; flex-wrap: wrap;
 }
 .footer-copy { font-size: 13px; color: rgba(255,255,255,0.22); }
+.footer-badge { display: inline-flex; line-height: 0; opacity: 0.85; transition: opacity 0.14s; }
+.footer-badge:hover { opacity: 1; }
+.footer-badge img { display: block; max-width: 100%; height: auto; }
 .footer-socials { display: flex; gap: 18px; }
 .footer-socials a { color: rgba(255,255,255,0.32); transition: color 0.14s; }
 .footer-socials a:hover { color: white; }
