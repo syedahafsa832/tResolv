@@ -151,8 +151,11 @@ export default function ProductVideo() {
           </div>
           <div className="product-video-wrap" ref={wrapRef} style={{ aspectRatio: '16 / 9' }}>
             {!shouldLoad && (
-              // eslint-disable-next-line @next/next/no-img-element
-              <img className="product-video" src="/video/poster.jpg" alt="" aria-hidden="true" />
+              <picture>
+                <source srcSet="/video/poster.webp" type="image/webp" />
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img className="product-video" src="/video/poster.jpg" alt="" aria-hidden="true" loading="lazy" width={634} height={356} />
+              </picture>
             )}
             {shouldLoad && (
               <>

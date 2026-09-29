@@ -271,22 +271,29 @@ button { font-family: inherit; cursor: pointer; }
      simply paints over that sliver, so nothing is actually lost. */
   position: absolute; top: 0; left: 0; right: 0; bottom: -4px; z-index: 0; overflow: hidden;
 }
-/* Barely-there ambient drift via background-position, not transform+scale:
-   an earlier version oversized this layer (inset + scale) so the pan never
-   revealed an edge, but background-size:cover on an already-108%-sized box
-   compounded with the scale into extra zoom, at wide/short viewports that
-   pushed the grass hill mostly out of frame. Panning within cover's own
-   natural overflow needs no oversizing at all, so the framing matches the
-   static (non-animated) crop exactly; only the position drifts, ~45s round
-   trip, imperceptibly slow. */
+/* Barely-there ambient drift, compositor-friendly (transform only, no scale):
+   an EARLIER version oversized this layer via inset+scale together, and the
+   scale compounded with cover's own sizing into extra zoom that pushed the
+   grass hill out of frame at wide/short viewports. This version oversizes
+   the box a fixed +8% (no scale() anywhere) and only ever translates ~2%
+   within that margin, leaving a 2%+ safety buffer against rounding, so the
+   crop/zoom level matches the static image exactly; only the position
+   drifts, ~45s round trip, imperceptibly slow. Pure `transform` is
+   compositor-friendly (was `background-position`, flagged as
+   non-composited); `.home-hero-scene`'s overflow:hidden clips the excess. */
 .home-hero-scene-drift {
-  position: absolute; inset: 0;
+  position: absolute; left: -4%; top: -4%; width: 108%; height: 108%;
+  /* JPEG fallback first for browsers without image-set support (Safari <14,
+     old Firefox); WebP shaves ~65KiB off this background with no visible
+     quality change. Same file, same crop, same "cover" positioning either way. */
   background: url('/hero/hero-scene.jpg') center bottom / cover no-repeat;
+  background-image: image-set(url('/hero/hero-scene.webp') type('image/webp') 1x, url('/hero/hero-scene.jpg') type('image/jpeg') 1x);
   animation: heroSceneDrift 45s ease-in-out infinite alternate;
+  will-change: transform;
 }
 @keyframes heroSceneDrift {
-  from { background-position: center bottom; }
-  to   { background-position: 51% 97%; }
+  from { transform: translate3d(0, 0, 0); }
+  to   { transform: translate3d(-1.5%, -2%, 0); }
 }
 .home-hero-content {
   position: relative; z-index: 1;
