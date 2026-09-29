@@ -32,7 +32,21 @@ export default function Hero() {
           </a>
           <a href="#product-demo" className="home-hero-watch">Watch Luna work</a>
         </Reveal>
-        <Reveal as="p" className="home-hero-assurance" delay={420}>14 days free · No credit card · Shopify + Gmail · You stay in control</Reveal>
+        <Reveal as="div" className="home-hero-assurance" delay={420}>
+          <span className="home-hero-assurance-item">
+            <svg className="home-hero-assurance-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M5 13l4 4L19 7" />
+            </svg>
+            14-day free trial
+          </span>
+          <span className="home-hero-assurance-sep">•</span>
+          <span className="home-hero-assurance-item">
+            <svg className="home-hero-assurance-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M5 13l4 4L19 7" />
+            </svg>
+            No credit card required
+          </span>
+        </Reveal>
       </div>
     </section>
   );
