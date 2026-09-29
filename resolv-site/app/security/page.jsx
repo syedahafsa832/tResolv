@@ -3,7 +3,7 @@ import { buildMetadata } from '@/lib/seo';
 
 export const metadata = buildMetadata({
   title: 'Security | tResolv',
-  description: 'How tResolv protects merchant and customer data — encryption, authentication, tenant isolation, and the third-party services we rely on.',
+  description: 'How tResolv protects merchant and customer data: encryption, authentication, tenant isolation, and the third-party services we rely on.',
   path: '/security',
 });
 

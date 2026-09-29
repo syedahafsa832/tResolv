@@ -15,6 +15,8 @@ export function generateMetadata({ params }) {
     title: `${post.title} | tResolv Blog`,
     description: post.description,
     path: `/blog/${post.slug}`,
+    type: 'article',
+    publishedTime: post.datePublished,
   });
 }
 

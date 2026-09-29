@@ -30,7 +30,7 @@ export default function NotFound() {
           </p>
           <h1 className="nf-title">Hmm, we couldn&apos;t track this page down.</h1>
           <p className="section-sub nf-sub">
-            Looks like it moved, got renamed, or never existed — the link you followed may be out of date.
+            Looks like it moved, got renamed, or never existed. The link you followed may be out of date.
           </p>
 
           <div className="nf-actions">

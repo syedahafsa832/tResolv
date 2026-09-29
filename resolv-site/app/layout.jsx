@@ -1,15 +1,13 @@
-import { DM_Sans, DM_Mono } from 'next/font/google';
-import TrialBanner from '@/components/TrialBanner';
+import { DM_Mono, Inter } from 'next/font/google';
 import { SITE } from '@/lib/site';
 import './globals.css';
 
-const dmSans = DM_Sans({
-  subsets: ['latin'],
-  weight: ['400', '500', '600', '700'],
-  variable: '--font-sans',
-  display: 'swap',
-});
+// Inter is the one typeface for the whole site (body + every heading).
+// It is exposed as both --font-inter and, via globals.css, --font-sans so
+// legacy rules that reference --font-sans (careers/team pages) follow it too.
+const inter = Inter({ subsets: ['latin'], weight: ['400', '500', '600', '700'], variable: '--font-inter', display: 'swap' });
 
+// Mono is kept only for the careers/team pages' numbering; no homepage rule uses it.
 const dmMono = DM_Mono({
   subsets: ['latin'],
   weight: ['400', '500'],
@@ -27,6 +25,7 @@ export const metadata = {
       { url: '/favicon.ico', sizes: 'any' },
       { url: '/favicon.png', type: 'image/png' },
     ],
+    apple: [{ url: '/favicon.png' }],
   },
   openGraph: {
     siteName: SITE.name,
@@ -40,9 +39,8 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" className={`${dmSans.variable} ${dmMono.variable}`}>
+    <html lang="en" className={`${inter.variable} ${dmMono.variable}`}>
       <body>
-        <TrialBanner />
         {children}
       </body>
     </html>

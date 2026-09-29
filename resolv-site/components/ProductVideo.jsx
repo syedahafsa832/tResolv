@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useRef, useState } from 'react';
+import Reveal from '@/components/Reveal';
 
 // The video sits just below the 100vh hero, so on initial load it's off-screen.
 // The <video> element is deferred until it's about to scroll into view so its
@@ -15,6 +16,8 @@ export default function ProductVideo() {
   const videoRef = useRef(null);
   const [shouldLoad, setShouldLoad] = useState(false);
   const [muted, setMuted] = useState(true);
+  const [playing, setPlaying] = useState(false);
+  const wantPlay = useRef(false);
 
   useEffect(() => {
     const el = wrapRef.current;
@@ -73,20 +76,31 @@ export default function ProductVideo() {
     };
     const onPlay = () => {
       userPaused = false;
+      setPlaying(true);
     };
     const onPause = () => {
+      setPlaying(false);
       if (autoPaused) {
         autoPaused = false;
         return;
       }
       userPaused = !video.ended;
     };
+    const onEnded = () => setPlaying(false);
     const onVolume = () => setMuted(video.muted || video.volume === 0);
 
     window.addEventListener('scroll', onScroll, { passive: true });
     video.addEventListener('play', onPlay);
     video.addEventListener('pause', onPause);
+    video.addEventListener('ended', onEnded);
     video.addEventListener('volumechange', onVolume);
+
+    // The visitor clicked the play button before the video had loaded.
+    if (wantPlay.current) {
+      wantPlay.current = false;
+      video.muted = false;
+      video.play().catch(() => {});
+    }
 
     return () => {
       clearTimeout(timer);
@@ -94,9 +108,24 @@ export default function ProductVideo() {
       window.removeEventListener('scroll', onScroll);
       video.removeEventListener('play', onPlay);
       video.removeEventListener('pause', onPause);
+      video.removeEventListener('ended', onEnded);
       video.removeEventListener('volumechange', onVolume);
     };
   }, [shouldLoad]);
+
+  // Explicit play from the floating button: a click is a user gesture, so
+  // unmuting is allowed and is what a visitor pressing play expects.
+  const playVideo = () => {
+    const video = videoRef.current;
+    if (!video) {
+      wantPlay.current = true;
+      setShouldLoad(true);
+      return;
+    }
+    video.muted = false;
+    if (video.volume === 0) video.volume = 1;
+    video.play().catch(() => {});
+  };
 
   const unmute = () => {
     const video = videoRef.current;
@@ -109,30 +138,52 @@ export default function ProductVideo() {
   return (
     <section id="product-demo" className="section" style={{ paddingBottom: 0 }}>
       <div className="wrap">
-        <div className="product-video-wrap" ref={wrapRef} style={{ aspectRatio: '16 / 9' }}>
-          {shouldLoad && (
-            <>
-              <video
-                ref={videoRef}
-                className="product-video"
-                src="/video/tresolv-product-video.mp4"
-                muted
-                playsInline
-                controls
-                preload="metadata"
-              />
-              {muted && (
-                <button type="button" className="product-video-hint" onClick={unmute}>
-                  <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-                    <path d="M11 5 6 9H3v6h3l5 4V5Z" fill="currentColor" stroke="none" />
-                    <path d="M15.5 8.5a5 5 0 0 1 0 7" />
-                    <path d="M18.5 5.5a9 9 0 0 1 0 13" />
-                  </svg>
-                  Turn your volume up
-                </button>
-              )}
-            </>
-          )}
+        <Reveal as="div" className="eyebrow"><span className="eyebrow-dot" />Real product demo</Reveal>
+        <Reveal as="h2" className="section-title" delay={80}>Watch Luna resolve a ticket.</Reveal>
+        <Reveal as="p" className="section-sub" delay={140}>
+          A customer asks. Luna checks what actually happened. Then she handles the next step.
+        </Reveal>
+        <div className="browser-frame">
+          <div className="hi-chrome">
+            <span className="hi-chrome-dot" style={{ background: '#FF5F57' }} />
+            <span className="hi-chrome-dot" style={{ background: '#FEBC2E' }} />
+            <span className="hi-chrome-dot" style={{ background: '#28C840' }} />
+          </div>
+          <div className="product-video-wrap" ref={wrapRef} style={{ aspectRatio: '16 / 9' }}>
+            {!shouldLoad && (
+              // eslint-disable-next-line @next/next/no-img-element
+              <img className="product-video" src="/video/poster.jpg" alt="" aria-hidden="true" />
+            )}
+            {shouldLoad && (
+              <>
+                <video
+                  ref={videoRef}
+                  className="product-video"
+                  src="/video/tresolv-product-video.mp4"
+                  poster="/video/poster.jpg"
+                  muted
+                  playsInline
+                  controls
+                  preload="metadata"
+                />
+                {muted && (
+                  <button type="button" className="product-video-hint" onClick={unmute}>
+                    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                      <path d="M11 5 6 9H3v6h3l5 4V5Z" fill="currentColor" stroke="none" />
+                      <path d="M15.5 8.5a5 5 0 0 1 0 7" />
+                      <path d="M18.5 5.5a9 9 0 0 1 0 13" />
+                    </svg>
+                    Turn your volume up
+                  </button>
+                )}
+              </>
+            )}
+            {!playing && (
+              <button type="button" className="product-video-play" aria-label="Play the product demo" onClick={playVideo}>
+                <svg viewBox="0 0 24 24" width="28" height="28" fill="currentColor" aria-hidden="true"><path d="M8 5.5v13a1 1 0 0 0 1.5.86l10.5-6.5a1 1 0 0 0 0-1.72L9.5 4.64A1 1 0 0 0 8 5.5Z" /></svg>
+              </button>
+            )}
+          </div>
         </div>
       </div>
     </section>

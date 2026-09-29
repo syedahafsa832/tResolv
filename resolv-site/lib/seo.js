@@ -86,8 +86,11 @@ const SOCIAL_IMAGE = {
  * Open Graph, and Twitter card. Every SEO page should build its metadata
  * through this function instead of hand-rolling the object, keeps the
  * canonical/OG shape consistent across all ~20 pages.
+ *
+ * `type`/`publishedTime` are only for the blog (`openGraph.type: 'article'`
+ * plus `article:published_time`); every other page stays the default `website`.
  */
-export function buildMetadata({ title, description, path, keywords }) {
+export function buildMetadata({ title, description, path, keywords, type = 'website', publishedTime }) {
   const url = absoluteUrl(path);
   return {
     title,
@@ -99,9 +102,10 @@ export function buildMetadata({ title, description, path, keywords }) {
       description,
       url,
       siteName: SITE.name,
-      type: 'website',
+      type,
       locale: 'en_US',
       images: [SOCIAL_IMAGE],
+      ...(type === 'article' && publishedTime ? { publishedTime } : {}),
     },
     twitter: {
       card: 'summary_large_image',
@@ -109,6 +113,22 @@ export function buildMetadata({ title, description, path, keywords }) {
       description,
       images: [SOCIAL_IMAGE.url],
     },
+  };
+}
+
+/**
+ * WebSite JSON-LD for the homepage. No `potentialAction` SearchAction: the
+ * site has no internal search, and adding one would misrepresent a feature
+ * that doesn't exist.
+ */
+export function websiteSchema() {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'WebSite',
+    '@id': `${SITE.url}/#website`,
+    name: SITE.name,
+    url: SITE.url,
+    publisher: orgRef,
   };
 }
 

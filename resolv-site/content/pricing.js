@@ -12,7 +12,7 @@ export const tiers = [
     price: '$49',
     amount: 49,
     per: '/month',
-    founding: 'Founding price — limited founding spots',
+    founding: 'Founding price: limited founding spots',
     cta: 'Claim your founding spot →',
     href: 'https://app.tresolv.online',
     features: [

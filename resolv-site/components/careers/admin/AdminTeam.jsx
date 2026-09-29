@@ -134,7 +134,7 @@ function NeedsNudge({ people }) {
             <span className="cr-ad-name"><Link href={`/careers/admin/${p.appId}`}>{p.name}</Link></span>
             <span>{p.role}</span>
             <span><span className={`cr-status ${p.tone}`} style={{ cursor: 'default' }}>{p.reason}</span></span>
-            <span>{p.linkedin ? <a href={p.linkedin} target="_blank" rel="noopener noreferrer">linkedin ↗</a> : '—'}</span>
+            <span>{p.linkedin ? <a href={p.linkedin} target="_blank" rel="noopener noreferrer">linkedin ↗</a> : '-'}</span>
           </div>
         ))}
       </div>
@@ -220,7 +220,7 @@ export default function AdminTeam() {
 
       {founders.length > 0 && (
         <p className="cr-ad-sub" style={{ marginTop: 20 }}>
-          {founders.map((f) => f.name).join(', ')} — founder account{founders.length > 1 ? 's' : ''}, excluded from team tracking.
+          {founders.map((f) => f.name).join(', ')}: founder account{founders.length > 1 ? 's' : ''}, excluded from team tracking.
         </p>
       )}
     </div>

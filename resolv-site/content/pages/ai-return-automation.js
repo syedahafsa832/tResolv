@@ -51,7 +51,7 @@ export const page = {
     steps: [
       { num: '01', title: 'Return request arrives', body: 'tResolv identifies the request type, exchange or refund, and matches it to the order.' },
       { num: '02', title: 'Eligibility is checked', body: 'The order is checked against your return window and policy before any commitment is made in the reply.' },
-      { num: '03', title: 'Refunds stage, exchanges route to your team', body: 'A refund resolution waits in your approval queue. An exchange is routed to your support team to complete — full automation is coming soon.' },
+      { num: '03', title: 'Refunds stage, exchanges route to your team', body: 'A refund resolution waits in your approval queue. An exchange is routed to your support team to complete. Full automation is coming soon.' },
     ],
   },
   features: {
@@ -75,7 +75,7 @@ export const page = {
   },
   faqs: [
     { q: 'Does tResolv decide return eligibility on its own?', a: 'It checks eligibility against the order and available return information, but a resulting refund is always staged for your approval, and a resulting exchange is routed to your support team.' },
-    { q: 'Can it process an exchange directly in Shopify?', a: 'Not yet. Exchanges are drafted and routed to your support team to complete manually — full automation is coming soon. Refunds and cancellations are staged for your one-tap approval today.' },
+    { q: 'Can it process an exchange directly in Shopify?', a: 'Not yet. Exchanges are drafted and routed to your support team to complete manually. Full automation is coming soon. Refunds and cancellations are staged for your one-tap approval today.' },
     { q: 'How is this different from the refund automation page?', a: 'Refund automation covers requests that start as "refund me." Return automation covers the broader return flow, which can resolve to an exchange or a refund.' },
   ],
   relatedLinks: [

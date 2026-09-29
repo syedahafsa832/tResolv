@@ -1,16 +1,17 @@
 import Link from 'next/link';
 import { tiers } from '@/content/pricing';
+import Reveal from '@/components/Reveal';
 // `linkToPage`: the homepage summary links through to the full /pricing page.
 export default function Pricing({ linkToPage = false }) {
   return (
     <section className="section" id="pricing">
       <div className="wrap">
-        <div className="eyebrow"><span className="eyebrow-dot" />Pricing</div>
-        <h2 className="section-title">Founding Launch Pricing.</h2>
-        <p className="section-sub">
+        <Reveal as="div" className="eyebrow"><span className="eyebrow-dot" />Pricing</Reveal>
+        <Reveal as="h2" className="section-title" delay={80}>Founding Launch Pricing.</Reveal>
+        <Reveal as="p" className="section-sub" delay={140}>
           Locked in for our first 20 stores. No setup fees, no per-ticket charges.
-        </p>
-        <div className="price-grid">
+        </Reveal>
+        <Reveal as="div" className="price-grid" delay={200}>
           {tiers.map(({ id, tier, kicker, name, desc, price, per, founding, cta, href, plusNote, features, quote, featured, popular }) => (
             <div key={id} className={`price-card${featured ? ' featured' : ''}`}>
               {popular && <div className="price-popular">Most popular</div>}
@@ -36,7 +37,7 @@ export default function Pricing({ linkToPage = false }) {
               <p className="price-quote">"{quote}"</p>
             </div>
           ))}
-        </div>
+        </Reveal>
         {linkToPage && (
           <p className="section-sub" style={{ marginTop: 28, maxWidth: 'none' }}>
             <Link href="/pricing" className="inline-link">See full pricing and trial terms →</Link>
