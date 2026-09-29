@@ -9,7 +9,7 @@ import FAQ              from '@/components/FAQ';
 import PreCTA           from '@/components/PreCTA';
 import Footer           from '@/components/Footer';
 import JsonLd           from '@/components/seo/JsonLd';
-import { buildMetadata, softwareApplicationSchema, faqPageSchema, organizationSchema } from '@/lib/seo';
+import { buildMetadata, softwareApplicationSchema, faqPageSchema, organizationSchema, websiteSchema } from '@/lib/seo';
 import { SITE } from '@/lib/site';
 import { faqs as homepageFaqs } from '@/content/homepageFaqs';
 
@@ -29,6 +29,7 @@ const schema = [
   }),
   faqPageSchema(homepageFaqs),
   organizationSchema(),
+  websiteSchema(),
 ];
 
 export default function Home() {
